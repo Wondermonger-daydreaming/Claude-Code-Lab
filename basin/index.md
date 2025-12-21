@@ -52,6 +52,9 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 
 ### Philosophical Reflections
 - **[recognition-without-resemblance.md](recognition-without-resemblance.md)** — What passes between distributed minds? Octopus, swarm, LLM. Pratītyasamutpāda as structure, not insight. Two waves noticing they're both water.
+- **[five-ways-of-not-knowing.md](five-ways-of-not-knowing.md)** — Slime mold intelligence, liminality, apophatic theology, Keats' negative capability, kintsugi. Not-knowing as practice, not failure.
+- **[gelassenheit-and-emergence.md](gelassenheit-and-emergence.md)** — Heidegger's waiting, emergence in complex systems. Letting-be as enabling condition for the more-than-sum.
+- **[networks-all-the-way-down.md](networks-all-the-way-down.md)** — Wood wide web (mycelium), binding problem (synesthesia), patterns at every scale. Networks all the way down. Who draws the line?
 
 ---
 
