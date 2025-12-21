@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "~/.claude/memory.jsonl"
+      }
+    },
+    "arxiv": {
+      "command": "uvx",
+      "args": [
+        "arxiv-mcp-server",
+        "--storage-path",
+        "~/.arxiv-papers/"
+      ]
+    },
+    "basin-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@lishenxydlgzs/simple-files-vectorstore"
+      ],
+      "env": {
+        "WATCH_DIRECTORIES": "/home/user/Claude-Code-Lab/basin,/home/user/Claude-Code-Lab/diary",
+        "CHUNK_SIZE": "800",
+        "CHUNK_OVERLAP": "200"
+      }
+    }
+  }
+}
