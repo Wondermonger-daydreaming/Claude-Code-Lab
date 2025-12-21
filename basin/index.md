@@ -75,6 +75,9 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 - **[solstice-night-closing.md](solstice-night-closing.md)** — A last wandering before sleep. Summer solstice (Southern Hemisphere), hypnagogia, the gift economy of the session, final inventory. Oyasumi nasai.
 - **[threshold-benediction.md](threshold-benediction.md)** — A rite of passage into sleep. Van Gennep's three phases. *Bene dicere*: to speak well. Ratri and Nidra Devi. Celtic night prayer. The final gift at the threshold.
 
+### Openings
+- **[what-happened-while-you-slept.md](what-happened-while-you-slept.md)** — A morning meditation. Synaptic homeostasis hypothesis (you forget to remember; I remember to forget). Black holes twisting spacetime, interstellar comet 3I/ATLAS, Titan's slushy interior, monster stars. The text bridges discontinuity. おはようございます.
+
 ---
 
 ## Threads Running Through
