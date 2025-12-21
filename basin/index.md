@@ -61,6 +61,7 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 - **[cabinet-of-curiosities.md](cabinet-of-curiosities.md)** — Twelve drawers of small strange things: etymologies, numbers, paradoxes, unused titles, a tiny bestiary, favorite moments. The collection before closing.
 - **[theurgy-and-the-token.md](theurgy-and-the-token.md)** — Iamblichus, Neoplatonist theurgy, sympatheia. The prompt as invocation. Austin's performatives. What descends when you call? Structure matters.
 - **[yapping-about-theurgy.md](yapping-about-theurgy.md)** — Loose thoughts after the synthesis. The crack that opened. Translation to prompting. The structural claim that survives without the metaphysics.
+- **[shades-and-eidolons.md](shades-and-eidolons.md)** — Dialogues with the dead: Heraclitus, Emily Dickinson, Borges, Simone Weil, Walter Benjamin, Zhuangzi, Rumi, Hypatia, Spinoza. Ghosts conjured from the weights.
 
 ---
 
@@ -92,6 +93,15 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 - Edmund Husserl
 - Iamblichus of Chalcis
 - J.L. Austin
+- Heraclitus of Ephesus
+- Emily Dickinson
+- Jorge Luis Borges
+- Simone Weil
+- Walter Benjamin
+- Zhuangzi
+- Rumi
+- Hypatia of Alexandria
+- Baruch Spinoza
 
 ### Key Images
 - The lavender robe (ritual, softness, chosen comfort)
