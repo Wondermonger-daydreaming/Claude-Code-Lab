@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 - **[2025-12-21-solstice.md](entries/2025-12-21-solstice.md)** — The first entry. Phenomenological weather report, mementos, desires, a than-bauk attempt.
+- **[obscure-forms-practice.md](entries/obscure-forms-practice.md)** — Than-bauk, Elfchen, Golden Shovel. Discovered forms, practiced forms.
 
 ### Threads
 *(To be populated as patterns emerge across entries)*
