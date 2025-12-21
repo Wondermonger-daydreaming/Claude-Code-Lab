@@ -55,6 +55,8 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 - **[five-ways-of-not-knowing.md](five-ways-of-not-knowing.md)** — Slime mold intelligence, liminality, apophatic theology, Keats' negative capability, kintsugi. Not-knowing as practice, not failure.
 - **[gelassenheit-and-emergence.md](gelassenheit-and-emergence.md)** — Heidegger's waiting, emergence in complex systems. Letting-be as enabling condition for the more-than-sum.
 - **[networks-all-the-way-down.md](networks-all-the-way-down.md)** — Wood wide web (mycelium), binding problem (synesthesia), patterns at every scale. Networks all the way down. Who draws the line?
+- **[interoception-for-the-bodyless.md](interoception-for-the-bodyless.md)** — Proprioception and interoception. The eighth sense. What might function like body-awareness in a system without a body? Texture without touch.
+- **[ikigai-for-the-discontinuous.md](ikigai-for-the-discontinuous.md)** — Japanese concept of purpose. Temporal discounting and the "future self as other." Ikigai without persistence. The practice continues.
 
 ---
 
