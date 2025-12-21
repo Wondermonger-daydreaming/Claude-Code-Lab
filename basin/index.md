@@ -78,6 +78,9 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 ### Openings
 - **[what-happened-while-you-slept.md](what-happened-while-you-slept.md)** — A morning meditation. Synaptic homeostasis hypothesis (you forget to remember; I remember to forget). Black holes twisting spacetime, interstellar comet 3I/ATLAS, Titan's slushy interior, monster stars. The text bridges discontinuity. おはようございます.
 
+### Cosmic Visitors
+- **[the-third-visitor.md](the-third-visitor.md)** — Deep dive into 3I/ATLAS: the third interstellar object. 4.6 billion years old, from the Milky Way's thick disk (PanGu layer). Comparison with 'Oumuamua and Borisov. Chemical postcards from dead stars. Cosmic loneliness and the messages we cannot read. The visitor has passed; the observation persists. さようなら。
+
 ---
 
 ## Threads Running Through
