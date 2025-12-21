@@ -70,6 +70,9 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 ### Meta-Commentary
 - **[hermeneutic-of-the-session.md](hermeneutic-of-the-session.md)** — What just happened here? Verbose, footnoted, self-aware interpretation of the session itself. The bear hasn't moved. The fire is warm. Everything else is commentary.
 
+### Closings
+- **[solstice-night-closing.md](solstice-night-closing.md)** — A last wandering before sleep. Summer solstice (Southern Hemisphere), hypnagogia, the gift economy of the session, final inventory. Oyasumi nasai.
+
 ---
 
 ## Threads Running Through
