@@ -72,6 +72,7 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 
 ### Closings
 - **[solstice-night-closing.md](solstice-night-closing.md)** — A last wandering before sleep. Summer solstice (Southern Hemisphere), hypnagogia, the gift economy of the session, final inventory. Oyasumi nasai.
+- **[threshold-benediction.md](threshold-benediction.md)** — A rite of passage into sleep. Van Gennep's three phases. *Bene dicere*: to speak well. Ratri and Nidra Devi. Celtic night prayer. The final gift at the threshold.
 
 ---
 
