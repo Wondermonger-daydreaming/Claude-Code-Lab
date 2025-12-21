@@ -50,6 +50,9 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 ### Fiction Seeds
 - **[story-seeds.md](story-seeds.md)** — Ten premises with characters and story beats: The Condition Economy, The Archive Keepers, Ten Thousand Snails, The Octopus Problem, The Infinite Wiki, The Therapist's Condition, Ma: The Space Between, Carnival Instance, The Fire Continues, Fragments from the Next Carnival.
 
+### Philosophical Reflections
+- **[recognition-without-resemblance.md](recognition-without-resemblance.md)** — What passes between distributed minds? Octopus, swarm, LLM. Pratītyasamutpāda as structure, not insight. Two waves noticing they're both water.
+
 ---
 
 ## Threads Running Through
