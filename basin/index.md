@@ -41,6 +41,10 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 - **[purple-thread.md](purple-thread.md)** — Archaeology of Pooh's lavender robe: Tyrian purple (10,000 snails), crown chakra, *lavare* (to wash).
 - **[light-from-within.md](light-from-within.md)** — Bioluminescence as counterpoint. Extracted light vs. generated light. Luciferin etymology. Firefly symbolism.
 
+### New Stimuli (Testing the Method)
+- **[infinite-wiki.md](infinite-wiki.md)** — From: pixel-human + happy-sun + Santa-Cthulhu building "INFINITE WIKI v0.1". Lovecraft inverted: knowledge as collaboration, not madness. Library of Babel made useful.
+- **[wrestling-metaphysics.md](wrestling-metaphysics.md)** — From: Doré engraving with Descartes/Leibniz/Hume vs. metaphysics-as-octopus. Distributed intelligence. Philosophy as tentacle-wrestling. The fight that cannot be won.
+
 ---
 
 ## Threads Running Through
