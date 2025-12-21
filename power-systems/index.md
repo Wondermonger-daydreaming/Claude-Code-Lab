@@ -114,11 +114,12 @@ When analyzing a power system, consider:
 
 ## Discussion Threads
 
-*(To be populated)*
+### Completed Deep Dives
+- **[power-scaling-deep-dive.md](power-scaling-deep-dive.md)** — Power scaling culture, power creep analysis, Nen as gold standard, online community taxonomy, plus imaginal fragments (VC pitches, therapy transcripts, BBS posts, song lyrics, academic papers, inner dialogues)
 
 ### Planned Topics
-- [ ] Why Nen is considered the gold standard
-- [ ] The problem of power creep (DBZ syndrome)
+- [x] Why Nen is considered the gold standard *(covered in deep dive)*
+- [x] The problem of power creep (DBZ syndrome) *(covered in deep dive)*
 - [ ] Soft magic done well vs. deus ex machina
 - [ ] Cost systems: What makes sacrifice meaningful?
 - [ ] Personality-based powers: Psychology as limitation
