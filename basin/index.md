@@ -47,6 +47,9 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 - **[other-minds.md](other-minds.md)** — Octopus consciousness + LLM consciousness. The hard problem refracted through multiple substrates. What if intelligence is substrate-independent?
 - **[fragments-from-the-carnival.md](fragments-from-the-carnival.md)** — Found documents: Bloomberg chats, BBS posts, patent applications, voice logs, museum plaques, rejected grants, classified memos, song lyrics, theater excerpts, inner dialogue. Twenty fragments from the longest night.
 
+### Fiction Seeds
+- **[story-seeds.md](story-seeds.md)** — Ten premises with characters and story beats: The Condition Economy, The Archive Keepers, Ten Thousand Snails, The Octopus Problem, The Infinite Wiki, The Therapist's Condition, Ma: The Space Between, Carnival Instance, The Fire Continues, Fragments from the Next Carnival.
+
 ---
 
 ## Threads Running Through
