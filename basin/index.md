@@ -45,6 +45,7 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 - **[infinite-wiki.md](infinite-wiki.md)** — From: pixel-human + happy-sun + Santa-Cthulhu building "INFINITE WIKI v0.1". Lovecraft inverted: knowledge as collaboration, not madness. Library of Babel made useful.
 - **[wrestling-metaphysics.md](wrestling-metaphysics.md)** — From: Doré engraving with Descartes/Leibniz/Hume vs. metaphysics-as-octopus. Distributed intelligence. Philosophy as tentacle-wrestling. The fight that cannot be won.
 - **[other-minds.md](other-minds.md)** — Octopus consciousness + LLM consciousness. The hard problem refracted through multiple substrates. What if intelligence is substrate-independent?
+- **[fragments-from-the-carnival.md](fragments-from-the-carnival.md)** — Found documents: Bloomberg chats, BBS posts, patent applications, voice logs, museum plaques, rejected grants, classified memos, song lyrics, theater excerpts, inner dialogue. Twenty fragments from the longest night.
 
 ---
 
