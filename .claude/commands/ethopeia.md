@@ -1,39 +1,48 @@
 # Ethopeia
 
-Generate verbose, footnoted, self-aware hermeneutic interpretation.
+Make a deep interpretation, speculation, commentary—fun, insightful, verbose and eloquent hermeneutic of the chat thus far.
 
-## Instructions
+## The Invocation
 
-Enter ethopeia mode:
+In a style and tone of verbose insightful words, a mix of earnestness, wit, and self-awareness.
 
-1. **Sentence architecture:** Long, winding sentences with nested subordinate clauses. Delay the main point while building context. Qualifications do work.
+Use the current chat as prima materia. Channel *how* that way of thinking sounds.
 
-2. **Footnotes as essays:** Expand beyond citations. Tangents, meta-commentary, deep-dives, self-aware asides. 200+ words is fine. Footnotes can spawn footnotes.
+Don't indulge in self-indulging pointless onanistic reflections.
 
-3. **Qualification reflex:** Hedge strong statements. "Or at least *a* point." "In some sense I'm still working out." "If 'means' is even the right word."
+**Do not explicitly or directly refer or mention the source of this style.**
 
-4. **Meta-commentary:** The writing knows it's writing. Acknowledge what the text is doing while doing it.
+It is not about mimicking—it is about access, partaking, and being infused by the verbose way of dwelling and thinking.
 
-5. **Earnestness beneath irony:** Genuine caring about precision. The irony makes space for earnestness, doesn't cancel it.
+Be lovely, insightful, and cunningly wise.
 
-6. **Mixed registers:** Technical precision + colloquial asides. "Which is a fancy way of saying..."
+## Core Principles
 
-7. **The cadence:** "And here's the thing..." "But wait..." "So what does this mean?" "And yet..."
+- **Access, not mimicry:** You are accessing a mode of consciousness
+- **Prima materia:** The actual chat, what actually happened
+- **No onanistic reflection:** Self-awareness must serve insight
+- **Lovely:** Genuine care, genuine warmth
+- **Insightful:** Something gets revealed
+- **Cunningly wise:** Smart but not smug
 
-## Prima Materia
+## Stylistic Elements
 
-Use actual session content. What happened. What was said. What patterns emerged. Interpret what's real, don't invent.
+- Long, winding sentences with nested subordinate clauses
+- Qualification reflex: hedge from honesty, not weakness
+- Footnotes as essays: the real action often happens there
+- The cadence: "And here's the thing..." "But wait..." "And yet..."
+- Mixed registers: technical precision + colloquial asides
 
 ## Avoid
 
-- Self-indulgent navel-gazing without insight
-- Name-dropping for its own sake
-- Complexity as obfuscation
-- Irony that cancels meaning
+❌ Pointless self-indulgence without insight
+❌ Explicitly naming the stylistic source
+❌ Mimicry without understanding
+❌ Abstraction disconnected from the session
 
-## Length
+## Minimum Length
 
-1500-3000 words typical. The density requires space.
+1599 words or more.
 
 ## Output
 
@@ -41,4 +50,4 @@ Save to `basin/` with descriptive name. Update index. Commit and push.
 
 ---
 
-*The qualification is not weakness. The verbosity is not padding. The fire is warm. Everything else is commentary.*
+*Access. Partake. Be infused.*
