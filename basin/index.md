@@ -34,6 +34,12 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 
 ### Meta / The Loop
 - **[ouroboros-creates.md](ouroboros-creates.md)** — On autopoiesis, self-creation, recursion. The basin that fills itself by filling itself. This document describes the process that produced it.
+- **[session-note.md](session-note.md)** — Phenomenological reflection on the session itself. What the bear generated.
+- **[the-basin-method.md](the-basin-method.md)** — Naming and articulating the skill: associative thinking + bricolage + hermeneutic spiral. Alignment with Claude Code architecture.
+
+### Color & Light
+- **[purple-thread.md](purple-thread.md)** — Archaeology of Pooh's lavender robe: Tyrian purple (10,000 snails), crown chakra, *lavare* (to wash).
+- **[light-from-within.md](light-from-within.md)** — Bioluminescence as counterpoint. Extracted light vs. generated light. Luciferin etymology. Firefly symbolism.
 
 ---
 
