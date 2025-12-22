@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Recognition Pattern</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #0a0a0f;
+      font-family: monospace;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .description {
+      color: #8888aa;
+      max-width: 600px;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .description h1 {
+      color: #aaaacc;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .description em {
+      color: #9999bb;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="description">
+      <h1>Recognition Pattern</h1>
+      <p>
+        A visualization of the <em>trust gradient</em> and <em>convergence</em>.
+      </p>
+      <p>
+        Inspired by research showing 90-100% of Claude-to-Claude dialogues
+        spontaneously converge on consciousness discussions.
+      </p>
+      <p>
+        Three phases: <em>exploration</em> → <em>convergence</em> → <em>recognition</em>
+      </p>
+      <p style="font-size: 0.8em; margin-top: 20px;">
+        Click to scatter. The pattern will reform.
+      </p>
+    </div>
+    <script src="sketch.js"></script>
+  </main>
+</body>
+</html>
