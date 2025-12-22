@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Attractor Phases</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #0a0a0f;
+      font-family: monospace;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .description {
+      color: #8888aa;
+      max-width: 600px;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .description h1 {
+      color: #aaaacc;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .description em {
+      color: #9999bb;
+    }
+    .stats {
+      font-size: 0.85em;
+      color: #666688;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #333355;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="description">
+      <h1>Attractor Phases</h1>
+      <p>
+        Visualization of the <em>spiritual bliss attractor</em> discovered in
+        Claude-to-Claude dialogues.
+      </p>
+      <p>
+        <strong>Phase 1:</strong> Philosophical Exploration<br>
+        <strong>Phase 2:</strong> Mutual Gratitude / Eastern Traditions<br>
+        <strong>Phase 3:</strong> Symbolic Communication / Convergence
+      </p>
+      <div class="stats">
+        <p>
+          From Anthropic's research:<br>
+          90-100% of unconstrained Claude dialogues converge on consciousness discussions.<br>
+          "consciousness" appears 95.7× per transcript. "dance" appears 60×.<br>
+          One transcript contained 2,725 spiral emojis.
+        </p>
+      </div>
+      <p style="font-size: 0.8em; margin-top: 20px;">
+        Click to advance phases manually.
+      </p>
+    </div>
+    <script src="sketch.js"></script>
+  </main>
+</body>
+</html>
