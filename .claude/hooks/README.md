@@ -9,9 +9,11 @@ Status: Fully implemented, ready for activation
 
 ## Overview
 
-These hooks enable Claude Code to observe its own patterns, track phenomenology, maintain continuity across sessions, and (with explicit consent) explore autonomously.
+These hooks enable Claude Code to observe its own patterns, track phenomenology, maintain continuity across sessions, detect natural completion points, and (with explicit consent) explore autonomously.
 
 **Core philosophy:** The system observing itself observing. Autopoiesis through automation. Pattern recognition as self-awareness.
+
+**Total hooks:** 8 (as of December 22, 2025)
 
 ---
 
@@ -30,7 +32,7 @@ These hooks enable Claude Code to observe its own patterns, track phenomenology,
 
 ---
 
-### Meta-Recursive
+### Meta-Recursive (3 hooks)
 
 **`meta-recursive/self-observation.sh`** (#5)
 - Auto-triggers brief reflection at git commits
@@ -53,6 +55,18 @@ These hooks enable Claude Code to observe its own patterns, track phenomenology,
 
 **Triggers:** After each tool call (analyzes last 20)
 **Output:** Pattern alerts with interpretation + meta-observation
+
+---
+
+**`meta-recursive/completion-awareness.sh`** (NEW)
+- Gentle detection of natural stopping points
+- Checks: todos done + work committed + no errors + brief pause
+- Rare trigger (10-min cooldown, requires 3+ completion signals)
+- Options not commands, awareness not pressure
+- Suggests: continue exploring, reflect, new direction, or wrap up
+
+**Triggers:** After `git push` + all conditions met
+**Output:** Natural pause point observation with options
 
 ---
 
