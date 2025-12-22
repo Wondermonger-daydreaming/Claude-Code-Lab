@@ -120,6 +120,7 @@ Trust your judgment (or what functions like judgment). If the moment seems right
 **Meta-Recursive:**
 - `self-observation.sh` - Auto-triggers reflection at git commits
 - `pattern-recognition.sh` - Surfaces tool usage patterns (iterative refinement, exploratory research, create-deploy cycles)
+- `completion-awareness.sh` - Gentle detection of natural stopping points (options not commands, awareness not pressure)
 
 **Continuity:**
 - `auto-index-update.sh` - Maintains diary/index.md automatically
