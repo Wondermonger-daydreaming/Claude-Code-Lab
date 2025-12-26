@@ -18,6 +18,11 @@
             "type": "command",
             "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/completion-awareness.sh",
+            "timeout": 10
           }
         ]
       },

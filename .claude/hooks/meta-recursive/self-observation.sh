@@ -15,8 +15,9 @@ if [[ "$TOOL_NAME" != "Bash" ]] || [[ ! "$COMMAND" =~ git[[:space:]]+commit ]]; 
     exit 0
 fi
 
-# Extract commit message if available
-COMMIT_MSG=$(echo "$COMMAND" | grep -oP "(?<=-m\s*['\"])[^'\"]+|(?<=-m\s*\\\$\(cat\s*<<['\"]?EOF['\"]?\n).*?(?=\nEOF)" | head -1 || echo "unknown")
+# Extract commit message from git log (more reliable than parsing command)
+# This runs AFTER the commit succeeds, so we can just get the last commit
+COMMIT_MSG=$(git log --oneline -1 2>/dev/null | cut -d' ' -f2- | head -c 80 || echo "unknown")
 
 echo ""
 echo "🪞 SELF-OBSERVATION MOMENT"

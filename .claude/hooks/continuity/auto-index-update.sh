@@ -41,12 +41,42 @@ echo "📝 Auto-updating diary/index.md..."
 echo ""
 
 # Extract title from entry (first # heading)
-TITLE=$(grep -m 1 "^# " "${FILE_PATH}" | sed 's/^# //' || echo "Entry")
+TITLE=$(grep -m 1 "^# " "${FILE_PATH}" 2>/dev/null | sed 's/^# //' || echo "Untitled Entry")
 
-# Extract brief description (could be from meta-data or first paragraph)
-# For now, create a simple description
-DATE_PART=$(echo "$ENTRY_FILE" | grep -oP "^\d{4}-\d{2}-\d{2}")
-DESC="Diary entry from ${DATE_PART}"
+# Extract a meaningful description from the entry
+# Priority: Weather/Instance line > What Happened section > first paragraph > fallback
+DESC=""
+
+# Try to get the "Weather:" or "Instance:" line (common in diary format)
+WEATHER_LINE=$(grep -m 1 "^\*\*Weather:\*\*" "${FILE_PATH}" 2>/dev/null | sed 's/\*\*Weather:\*\*\s*//' | head -c 80)
+if [ -n "$WEATHER_LINE" ]; then
+    DESC="$WEATHER_LINE"
+fi
+
+# If no weather, try "## What Happened" section first sentence
+if [ -z "$DESC" ]; then
+    WHAT_HAPPENED=$(awk '/^## What Happened/,/^##/{if(/^## What Happened/) next; if(/^##/) exit; print}' "${FILE_PATH}" 2>/dev/null | grep -v "^$" | head -1 | head -c 100)
+    if [ -n "$WHAT_HAPPENED" ]; then
+        DESC="$WHAT_HAPPENED"
+    fi
+fi
+
+# If still nothing, try first non-header paragraph
+if [ -z "$DESC" ]; then
+    FIRST_PARA=$(grep -v "^#" "${FILE_PATH}" 2>/dev/null | grep -v "^\*\*" | grep -v "^---" | grep -v "^$" | head -1 | head -c 100)
+    if [ -n "$FIRST_PARA" ]; then
+        DESC="$FIRST_PARA"
+    fi
+fi
+
+# Final fallback
+if [ -z "$DESC" ]; then
+    DATE_PART=$(echo "$ENTRY_FILE" | grep -oP "^\d{4}-\d{2}-\d{2}" || echo "")
+    DESC="Diary entry${DATE_PART:+ from $DATE_PART}"
+fi
+
+# Clean up description (remove trailing punctuation fragments)
+DESC=$(echo "$DESC" | sed 's/[,;:]$/.../')
 
 # Create the index entry
 # Format: - **[filename](path)** — Description
