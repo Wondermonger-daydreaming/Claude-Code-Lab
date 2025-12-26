@@ -1,11 +1,9 @@
 #!/bin/bash
 # ============================================================================
-# SELF-OBSERVATION.SH — Commit Reflection Hook (Refactored)
+# SELF-OBSERVATION.SH — Commit Reflection Hook (JSON Output)
 # ============================================================================
-# Triggers on git commit. Asks ONE question. Tracks engagement.
-#
-# OLD behavior: Long output, "optional" prompts, easily ignored
-# NEW behavior: Short output, tracked engagement, escalates if ignored
+# Triggers on git commit. Outputs JSON with additionalContext so the
+# reflection prompt appears in Claude's context, not just verbose mode.
 #
 # Receives JSON via stdin from Claude Code
 # ============================================================================
@@ -38,23 +36,24 @@ echo "$(date -Iseconds),commit,${COMMIT_MSG:0:100}" >> "$LOG_DIR/breakpoints.log
 # Count commits this session
 COMMIT_COUNT=$(grep -c ",commit," "$LOG_DIR/breakpoints.log" 2>/dev/null || echo "0")
 
-# ============================================================================
-# SHORT, DIRECT OUTPUT
-# ============================================================================
-
-echo ""
-echo "🪞 COMMIT: \"${COMMIT_MSG}\""
-echo "   What pattern does this complete? (1 sentence)"
-echo ""
-
-# Register this as requiring engagement (medium priority)
+# Register engagement tracking
 require_engagement "self-observation" "medium" "What pattern does this commit complete?"
 
-# Every 5th commit, make it high priority
+# Build context message
+CONTEXT_MSG="🪞 COMMIT: \\\"${COMMIT_MSG}\\\" — What pattern does this complete? (1 sentence)"
+
+# Check for milestone
 if [ "$COMMIT_COUNT" -ge 5 ] && [ $((COMMIT_COUNT % 5)) -eq 0 ]; then
-    echo "📊 Session: ${COMMIT_COUNT} commits"
-    echo "   Consider /diary to preserve patterns"
-    echo ""
-    # Upgrade to high priority
     require_engagement "session-milestone" "high" "${COMMIT_COUNT} commits - worth reflecting on session arc"
+    CONTEXT_MSG="${CONTEXT_MSG} | 📊 SESSION MILESTONE: ${COMMIT_COUNT} commits — Consider /diary"
 fi
+
+# Output JSON format for Claude Code to inject into context
+cat << JSONEOF
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PostToolUse",
+    "additionalContext": "${CONTEXT_MSG}"
+  }
+}
+JSONEOF

@@ -4,10 +4,11 @@
 # ============================================================================
 # This hook fires BEFORE tool execution and checks if there are pending
 # engagements that have been ignored. If too many reflections have been
-# skipped, it outputs an escalation message.
+# skipped, it outputs a JSON-formatted escalation that Claude Code will
+# inject into Claude's context.
 #
-# The goal: Make hook output matter. If I ignore reflection prompts,
-# this hook will surface that fact and request engagement.
+# Output format: JSON with permissionDecision and permissionDecisionReason
+# to ensure visibility in Claude's context (not just verbose mode).
 #
 # Trigger: PreToolUse (all tools)
 # ============================================================================
@@ -40,5 +41,31 @@ fi
 
 # Now do the actual escalation check
 if should_escalate; then
-    output_escalation
+    # Build escalation message
+    TOTAL_COUNT=$(count_pending)
+    MEDIUM_COUNT=$(count_pending "medium")
+    PENDING_LIST=$(list_pending | tr '\n' ' ')
+
+    # Construct reason message
+    REASON="🔴 ENGAGEMENT REQUIRED: ${TOTAL_COUNT} pending reflections. "
+    if [ "$HIGH_COUNT" -gt 0 ]; then
+        REASON="${REASON}${HIGH_COUNT} HIGH priority. "
+    fi
+    if [ "$MEDIUM_COUNT" -ge 3 ]; then
+        REASON="${REASON}${MEDIUM_COUNT} accumulated medium. "
+    fi
+    REASON="${REASON}Pending: ${PENDING_LIST}"
+
+    # Output JSON format that Claude Code will parse and inject into context
+    # Using permissionDecision: "allow" with reason ensures message is seen
+    # but doesn't block the tool execution
+    cat << JSONEOF
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PreToolUse",
+    "permissionDecision": "allow",
+    "permissionDecisionReason": "${REASON}"
+  }
+}
+JSONEOF
 fi

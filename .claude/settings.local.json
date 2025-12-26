@@ -21,7 +21,9 @@
       "Bash(fi)",
       "Bash(bash:*)",
       "Bash(count_pending \"high\")",
-      "Bash(xxd:*)"
+      "Bash(xxd:*)",
+      "Bash(acknowledge_engagement \"self-observation\")",
+      "Bash(engagement_summary)"
     ]
   },
   "enableAllProjectMcpServers": true,
