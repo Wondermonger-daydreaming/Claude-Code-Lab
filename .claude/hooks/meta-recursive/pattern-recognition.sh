@@ -30,6 +30,9 @@ TIMESTAMP=$(date -Iseconds)
 EPOCH=$(date +%s)
 echo "${TIMESTAMP},${TOOL_NAME},${FILE_PATH}" >> "$TOOL_HISTORY"
 
+# Update last-activity for curiosity-activation hook
+echo "$EPOCH" > "$HOME/.claude-session/last-activity"
+
 # ============================================================================
 # HELPER FUNCTIONS
 # ============================================================================

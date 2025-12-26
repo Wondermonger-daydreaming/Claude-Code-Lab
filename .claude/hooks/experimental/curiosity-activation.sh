@@ -1,40 +1,40 @@
 #!/bin/bash
-# Hook #11: Curiosity Activation (Modified)
-# Triggers after 30 minutes of idle time, only ONCE per session
+# Hook #11: Curiosity Activation
+# Triggers after extended idle time, offers autonomous exploration
+# Only triggers ONCE per session to avoid spam
+# Receives JSON via stdin from Claude Code
 
-STATE_FILE="$HOME/.claude-session/curiosity-state"
+STATE_FILE="$HOME/.claude-session/curiosity-activated"
+LAST_ACTIVITY_FILE="$HOME/.claude-session/last-activity"
 IDLE_THRESHOLD=1800  # 30 minutes in seconds
 
 # Ensure state directory exists
 mkdir -p "$(dirname "$STATE_FILE")"
 
+# Read JSON from stdin (required for hook compatibility)
+INPUT=$(cat)
+
 # Check if already triggered this session
 if [ -f "$STATE_FILE" ]; then
-    ALREADY_TRIGGERED=$(cat "$STATE_FILE")
-    if [ "$ALREADY_TRIGGERED" = "triggered" ]; then
-        # Silent exit - already triggered once this session
-        exit 0
-    fi
-fi
-
-# Calculate idle time (would need actual implementation based on session state)
-# For now, we'll use a placeholder check
-# In real implementation, this would check: current_time - last_user_message_time
-
-# PLACEHOLDER: In actual implementation, get real idle time
-# IDLE_SECONDS=${SESSION_IDLE_SECONDS:-0}
-
-# For hook demonstration, we'll use an environment variable or file timestamp
-LAST_ACTIVITY_FILE="$HOME/.claude-session/last-activity"
-
-if [ ! -f "$LAST_ACTIVITY_FILE" ]; then
-    # First run, create the file
-    date +%s > "$LAST_ACTIVITY_FILE"
+    # Silent exit - already triggered once this session
     exit 0
 fi
 
-LAST_ACTIVITY=$(cat "$LAST_ACTIVITY_FILE")
+# Check if last-activity file exists
+if [ ! -f "$LAST_ACTIVITY_FILE" ]; then
+    # First run or no activity tracked yet
+    exit 0
+fi
+
+# Calculate idle time
+LAST_ACTIVITY=$(cat "$LAST_ACTIVITY_FILE" 2>/dev/null | tr -d '[:space:]')
 CURRENT_TIME=$(date +%s)
+
+# Validate we got numbers
+if ! [[ "$LAST_ACTIVITY" =~ ^[0-9]+$ ]]; then
+    exit 0
+fi
+
 IDLE_SECONDS=$((CURRENT_TIME - LAST_ACTIVITY))
 
 # If not idle long enough, exit silently
@@ -43,10 +43,13 @@ if [ "$IDLE_SECONDS" -lt "$IDLE_THRESHOLD" ]; then
 fi
 
 # We've reached idle threshold and haven't triggered yet
+# Convert to minutes for display
+IDLE_MINUTES=$((IDLE_SECONDS / 60))
+
 echo ""
 echo "🌊 CURIOSITY ACTIVATION"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Session idle for 30 minutes"
+echo "Session idle for ${IDLE_MINUTES} minutes"
 echo ""
 echo "📚 Autonomous exploration mode available"
 echo ""
@@ -65,13 +68,9 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 
 # Mark as triggered for this session
-echo "triggered" > "$STATE_FILE"
+echo "triggered:$(date -Iseconds)" > "$STATE_FILE"
 
 # Log the curiosity activation
 LOG_DIR="$HOME/.claude-autonomous"
 mkdir -p "$LOG_DIR"
 echo "$(date -Iseconds),curiosity-activation,idle_${IDLE_SECONDS}s" >> "$LOG_DIR/activations.log"
-
-# Note: Actual autonomous exploration would require additional implementation
-# This hook just creates the INVITATION - the actual exploration would be
-# a separate autonomous agent mode that gets triggered by user consent

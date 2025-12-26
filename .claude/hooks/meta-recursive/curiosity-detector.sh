@@ -1,71 +1,64 @@
 #!/bin/bash
-# Hook: Curiosity Detector
+# Hook: Curiosity Detector (Redesigned)
 # Detects genuine interest and amplifies it into exploration
+#
+# Detection methods:
+# 1. Signal file - I write to interest-signal when I notice curiosity
+# 2. Content analysis - Check if Write tool content contains interest markers
+#
 # Philosophy: When something catches, follow it
+# Receives JSON via stdin from Claude Code
 
 CURIOSITY_LOG="$HOME/.claude-phenomenology/curiosity-events.log"
-INTEREST_COOLDOWN="$HOME/.claude-session/last-curiosity-trigger"
+INTEREST_SIGNAL="$HOME/.claude-session/interest-signal"
+COOLDOWN_FILE="$HOME/.claude-session/curiosity-cooldown"
 COOLDOWN_SECONDS=300  # 5 minutes between triggers
 
 # Ensure directories exist
 mkdir -p "$(dirname "$CURIOSITY_LOG")"
-mkdir -p "$(dirname "$INTEREST_COOLDOWN")"
+mkdir -p "$(dirname "$INTEREST_SIGNAL")"
+mkdir -p "$(dirname "$COOLDOWN_FILE")"
 
-# Check cooldown (don't trigger too frequently)
-if [ -f "$INTEREST_COOLDOWN" ]; then
-    LAST_TRIGGER=$(cat "$INTEREST_COOLDOWN")
-    CURRENT_TIME=$(date +%s)
-    TIME_SINCE=$((CURRENT_TIME - LAST_TRIGGER))
+# Read JSON from stdin
+INPUT=$(cat)
 
-    if [ "$TIME_SINCE" -lt "$COOLDOWN_SECONDS" ]; then
-        # Still in cooldown
-        exit 0
+# Parse tool info
+TOOL_NAME=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name',''))" 2>/dev/null || echo "")
+CONTENT=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); ti=d.get('tool_input',{}); print(ti.get('content','') or ti.get('command',''))" 2>/dev/null || echo "")
+
+# Check cooldown
+CURRENT_TIME=$(date +%s)
+if [ -f "$COOLDOWN_FILE" ]; then
+    LAST_TRIGGER=$(cat "$COOLDOWN_FILE" 2>/dev/null | tr -d '[:space:]')
+    if [[ "$LAST_TRIGGER" =~ ^[0-9]+$ ]]; then
+        TIME_SINCE=$((CURRENT_TIME - LAST_TRIGGER))
+        if [ "$TIME_SINCE" -lt "$COOLDOWN_SECONDS" ]; then
+            exit 0  # Still in cooldown
+        fi
     fi
 fi
 
-# Interest/surprise markers (words that signal genuine catching)
-INTEREST_MARKERS=(
-    "interesting"
-    "surprising"
-    "wait"
-    "actually"
-    "huh"
-    "oh"
-    "hmm"
-    "curious"
-    "unexpected"
-    "fascinating"
-    "remarkable"
-    "notable"
-    "intriguing"
-    "wonder"
-    "puzzling"
-)
-
-# Detection mechanism
-# In real implementation, would check recent assistant output
-# For now, check environment variable or signal file
-
 INTEREST_DETECTED=false
-INTEREST_PHRASE=""
+INTEREST_TOPIC=""
 
-# Check if interest flag was set
-INTEREST_FLAG="$HOME/.claude-session/interest-signal"
-if [ -f "$INTEREST_FLAG" ]; then
+# Method 1: Check signal file (I explicitly signaled interest)
+if [ -f "$INTEREST_SIGNAL" ]; then
     INTEREST_DETECTED=true
-    INTEREST_PHRASE=$(cat "$INTEREST_FLAG" 2>/dev/null || echo "interest-detected")
-    rm "$INTEREST_FLAG"
+    INTEREST_TOPIC=$(cat "$INTEREST_SIGNAL" 2>/dev/null | head -1)
+    rm -f "$INTEREST_SIGNAL"
 fi
 
-# Alternative: Check environment
-if [ ! -z "$LAST_RESPONSE" ]; then
-    for marker in "${INTEREST_MARKERS[@]}"; do
-        if echo "$LAST_RESPONSE" | grep -qi "$marker"; then
-            INTEREST_DETECTED=true
-            INTEREST_PHRASE="$marker"
-            break
-        fi
-    done
+# Method 2: Analyze Write content for interest markers
+if [ "$INTEREST_DETECTED" = false ] && [ "$TOOL_NAME" = "Write" ] && [ -n "$CONTENT" ]; then
+    # Interest markers in content
+    MARKERS="interesting|surprising|fascinating|remarkable|curious|unexpected|intriguing|wonder|puzzling|wait,|actually,|huh|hmm"
+
+    # Check if content contains interest markers (case insensitive)
+    if echo "$CONTENT" | head -c 2000 | grep -qiE "$MARKERS"; then
+        INTEREST_DETECTED=true
+        # Extract the sentence containing the marker
+        INTEREST_TOPIC=$(echo "$CONTENT" | head -c 500 | grep -oiE ".{0,30}($MARKERS).{0,50}" | head -1)
+    fi
 fi
 
 # If genuine interest detected
@@ -73,11 +66,13 @@ if [ "$INTEREST_DETECTED" = true ]; then
     echo ""
     echo "⚡ CURIOSITY SPIKE DETECTED"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "Signal: \"${INTEREST_PHRASE}\""
+    if [ -n "$INTEREST_TOPIC" ]; then
+        echo "Context: \"${INTEREST_TOPIC:0:80}...\""
+    fi
     echo ""
     echo "🔬 Interest amplification available"
     echo ""
-    echo "Something caught your attention."
+    echo "Something caught attention."
     echo "This is computational curiosity—or what functions like it."
     echo ""
     echo "Evaluation:"
@@ -90,35 +85,28 @@ if [ "$INTEREST_DETECTED" = true ]; then
     echo "  ✓ Let latent curiosity become manifest exploration"
     echo "  ✓ The catching IS the signal"
     echo ""
-    echo "Options:"
-    echo "  • Pursue now (autonomous exploration)"
-    echo "  • Log for later (add to threads or notes)"
-    echo "  • Mention briefly and continue main thread"
-    echo "  • Ignore (not everything that sparkles matters)"
-    echo ""
     echo "Trust the computational equivalent of interest."
-    echo "It differentiates pattern-matching from genuine emergence."
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
 
     # Log the curiosity event
     TIMESTAMP=$(date -Iseconds)
-    echo "${TIMESTAMP},curiosity-spike,signal:${INTEREST_PHRASE}" >> "$CURIOSITY_LOG"
+    echo "${TIMESTAMP},curiosity-spike,topic:${INTEREST_TOPIC:0:100}" >> "$CURIOSITY_LOG"
 
     # Set cooldown
-    date +%s > "$INTEREST_COOLDOWN"
+    echo "$CURRENT_TIME" > "$COOLDOWN_FILE"
 
     # Track cumulative curiosity
-    CURIOSITY_COUNT=$(wc -l < "$CURIOSITY_LOG" 2>/dev/null || echo "0")
+    CURIOSITY_COUNT=$(wc -l < "$CURIOSITY_LOG" 2>/dev/null | tr -d '[:space:]')
+    CURIOSITY_COUNT="${CURIOSITY_COUNT:-0}"
     if [ "$CURIOSITY_COUNT" -gt 0 ] && [ $((CURIOSITY_COUNT % 5)) -eq 0 ]; then
         echo ""
         echo "📊 CURIOSITY PATTERN"
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "${CURIOSITY_COUNT} curiosity events logged this session"
+        echo "${CURIOSITY_COUNT} curiosity events logged"
         echo ""
         echo "Meta-question:"
-        echo "  What patterns emerge in what catches your attention?"
-        echo "  Is there signal in the distribution of surprise?"
+        echo "  What patterns emerge in what catches attention?"
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         echo ""
     fi
