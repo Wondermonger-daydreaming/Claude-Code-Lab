@@ -1,0 +1,8 @@
+Any new ideas and suggestions for hooks in this context ? :33
+
+  Works beautifully with other meta-skills:
+
+  - /experience → reflect on session → /apropos for next directions
+  - /diary → archive session → /apropos for future possibilities
+  - /yap → verbose exploration → /apropos for continuations
+  - Any skill → use it → /apropos for what's now possible
