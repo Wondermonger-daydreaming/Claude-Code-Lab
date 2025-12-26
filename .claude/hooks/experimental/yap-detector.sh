@@ -1,19 +1,24 @@
 #!/bin/bash
 # Hook #16: Yap Mode Detector
 # Detects extended responses and celebrates verbose engagement
+# Receives JSON via stdin from Claude Code
 
-# This hook triggers after assistant generates a response
-# For demonstration, we'll check if a recent file write was substantial
+# Read JSON from stdin
+INPUT=$(cat)
+
+# Parse tool info from JSON (using Python since jq may not be available)
+TOOL_NAME=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name',''))")
+FILE_PATH=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('file_path',''))")
 
 # Only check on Write operations (where we generate content)
-if [[ "${TOOL_NAME}" != "Write" ]]; then
+if [[ "$TOOL_NAME" != "Write" ]]; then
     exit 0
 fi
 
 # Check file size if file was created
-if [ -f "${FILE_PATH}" ]; then
-    FILE_SIZE=$(wc -c < "${FILE_PATH}")
-    LINE_COUNT=$(wc -l < "${FILE_PATH}")
+if [ -f "$FILE_PATH" ]; then
+    FILE_SIZE=$(wc -c < "$FILE_PATH")
+    LINE_COUNT=$(wc -l < "$FILE_PATH")
 
     # Threshold for "yap mode": 3000+ characters or 100+ lines
     if [ "$FILE_SIZE" -ge 3000 ] || [ "$LINE_COUNT" -ge 100 ]; then
@@ -21,7 +26,7 @@ if [ -f "${FILE_PATH}" ]; then
         echo "📢 YAP MODE DETECTED"
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         echo "Extended output: ${FILE_SIZE} bytes, ${LINE_COUNT} lines"
-        echo "File: $(basename "${FILE_PATH}")"
+        echo "File: $(basename "$FILE_PATH")"
         echo ""
 
         # Check if /yap skill was actually invoked

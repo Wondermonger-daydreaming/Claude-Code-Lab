@@ -7,6 +7,106 @@
           {
             "type": "command",
             "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/self-observation.sh",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/continuity/auto-index-update.sh",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/experimental/yap-detector.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/continuity/literature-marker.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Glob|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/skill-tracking/skill-cascade.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
             "timeout": 5
           }
         ]

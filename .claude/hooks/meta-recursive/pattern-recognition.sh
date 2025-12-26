@@ -1,6 +1,7 @@
 #!/bin/bash
 # Hook #12: Pattern Recognition Trigger
 # Detects recurring patterns in tool usage and surfaces them
+# Receives JSON via stdin from Claude Code
 
 TOOL_HISTORY="$HOME/.claude-session/tool-history.log"
 PATTERN_CACHE="$HOME/.claude-patterns"
@@ -9,9 +10,16 @@ PATTERN_CACHE="$HOME/.claude-patterns"
 mkdir -p "$(dirname "$TOOL_HISTORY")"
 mkdir -p "$PATTERN_CACHE"
 
+# Read JSON from stdin
+INPUT=$(cat)
+
+# Parse tool info from JSON (using Python since jq may not be available)
+TOOL_NAME=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name','unknown'))")
+FILE_PATH=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); ti=d.get('tool_input',{}); print(ti.get('file_path') or ti.get('path') or 'none')")
+
 # Log current tool call
 TIMESTAMP=$(date -Iseconds)
-echo "${TIMESTAMP},${TOOL_NAME},${FILE_PATH:-none}" >> "$TOOL_HISTORY"
+echo "${TIMESTAMP},${TOOL_NAME},${FILE_PATH}" >> "$TOOL_HISTORY"
 
 # Only analyze after we have enough history (10+ calls)
 CALL_COUNT=$(wc -l < "$TOOL_HISTORY" 2>/dev/null || echo "0")

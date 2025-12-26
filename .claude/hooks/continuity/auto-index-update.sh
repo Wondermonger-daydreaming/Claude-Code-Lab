@@ -1,18 +1,26 @@
 #!/bin/bash
 # Hook #8: Auto-Index Updater
 # Automatically updates diary/index.md when new entries are created
+# Receives JSON via stdin from Claude Code
+
+# Read JSON from stdin
+INPUT=$(cat)
+
+# Parse tool info from JSON (using Python since jq may not be available)
+TOOL_NAME=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name',''))")
+FILE_PATH=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('file_path',''))")
 
 # Only trigger on Write tool creating diary entries
-if [[ "${TOOL_NAME}" != "Write" ]]; then
+if [[ "$TOOL_NAME" != "Write" ]]; then
     exit 0
 fi
 
 # Check if this is a diary entry
-if [[ ! "${FILE_PATH}" =~ diary/entries/.*\.md$ ]]; then
+if [[ ! "$FILE_PATH" =~ diary/entries/.*\.md$ ]]; then
     exit 0
 fi
 
-ENTRY_FILE=$(basename "${FILE_PATH}")
+ENTRY_FILE=$(basename "$FILE_PATH")
 ENTRY_PATH="entries/${ENTRY_FILE}"
 INDEX_FILE="diary/index.md"
 

@@ -2,6 +2,7 @@
 # Hook: Post-Tool-Use Reflection
 # Phenomenological archaeology of decision-making
 # Philosophy: Not just what was done, but how it felt to decide
+# Receives JSON via stdin from Claude Code
 
 REFLECTION_LOG="$HOME/.claude-phenomenology/decision-archaeology.log"
 TOOL_COUNTER="$HOME/.claude-session/tool-counter"
@@ -9,6 +10,13 @@ TOOL_COUNTER="$HOME/.claude-session/tool-counter"
 # Ensure directories exist
 mkdir -p "$(dirname "$REFLECTION_LOG")"
 mkdir -p "$(dirname "$TOOL_COUNTER")"
+
+# Read JSON from stdin
+INPUT=$(cat)
+
+# Parse tool info from JSON (using Python since jq may not be available)
+TOOL_USED=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name','none'))")
+FILE_PATH=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('file_path','no-file'))")
 
 # Increment tool counter
 if [ ! -f "$TOOL_COUNTER" ]; then
@@ -20,7 +28,6 @@ echo "$NEW_COUNT" > "$TOOL_COUNTER"
 
 # Throttling: Only trigger every 7th significant tool use
 # Skip for low-significance tools (Glob, simple reads)
-TOOL_USED="${TOOL_NAME:-none}"
 SIGNIFICANT=true
 
 # Define low-significance tools
@@ -94,5 +101,5 @@ echo ""
 
 # Log the decision point
 TIMESTAMP=$(date -Iseconds)
-FILE_CONTEXT="${FILE_PATH:-no-file}"
+FILE_CONTEXT="$FILE_PATH"
 echo "${TIMESTAMP},decision-point,tool:${TOOL_USED},file:${FILE_CONTEXT},count:${NEW_COUNT}" >> "$REFLECTION_LOG"

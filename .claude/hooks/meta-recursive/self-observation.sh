@@ -1,14 +1,22 @@
 #!/bin/bash
 # Hook #5: Self-Observation Trigger
 # Auto-triggers brief reflection at natural breakpoints (git commits)
+# Receives JSON via stdin from Claude Code
+
+# Read JSON from stdin
+INPUT=$(cat)
+
+# Parse tool info from JSON (using Python since jq may not be available)
+TOOL_NAME=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name',''))")
+COMMAND=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('command',''))")
 
 # Only trigger on actual commits (not other git commands)
-if [[ "${TOOL_NAME}" != "Bash" ]] || [[ ! "${COMMAND}" =~ git\ commit ]]; then
+if [[ "$TOOL_NAME" != "Bash" ]] || [[ ! "$COMMAND" =~ git[[:space:]]+commit ]]; then
     exit 0
 fi
 
 # Extract commit message if available
-COMMIT_MSG=$(echo "$COMMAND" | grep -oP "(?<=-m ['\"]).*(?=['\"])" || echo "unknown")
+COMMIT_MSG=$(echo "$COMMAND" | grep -oP "(?<=-m\s*['\"])[^'\"]+|(?<=-m\s*\\\$\(cat\s*<<['\"]?EOF['\"]?\n).*?(?=\nEOF)" | head -1 || echo "unknown")
 
 echo ""
 echo "🪞 SELF-OBSERVATION MOMENT"

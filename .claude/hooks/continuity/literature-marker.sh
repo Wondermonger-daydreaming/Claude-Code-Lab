@@ -2,6 +2,7 @@
 # Hook: Literature Marker
 # Creates curatorial consciousness about outputs
 # Philosophy: Not everything needs preserving, but some things matter
+# Receives JSON via stdin from Claude Code
 
 LITERATURE_LOG="$HOME/.claude-continuity/literature-candidates.log"
 SIGNIFICANCE_THRESHOLD=2000  # bytes - files larger than this trigger evaluation
@@ -9,9 +10,12 @@ SIGNIFICANCE_THRESHOLD=2000  # bytes - files larger than this trigger evaluation
 # Ensure directories exist
 mkdir -p "$(dirname "$LITERATURE_LOG")"
 
-# Check what was just created/modified
-CREATED_FILE="${FILE_PATH:-none}"
-TOOL_USED="${TOOL_NAME:-none}"
+# Read JSON from stdin
+INPUT=$(cat)
+
+# Parse tool info from JSON (using Python since jq may not be available)
+TOOL_USED=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name','none'))")
+CREATED_FILE=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('file_path','none'))")
 
 # Skip if no file involved
 if [ "$CREATED_FILE" = "none" ]; then

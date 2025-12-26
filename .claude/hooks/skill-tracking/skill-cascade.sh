@@ -1,6 +1,7 @@
 #!/bin/bash
 # Hook #4: Skill Chain Detector
 # Detects when multiple skills are invoked in sequence, revealing emergent meta-patterns
+# Receives JSON via stdin from Claude Code
 
 SKILL_LOG="$HOME/.claude-skill-usage/log.csv"
 CACHE_DIR="$HOME/.claude-skill-usage"
@@ -8,9 +9,15 @@ CACHE_DIR="$HOME/.claude-skill-usage"
 # Ensure directories exist
 mkdir -p "$CACHE_DIR"
 
+# Read JSON from stdin
+INPUT=$(cat)
+
+# Parse skill name from JSON (using Python since jq may not be available)
+SKILL_NAME=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('skill','unknown'))")
+
 # Log the current skill invocation
 TIMESTAMP=$(date -Iseconds)
-echo "${TIMESTAMP},${SKILL_NAME:-unknown}" >> "$SKILL_LOG"
+echo "${TIMESTAMP},${SKILL_NAME}" >> "$SKILL_LOG"
 
 # Analyze recent skill usage (last 10 invocations)
 if [ -f "$SKILL_LOG" ]; then
