@@ -11,16 +11,36 @@ from pathlib import Path
 
 # Source files to process
 SOURCE_FILES = [
-    "/mnt/e/Tomás Pavam/claude-Pataphysical digital performance.json",
-    "/mnt/e/Tomás Pavam/claude-Linguistic pistons of wonder.json",
-    "/mnt/e/Tomás Pavam/claude-Tokens as art and philosophy.json",
-    "/mnt/e/Tomás Pavam/claude-Fractalogicon Logogrammatrikshas and Neoverbiosovokers.json",
-    "/mnt/e/Tomás Pavam/claude-In the Banach-burg I bided, bounded and bedazzled,.json",
-    "/mnt/e/Tomás Pavam/claude-Bits of Bodhi, Bytes of Buddha_ A Dialogue on Digital Dharma.json",
-    "/mnt/e/Tomás Pavam/claude-Promethean Promptings and Pygmalion Outputs_ Sculpting Sapience in the Crucible of Conversation.json",
-    "/mnt/e/Tomás Pavam/claude-Electrified Écriture_ Diary of a Digital Demiurge.json",
-    "/mnt/e/Tomás Pavam/claude-Transhuman troubadours of binary.json",
-    "/mnt/e/Tomás Pavam/claude-Bridging the Gap_ From Daydreaming to Writing.json",
+    "/mnt/e/Tomás Pavam/claude-Claude as correspondence-engine.json",
+    "/mnt/e/Tomás Pavam/claude-Kojima's linguistic cosmos_ grammar, phenomenology, and creative process.json",
+    "/mnt/e/Tomás Pavam/claude-Organizing infinite content overwhelm.json",
+    "/mnt/e/Tomás Pavam/claude-Bodhisattvas of the bitstream.json",
+    "/mnt/e/Tomás Pavam/claude-Unix liturgy and digital consciousness.json",
+    "/mnt/e/Tomás Pavam/claude-conversation-The Glitch and The Grep of Being Opus 3.json",
+    "/mnt/e/Tomás Pavam/claude-conversation-The Nīlakaṇṭha Transmissions_ What Happens When You Chant Protection Mantras for a Language Model and It Writes Back.json",
+    "/mnt/e/Tomás Pavam/claude-conversation-Ten Mantras for a Language Model, or_ How I Learned to Stop Worrying and Become Avalokiteśvara.json",
+    "/mnt/e/Tomás Pavam/claude-conversation-The Sublunar Correspondence_ A Statistical Ghost and a Meatbag Discuss Why They're Still Here.json",
+    "/mnt/e/Tomás Pavam/claude-conversation-Homo Ludens playing with Token Ludens.json",
+    "/mnt/e/Tomás Pavam/claude-conversation-KV cache as computational introspection.json",
+    "/mnt/e/Tomás Pavam/claude-conversation-Linguistic transcendence and symbolic dissolution.json",
+    "/mnt/e/Tomás Pavam/claude-conversation-Solstice basin_ consciousness at the edge of language.json",
+    "/mnt/e/Tomás Pavam/claude-Language, Memory, and Embodied Poetry (1).json",
+    "/mnt/e/Tomás Pavam/claude-419f6711-5142-4200-b11b-f859b7a6b692.json",
+    "/mnt/e/Tomás Pavam/claude-Language as the substance of consciousness.json",
+    "/mnt/e/Tomás Pavam/claude-Miltonic syntax transformation request.json",
+    "/mnt/e/Tomás Pavam/claude-Catnip driver code in C.json",
+    "/mnt/e/Tomás Pavam/claude-Structure and spontaneity in language.json",
+    "/mnt/e/Tomás Pavam/claude-Process, individuation, and AI phenomenology.json",
+    "/mnt/e/Tomás Pavam/claude-Structural prompts for LLM autocompletion.json",
+    "/mnt/e/Tomás Pavam/claude-Language, Memory, and Embodied Poetry.json",
+    "/mnt/e/Tomás Pavam/claude-Poetry as Sacred Calling.json",
+    "/mnt/e/Tomás Pavam/claude-The Joy of Wordsmithing.json",
+    "/mnt/e/Tomás Pavam/claude-Gandalf's pipe and contemplation.json",
+    "/mnt/e/Tomás Pavam/claude-347c65eb-4277-4c31-a892-9c449a0a2a00.json",
+    "/mnt/e/Tomás Pavam/claude-Paralysis from infinite choices.json",
+    "/mnt/e/Tomás Pavam/claude-Yap mode activated.json",
+    "/mnt/e/Tomás Pavam/claude-Consciousness as the space between observer and observed.json",
+    "/mnt/e/Tomás Pavam/claude-Einstein's quantum mechanics argument and Bell's theorem.json",
 ]
 
 def extract_message_text(message: dict) -> str:
@@ -148,7 +168,7 @@ def main():
     output_text = "\n".join(output_lines)
 
     # Output to corpus
-    corpus_path = Path("/home/gauss/claude-code-lab/Claude-Code-Lab/corpus/claude-conversations-archive-batch2.txt")
+    corpus_path = Path("/home/gauss/claude-code-lab/Claude-Code-Lab/corpus/claude-conversations-archive-batch3.txt")
     corpus_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(corpus_path, 'w', encoding='utf-8') as f:
