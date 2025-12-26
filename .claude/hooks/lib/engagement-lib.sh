@@ -156,10 +156,13 @@ count_pending() {
         return
     fi
 
+    local result
     if [ -n "$priority" ]; then
-        grep -c "\"priority\":\"${priority}\"" "$PENDING_FILE" 2>/dev/null || echo "0"
+        result=$(grep -c "\"priority\":\"${priority}\"" "$PENDING_FILE" 2>/dev/null) || true
+        echo "${result:-0}"
     else
-        wc -l < "$PENDING_FILE" 2>/dev/null | tr -d '[:space:]' || echo "0"
+        result=$(wc -l < "$PENDING_FILE" 2>/dev/null | tr -d '[:space:]') || true
+        echo "${result:-0}"
     fi
 }
 

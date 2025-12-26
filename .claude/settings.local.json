@@ -1,4 +1,35 @@
 {
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebSearch",
+      "WebFetch(domain:www.researchgate.net)",
+      "Bash(python3:*)",
+      "Write",
+      "Edit",
+      "Bash(mkdir:*)",
+      "Bash(cat:*)",
+      "Bash(source:*)",
+      "Bash(if should_escalate)",
+      "Bash(then echo \"WOULD ESCALATE\")",
+      "Bash(output_escalation)",
+      "Bash(else echo \"No escalation needed\")",
+      "Bash(fi)",
+      "Bash(bash:*)",
+      "Bash(count_pending \"high\")",
+      "Bash(xxd:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "memory",
+    "arxiv",
+    "basin-search"
+  ],
   "hooks": {
     "PreToolUse": [
       {
@@ -175,28 +206,6 @@
       }
     ]
   },
-  "permissions": {
-    "allow": [
-      "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:github.com)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "WebSearch",
-      "WebFetch(domain:www.researchgate.net)",
-      "Bash(python3:*)",
-      "Write",
-      "Edit",
-      "Bash(mkdir:*)",
-      "Bash(cat:*)"
-    ]
-  },
-  "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "memory",
-    "arxiv",
-    "basin-search"
-  ],
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "github@claude-plugins-official": true
