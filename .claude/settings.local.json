@@ -1,5 +1,27 @@
 {
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Task|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/pre-action/intention-surfacing.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/pre-action/scope-awareness.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Bash",
@@ -34,6 +56,11 @@
       {
         "matcher": "Write",
         "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
+            "timeout": 5
+          },
           {
             "type": "command",
             "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/continuity/auto-index-update.sh",
@@ -74,6 +101,11 @@
       {
         "matcher": "Edit",
         "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
+            "timeout": 5
+          },
           {
             "type": "command",
             "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",

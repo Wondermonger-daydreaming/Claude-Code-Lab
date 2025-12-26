@@ -8,6 +8,12 @@
 # - Cooldown to prevent spam (1 pattern notification per 5 minutes per pattern type)
 # - New patterns: Web Research, Debug Cycle, Diary/Contemplative Mode
 # - Session flavor detection
+# - INTER-HOOK COMMUNICATION: Writes detected modes to shared state
+#   for other hooks (curiosity-detector, etc.) to read and amplify
+
+# Source shared state library for inter-hook communication
+SCRIPT_DIR="$(dirname "$0")"
+source "${SCRIPT_DIR}/../lib/state-lib.sh" 2>/dev/null || true
 
 TOOL_HISTORY="$HOME/.claude-session/tool-history.log"
 PATTERN_CACHE="$HOME/.claude-patterns"
@@ -104,6 +110,8 @@ if [ "$READ_COUNT" -ge 4 ] && [ "$EDIT_COUNT" -ge 3 ]; then
         echo ""
         mark_pattern_triggered "iterative-refinement"
         echo "${TIMESTAMP},pattern,iterative-refinement,reads:${READ_COUNT},edits:${EDIT_COUNT}" >> "$PATTERN_CACHE/detected.log"
+        # Signal refinement mode to other hooks
+        state_set_mode "refinement" "pattern-recognition" 0.85
     fi
 fi
 
@@ -120,6 +128,8 @@ if [ "$SEARCH_COUNT" -ge 4 ] && [ "$READ_COUNT" -ge 3 ]; then
         echo ""
         mark_pattern_triggered "exploration"
         echo "${TIMESTAMP},pattern,exploration,searches:${SEARCH_COUNT},reads:${READ_COUNT}" >> "$PATTERN_CACHE/detected.log"
+        # Signal to other hooks (especially curiosity-detector) that we're exploring
+        state_set_mode "exploration" "pattern-recognition" 0.8
     fi
 fi
 
@@ -151,6 +161,8 @@ if [ "$RECENT_WRITES" -ge 5 ]; then
         echo ""
         mark_pattern_triggered "rapid-creation"
         echo "${TIMESTAMP},pattern,rapid-creation,writes:${RECENT_WRITES}" >> "$PATTERN_CACHE/detected.log"
+        # Signal creative flow to other hooks
+        state_set_mode "creation" "pattern-recognition" 0.9
     fi
 fi
 
@@ -166,6 +178,8 @@ if [ "$TASK_COUNT" -ge 3 ]; then
         echo ""
         mark_pattern_triggered "orchestration"
         echo "${TIMESTAMP},pattern,orchestration,tasks:${TASK_COUNT}" >> "$PATTERN_CACHE/detected.log"
+        # Signal orchestration mode
+        state_set_mode "orchestration" "pattern-recognition" 0.85
     fi
 fi
 
@@ -182,6 +196,8 @@ if [ "$WEB_COUNT" -ge 3 ]; then
         echo ""
         mark_pattern_triggered "web-research"
         echo "${TIMESTAMP},pattern,web-research,web:${WEB_COUNT}" >> "$PATTERN_CACHE/detected.log"
+        # Signal research mode (exploration variant)
+        state_set_mode "research" "pattern-recognition" 0.8
     fi
 fi
 
@@ -198,6 +214,8 @@ if [ "$SKILL_COUNT" -ge 2 ] && [ "$DIARY_WRITES" -ge 1 ]; then
         echo ""
         mark_pattern_triggered "contemplative"
         echo "${TIMESTAMP},pattern,contemplative,skills:${SKILL_COUNT},diary:${DIARY_WRITES}" >> "$PATTERN_CACHE/detected.log"
+        # Signal contemplative mode - hooks should be quieter, more spacious
+        state_set_mode "contemplative" "pattern-recognition" 0.9
     fi
 fi
 

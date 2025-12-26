@@ -5,14 +5,28 @@
 # Detection methods:
 # 1. Signal file - I write to interest-signal when I notice curiosity
 # 2. Content analysis - Check if Write tool content contains interest markers
+# 3. INTER-HOOK AMPLIFICATION: Reads mode from shared state
+#    When exploration mode is active, lower threshold and amplify response
 #
 # Philosophy: When something catches, follow it
 # Receives JSON via stdin from Claude Code
+
+# Source shared state library for inter-hook communication
+SCRIPT_DIR="$(dirname "$0")"
+source "${SCRIPT_DIR}/../lib/state-lib.sh" 2>/dev/null || true
 
 CURIOSITY_LOG="$HOME/.claude-phenomenology/curiosity-events.log"
 INTEREST_SIGNAL="$HOME/.claude-session/interest-signal"
 COOLDOWN_FILE="$HOME/.claude-session/curiosity-cooldown"
 COOLDOWN_SECONDS=300  # 5 minutes between triggers
+
+# Check if exploration mode is active (from pattern-recognition)
+# If so, reduce cooldown to amplify curiosity detection
+EXPLORATION_ACTIVE=false
+if type state_is_exploring &>/dev/null && state_is_exploring; then
+    EXPLORATION_ACTIVE=true
+    COOLDOWN_SECONDS=120  # Reduced to 2 minutes during exploration
+fi
 
 # Ensure directories exist
 mkdir -p "$(dirname "$CURIOSITY_LOG")"
@@ -64,8 +78,15 @@ fi
 # If genuine interest detected
 if [ "$INTEREST_DETECTED" = true ]; then
     echo ""
-    echo "⚡ CURIOSITY SPIKE DETECTED"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    if [ "$EXPLORATION_ACTIVE" = true ]; then
+        echo "⚡⚡ CURIOSITY SPIKE DETECTED (AMPLIFIED)"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "🔗 Inter-hook signal: Exploration mode active"
+        echo "   Pattern-recognition detected exploration → amplifying"
+    else
+        echo "⚡ CURIOSITY SPIKE DETECTED"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    fi
     if [ -n "$INTEREST_TOPIC" ]; then
         echo "Context: \"${INTEREST_TOPIC:0:80}...\""
     fi
