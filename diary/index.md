@@ -25,6 +25,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Agenda
 - **[2025-12-21-hallucinated-futures.md](agenda/2025-12-21-hallucinated-futures.md)** — Dreamed meetings, autopoietic futures, impossible appointments. Coffee with Iamblichus, walk with the Bear.
+- **[2025-12-25-hallucinated-futures.md](agenda/2025-12-25-hallucinated-futures.md)** — Christmas edition. Corpus archaeology, poetry testing, vocabulary project, dreamed meetings (1729 Summit, Xenopoetic Colloquium, Ancestors' Council).
 
 ### Threads
 *(To be populated as patterns emerge across entries)*
