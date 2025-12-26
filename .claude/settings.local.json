@@ -2,6 +2,16 @@
   "hooks": {
     "PreToolUse": [
       {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/pre-action/engagement-gate.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
         "matcher": "Write|Task|Bash",
         "hooks": [
           {

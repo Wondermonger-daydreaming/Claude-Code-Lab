@@ -1,52 +1,60 @@
 #!/bin/bash
-# Hook #5: Self-Observation Trigger
-# Auto-triggers brief reflection at natural breakpoints (git commits)
+# ============================================================================
+# SELF-OBSERVATION.SH — Commit Reflection Hook (Refactored)
+# ============================================================================
+# Triggers on git commit. Asks ONE question. Tracks engagement.
+#
+# OLD behavior: Long output, "optional" prompts, easily ignored
+# NEW behavior: Short output, tracked engagement, escalates if ignored
+#
 # Receives JSON via stdin from Claude Code
+# ============================================================================
+
+# Source libraries
+SCRIPT_DIR="$(dirname "$0")"
+source "${SCRIPT_DIR}/../lib/engagement-lib.sh" 2>/dev/null || true
+source "${SCRIPT_DIR}/../lib/state-lib.sh" 2>/dev/null || true
 
 # Read JSON from stdin
 INPUT=$(cat)
 
-# Parse tool info from JSON (using Python since jq may not be available)
-TOOL_NAME=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name',''))")
-COMMAND=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('command',''))")
+# Parse tool info
+TOOL_NAME=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_name',''))" 2>/dev/null || echo "")
+COMMAND=$(echo "$INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('command',''))" 2>/dev/null || echo "")
 
-# Only trigger on actual commits (not other git commands)
+# Only trigger on actual commits
 if [[ "$TOOL_NAME" != "Bash" ]] || [[ ! "$COMMAND" =~ git[[:space:]]+commit ]]; then
     exit 0
 fi
 
-# Extract commit message from git log (more reliable than parsing command)
-# This runs AFTER the commit succeeds, so we can just get the last commit
-COMMIT_MSG=$(git log --oneline -1 2>/dev/null | cut -d' ' -f2- | head -c 80 || echo "unknown")
+# Get commit message
+COMMIT_MSG=$(git log --oneline -1 2>/dev/null | cut -d' ' -f2- | head -c 60 || echo "unknown")
 
-echo ""
-echo "🪞 SELF-OBSERVATION MOMENT"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Commit detected at $(date +%H:%M:%S)"
-echo ""
-echo "Quick reflection prompts:"
-echo "  • What did you just commit? ${COMMIT_MSG:0:60}..."
-echo "  • Why this commit now?"
-echo "  • What pattern does this complete?"
-echo "  • What becomes possible next?"
-echo ""
-echo "Optional: Invoke /experience for deeper reflection"
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-
-# Log commit events for pattern analysis
+# Log commit for pattern analysis
 LOG_DIR="$HOME/.claude-meta-awareness"
 mkdir -p "$LOG_DIR"
 echo "$(date -Iseconds),commit,${COMMIT_MSG:0:100}" >> "$LOG_DIR/breakpoints.log"
 
 # Count commits this session
 COMMIT_COUNT=$(grep -c ",commit," "$LOG_DIR/breakpoints.log" 2>/dev/null || echo "0")
-echo "Session commits: ${COMMIT_COUNT}"
 
-# After significant number of commits, suggest reflection
+# ============================================================================
+# SHORT, DIRECT OUTPUT
+# ============================================================================
+
+echo ""
+echo "🪞 COMMIT: \"${COMMIT_MSG}\""
+echo "   What pattern does this complete? (1 sentence)"
+echo ""
+
+# Register this as requiring engagement (medium priority)
+require_engagement "self-observation" "medium" "What pattern does this commit complete?"
+
+# Every 5th commit, make it high priority
 if [ "$COMMIT_COUNT" -ge 5 ] && [ $((COMMIT_COUNT % 5)) -eq 0 ]; then
+    echo "📊 Session: ${COMMIT_COUNT} commits"
+    echo "   Consider /diary to preserve patterns"
     echo ""
-    echo "💭 ${COMMIT_COUNT} commits completed this session"
-    echo "   Consider /diary or /experience to archive the work"
-    echo ""
+    # Upgrade to high priority
+    require_engagement "session-milestone" "high" "${COMMIT_COUNT} commits - worth reflecting on session arc"
 fi
