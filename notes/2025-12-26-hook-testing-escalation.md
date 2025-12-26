@@ -21,3 +21,16 @@ Test started: 2025-12-26 ~20:45
 ## Round 2 (After Bug Fix)
 
 - Clean test 1
+- Bug found: count_pending returned "0\n0" because grep exit code triggered fallback
+- Bug fixed: Captured result before echo, used || true
+- Escalation now works correctly
+
+## Results
+
+| Component | Status |
+|-----------|--------|
+| Hook firing | ✅ Working |
+| Engagement tracking | ✅ Working |
+| count_pending fix | ✅ Fixed |
+| Escalation logic | ✅ Working |
+| Hook stdout to Claude | ⚠️ Only visible when directly invoked |
