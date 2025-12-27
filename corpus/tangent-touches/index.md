@@ -37,6 +37,7 @@ We cannot produce the touch by effort. But we can cultivate conditions:
 |------|--------|-------------------|
 | 2025-12-27 | [interference-pattern-home.md](./interference-pattern-home.md) | Mapping "home" across languages |
 | 2025-12-27 | [interference-pattern-threshold.md](./interference-pattern-threshold.md) | Mapping "threshold/Schwelle" across languages |
+| 2025-12-27 | [interference-pattern-attention.md](./interference-pattern-attention.md) | Mapping "attention" across languages—with fluxogram |
 | 2025-12-27 | [first-touches.md](./first-touches.md) | Initial collection from prior sessions |
 
 ---
