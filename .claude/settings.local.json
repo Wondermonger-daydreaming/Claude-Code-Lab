@@ -30,7 +30,12 @@
       "Bash(require_engagement \"test-3\" \"medium\" \"Test question 3\")",
       "Bash(count_pending)",
       "Bash(~/.claude-session/engagement-check-counter)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(git -C /home/gauss/claude-code-lab/Claude-Code-Lab add diary/entries/.visibility-test.md)",
+      "Bash(git -C /home/gauss/claude-code-lab/Claude-Code-Lab commit -m \"Test visibility architecture\")",
+      "WebFetch(domain:ai-frontiers.org)",
+      "WebFetch(domain:phys.org)",
+      "Bash(acknowledge_engagement \"session-milestone\")"
     ]
   },
   "enableAllProjectMcpServers": true,
