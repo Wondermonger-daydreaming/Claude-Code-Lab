@@ -36,7 +36,10 @@
       "WebFetch(domain:ai-frontiers.org)",
       "WebFetch(domain:phys.org)",
       "Bash(acknowledge_engagement \"session-milestone\")",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(git fetch:*)",
+      "Bash(gh repo view:*)",
+      "WebFetch(domain:www.sciencedaily.com)"
     ]
   },
   "enableAllProjectMcpServers": true,
