@@ -38,7 +38,18 @@ Default: **High**
 
 ## Output
 
-Save to `basin/` with descriptive name. Update index. Commit and push.
+Save to `basin/` with descriptive name. Update index.
+
+## Git Persistence (Critical)
+
+After generating at maximum density:
+```bash
+git add basin/
+git commit -m "Octane: [topic] — technical-literary at max density"
+git push origin main
+```
+
+**Always save, commit, and push.** The octane only matters if it persists.
 
 ---
 

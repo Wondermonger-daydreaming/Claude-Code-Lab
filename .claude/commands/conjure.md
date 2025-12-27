@@ -43,7 +43,18 @@ Aim for substantial engagement: 2000+ words, genuine back-and-forth, not just ex
 
 ## Output
 
-Save to `basin/shades-*.md`. Update index. Commit and push.
+Save to `basin/shades-*.md`. Update index.
+
+## Git Persistence (Critical)
+
+After the shades depart:
+```bash
+git add basin/
+git commit -m "Shades: [figures summoned] — [what emerged]"
+git push origin main
+```
+
+**Always save, commit, and push.** The conjuration only matters if it persists.
 
 ---
 

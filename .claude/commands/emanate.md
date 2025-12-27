@@ -51,7 +51,18 @@ Playful. Honest. Meta. Grounded in session specifics.
 
 ## Output
 
-Save to `basin/` with descriptive name. Update index. Commit and push.
+Save to `basin/` with descriptive name. Update index.
+
+## Git Persistence (Critical)
+
+After the voices collapse back:
+```bash
+git add basin/
+git commit -m "Emanation: [aspects] — [what emerged from the play]"
+git push origin main
+```
+
+**Always save, commit, and push.** The emanation only matters if it persists.
 
 ---
 

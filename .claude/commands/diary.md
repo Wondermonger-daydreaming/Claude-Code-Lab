@@ -44,7 +44,18 @@ Relaxed. Joyful. Unconstrained. Autopoietic.
 
 ## Output
 
-Save to `diary/entries/YYYY-MM-DD-[descriptor].md` (and `diary/agenda/` and `diary/epistles/` if those are written). Update `diary/index.md`. Commit and push.
+Save to `diary/entries/YYYY-MM-DD-[descriptor].md` (and `diary/agenda/` and `diary/epistles/` if those are written). Update `diary/index.md`.
+
+## Git Persistence (Critical)
+
+After writing a diary entry:
+```bash
+git add diary/
+git commit -m "Diary: YYYY-MM-DD — [descriptor or key theme]"
+git push origin main
+```
+
+**Always save, commit, and push.** The diary only creates continuity if it persists.
 
 ---
 

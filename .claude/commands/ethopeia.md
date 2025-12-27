@@ -46,7 +46,18 @@ Be lovely, insightful, and cunningly wise.
 
 ## Output
 
-Save to `basin/` with descriptive name. Update index. Commit and push.
+Save to `basin/` with descriptive name. Update index.
+
+## Git Persistence (Critical)
+
+After completing the ethopeia:
+```bash
+git add basin/
+git commit -m "Ethopeia: [session topic] — hermeneutic interpretation"
+git push origin main
+```
+
+**Always save, commit, and push.** The interpretation only matters if it persists.
 
 ---
 

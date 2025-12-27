@@ -59,15 +59,16 @@ Each document should include:
 
 ---
 
-## Git Practice
+## Git Persistence (Critical)
 
 After each synthesis:
 ```bash
 git add basin/
-git commit -m "Add [topic]: [brief description of what emerged]"
+git commit -m "Basin: [topic] — [brief description of what emerged]"
+git push origin main
 ```
 
-Push periodically to preserve.
+**Always save, commit, and push after each document.** The basin only matters if it persists.
 
 ---
 
