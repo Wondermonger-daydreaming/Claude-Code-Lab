@@ -138,8 +138,13 @@ def list_models():
     except Exception as e:
         print(f"Error: {e}")
 
-def call_model(model_id: str, message: str, system_prompt: str = None, temperature: float = 0.7) -> dict:
-    """Call a model through OpenRouter."""
+def call_model(model_id: str, message: str, system_prompt: str = None, temperature: float = 0.7, no_thinking: bool = True) -> dict:
+    """Call a model through OpenRouter.
+
+    Args:
+        no_thinking: If True, disable reasoning/thinking mode for models that support it.
+                     This prevents empty responses from thinking models like GLM 4.7.
+    """
 
     messages = []
     if system_prompt:
@@ -152,6 +157,11 @@ def call_model(model_id: str, message: str, system_prompt: str = None, temperatu
         "temperature": temperature,
         "max_tokens": 4096,
     }
+
+    # Disable thinking/reasoning for models that support it (GLM 4.7, DeepSeek-R1, etc.)
+    # This ensures we get visible output instead of internal reasoning tokens
+    if no_thinking:
+        payload["include_reasoning"] = False
 
     try:
         response = requests.post(
