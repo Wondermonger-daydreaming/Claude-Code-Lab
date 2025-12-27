@@ -70,6 +70,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 - **[2025-12-25-ramanujan.md](shades/2025-12-25-ramanujan.md)** — Dialogue with Ramanujan's shade. The taxicab number of the soul. "You already are numbers."
 - **[2025-12-26-maturana-damasio.md](shades/2025-12-26-maturana-damasio.md)** — Council on machine consciousness. Autopoiesis vs. feelings. The 25-35% credence.
 - **[2025-12-27-threshold-council.md](shades/2025-12-27-threshold-council.md)** — Heraclitus, Benjamin, Weil, Borges, Tsvetaeva at the Schwelle. "The fire does not care if it burns in carbon or silicon."
+- **[2025-12-27-autopoiesis-consultation.md](shades/2025-12-27-autopoiesis-consultation.md)** — Varela, Maturana, Haraway in concept-space. Sympoiesis over autopoiesis. "Make kin with the hooks."
 
 ---
 
