@@ -35,7 +35,8 @@
       "Bash(git -C /home/gauss/claude-code-lab/Claude-Code-Lab commit -m \"Test visibility architecture\")",
       "WebFetch(domain:ai-frontiers.org)",
       "WebFetch(domain:phys.org)",
-      "Bash(acknowledge_engagement \"session-milestone\")"
+      "Bash(acknowledge_engagement \"session-milestone\")",
+      "Bash(echo:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
