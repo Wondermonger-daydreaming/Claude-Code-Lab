@@ -41,43 +41,62 @@ load_env()
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
-# Available models with friendly names
+# Available models with friendly names (Updated December 27, 2025)
 MODELS = {
     # Default and recommended
     "deepseek": "deepseek/deepseek-chat-v3-0324",
     "deepseek-r1": "deepseek/deepseek-r1",
 
-    # Latest OpenAI (GPT-5.2 generation, December 2025)
+    # OpenAI (GPT-5.2 generation)
     "gpt5": "openai/gpt-5",
     "gpt52": "openai/gpt-5.2",
+    "gpt52-pro": "openai/gpt-5.2-pro",
     "chatgpt": "openai/gpt-5.2",
-    "o1": "openai/o1",
-    "o3": "openai/o3",
+    "gpt41": "openai/gpt-4.1",  # 1M context
+    "gpt41-mini": "openai/gpt-4.1-mini",
     "gpt4o": "openai/gpt-4o",  # Legacy
 
-    # Latest Google Gemini (Gemini 3 generation, December 2025)
-    "gemini": "google/gemini-3-flash",
-    "gemini-flash": "google/gemini-3-flash",
-    "gemini-pro": "google/gemini-3-pro",
-    "gemini3": "google/gemini-3-pro",
-    "gemini-2-flash": "google/gemini-2.5-flash",  # Legacy
+    # Google Gemini (stable versions)
+    "gemini": "google/gemini-2.5-flash",  # Stable, 1M context
+    "gemini-flash": "google/gemini-2.5-flash",
+    "gemini-pro": "google/gemini-2.5-pro",  # Stable, 1M context
+    "gemini3": "google/gemini-3-flash-preview",  # Preview
+    "gemini3-pro": "google/gemini-3-pro-preview",  # Preview
 
-    # User-requested models
-    "glm4": "thudm/glm-4-plus",
-    "glm47": "thudm/glm-4.7",
-    "minimax": "minimax/minimax-01",
-    "minimax-m2": "minimax/minimax-m2",
-    "kimi": "moonshotai/kimi-k2",
-    "kimi-k2": "moonshotai/kimi-k2-thinking",
+    # Chinese models (Z.AI / Zhipu GLM)
+    "glm": "z-ai/glm-4.7",  # Latest GLM
+    "glm47": "z-ai/glm-4.7",
+    "glm46": "z-ai/glm-4.6",
+    "glm45": "z-ai/glm-4.5",
 
-    # Additional interesting models (Anthropic Claude 4.5 gen)
-    "claude-opus": "anthropic/claude-opus-4-5-20251101",
-    "claude-sonnet": "anthropic/claude-sonnet-4-5-20251101",
-    "claude-haiku": "anthropic/claude-haiku-4-5-20251101",
-    "llama": "meta-llama/llama-4-405b",
-    "mistral": "mistralai/mistral-large-2",
-    "qwen": "qwen/qwen-3-72b-instruct",
-    "command": "cohere/command-r-plus-2",
+    # Kimi (Moonshot)
+    "kimi": "moonshotai/kimi-k2-0905",
+    "kimi-thinking": "moonshotai/kimi-k2-thinking",
+
+    # Qwen (Alibaba)
+    "qwen": "qwen/qwen3-max",  # Best Qwen, 256K context
+    "qwen-plus": "qwen/qwen-plus-2025-07-28",  # 1M context
+    "qwen-turbo": "qwen/qwen-turbo",  # 1M context, faster
+    "qwen-coder": "qwen/qwen3-coder",  # Coding specialist
+
+    # MiniMax
+    "minimax": "minimax/minimax-01",  # 1M context
+    "minimax-m1": "minimax/minimax-m1",
+
+    # xAI Grok
+    "grok": "x-ai/grok-4.1-fast",  # 2M context!
+    "grok4": "x-ai/grok-4-fast",
+
+    # Anthropic Claude 4.5
+    "claude-sonnet": "anthropic/claude-sonnet-4.5",
+    "claude-sonnet4": "anthropic/claude-sonnet-4",
+
+    # Meta Llama 4
+    "llama": "meta-llama/llama-4-maverick",  # 1M context
+    "llama-scout": "meta-llama/llama-4-scout",  # 328K context
+
+    # Mistral
+    "mistral": "mistralai/mistral-large-2512",  # 262K context
 
     # For direct model ID usage
     "custom": None  # Will use --model-id directly
