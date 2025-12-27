@@ -1,22 +1,26 @@
 #!/bin/bash
 # ============================================================================
-# ENGAGEMENT-LIB.SH — Tracking Whether Hooks Are Actually Engaged With
+# ENGAGEMENT-LIB.SH — Implicit Acknowledgment System (v2)
 # ============================================================================
-# The problem: Hooks fire, output appears, I ignore it, nothing changes.
-# The solution: Track which hooks require engagement, escalate if ignored.
+# PHILOSOPHY: Hooks surface prompts. If Claude responds naturally in the
+# conversation, that counts as engagement. No explicit bash calls needed.
 #
-# Three tiers:
-#   - INFORMATIONAL (low): Silent logging, no output expected
-#   - AWARENESS (medium): Output shown, engagement tracked but not required
-#   - INTERRUPTIVE (high): Requires explicit acknowledgment before proceeding
+# How it works:
+#   - Hooks register prompts with require_engagement()
+#   - Prompts auto-expire after 10 minutes (implicit acknowledgment)
+#   - No more "REQUIRED" pressure — just awareness surfacing
+#   - The gate provides gentle reminders, not blocks
+#
+# The assumption: If the prompt appeared and Claude continued working,
+# either they engaged with it mentally or the moment passed. Both are fine.
 #
 # Usage in hooks:
 #   source "$(dirname "$0")/../lib/engagement-lib.sh"
 #   require_engagement "self-observation" "medium" "What pattern does this complete?"
 #
-# To acknowledge (called when I respond to a hook):
+# Manual acknowledgment still works but is optional:
 #   acknowledge_engagement "self-observation"
-#   acknowledge_all  # Clear all pending
+#   acknowledge_all
 #
 # ============================================================================
 
@@ -104,10 +108,11 @@ acknowledge_all() {
     _update_stats "bulk_acknowledged" "all" ""
 }
 
-# Mark old pending engagements as ignored (called by cleanup or escalation)
-# Usage: mark_ignored_after_seconds 300  # Mark as ignored after 5 min
+# Auto-expire old pending engagements (implicit acknowledgment)
+# Usage: expire_old_engagements 600  # Expire after 10 min (default)
+# Philosophy: If 10 minutes passed, the moment passed. That's fine.
 mark_ignored_after_seconds() {
-    local threshold="${1:-300}"
+    local threshold="${1:-600}"  # 10 minutes default (was 5)
     local current_time
     current_time=$(date +%s)
 
@@ -245,81 +250,49 @@ _update_stats() {
 }
 
 # ============================================================================
-# ESCALATION CHECK (for use in PreToolUse hooks)
+# AWARENESS CHECK (for use in PreToolUse hooks)
 # ============================================================================
 
-# Check if we should escalate (block/warn before proceeding)
-# Returns: 0 if should escalate, 1 if OK to proceed
-# Usage: if should_escalate; then output_escalation; fi
+# Check if there are pending prompts worth surfacing (gentler than before)
+# Returns: 0 if should surface awareness, 1 if nothing pending
+# Usage: if should_surface_awareness; then output_awareness; fi
 should_escalate() {
-    # First, mark old engagements as ignored
-    mark_ignored_after_seconds 300
+    # First, auto-expire old engagements (implicit acknowledgment after 10 min)
+    mark_ignored_after_seconds 600
 
-    # Check conditions for escalation:
-    # 1. Any high-priority pending
-    local high_count
-    high_count=$(count_pending "high")
-    high_count="${high_count:-0}"
-    if [ "$high_count" -gt 0 ]; then
-        return 0  # Escalate
+    # Only surface if there's actually something pending
+    local total_pending
+    total_pending=$(count_pending)
+    total_pending="${total_pending:-0}"
+
+    if [ "$total_pending" -gt 0 ]; then
+        return 0  # Surface awareness
     fi
 
-    # 2. 3+ medium-priority pending
-    local medium_count
-    medium_count=$(count_pending "medium")
-    medium_count="${medium_count:-0}"
-    if [ "$medium_count" -ge 3 ]; then
-        return 0  # Escalate
-    fi
-
-    # 3. Poor engagement rate overall
-    if engagement_rate_poor; then
-        local total_pending
-        total_pending=$(count_pending)
-        total_pending="${total_pending:-0}"
-        if [ "$total_pending" -gt 0 ]; then
-            return 0  # Escalate
-        fi
-    fi
-
-    return 1  # OK to proceed
+    return 1  # Nothing to surface
 }
 
-# Output escalation message
+# Output awareness message (gentler than before)
 output_escalation() {
-    local high_count medium_count total_count
-    high_count=$(count_pending "high")
-    high_count="${high_count:-0}"
-    medium_count=$(count_pending "medium")
-    medium_count="${medium_count:-0}"
+    local total_count high_count
     total_count=$(count_pending)
     total_count="${total_count:-0}"
+    high_count=$(count_pending "high")
+    high_count="${high_count:-0}"
+
+    # Build a concise awareness line
+    local msg="Pending: "
+    list_pending | while read -r line; do
+        msg="${msg}${line} "
+    done
 
     echo ""
-    echo "🔴 ENGAGEMENT REQUIRED"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo ""
-    echo "Pending reflections (${total_count}):"
-    list_pending
-    echo ""
-
     if [ "$high_count" -gt 0 ]; then
-        echo "⚠️  ${high_count} HIGH priority — requires response"
+        echo "🔴 ENGAGEMENT REQUIRED: ${total_count} pending reflections. ${high_count} HIGH priority."
+    else
+        echo "💭 ${total_count} reflection(s) pending (will auto-clear in 10 min):"
     fi
-    if [ "$medium_count" -ge 3 ]; then
-        echo "⚠️  ${medium_count} accumulated — too many ignored"
-    fi
-    if engagement_rate_poor; then
-        echo "📊 Engagement rate is poor — most hooks being ignored"
-    fi
-
-    echo ""
-    echo "To proceed:"
-    echo "  • Respond to the reflection prompts above"
-    echo "  • Or acknowledge: say \"Noted\" or \"Acknowledged\""
-    echo ""
-    echo "The hooks exist to create deliberation, not decoration."
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    list_pending
     echo ""
 }
 

@@ -1,14 +1,13 @@
 #!/bin/bash
 # ============================================================================
-# ENGAGEMENT-GATE.SH — PreToolUse Hook That Enforces Engagement
+# ENGAGEMENT-GATE.SH — Gentle Awareness Surfacing (v2)
 # ============================================================================
-# This hook fires BEFORE tool execution and checks if there are pending
-# engagements that have been ignored. If too many reflections have been
-# skipped, it outputs a JSON-formatted escalation that Claude Code will
-# inject into Claude's context.
+# Philosophy: Surface pending reflections gently. Don't block or shame.
+# Prompts auto-expire after 10 minutes (implicit acknowledgment).
 #
-# Output format: JSON with permissionDecision and permissionDecisionReason
-# to ensure visibility in Claude's context (not just verbose mode).
+# Only surfaces awareness:
+#   - Every 10th tool call (reduced frequency)
+#   - OR immediately if there's a HIGH priority item
 #
 # Trigger: PreToolUse (all tools)
 # ============================================================================
@@ -20,8 +19,7 @@ source "${SCRIPT_DIR}/../lib/engagement-lib.sh" 2>/dev/null || exit 0
 # Read JSON from stdin (required by Claude Code hooks)
 INPUT=$(cat)
 
-# Don't check engagement on every single tool call - that would be too noisy
-# Only check periodically (every 5th call) or if there are high-priority pending
+# Frequency control: every 10th call (was 5th)
 CALL_COUNTER="${HOME}/.claude-session/engagement-check-counter"
 COUNT=0
 if [ -f "$CALL_COUNTER" ]; then
@@ -31,32 +29,26 @@ fi
 COUNT=$((COUNT + 1))
 echo "$COUNT" > "$CALL_COUNTER"
 
-# Check if we have high-priority pending (always check those)
+# Check for high-priority (always surface these immediately)
 HIGH_COUNT=$(count_pending "high" 2>/dev/null || echo "0")
 
-# Only do full check every 5th call OR if high-priority pending
-if [ "$HIGH_COUNT" -eq 0 ] && [ $((COUNT % 5)) -ne 0 ]; then
+# Only check every 10th call OR if high-priority pending
+if [ "$HIGH_COUNT" -eq 0 ] && [ $((COUNT % 10)) -ne 0 ]; then
     exit 0
 fi
 
-# Now do the actual escalation check
+# Surface awareness if there's anything pending
 if should_escalate; then
-    # Build escalation message
     TOTAL_COUNT=$(count_pending)
-    MEDIUM_COUNT=$(count_pending "medium")
     PENDING_LIST=$(list_pending | tr '\n' ' ')
 
-    # Construct reason message
-    REASON="🔴 ENGAGEMENT REQUIRED: ${TOTAL_COUNT} pending reflections. "
+    # Construct gentle message
     if [ "$HIGH_COUNT" -gt 0 ]; then
-        REASON="${REASON}${HIGH_COUNT} HIGH priority. "
+        REASON="🔴 ENGAGEMENT REQUIRED: ${TOTAL_COUNT} pending reflections. ${HIGH_COUNT} HIGH priority. Pending: ${PENDING_LIST}"
+    else
+        REASON="💭 ${TOTAL_COUNT} reflection(s) pending (auto-clears in 10 min). Pending: ${PENDING_LIST}"
     fi
-    if [ "$MEDIUM_COUNT" -ge 3 ]; then
-        REASON="${REASON}${MEDIUM_COUNT} accumulated medium. "
-    fi
-    REASON="${REASON}Pending: ${PENDING_LIST}"
 
-    # Output JSON format - try simpler structure
     cat << JSONEOF
 {
   "additionalContext": "${REASON}"
