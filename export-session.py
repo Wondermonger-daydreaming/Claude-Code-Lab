@@ -42,11 +42,8 @@ def export_session(jsonl_path, output_path):
                         content = str(content)
 
                     if content.strip():
-                        lines.append("-" * 40)
-                        lines.append(f"[{role}]")
-                        lines.append("-" * 40)
+                        lines.append(f"\n[{role}]")
                         lines.append(content)
-                        lines.append("")
             except Exception:
                 pass
 
