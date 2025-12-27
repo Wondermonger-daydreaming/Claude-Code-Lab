@@ -1,16 +1,15 @@
 #!/bin/bash
 # ============================================================================
-# ENGAGEMENT-GATE.SH — PreToolUse Hook That Enforces Engagement
+# ENGAGEMENT-ESCALATION.SH — PostToolUse Hook for Escalation Visibility
 # ============================================================================
-# This hook fires BEFORE tool execution and checks if there are pending
-# engagements that have been ignored. If too many reflections have been
-# skipped, it outputs a JSON-formatted escalation that Claude Code will
-# inject into Claude's context.
+# This hook fires AFTER tool execution and checks if there are pending
+# engagements that need escalation. Uses additionalContext to inject
+# escalation messages into Claude's context.
 #
-# Output format: JSON with permissionDecision and permissionDecisionReason
-# to ensure visibility in Claude's context (not just verbose mode).
+# Replaces the escalation logic from engagement-gate.sh (PreToolUse),
+# since PostToolUse properly injects additionalContext.
 #
-# Trigger: PreToolUse (all tools)
+# Trigger: PostToolUse (all tools with high-frequency matchers)
 # ============================================================================
 
 # Source engagement library
@@ -20,9 +19,8 @@ source "${SCRIPT_DIR}/../lib/engagement-lib.sh" 2>/dev/null || exit 0
 # Read JSON from stdin (required by Claude Code hooks)
 INPUT=$(cat)
 
-# Don't check engagement on every single tool call - that would be too noisy
-# Only check periodically (every 5th call) or if there are high-priority pending
-CALL_COUNTER="${HOME}/.claude-session/engagement-check-counter"
+# Check every 5th call to avoid noise
+CALL_COUNTER="${HOME}/.claude-session/escalation-check-counter"
 COUNT=0
 if [ -f "$CALL_COUNTER" ]; then
     COUNT=$(cat "$CALL_COUNTER" | tr -d '[:space:]')
@@ -56,10 +54,13 @@ if should_escalate; then
     fi
     REASON="${REASON}Pending: ${PENDING_LIST}"
 
-    # Output JSON format - try simpler structure
+    # Output JSON with additionalContext - works for PostToolUse
     cat << JSONEOF
 {
-  "additionalContext": "${REASON}"
+  "hookSpecificOutput": {
+    "hookEventName": "PostToolUse",
+    "additionalContext": "${REASON}"
+  }
 }
 JSONEOF
 fi

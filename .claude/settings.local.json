@@ -23,7 +23,14 @@
       "Bash(count_pending \"high\")",
       "Bash(xxd:*)",
       "Bash(acknowledge_engagement \"self-observation\")",
-      "Bash(engagement_summary)"
+      "Bash(engagement_summary)",
+      "Bash(reset_engagement)",
+      "Bash(require_engagement \"test-1\" \"medium\" \"Test question 1\")",
+      "Bash(require_engagement \"test-2\" \"medium\" \"Test question 2\")",
+      "Bash(require_engagement \"test-3\" \"medium\" \"Test question 3\")",
+      "Bash(count_pending)",
+      "Bash(~/.claude-session/engagement-check-counter)",
+      "Bash(chmod:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
@@ -92,6 +99,11 @@
           {
             "type": "command",
             "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/experimental/curiosity-activation.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/engagement-escalation.sh",
             "timeout": 5
           }
         ]
