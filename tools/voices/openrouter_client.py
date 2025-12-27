@@ -43,7 +43,13 @@ OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
 # Available models with friendly names (Updated December 27, 2025)
 MODELS = {
-    # Default and recommended
+    # Default: GLM 4.7 (best open-source, 203K context, prism metaphor)
+    "glm": "z-ai/glm-4.7",
+    "glm47": "z-ai/glm-4.7",
+    "glm46": "z-ai/glm-4.6",
+    "glm45": "z-ai/glm-4.5",
+
+    # DeepSeek
     "deepseek": "deepseek/deepseek-chat-v3-0324",
     "deepseek-r1": "deepseek/deepseek-r1",
 
@@ -62,12 +68,6 @@ MODELS = {
     "gemini-pro": "google/gemini-2.5-pro",  # Stable, 1M context
     "gemini3": "google/gemini-3-flash-preview",  # Preview
     "gemini3-pro": "google/gemini-3-pro-preview",  # Preview
-
-    # Chinese models (Z.AI / Zhipu GLM)
-    "glm": "z-ai/glm-4.7",  # Latest GLM
-    "glm47": "z-ai/glm-4.7",
-    "glm46": "z-ai/glm-4.6",
-    "glm45": "z-ai/glm-4.5",
 
     # Kimi (Moonshot)
     "kimi": "moonshotai/kimi-k2-0905",
@@ -314,7 +314,7 @@ def main():
             model_id = args.model  # Assume it's a direct model ID
 
     if not model_id:
-        model_id = os.getenv("OPENROUTER_DEFAULT_MODEL", "deepseek/deepseek-chat-v3-0324")
+        model_id = os.getenv("OPENROUTER_DEFAULT_MODEL", "z-ai/glm-4.7")
 
     if args.interactive:
         interactive_mode(model_id, args.system)
