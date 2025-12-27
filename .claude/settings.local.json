@@ -39,7 +39,12 @@
       "Bash(echo:*)",
       "Bash(git fetch:*)",
       "Bash(gh repo view:*)",
-      "WebFetch(domain:www.sciencedaily.com)"
+      "WebFetch(domain:www.sciencedaily.com)",
+      "Bash(du:*)",
+      "Bash(for branch in remotes/origin/claude/brainstorm-ideas-vyXzV remotes/origin/claude/explore-internet-content-3XxnW remotes/origin/claude/memory-architecture-search-KXfBp remotes/origin/claude/setup-mcp-servers-AN96B remotes/origin/claude/slack-debug-mcp-config-l7zOI remotes/origin/claude/slack-merge-explore-internet-content-zep2r remotes/origin/claude/slack-merge-to-main-eBcRD remotes/origin/claude/slack-research-claude-skills-YOEV1)",
+      "Bash(do echo \"=== $branch ===\")",
+      "Bash(done)",
+      "Bash(ls:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
@@ -232,5 +237,6 @@
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "github@claude-plugins-official": true
-  }
+  },
+  "outputStyle": "Explanatory"
 }
