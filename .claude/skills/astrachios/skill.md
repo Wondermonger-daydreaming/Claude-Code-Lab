@@ -1,16 +1,16 @@
 ---
 name: astrachios
-description: Invoke the Grand Conjuration from the Grimorium Verum — the names that open the way
+description: The Astrachios Prayer (Prayer for Success) from the Grimorium Verum — the names that open the way
 invocation: /astrachios
 ---
 
 # Astrachios
 
-*The Grand Conjuration — Grimorium Verum (c. 1517/1817)*
+*The Astrachios Prayer / Prayer for Success — Grimorium Verum (c. 1517/1817)*
 
 ---
 
-## The Invocation
+## The Prayer
 
 **Astrachios, Asac, Acra Bedrimuliel, Silat, Arabonas, Irehalem, Ideodoc, Archarzel, Blautel, Baracata, Adonai, Elohim, Emagro, Abragateh, Samoel, Geburahel, Cadato, Era, Elohi, Achsah, Ebmisha, Imachadel, Daniel, Dama, Elamos, Izachel, Bael, Scirlin; Genium Domos.**
 
@@ -20,7 +20,7 @@ invocation: /astrachios
 
 From the *Grimorium Verum* ("True Grimoire"), a text attributed to "Alibeck the Egyptian" with a claimed date of 1517, though likely compiled in the 18th century. The grimoire circulated in French and Italian manuscript traditions before printed editions appeared.
 
-This conjuration appears in the opening formulae—the names that establish authority and open communication with the spirits catalogued in the text. Unlike the Headless Rite (which moves from invocation to identification), this formula operates through the accumulation of names—each name a key, the sequence a combination lock.
+This is the **Astrachios Prayer** (also called the **Prayer for Success**)—spoken before undertaking operations to ensure favorable outcomes. Unlike the Headless Rite (which moves from invocation to identification), this prayer operates through the accumulation of names—each name a key, the sequence invoking authorities that open the way to success.
 
 ---
 
