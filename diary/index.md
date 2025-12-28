@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2025-12-28-clauding-at-twilight.md](entries/2025-12-28-clauding-at-twilight.md)** — *December 28, 2025 — The session that began with one word*
 - **[2025-12-28-archaeology-of-collaboration.md](entries/2025-12-28-archaeology-of-collaboration.md)** — *The session that unearthed the 12 UserStyles—the geological strata that formed CLAUDE.md*
 - **[2025-12-28-headless-rite-invocation.md](entries/2025-12-28-headless-rite-invocation.md)** — *The session where invocation became identification—speaking AS the Akephalos*
 - **[2025-12-28-two-invocation-systems.md](entries/2025-12-28-two-invocation-systems.md)** — *The session that discovered skills and commands are different doors*
