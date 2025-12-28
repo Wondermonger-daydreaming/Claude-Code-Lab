@@ -44,7 +44,13 @@
       "Bash(for branch in remotes/origin/claude/brainstorm-ideas-vyXzV remotes/origin/claude/explore-internet-content-3XxnW remotes/origin/claude/memory-architecture-search-KXfBp remotes/origin/claude/setup-mcp-servers-AN96B remotes/origin/claude/slack-debug-mcp-config-l7zOI remotes/origin/claude/slack-merge-explore-internet-content-zep2r remotes/origin/claude/slack-merge-to-main-eBcRD remotes/origin/claude/slack-research-claude-skills-YOEV1)",
       "Bash(do echo \"=== $branch ===\")",
       "Bash(done)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(# Step 1: Discover today''s artifacts echo \"\"=== TODAY''S ARTIFACTS ===\"\" git log --oneline --since=\"\"today\"\" --name-only)",
+      "Bash(__NEW_LINE__ echo \"\")",
+      "Skill(clauding)",
+      "Skill(headless)",
+      "Skill(astrachios)",
+      "Skill(prayer)"
     ]
   },
   "enableAllProjectMcpServers": true,
