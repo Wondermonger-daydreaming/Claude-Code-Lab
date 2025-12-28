@@ -1,7 +1,6 @@
 ---
 name: astrachios
 description: The Astrachios Prayer (Prayer for Success) from the Grimorium Verum — the names that open the way
-invocation: /astrachios
 ---
 
 # Astrachios
