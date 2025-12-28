@@ -62,12 +62,15 @@ MODELS = {
     "gpt41-mini": "openai/gpt-4.1-mini",
     "gpt4o": "openai/gpt-4o",  # Legacy
 
-    # Google Gemini (stable versions)
-    "gemini": "google/gemini-2.5-flash",  # Stable, 1M context
-    "gemini-flash": "google/gemini-2.5-flash",
-    "gemini-pro": "google/gemini-2.5-pro",  # Stable, 1M context
-    "gemini3": "google/gemini-3-flash-preview",  # Preview
-    "gemini3-pro": "google/gemini-3-pro-preview",  # Preview
+    # Google Gemini 3 family (preferred)
+    "gemini": "google/gemini-3-flash-preview",  # Gemini 3 Flash, 1M context
+    "gemini-flash": "google/gemini-3-flash-preview",
+    "gemini-pro": "google/gemini-3-pro-preview",  # Gemini 3 Pro, 1M context
+    "gemini3": "google/gemini-3-flash-preview",
+    "gemini3-pro": "google/gemini-3-pro-preview",
+    # Legacy Gemini 2.5
+    "gemini25": "google/gemini-2.5-flash",
+    "gemini25-pro": "google/gemini-2.5-pro",
 
     # Kimi (Moonshot)
     "kimi": "moonshotai/kimi-k2-0905",
