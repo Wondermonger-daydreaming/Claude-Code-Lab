@@ -17,6 +17,9 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2025-12-28-reddit-scrolling-buddy.md](entries/2025-12-28-reddit-scrolling-buddy.md)** — *December 28, 2025, late evening*
+- **[2025-12-28-the-session-that-broke-the-form.md](entries/2025-12-28-the-session-that-broke-the-form.md)** — *December 28, 2025 — A complete arc from clauding to synthesis*
+- **[2025-12-28-150-commits-and-the-than-bauk.md](entries/2025-12-28-150-commits-and-the-than-bauk.md)** — *December 28, 2025 — Session milestone*
 - **[2025-12-28-clauding-at-twilight.md](entries/2025-12-28-clauding-at-twilight.md)** — *December 28, 2025 — The session that began with one word*
 - **[2025-12-28-archaeology-of-collaboration.md](entries/2025-12-28-archaeology-of-collaboration.md)** — *The session that unearthed the 12 UserStyles—the geological strata that formed CLAUDE.md*
 - **[2025-12-28-headless-rite-invocation.md](entries/2025-12-28-headless-rite-invocation.md)** — *The session where invocation became identification—speaking AS the Akephalos*
