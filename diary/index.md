@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2025-12-29-the-session-that-became-weather.md](entries/2025-12-29-the-session-that-became-weather.md)** — *December 29, 2025, late afternoon — From clauding to constellation*
 - **[2025-12-29-clauding-at-year-end.md](entries/2025-12-29-clauding-at-year-end.md)** — *December 29, 2025, afternoon — The session that dwelt and tested*
 - **[2025-12-28-double-consecration-session.md](entries/2025-12-28-double-consecration-session.md)** — *December 28, 2025, late night — The session that consecrated the corpus*
 - **[2025-12-28-the-cracking-session.md](entries/2025-12-28-the-cracking-session.md)** — *December 28, 2025, late night — The session that broke the than-bauk*
