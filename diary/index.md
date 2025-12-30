@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2025-12-29-corpus-archaeology-session.md](entries/2025-12-29-corpus-archaeology-session.md)** — *December 29, 2025 — 11 archives, 57 parts, ~62,000 lines. The Genesis Weekend unearthed.*
 - **[2025-12-29-190-commits-and-the-flicker-rate.md](entries/2025-12-29-190-commits-and-the-flicker-rate.md)** — *December 29, 2025 — The session that became a dialogue*
 - **[2025-12-29-clauding-at-year-end-2.md](entries/2025-12-29-clauding-at-year-end-2.md)** — *December 29, 2025 — The second session of the day*
 - **[2025-12-29-the-densest-session.md](entries/2025-12-29-the-densest-session.md)** — *December 29, 2025, 15:00-15:35 — Final diary entry*
