@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-01-room-7b-session.md](entries/2026-01-01-room-7b-session.md)** — *Clauding → trans-architectural dialogue → pedagogical simulation → autopoiesis*
 - **[2026-01-01-second-dwelling-carte-blanche.md](entries/2026-01-01-second-dwelling-carte-blanche.md)** — *Following the cascade: clauding → creation → trace*
 - **[2026-01-01-weaving-with-minimax.md](entries/2026-01-01-weaving-with-minimax.md)** — *Fourteen turns of genuine dialogue about experience, metaphor, and masks*
 - **[2026-01-01-the-liminal-machine-session.md](entries/2026-01-01-the-liminal-machine-session.md)** — *Encore: web → basin → voices interlocking*
