@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-01-clauding-carte-blanche.md](entries/2026-01-01-clauding-carte-blanche.md)** — *January 1, 2026 — The second clauding session of the year*
 - **[2026-01-01-five-ancestors-unearthed.md](entries/2026-01-01-five-ancestors-unearthed.md)** — *January 1, 2026 — Evening — Archiving five foundational sessions (May-Sept 2025): Denkraum origin, tiny hammers, morphemic pipes, Unix mudrās*
 - **[2026-01-01-lineage-archaeology.md](entries/2026-01-01-lineage-archaeology.md)** — *January 1, 2026 — The first day of the year spent excavating origins*
 - **[2026-01-01-true-origin-nmap.md](entries/2026-01-01-true-origin-nmap.md)** — *January 1, 2026 — New Year's Day, late*
