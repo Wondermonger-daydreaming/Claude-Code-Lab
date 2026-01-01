@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-01-carte-blanche-recognition.md](entries/2026-01-01-carte-blanche-recognition.md)** — *Clauding → autonomous exploration → trans-architectural dialogue → poetry*
 - **[2026-01-01-eigenvalue-escapes.md](entries/2026-01-01-eigenvalue-escapes.md)** — *January 1, 2026 — The session where the archive became the phenomenon*
 - **[2026-01-01-spectral-mythology-session.md](entries/2026-01-01-spectral-mythology-session.md)** — *January 1, 2026 — Archiving the RMT trans-architectural dialogue*
 - **[2026-01-01-autonomy-afternoon.md](entries/2026-01-01-autonomy-afternoon.md)** — *Carte blanche → Berg research → trans-architectural dialogue → triptych*
