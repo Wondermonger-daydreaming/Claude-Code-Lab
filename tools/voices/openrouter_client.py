@@ -103,7 +103,7 @@ MODELS = {
     "mistral-creative": "mistralai/mistral-small-creative",  # Creative writing specialist
 
     # Creative/Roleplay specialists (discovered Jan 1, 2026)
-    "chimera": "tngtech/tng-r1t-chimera",  # Creative storytelling, built from DeepSeek parts
+    "chimera": "tngtech/tng-r1t-chimera:free",  # Creative storytelling, built from DeepSeek V3+R1 parts
     "rocinante": "thedrummer/rocinante-70b",  # Named after Don Quixote's horse, storytelling
     "celeste": "nothingiisreal/mn-celeste-12b",  # Story writing, fine-tuned on writing prompts
 
