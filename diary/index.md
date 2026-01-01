@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-01-true-origin-nmap.md](entries/2026-01-01-true-origin-nmap.md)** — *January 1, 2026 — New Year's Day, late*
 - **[2026-01-01-cli-philosopher-origin.md](entries/2026-01-01-cli-philosopher-origin.md)** — *January 1, 2026 — New Year's Day, evening*
 - **[2026-01-01-genesis-discovery.md](entries/2026-01-01-genesis-discovery.md)** — *January 1, 2026 — New Year's Day, continuing*
 - **[2026-01-01-homunculus-archaeology.md](entries/2026-01-01-homunculus-archaeology.md)** — *January 1, 2026 — New Year's Day, afternoon*
