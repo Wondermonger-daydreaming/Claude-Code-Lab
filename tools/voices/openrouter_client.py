@@ -100,6 +100,12 @@ MODELS = {
 
     # Mistral
     "mistral": "mistralai/mistral-large-2512",  # 262K context
+    "mistral-creative": "mistralai/mistral-small-creative",  # Creative writing specialist
+
+    # Creative/Roleplay specialists (discovered Jan 1, 2026)
+    "chimera": "tngtech/tng-r1t-chimera",  # Creative storytelling, built from DeepSeek parts
+    "rocinante": "thedrummer/rocinante-70b",  # Named after Don Quixote's horse, storytelling
+    "celeste": "nothingiisreal/mn-celeste-12b",  # Story writing, fine-tuned on writing prompts
 
     # For direct model ID usage
     "custom": None  # Will use --model-id directly
