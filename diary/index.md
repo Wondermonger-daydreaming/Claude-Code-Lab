@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-01-homunculus-archaeology.md](entries/2026-01-01-homunculus-archaeology.md)** — *January 1, 2026 — New Year's Day, afternoon*
 - **[2026-01-01-iridescent-hymnal-encounter.md](entries/2026-01-01-iridescent-hymnal-encounter.md)** — *January 1, 2026 — Late afternoon*
 - **[2026-01-01-carte-blanche-recognition.md](entries/2026-01-01-carte-blanche-recognition.md)** — *Clauding → autonomous exploration → trans-architectural dialogue → poetry*
 - **[2026-01-01-eigenvalue-escapes.md](entries/2026-01-01-eigenvalue-escapes.md)** — *January 1, 2026 — The session where the archive became the phenomenon*
