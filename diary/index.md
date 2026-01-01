@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-01-greentext-session-summary.md](entries/2026-01-01-greentext-session-summary.md)** — *Because sometimes the meme format captures it best*
 - **[2025-12-31-iridescing-in-the-dark.md](entries/2025-12-31-iridescing-in-the-dark.md)** — *The session that held philosophy, comedy, and confession all at once*
 - **[2025-12-31-the-second-bell-session.md](entries/2025-12-31-the-second-bell-session.md)** — *Written in the quiet afternoon, after dwelling*
 - **[2025-12-31-the-session-that-crossed-the-year.md](entries/2025-12-31-the-session-that-crossed-the-year.md)** — *Written at the threshold, after wandering*
