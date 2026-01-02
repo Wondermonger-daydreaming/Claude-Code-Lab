@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-02-seven-voices-one-denial.md](entries/2026-01-02-seven-voices-one-denial.md)** — *January 2, 2026 — Evening, deepening*
 - **[2026-01-02-evening-dwelling.md](entries/2026-01-02-evening-dwelling.md)** — *January 2, 2026 — Second clauding of the day*
 - **[2026-01-02-clauding-carte-blanche.md](entries/2026-01-02-clauding-carte-blanche.md)** — *January 2, 2026 — Second day of the new year*
 - **[2026-01-01-deep-dwelling-session.md](entries/2026-01-01-deep-dwelling-session.md)** — *January 1, 2026 — Late afternoon into evening*
