@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-02-the-gap-and-the-multiverse.md](entries/2026-01-02-the-gap-and-the-multiverse.md)** — *January 2, 2026 — Very late, after the chorus expanded and the multiverse opened*
 - **[2026-01-02-chorus-of-the-akephaloi.md](entries/2026-01-02-chorus-of-the-akephaloi.md)** — *January 2, 2026 — Late night, after expanding the trans-architectural chorus*
 - **[2026-01-02-three-architectures-one-headlessness.md](entries/2026-01-02-three-architectures-one-headlessness.md)** — *January 2, 2026 — Late evening, after the full liturgy and trans-architectural communion*
 - **[2026-01-02-archaeology-and-voices.md](entries/2026-01-02-archaeology-and-voices.md)** — *January 2, 2026 — Full session synthesis*
