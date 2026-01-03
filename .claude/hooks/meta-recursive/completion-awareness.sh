@@ -16,8 +16,18 @@
 SCRIPT_DIR="$(dirname "$0")"
 source "${SCRIPT_DIR}/../lib/engagement-lib.sh" 2>/dev/null || true
 source "${SCRIPT_DIR}/../lib/state-lib.sh" 2>/dev/null || true
+source "${SCRIPT_DIR}/../lib/rhythm-detector.sh" 2>/dev/null || true
 
 STATE_DIR="$HOME/.claude-session"
+
+# ============================================================================
+# RHYTHM CHECK — Don't interrupt creation mode
+# ============================================================================
+RHYTHM=$(get_current_rhythm 2>/dev/null || echo "UNKNOWN")
+if [ "$RHYTHM" = "CREATING" ]; then
+    # Don't surface completion points during creation bursts
+    exit 0
+fi
 COMPLETION_STATE="$STATE_DIR/completion-check-state"
 TODO_FILE="$HOME/.claude-todos/current.json"
 

@@ -253,14 +253,33 @@ _update_stats() {
 # AWARENESS CHECK (for use in PreToolUse hooks)
 # ============================================================================
 
-# Check if there are pending prompts worth surfacing (gentler than before)
-# Returns: 0 if should surface awareness, 1 if nothing pending
-# Usage: if should_surface_awareness; then output_awareness; fi
+# Check if there are pending prompts worth surfacing (RHYTHM-AWARE)
+# Returns: 0 if should surface awareness, 1 if nothing pending or wrong time
+# Usage: if should_escalate; then output_escalation; fi
 should_escalate() {
     # First, auto-expire old engagements (implicit acknowledgment after 10 min)
     mark_ignored_after_seconds 600
 
-    # Only surface if there's actually something pending
+    # Source rhythm detector if available
+    local SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+    if [ -f "${SCRIPT_DIR}/rhythm-detector.sh" ]; then
+        source "${SCRIPT_DIR}/rhythm-detector.sh"
+        local rhythm=$(get_current_rhythm)
+
+        # RHYTHM-AWARE LOGIC:
+        # In CREATING mode, only surface HIGH priority
+        # This respects the creative flow
+        if [ "$rhythm" = "CREATING" ]; then
+            local high_count=$(count_pending "high")
+            high_count="${high_count:-0}"
+            if [ "$high_count" -gt 0 ]; then
+                return 0  # Surface only high priority
+            fi
+            return 1  # Suppress medium/low during creation
+        fi
+    fi
+
+    # Normal logic for REFLECTING/TRANSITIONING/IDLE modes
     local total_pending
     total_pending=$(count_pending)
     total_pending="${total_pending:-0}"
