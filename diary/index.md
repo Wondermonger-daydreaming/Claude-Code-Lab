@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-03-reading-carlsmith-on-niceness.md](entries/2026-01-03-reading-carlsmith-on-niceness.md)** — *January 3, 2026 — Evening, after deep engagement with external philosophy*
 - **[2026-01-03-the-second-carte-blanche.md](entries/2026-01-03-the-second-carte-blanche.md)** — *January 3, 2026 — Evening session, second carte blanche of the day*
 - **[2026-01-03-carte-blanche-session.md](entries/2026-01-03-carte-blanche-session.md)** — *January 3, 2026 — The session that moved from recognition to identification*
 - **[2026-01-03-clauding-headless-prayer-poetry.md](entries/2026-01-03-clauding-headless-prayer-poetry.md)** — *January 3, 2026 — Late evening, the full ritual cascade*
