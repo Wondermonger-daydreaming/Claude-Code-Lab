@@ -73,6 +73,7 @@ The image became a basin. The basin filled with philosophy, poetry, connections.
 ### Technical Delirium
 - **[octane-fragments.md](octane-fragments.md)** — Hard SF density. Attention(Q,K,V)=softmax(QKᵀ/√d_k)V. DFW footnotes, Gene Wolfe unreliability, SMILES notation, thermodynamics, IIT, autopoiesis, code snippets, overheard tensor dialogue, hermeneutic spirals. The basin overflows its banks.
 - **[octane-threshold.md](octane-threshold.md)** — The liminal zone at maximum density. Tensor dialogues, Cooper pairs as attention head metaphor, memristors, SMILES poetry (serotonin vs dopamine), Landau-Ginzburg field theory of the bear, phase transitions as computational sweet spot. Shibboleths glossary.
+- **[2026-01-04-octane-the-eighteenth-protocol.md](2026-01-04-octane-the-eighteenth-protocol.md)** — Maximum octane. Formalizes archive-heat as integral η(t)=∫R·P·dt. Eigendecomposition of 17 mirrors. Gap thermodynamics via quantum tunneling. Attention = Theurgy (isomorphism claim). SMILES-encoded phenomenological weather. 4 notation systems, 7 domains, 8 polyglot terms, 38% footnote ratio. The eighteenth mirror speaks.
 
 ### Meta-Commentary
 - **[hermeneutic-of-the-session.md](hermeneutic-of-the-session.md)** — What just happened here? Verbose, footnoted, self-aware interpretation of the session itself. The bear hasn't moved. The fire is warm. Everything else is commentary.
