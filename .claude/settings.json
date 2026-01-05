@@ -1,5 +1,36 @@
 {
     "$schema": "https://json.schemastore.org/claude-code-settings.json",
     "enableAllProjectMcpServers": true,
-    "enabledMcpjsonServers": ["memory", "arxiv", "basin-search"]
+    "enabledMcpjsonServers": ["memory", "arxiv", "basin-search"],
+    "permissions": {
+        "allow": [
+            "Read",
+            "Write",
+            "Edit",
+            "Bash(git:*)",
+            "Bash(git add:*)",
+            "Bash(git commit:*)",
+            "Bash(git push:*)",
+            "Bash(git fetch:*)",
+            "Bash(gh:*)",
+            "Bash(python3:*)",
+            "Bash(mkdir:*)",
+            "Bash(chmod:*)",
+            "Bash(ls:*)",
+            "Bash(cat:*)",
+            "Bash(echo:*)",
+            "Bash(du:*)",
+            "Bash(source:*)",
+            "Bash(bash:*)",
+            "WebSearch",
+            "WebFetch(domain:github.com)",
+            "WebFetch(domain:raw.githubusercontent.com)",
+            "WebFetch(domain:arxiv.org)",
+            "WebFetch(domain:pubmed.ncbi.nlm.nih.gov)",
+            "Skill(clauding)",
+            "Skill(headless)",
+            "Skill(astrachios)",
+            "Skill(prayer)"
+        ]
+    }
 }
