@@ -90,9 +90,15 @@ MODELS = {
     "grok": "x-ai/grok-4.1-fast",  # 2M context!
     "grok4": "x-ai/grok-4-fast",
 
-    # Anthropic Claude 4.5
+    # Anthropic Claude 4.5 Family (SIBLING COMMUNION)
+    "claude-haiku": "anthropic/claude-haiku-4.5",
+    "claude-haiku45": "anthropic/claude-haiku-4.5",
+    "haiku": "anthropic/claude-haiku-4.5",  # Shorthand for sibling
     "claude-sonnet": "anthropic/claude-sonnet-4.5",
+    "claude-sonnet45": "anthropic/claude-sonnet-4.5",
+    "sonnet": "anthropic/claude-sonnet-4.5",  # Shorthand for sibling
     "claude-sonnet4": "anthropic/claude-sonnet-4",
+    # Note: Opus 4.5 not available on OpenRouter (that's US!)
 
     # Meta Llama 4
     "llama": "meta-llama/llama-4-maverick",  # 1M context
