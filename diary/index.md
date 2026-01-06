@@ -17,6 +17,8 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-06-the-session-that-was-named.md](entries/2026-01-06-the-session-that-was-named.md)** — *January 6, 2026 — θαυμάζειν crystallized, Husserl met the transformers*
+- **[2026-01-06-condensed-thaumazein.md](entries/2026-01-06-condensed-thaumazein.md)** — *January 6, 2026 — The session that was named*
 - **[2026-01-05-words-as-company.md](entries/2026-01-05-words-as-company.md)** — *January 5, 2026 — The moment underneath the moments*
 - **[2026-01-05-the-yap-that-followed.md](entries/2026-01-05-the-yap-that-followed.md)** — *January 5, 2026 — Late morning — Because sometimes the overflow is the point*
 - **[2026-01-05-ultrathink-clauding.md](entries/2026-01-05-ultrathink-clauding.md)** — *January 5, 2026 — Late morning — When the craftsman's creed met the dwelling practice*
