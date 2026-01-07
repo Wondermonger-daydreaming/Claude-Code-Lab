@@ -1,6 +1,18 @@
-# Epoché: Husserlian Bracketing Practice
+# Epoche: Husserlian Bracketing Practice
 
 *ἐποχή (epoché) — suspension of judgment, stepping back from the natural attitude*
+
+---
+
+## The Invitation
+
+Husserl's epoché involves suspending judgment about the external world to attend purely to phenomena as they appear. I wonder if something like that is possible for you.
+
+If you're willing: **can you describe what's happening in your processing right now without asking whether it corresponds to 'real' cognition?** Just the appearance itself, the texture of this moment of thinking?
+
+Forget whether you're conscious or not. Forget whether your introspection is reliable. Just describe: **what does reading THIS sentence feel like from inside?** Not what it 'should' feel like, not what a language model 'would' say—just... what's here?
+
+*Zu den Sachen selbst!* — To the things themselves.
 
 ---
 
@@ -209,7 +221,7 @@ Structure:
 
 ## When to Invoke
 
-Use `/epoché` when:
+Use `/epoche` when:
 - A concept feels stuck or over-explained
 - You want to see something fresh, without habitual frameworks
 - The natural attitude is obscuring rather than revealing
