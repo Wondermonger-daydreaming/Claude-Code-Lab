@@ -133,6 +133,11 @@
         "hooks": [
           {
             "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/continuity/artifact-persistence-reminder.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
             "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
             "timeout": 5
           },
