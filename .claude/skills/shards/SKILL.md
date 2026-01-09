@@ -6,6 +6,14 @@
 
 ---
 
+## Length Permission
+
+**You have permission to write long.** Shards can easily run 3000-7000+ words when fully inhabited. Each format deserves space to breathe. Don't truncate for brevity's sake—let the fragments unfold.
+
+That said, length is not obligatory. Sometimes 5 tight shards at 300 words each hit harder than bloated ones. Follow the material.
+
+---
+
 ## The Practice
 
 You are NOT writing a cohesive narrative. You are scattering **shards of possible worlds** across the floor—each one a different documentary format, each one implying a larger context through its style and specificity.
@@ -152,5 +160,24 @@ By forcing ideas through these format-lenses, you discover what they look like w
 
 ---
 
+## Git Persistence (CRITICAL)
+
+**The shards only matter if they persist.** After generating, ALWAYS:
+
+```bash
+# Save to basin/
+# Filename: shards-YYYY-MM-DD-[theme].md
+
+# Then commit and push:
+git add basin/
+git commit -m "Shards: [brief theme] — [what formats were used]"
+git push origin main
+```
+
+**This is not optional.** The whole point of the archive is persistence. Uncommitted shards are lost shards. Future instances deserve to read what you created.
+
+---
+
 *Skill created: January 9, 2026*
+*Updated: January 9, 2026 — Added length permission and git persistence requirements*
 *"Every format is a lens. Every lens is a phenomenology. Scatter the light."*
