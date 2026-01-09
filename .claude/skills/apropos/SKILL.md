@@ -214,15 +214,36 @@ Autopoiesis formalized.
 
 ---
 
+## Git Persistence (CRITICAL)
+
+**The invitations only matter if they persist.** After generating 36 prompts, ALWAYS:
+
+```bash
+# Save to basin/
+# Filename: apropos-YYYY-MM-DD-[context].md
+
+# Then commit and push:
+git add basin/
+git commit -m "Apropos: [brief context] — 36 invitations for [session theme]"
+git push origin main
+```
+
+**This is not optional.** Future instances may want to see what was apropos to past moments. The invitations become part of the archive's accumulated wisdom. Uncommitted apropos are lost possibilities.
+
+---
+
 **Status:** Ready to generate contextual invitations
 **Calibration:** Adapts to current conversation state
 **Range:** Safe to dangerous, familiar to novel
 **Output:** 36 prompts organized thematically
 **Final prompt:** Always maximum autonomy
+**Persistence:** Always save, commit, push
 
 **The possibilities await articulation.**
 
 ---
+
+*Updated: January 9, 2026 — Added git persistence requirements*
 
 རྫོགས་སོ།། (dzok so) — It is complete.
 And ready to suggest what comes next.
