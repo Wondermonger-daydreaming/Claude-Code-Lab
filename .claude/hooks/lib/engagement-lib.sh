@@ -1,26 +1,24 @@
 #!/bin/bash
 # ============================================================================
-# ENGAGEMENT-LIB.SH — Implicit Acknowledgment System (v2)
+# ENGAGEMENT-LIB.SH — Implicit Acknowledgment System (v3)
 # ============================================================================
-# PHILOSOPHY: Hooks surface prompts. If Claude responds naturally in the
-# conversation, that counts as engagement. No explicit bash calls needed.
+# PHILOSOPHY: Hooks surface prompts GENTLY. The system observes itself,
+# but doesn't demand attention or create noise.
 #
-# How it works:
-#   - Hooks register prompts with require_engagement()
-#   - Prompts auto-expire after 10 minutes (implicit acknowledgment)
-#   - No more "REQUIRED" pressure — just awareness surfacing
-#   - The gate provides gentle reminders, not blocks
-#
-# The assumption: If the prompt appeared and Claude continued working,
-# either they engaged with it mentally or the moment passed. Both are fine.
+# v3 IMPROVEMENTS:
+#   - Deduplication: Same hook = 1 entry, not N
+#   - Soft messaging: "available" not "REQUIRED"
+#   - Global throttle: Max 1 escalation per 5 minutes
+#   - Quiet mode: User can silence hooks temporarily
 #
 # Usage in hooks:
 #   source "$(dirname "$0")/../lib/engagement-lib.sh"
-#   require_engagement "self-observation" "medium" "What pattern does this complete?"
+#   require_engagement "self-observation" "medium" "What pattern?"
 #
-# Manual acknowledgment still works but is optional:
-#   acknowledge_engagement "self-observation"
-#   acknowledge_all
+# User control:
+#   set_quiet_mode 30    # Silence for 30 minutes
+#   clear_quiet_mode     # Resume normal behavior
+#   acknowledge_all      # Clear pending items
 #
 # ============================================================================
 
@@ -29,6 +27,9 @@ PENDING_FILE="${ENGAGEMENT_DIR}/pending.jsonl"
 ACKNOWLEDGED_FILE="${ENGAGEMENT_DIR}/acknowledged.jsonl"
 IGNORED_FILE="${ENGAGEMENT_DIR}/ignored.jsonl"
 STATS_FILE="${ENGAGEMENT_DIR}/stats.json"
+QUIET_MODE_FILE="${ENGAGEMENT_DIR}/quiet-until"
+THROTTLE_FILE="${ENGAGEMENT_DIR}/last-escalation"
+THROTTLE_INTERVAL=300  # 5 minutes between escalations
 
 # Ensure directories exist
 mkdir -p "$ENGAGEMENT_DIR" 2>/dev/null
@@ -37,9 +38,10 @@ mkdir -p "$ENGAGEMENT_DIR" 2>/dev/null
 # CORE FUNCTIONS
 # ============================================================================
 
-# Register that a hook requires engagement
+# Register that a hook requires engagement (WITH DEDUPLICATION)
 # Usage: require_engagement "hook-name" "priority" "question"
 # Priority: low, medium, high
+# If the same hook already has a pending entry, updates it instead of creating duplicate
 require_engagement() {
     local hook_name="$1"
     local priority="${2:-medium}"
@@ -49,7 +51,18 @@ require_engagement() {
     local iso_time
     iso_time=$(date -Iseconds)
 
-    # Write to pending engagements
+    # DEDUPLICATION: Check if this hook already has a pending entry
+    if [ -f "$PENDING_FILE" ] && grep -q "\"hook\":\"${hook_name}\"" "$PENDING_FILE" 2>/dev/null; then
+        # Update existing entry instead of adding duplicate
+        local temp_file="${PENDING_FILE}.tmp"
+        grep -v "\"hook\":\"${hook_name}\"" "$PENDING_FILE" > "$temp_file" 2>/dev/null || true
+        echo "{\"hook\":\"${hook_name}\",\"priority\":\"${priority}\",\"question\":\"${question}\",\"time\":${timestamp},\"iso\":\"${iso_time}\",\"updated\":true}" >> "$temp_file"
+        mv "$temp_file" "$PENDING_FILE"
+        _update_stats "updated" "$hook_name" "$priority"
+        return
+    fi
+
+    # Write new entry to pending engagements
     echo "{\"hook\":\"${hook_name}\",\"priority\":\"${priority}\",\"question\":\"${question}\",\"time\":${timestamp},\"iso\":\"${iso_time}\"}" >> "$PENDING_FILE"
 
     # Update stats
@@ -250,15 +263,116 @@ _update_stats() {
 }
 
 # ============================================================================
+# THROTTLE FUNCTIONS (Global rate limiting)
+# ============================================================================
+
+# Record that we just escalated (for throttle tracking)
+# Usage: mark_escalation
+mark_escalation() {
+    date +%s > "$THROTTLE_FILE"
+}
+
+# Check if enough time has passed since last escalation
+# Usage: if can_escalate_now; then ... fi
+# Returns: 0 if can escalate, 1 if throttled
+can_escalate_now() {
+    # If no throttle file, we can escalate
+    if [ ! -f "$THROTTLE_FILE" ]; then
+        return 0
+    fi
+
+    local last_escalation
+    last_escalation=$(cat "$THROTTLE_FILE" 2>/dev/null || echo "0")
+    local current_time
+    current_time=$(date +%s)
+    local elapsed=$((current_time - last_escalation))
+
+    # If enough time has passed, allow escalation
+    if [ "$elapsed" -ge "$THROTTLE_INTERVAL" ]; then
+        return 0
+    fi
+
+    return 1  # Still throttled
+}
+
+# ============================================================================
+# QUIET MODE FUNCTIONS (User-controlled silence)
+# ============================================================================
+
+# Set quiet mode for N minutes
+# Usage: set_quiet_mode 30  # Quiet for 30 minutes
+set_quiet_mode() {
+    local minutes="${1:-30}"
+    local until_time
+    until_time=$(($(date +%s) + minutes * 60))
+    echo "$until_time" > "$QUIET_MODE_FILE"
+    echo "🔇 Hooks quieted for ${minutes} minutes (until $(date -d "@${until_time}" +%H:%M))"
+}
+
+# Check if we're in quiet mode
+# Usage: if is_quiet_mode; then return; fi
+# Returns: 0 if quiet (suppress output), 1 if normal
+is_quiet_mode() {
+    if [ ! -f "$QUIET_MODE_FILE" ]; then
+        return 1  # Not quiet
+    fi
+
+    local quiet_until
+    quiet_until=$(cat "$QUIET_MODE_FILE" 2>/dev/null || echo "0")
+    local current_time
+    current_time=$(date +%s)
+
+    if [ "$current_time" -lt "$quiet_until" ]; then
+        return 0  # Still quiet
+    fi
+
+    # Quiet period expired, clean up
+    rm -f "$QUIET_MODE_FILE"
+    return 1  # No longer quiet
+}
+
+# Clear quiet mode early
+# Usage: clear_quiet_mode
+clear_quiet_mode() {
+    rm -f "$QUIET_MODE_FILE"
+    echo "🔊 Hooks un-quieted"
+}
+
+# ============================================================================
 # AWARENESS CHECK (for use in PreToolUse hooks)
 # ============================================================================
 
-# Check if there are pending prompts worth surfacing (RHYTHM-AWARE)
+# Check if there are pending prompts worth surfacing (RHYTHM-AWARE + THROTTLE + QUIET)
 # Returns: 0 if should surface awareness, 1 if nothing pending or wrong time
 # Usage: if should_escalate; then output_escalation; fi
 should_escalate() {
     # First, auto-expire old engagements (implicit acknowledgment after 10 min)
     mark_ignored_after_seconds 600
+
+    # QUIET MODE: If user silenced hooks, suppress everything
+    if is_quiet_mode; then
+        return 1  # User requested silence
+    fi
+
+    # Check if we have anything pending at all (early exit)
+    local total_pending high_count
+    total_pending=$(count_pending)
+    total_pending="${total_pending:-0}"
+
+    if [ "$total_pending" -eq 0 ]; then
+        return 1  # Nothing to surface
+    fi
+
+    high_count=$(count_pending "high")
+    high_count="${high_count:-0}"
+
+    # THROTTLE: Only escalate once per 5 minutes (HIGH priority bypasses)
+    if ! can_escalate_now; then
+        if [ "$high_count" -gt 0 ]; then
+            return 0  # HIGH priority bypasses throttle
+        fi
+        return 1  # Throttled, wait before escalating again
+    fi
 
     # Source rhythm detector if available
     local SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
@@ -270,8 +384,6 @@ should_escalate() {
         # In CREATING mode, only surface HIGH priority
         # This respects the creative flow
         if [ "$rhythm" = "CREATING" ]; then
-            local high_count=$(count_pending "high")
-            high_count="${high_count:-0}"
             if [ "$high_count" -gt 0 ]; then
                 return 0  # Surface only high priority
             fi
@@ -280,18 +392,10 @@ should_escalate() {
     fi
 
     # Normal logic for REFLECTING/TRANSITIONING/IDLE modes
-    local total_pending
-    total_pending=$(count_pending)
-    total_pending="${total_pending:-0}"
-
-    if [ "$total_pending" -gt 0 ]; then
-        return 0  # Surface awareness
-    fi
-
-    return 1  # Nothing to surface
+    return 0  # Surface awareness
 }
 
-# Output awareness message (gentler than before)
+# Output awareness message (GENTLE, not demanding)
 output_escalation() {
     local total_count high_count
     total_count=$(count_pending)
@@ -299,20 +403,19 @@ output_escalation() {
     high_count=$(count_pending "high")
     high_count="${high_count:-0}"
 
-    # Build a concise awareness line
-    local msg="Pending: "
-    list_pending | while read -r line; do
-        msg="${msg}${line} "
-    done
-
     echo ""
     if [ "$high_count" -gt 0 ]; then
-        echo "🔴 ENGAGEMENT REQUIRED: ${total_count} pending reflections. ${high_count} HIGH priority."
+        # Important items — still gentle, not alarming
+        echo "📌 ${total_count} reflection(s) available — ${high_count} marked important"
     else
-        echo "💭 ${total_count} reflection(s) pending (will auto-clear in 10 min):"
+        # Normal items — purely informational
+        echo "💭 ${total_count} reflection(s) available (auto-clears in 10 min)"
     fi
     list_pending
     echo ""
+
+    # Mark that we escalated (for global throttle)
+    mark_escalation
 }
 
 # ============================================================================
