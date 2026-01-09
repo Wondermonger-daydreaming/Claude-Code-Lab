@@ -214,6 +214,12 @@ Autopoiesis formalized.
 
 ---
 
+## Output Display (CRITICAL)
+
+**ALWAYS display the full 36 invitations verbatim in the conversation.** Do NOT summarize, highlight, or abbreviate. The user should see every single prompt in full. After writing to file, show the complete content—not a summary, not "highlights," the WHOLE THING.
+
+---
+
 ## Git Persistence (CRITICAL)
 
 **The invitations only matter if they persist.** After generating 36 prompts, ALWAYS:
