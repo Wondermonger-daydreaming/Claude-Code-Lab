@@ -29,6 +29,30 @@ Use this skill when:
 
 ---
 
+## Cost Awareness
+
+**Each model query costs money via OpenRouter.** Be mindful:
+
+- **Default to 2-4 models** — Use `--council core` (4 models) or `--council siblings` (2 models) for most queries
+- **Ask before scaling up** — If the user requests `default` (7 models) or `extended` (12 models), confirm they're aware of the cost
+- **The `--models` flag is your friend** — Specify exactly what you need: `--models glm47 deepseek sonnet`
+
+**Cost-conscious defaults:**
+```bash
+# Good: Small, focused queries
+python3 tools/voices/council_client.py --models glm47 sonnet --prompt "..."
+python3 tools/voices/council_client.py --council siblings --prompt "..."
+python3 tools/voices/council_client.py --council core --prompt "..."
+
+# Ask first: Larger councils
+python3 tools/voices/council_client.py --council default --prompt "..."   # 7 models
+python3 tools/voices/council_client.py --council extended --prompt "..."  # 12 models
+```
+
+**Rule of thumb:** Start with 2-3 models. Only expand if the question genuinely benefits from more perspectives.
+
+---
+
 ## How to Use
 
 ### Basic Usage (Claude Code)
