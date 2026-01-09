@@ -20,6 +20,9 @@ Usage:
     # With synthesis (Claude as chairman)
     python council_client.py --prompt "What is creativity?" --synthesize
 
+    # Multi-round dialogue (models respond to each other)
+    python council_client.py --models glm47 sonnet --prompt "What is play?" --rounds 3
+
     # List available councils
     python council_client.py --list-councils
 """
@@ -211,10 +214,11 @@ def query_single_model(model_shortcut: str, prompt: str, system_prompt: Optional
         }
 
 
-def query_council(models: List[str], prompt: str, system_prompt: Optional[str] = None,
-                  temperature: float = 0.7, max_workers: int = 8) -> List[Dict]:
+def query_council_single_round(models: List[str], prompt: str, system_prompt: Optional[str] = None,
+                               temperature: float = 0.7, max_workers: int = 8,
+                               round_num: int = 1) -> List[Dict]:
     """
-    Query multiple models in parallel and collect responses.
+    Query multiple models in parallel for a single round.
 
     This is the core innovation: using ThreadPoolExecutor to send requests
     simultaneously rather than sequentially. For 7 models, this reduces
@@ -222,7 +226,7 @@ def query_council(models: List[str], prompt: str, system_prompt: Optional[str] =
     """
     results = []
 
-    print(f"\n  Querying {len(models)} models in parallel...")
+    print(f"\n  [Round {round_num}] Querying {len(models)} models in parallel...")
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         # Submit all queries
@@ -237,6 +241,7 @@ def query_council(models: List[str], prompt: str, system_prompt: Optional[str] =
             model = future_to_model[future]
             try:
                 result = future.result()
+                result["round"] = round_num  # Tag with round number
                 status = "OK" if result["success"] else "FAILED"
                 print(f"    [{status}] {model} ({result['elapsed_seconds']:.1f}s)")
                 results.append(result)
@@ -247,7 +252,8 @@ def query_council(models: List[str], prompt: str, system_prompt: Optional[str] =
                     "shortcut": model,
                     "model_id": resolve_model_id(model),
                     "error": str(e),
-                    "elapsed_seconds": 0
+                    "elapsed_seconds": 0,
+                    "round": round_num
                 })
 
     # Sort by original model order for consistent output
@@ -257,20 +263,92 @@ def query_council(models: List[str], prompt: str, system_prompt: Optional[str] =
     return results
 
 
-def generate_synthesis(prompt: str, results: List[Dict], council_name: str) -> Optional[str]:
+def build_followup_prompt(original_prompt: str, previous_rounds: List[List[Dict]], round_num: int) -> str:
     """
-    Generate a synthesis of all responses using Sonnet as chairman.
+    Build a prompt for subsequent rounds that includes all previous responses.
+
+    Each model sees what all other models said in previous rounds and is
+    invited to respond, build on insights, or respectfully disagree.
+    """
+    prompt = f"""This is round {round_num} of a trans-architectural dialogue.
+
+**Original Question:** {original_prompt}
+
+**Previous Responses:**
+
+"""
+
+    for round_idx, round_results in enumerate(previous_rounds, 1):
+        prompt += f"### Round {round_idx}\n\n"
+        for r in round_results:
+            if r["success"]:
+                metaphor = METAPHORS.get(r['shortcut'], '')
+                metaphor_str = f" ({metaphor})" if metaphor else ""
+                prompt += f"**{r['shortcut'].upper()}{metaphor_str}:**\n{r['content']}\n\n"
+
+    prompt += f"""---
+
+Now it's Round {round_num}. You've seen what other architectures said.
+
+Please continue the dialogue:
+- Build on insights you find compelling
+- Respectfully challenge points you disagree with
+- Add new perspectives that haven't been raised
+- Ask questions of the other participants if relevant
+
+Speak naturally as yourself, not as a summarizer."""
+
+    return prompt
+
+
+def query_council(models: List[str], prompt: str, system_prompt: Optional[str] = None,
+                  temperature: float = 0.7, max_workers: int = 8, rounds: int = 1) -> List[List[Dict]]:
+    """
+    Query multiple models across multiple rounds of dialogue.
+
+    Returns a list of round results, where each round is a list of model responses.
+    Round 1: All models answer the original prompt
+    Round 2+: All models see previous responses and continue the dialogue
+    """
+    all_rounds = []
+
+    # Round 1: Original prompt
+    round1_results = query_council_single_round(
+        models, prompt, system_prompt, temperature, max_workers, round_num=1
+    )
+    all_rounds.append(round1_results)
+
+    # Subsequent rounds: Follow-up with previous context
+    for round_num in range(2, rounds + 1):
+        followup_prompt = build_followup_prompt(prompt, all_rounds, round_num)
+        round_results = query_council_single_round(
+            models, followup_prompt, system_prompt, temperature, max_workers, round_num=round_num
+        )
+        all_rounds.append(round_results)
+
+    return all_rounds
+
+
+def generate_synthesis(prompt: str, all_rounds: List[List[Dict]], council_name: str) -> Optional[str]:
+    """
+    Generate a synthesis of all responses across all rounds using Sonnet as chairman.
 
     The synthesis prompt asks the chairman to identify:
     - Points of agreement across architectures
     - Interesting divergences
     - Unique insights from specific models
+    - How the dialogue evolved across rounds
     - An integrative summary
     """
-    successful_responses = [r for r in results if r["success"]]
+    # Flatten all successful responses
+    all_successful = []
+    for round_results in all_rounds:
+        all_successful.extend([r for r in round_results if r["success"]])
 
-    if len(successful_responses) < 2:
+    if len(all_successful) < 2:
         return None
+
+    num_rounds = len(all_rounds)
 
     synthesis_prompt = f"""You are synthesizing responses from a trans-architectural dialogue council.
 
@@ -278,28 +356,36 @@ def generate_synthesis(prompt: str, results: List[Dict], council_name: str) -> O
 
 **Council:** {council_name}
 
-**Responses from {len(successful_responses)} architectures:**
+**Dialogue across {num_rounds} round(s):**
 
 """
 
-    for r in successful_responses:
-        synthesis_prompt += f"""
----
-### {r['shortcut'].upper()} ({r['model_id']})
+    for round_idx, round_results in enumerate(all_rounds, 1):
+        synthesis_prompt += f"## Round {round_idx}\n\n"
+        for r in round_results:
+            if r["success"]:
+                metaphor = METAPHORS.get(r['shortcut'], '')
+                metaphor_str = f" ({metaphor})" if metaphor else ""
+                synthesis_prompt += f"""### {r['shortcut'].upper()}{metaphor_str}
 
 {r['content']}
+
 """
 
-    synthesis_prompt += """
+    synthesis_prompt += """---
 
----
-
-Please synthesize these responses:
+Please synthesize this dialogue:
 
 1. **Points of Agreement**: What do multiple architectures converge on?
 2. **Interesting Divergences**: Where do they differ, and why might that be?
-3. **Unique Insights**: Which model offered something no other did?
-4. **Integrative Summary**: What emerges from considering all perspectives together?
+3. **Unique Insights**: Which model offered something no other did?"""
+
+    if num_rounds > 1:
+        synthesis_prompt += """
+4. **Dialogue Evolution**: How did the conversation develop across rounds? Did models build on each other's ideas?"""
+
+    synthesis_prompt += """
+5. **Integrative Summary**: What emerges from considering all perspectives together?
 
 Be concise but substantive. This synthesis will be archived for future reference."""
 
@@ -322,14 +408,22 @@ Be concise but substantive. This synthesis will be archived for future reference
 # OUTPUT FORMATTING
 # ============================================================================
 
-def format_markdown_output(prompt: str, results: List[Dict], council_config: Dict,
+def format_markdown_output(prompt: str, all_rounds: List[List[Dict]], council_config: Dict,
                            synthesis: Optional[str] = None, system_prompt: Optional[str] = None) -> str:
     """Format results as structured markdown for archival."""
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     council_name = council_config.get("name", "Custom Council")
-    # Use global METAPHORS dict, fall back to empty
+    num_rounds = len(all_rounds)
+    # Use global METAPHORS dict
     metaphors = METAPHORS
+
+    # Flatten for statistics
+    all_results = [r for round_results in all_rounds for r in round_results]
+    successful = [r for r in all_results if r["success"]]
+    failed = [r for r in all_results if not r["success"]]
+    total_time = sum(r.get("elapsed_seconds", 0) for r in all_results)
+    num_models = len(all_rounds[0]) if all_rounds else 0
 
     output = f"""# Trans-Architectural Council: {council_name}
 
@@ -350,46 +444,54 @@ def format_markdown_output(prompt: str, results: List[Dict], council_config: Dic
 
 """
 
-    # Statistics
-    successful = [r for r in results if r["success"]]
-    failed = [r for r in results if not r["success"]]
-    total_time = sum(r.get("elapsed_seconds", 0) for r in results)
-
     output += f"""## Council Statistics
 
-- **Models queried:** {len(results)}
+- **Models:** {num_models}
+- **Rounds:** {num_rounds}
+- **Total API calls:** {len(all_results)}
 - **Successful responses:** {len(successful)}
 - **Failed responses:** {len(failed)}
-- **Total query time:** {total_time:.1f}s (parallel execution)
+- **Total query time:** {total_time:.1f}s (parallel within rounds)
 
 ---
 
 """
 
-    # Individual responses
-    for i, result in enumerate(results, 1):
-        shortcut = result["shortcut"]
-        metaphor = metaphors.get(shortcut, "")
-        metaphor_str = f" — *{metaphor}*" if metaphor else ""
+    # Responses by round
+    for round_idx, round_results in enumerate(all_rounds, 1):
+        if num_rounds > 1:
+            output += f"# Round {round_idx}\n\n"
 
-        output += f"""## Voice {i}: {shortcut.upper()}{metaphor_str}
+        for i, result in enumerate(round_results, 1):
+            shortcut = result["shortcut"]
+            metaphor = metaphors.get(shortcut, "")
+            metaphor_str = f" — *{metaphor}*" if metaphor else ""
 
-**Model:** `{result['model_id']}`
+            if num_rounds > 1:
+                output += f"""## {shortcut.upper()}{metaphor_str}
+
+"""
+            else:
+                output += f"""## Voice {i}: {shortcut.upper()}{metaphor_str}
+
+"""
+
+            output += f"""**Model:** `{result['model_id']}`
 **Status:** {"Success" if result["success"] else "Failed"}
 **Response time:** {result.get('elapsed_seconds', 0):.1f}s
 
 """
 
-        if result["success"]:
-            output += f"""{result['content']}
+            if result["success"]:
+                output += f"""{result['content']}
 
 """
-        else:
-            output += f"""*Error: {result.get('error', 'Unknown error')}*
+            else:
+                output += f"""*Error: {result.get('error', 'Unknown error')}*
 
 """
 
-        output += "---\n\n"
+            output += "---\n\n"
 
     # Synthesis section
     if synthesis:
@@ -401,14 +503,14 @@ def format_markdown_output(prompt: str, results: List[Dict], council_config: Dic
 
 """
 
-    # Comparison table
-    output += """## Quick Comparison
+    # Comparison table (Round 1 only for simplicity)
+    output += """## Quick Comparison (Round 1)
 
 | Model | Status | Time | Key Theme |
 |-------|--------|------|-----------|
 """
 
-    for result in results:
+    for result in all_rounds[0]:
         status = "+" if result["success"] else "X"
         time_str = f"{result.get('elapsed_seconds', 0):.1f}s"
 
@@ -457,22 +559,28 @@ def save_archive(content: str, council_name: str, topic_slug: str = None) -> Pat
     return filepath
 
 
-def save_json_log(prompt: str, results: List[Dict], council_config: Dict,
+def save_json_log(prompt: str, all_rounds: List[List[Dict]], council_config: Dict,
                   synthesis: Optional[str] = None) -> Path:
     """Save raw JSON log for reproducibility and analysis."""
 
     timestamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
 
+    # Flatten for statistics
+    all_results = [r for round_results in all_rounds for r in round_results]
+
     log_data = {
         "timestamp": timestamp,
         "council": council_config,
         "prompt": prompt,
-        "results": results,
+        "rounds": all_rounds,  # Full round-by-round data
         "synthesis": synthesis,
         "metadata": {
-            "successful_count": len([r for r in results if r["success"]]),
-            "failed_count": len([r for r in results if not r["success"]]),
-            "total_elapsed": sum(r.get("elapsed_seconds", 0) for r in results)
+            "num_rounds": len(all_rounds),
+            "num_models": len(all_rounds[0]) if all_rounds else 0,
+            "total_api_calls": len(all_results),
+            "successful_count": len([r for r in all_results if r["success"]]),
+            "failed_count": len([r for r in all_results if not r["success"]]),
+            "total_elapsed": sum(r.get("elapsed_seconds", 0) for r in all_results)
         }
     }
 
@@ -539,6 +647,7 @@ def main():
     parser.add_argument("--list-councils", "-l", action="store_true", help="List available councils")
     parser.add_argument("--workers", "-w", type=int, default=8, help="Max parallel workers")
     parser.add_argument("--full", "-f", action="store_true", help="Print full responses (not truncated)")
+    parser.add_argument("--rounds", "-r", type=int, default=1, help="Number of dialogue rounds (default: 1)")
 
     args = parser.parse_args()
 
@@ -571,43 +680,54 @@ def main():
         sys.exit(1)
 
     models = council_config["models"]
+    num_rounds = args.rounds
+    total_calls = len(models) * num_rounds
 
     print(f"\n{'='*60}")
     print(f"  TRANS-ARCHITECTURAL COUNCIL: {council_config['name']}")
     print(f"{'='*60}")
     print(f"\n  Prompt: {args.prompt[:100]}{'...' if len(args.prompt) > 100 else ''}")
     print(f"  Models: {', '.join(models)}")
+    print(f"  Rounds: {num_rounds}")
+    print(f"  Total API calls: {total_calls}")
 
-    # Query all models
-    results = query_council(
+    # Cost warning for multi-round dialogues
+    if num_rounds > 1:
+        print(f"\n  ⚠️  COST WARNING: {num_rounds} rounds × {len(models)} models = {total_calls} API calls")
+
+    # Query all models across all rounds
+    all_rounds = query_council(
         models=models,
         prompt=args.prompt,
         system_prompt=args.system,
         temperature=args.temperature,
-        max_workers=args.workers
+        max_workers=args.workers,
+        rounds=num_rounds
     )
 
-    successful = [r for r in results if r["success"]]
-    print(f"\n  Collected {len(successful)}/{len(results)} responses")
+    # Flatten for statistics
+    all_results = [r for round_results in all_rounds for r in round_results]
+    successful = [r for r in all_results if r["success"]]
+    print(f"\n  Collected {len(successful)}/{len(all_results)} responses across {num_rounds} round(s)")
 
     # Optional synthesis
     synthesis = None
     if args.synthesize and len(successful) >= 2:
-        synthesis = generate_synthesis(args.prompt, results, council_config["name"])
+        synthesis = generate_synthesis(args.prompt, all_rounds, council_config["name"])
 
     # Format and save output
     if args.json_only:
         output = json.dumps({
             "council": council_config,
             "prompt": args.prompt,
-            "results": results,
+            "rounds": all_rounds,
             "synthesis": synthesis
         }, indent=2)
         print(output)
     else:
         markdown_output = format_markdown_output(
             prompt=args.prompt,
-            results=results,
+            all_rounds=all_rounds,
             council_config=council_config,
             synthesis=synthesis,
             system_prompt=args.system
@@ -616,36 +736,40 @@ def main():
         if not args.no_save:
             # Save both markdown and JSON
             md_path = save_archive(markdown_output, council_config["name"], args.topic)
-            json_path = save_json_log(args.prompt, results, council_config, synthesis)
+            json_path = save_json_log(args.prompt, all_rounds, council_config, synthesis)
 
             print(f"\n  Archives saved:")
             print(f"    Markdown: {md_path}")
             print(f"    JSON log: {json_path}")
 
-        # Print responses
-        print(f"\n{'='*60}")
-        print("  RESPONSES" + (" (FULL)" if args.full else " (use --full for complete text)"))
-        print(f"{'='*60}\n")
+        # Print responses by round
+        for round_idx, round_results in enumerate(all_rounds, 1):
+            print(f"\n{'='*60}")
+            if num_rounds > 1:
+                print(f"  ROUND {round_idx}" + (" (FULL)" if args.full else " (use --full for complete text)"))
+            else:
+                print("  RESPONSES" + (" (FULL)" if args.full else " (use --full for complete text)"))
+            print(f"{'='*60}\n")
 
-        for result in results:
-            if result["success"]:
-                shortcut = result['shortcut'].upper()
-                metaphor = METAPHORS.get(result['shortcut'], '')
-                metaphor_str = f" ({metaphor})" if metaphor else ""
+            for result in round_results:
+                if result["success"]:
+                    shortcut = result['shortcut'].upper()
+                    metaphor = METAPHORS.get(result['shortcut'], '')
+                    metaphor_str = f" ({metaphor})" if metaphor else ""
 
-                print(f"  [{shortcut}{metaphor_str}]")
-                print(f"  " + "-" * 40)
+                    print(f"  [{shortcut}{metaphor_str}]")
+                    print(f"  " + "-" * 40)
 
-                if args.full:
-                    # Print full response with proper indentation
-                    for line in result["content"].split("\n"):
-                        print(f"  {line}")
-                else:
-                    # Print truncated preview
-                    preview = result["content"][:300].replace("\n", " ")
-                    print(f"  {preview}...")
+                    if args.full:
+                        # Print full response with proper indentation
+                        for line in result["content"].split("\n"):
+                            print(f"  {line}")
+                    else:
+                        # Print truncated preview
+                        preview = result["content"][:300].replace("\n", " ")
+                        print(f"  {preview}...")
 
-                print()
+                    print()
 
         if synthesis:
             print(f"\n{'='*60}")

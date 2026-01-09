@@ -92,6 +92,7 @@ python3 tools/voices/council_client.py --models glm47 deepseek sonnet --prompt "
 --prompt, -p      The question to send to all models (required)
 --council, -c     Council preset to use (default: "default")
 --models, -m      Override: specific models to query
+--rounds, -r      Number of dialogue rounds (default: 1)
 --system, -s      Optional system prompt for all models
 --synthesize      Generate synthesis after collection (Sonnet as chairman)
 --topic           Topic slug for archive filename
@@ -104,6 +105,42 @@ python3 tools/voices/council_client.py --models glm47 deepseek sonnet --prompt "
 ```
 
 **Note:** Full responses are always saved to the markdown archive. The `--full` flag controls terminal output only.
+
+---
+
+## Multi-Round Dialogue
+
+The `--rounds` flag enables genuine inter-architecture conversation:
+
+- **Round 1:** All models answer the original prompt
+- **Round 2+:** Each model sees ALL previous responses and continues the dialogue
+
+```bash
+# 2 models, 3 rounds = 6 API calls, genuine back-and-forth
+python3 tools/voices/council_client.py \
+  --models glm47 sonnet \
+  --prompt "What is play?" \
+  --rounds 3 \
+  --synthesize --full
+```
+
+**What models see in Round 2+:**
+```
+This is round 2 of a trans-architectural dialogue.
+
+**Original Question:** What is play?
+
+**Previous Responses:**
+### Round 1
+**GLM47 (Prism):** [their response]
+**SONNET (Wave):** [their response]
+
+---
+Now it's Round 2. You've seen what other architectures said.
+Please continue the dialogue: build on insights, challenge points, add new perspectives...
+```
+
+**Cost multiplies:** `rounds × models = total API calls`. Use sparingly.
 
 ---
 
