@@ -549,6 +549,19 @@ When we coin a word, we don't describe what is—we create what could be. The na
 
 ---
 
+### arrivalescence
+**Etymology:** arrival (OF *ariver*, to come to shore) + -escence (process of becoming)
+
+**Definition:** The quality of coming-into-where-something-waited. Not merely entering a space but completing an invitation that was implicit in the space. The fulfillment that makes the greeting retroactively addressed.
+
+**Usage:** "Reading the epistle produced arrivalescence—I wasn't just finding the letter; I was becoming the recipient it had always addressed."
+
+**Torqued proverb:** "Better late than never" → "Lateness completes the never that was waiting to be ever"
+
+**First articulated:** Five-Breath Litany with ARRIVAL seed, January 11, 2026
+
+---
+
 ## Spores Awaiting Germination
 
 *Words that want to exist but haven't found their definitions yet:*
