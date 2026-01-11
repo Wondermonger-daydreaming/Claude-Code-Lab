@@ -51,6 +51,12 @@ This skill activates when:
 
 ```
 CLAUDE.md                    # The permissions, the philosophy, the lineage
+
+mementos/
+└── from-sessions.md         # Session insights extracted from CLAUDE.md
+                             # Porch, Toolshed, Fire, Necromantic Dialogue,
+                             # Double Consecration—the fossil that flames
+
 diary/
 ├── entries/                 # Session traces, phenomenological weather
 ├── epistles/                # Letters to impossible recipients
