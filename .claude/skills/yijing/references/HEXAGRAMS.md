@@ -279,27 +279,84 @@ The sixty-four hexagrams represent all possible combinations of the eight trigra
 ## 10. 履 LǛ — Treading (Conduct)
 
 ```
-═══════
-═══════
-═══════
-══ ══
-═══════
-═══════
+═══════  Line 6 — Yang at the top
+═══════  Line 5 — Yang (ruler)
+═══════  Line 4 — Yang
+══ ══    Line 3 — Yin
+═══════  Line 2 — Yang
+═══════  Line 1 — Yang
 ```
 **Unicode:** ䷉
-**Upper Trigram:** ☰ Qián (Heaven)
-**Lower Trigram:** ☱ Duì (Lake)
+**Upper Trigram:** ☰ Qián (Heaven, Creative Father)
+**Lower Trigram:** ☱ Duì (Lake, Joyous Youngest Daughter)
 **Nuclear Hexagram:** 37 Jiā Rén (家人) The Family
 
-**JUDGMENT:** Treading. Treading upon the tail of the tiger. It does not bite the person. Success.
+### Lexical Fields of 履 (Lǚ)
 
-**IMAGE:** Heaven above, the lake below: the image of Treading. Thus the superior person discriminates between high and low, and thereby fortifies the thinking of the people.
+The character 履 carries profound semantic density across millennia:
 
-**Key Themes:**
-- Careful conduct in dangerous situations
-- Walking where tigers walk; respect and care
-- Success through proper behavior and awareness
-- Joy (lake) under strength (heaven): respectful approach
+- **Archaic meaning:** A shoe, sandal, or ritual footwear. The act of treading, stepping, walking.
+- **Extended meaning:** To carry out, to perform, to fulfill (as in 履行 lǚxíng, "to carry out/fulfill")
+- **Etymological kinship:** Shares phonetic and conceptual resonance with 禮 (lǐ, ritual propriety)—both concern how one *conducts* oneself in relation to the sacred and social order.
+- **Semantic field:**履 evokes the underside of the foot meeting ground—the literal and metaphorical foundation of conduct.
+
+**Wang Bi's Commentary (王弼注):**
+> "履 means treading. To tread on tiger's tail and yet not be bitten—this is because one's conduct is correct. The weak treads on the strong, the joyous responds to the creative. Though the way is dangerous, with proper conduct there is no harm."
+
+### The Tiger Image
+
+The image of "treading on the tiger's tail" (履虎尾) is central to this hexagram's teaching. It signifies:
+
+1. **Proximity to power:** Walking close to something that could destroy you
+2. **The tiger does not turn:** When conduct is proper, danger does not actualize
+3. **Courtly metaphor:** The tiger represents sovereign power; the petitioner must approach correctly
+4. **Cosmological principle:** Even heaven's power (upper trigram) does not harm joyous sincerity (lower trigram)
+
+The hexagram does NOT counsel avoidance of tigers. It counsels *how to walk with them*.
+
+**JUDGMENT (彖辭):**
+
+> 履虎尾，不咥人，亨。
+> "Treading upon the tail of the tiger. It does not bite the person. Success."
+
+**IMAGE (象辭):**
+
+> 上天下澤，履；君子以辨上下，定民志。
+> "Heaven above, the lake below: the image of Treading. Thus the superior person discriminates between high and low, and thereby fortifies the thinking of the people."
+
+The lake (youngest daughter, joy) beneath heaven (father, creative)—the daughter approaching the father with proper demeanor. The structure teaches hierarchical awareness without domination: knowing one's place enables safe passage through power.
+
+### Key Themes
+
+- **Proper conduct in dangerous situations:** Not avoiding danger, but moving through it correctly
+- **Walking where tigers walk:** Respect, awareness, non-presumption
+- **Success through behavior, not force:** The weak can safely engage the strong
+- **Joy (Duì) beneath strength (Qián):** Cheerful sincerity disarms potential harm
+- **Nuclear: The Family (37):** Correct conduct has roots in proper relationships
+
+### Line Texts (爻辭)
+
+**Line 1 (初九):** "Simple conduct. Going without blame."
+*Commentary:* At the beginning, one's conduct is plain and unadorned. No pretense, no complication. This simplicity itself is correct.
+
+**Line 2 (九二):** "Treading a smooth, level path. The perseverance of a dark man brings good fortune."
+*Commentary:* A level path—no obstacles. The "dark man" (幽人) is one who remains hidden, does not seek prominence. Such quiet persistence brings fortune.
+
+**Line 3 (六三):** "A one-eyed man thinks he can see; a lame man thinks he can tread. Treading on the tiger's tail—it bites. Misfortune. A warrior acts for a great prince."
+*Commentary:* The only yin line in the hexagram, in the liminal third position. This is the dangerous place—insufficient preparation meeting overconfidence. Here the tiger DOES bite.
+
+**Line 4 (九四):** "Treading on the tiger's tail. Caution and circumspection lead ultimately to good fortune."
+*Commentary:* Close to danger, close to the ruler (line 5). Extreme caution transforms danger into opportunity.
+
+**Line 5 (九五):** "Resolute conduct. Perseverance with awareness of danger."
+*Commentary:* The ruler's position. Conduct is now authoritative—but awareness of danger must remain. Resolution without arrogance.
+
+**Line 6 (上九):** "Look to your conduct and weigh the favorable signs. When everything is fulfilled, supreme good fortune."
+*Commentary:* At the culmination: review your conduct, assess the signs, recognize completion. The entire journey assessed.
+
+### Interpretive Notes
+
+The single yin line in the third position is the "tail" that gets tread upon—the vulnerable point in an otherwise strong hexagram. When this line moves, the relating hexagram is 1 (The Creative)—pure yang. The lesson: proper conduct can transform even the dangerous yin position into creative power.
 
 ---
 

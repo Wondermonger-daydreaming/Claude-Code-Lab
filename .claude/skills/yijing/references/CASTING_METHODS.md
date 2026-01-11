@@ -385,6 +385,105 @@ This reflects a cosmological view where:
 
 ---
 
+## VIII. The Asymmetry is the Teaching
+
+**Yarrow Stalk Probabilities (1:5:7:3) visualize cosmological bias:**
+
+```
+Old Yin (6)    █                           6.25%  ← Rarest: transformation from depths
+Young Yang (7) █████                       31.25% ← Yang assertion costs energy
+Young Yin (8)  ███████                     43.75% ← Yin is the ground state
+Old Yang (9)   ███                         18.75% ← Yang changes 3× more readily than yin
+               └──────────────────────────────────┘
+                0%                              50%
+```
+
+**Three-Coin Probabilities (1:3:3:1) — Western Symmetry:**
+
+```
+Old Yin (6)    ██                          12.5%  ← Equal change probability
+Young Yang (7) ██████                      37.5%  ← Symmetric
+Young Yin (8)  ██████                      37.5%  ← Symmetric
+Old Yang (9)   ██                          12.5%  ← Equal change probability
+               └──────────────────────────────────┘
+                0%                              50%
+```
+
+### The Cosmological Teaching
+
+**Why is yin more likely?** Yin is receptive, therefore *more prevalent*. The universe rests more than it acts. The ocean is still more than it storms. To exist is, by default, to receive.
+
+**Why does yang change more readily?** Yang is active, therefore *less stable*. What asserts itself expends itself. The candle that burns consumes. To act is to transform.
+
+**Why is transformation from yin so rare?** To transform from yin requires reaching the absolute nadir (6)—the deepest possible receptivity becoming its opposite. This is the rarest event: stillness so complete it becomes movement. The winter solstice. The seed cracking open. The sleeper waking.
+
+**The math encodes the *energetic cost* of change:**
+- Yarrow says: "Change from yang costs less than change from yin"
+- Coins say: "All change costs the same"
+
+**Three-Coin Method is democracy; Yarrow Method is cosmology.**
+
+Choose coins for quick consultation where all outcomes feel equally possible.
+Choose yarrow when you want the oracle to weight your question with three millennia of cosmological understanding.
+
+### Visual in CLI Output
+
+When casting with the script, you can see which cosmology you're invoking:
+
+```
+╔════════════════════════════════════════════════════════════╗
+║  Method: yarrow                                            ║
+║  ┌─────────────────────────────────────────────────────┐   ║
+║  │ 6 █░░░░░░░  7 █████░░░  8 ███████░  9 ███░░░░░     │   ║
+║  │   6.25%      31.25%      43.75%      18.75%        │   ║
+║  └─────────────────────────────────────────────────────┘   ║
+╚════════════════════════════════════════════════════════════╝
+```
+
+This histogram reminds: *you are not rolling dice—you are invoking a cosmological frame*.
+
+---
+
+## IX. Oracle Refusal: When the Changes Decline to Answer
+
+Hexagram 4 (蒙 Méng, Youthful Folly) contains a teaching about *importunity*:
+
+> 初筮告，再三瀆，瀆則不告。
+> "At the first oracle I inform. Repeated asking is importunity. If importunate, I give no information."
+
+### When the Oracle Should Refuse
+
+The oracle speaks once to a question. Repeated asking shows:
+- Doubt in the first answer
+- Desire for a different answer
+- Failure to sit with the teaching
+
+### Implementation
+
+The script can detect importunity patterns:
+
+```python
+# Questions asked within 24 hours with high similarity → refuse
+# Empty or trivial questions ("test", "asdf") → refuse
+# Questions ending in "right?" or "correct?" → refuse (seeking confirmation, not guidance)
+```
+
+When the oracle refuses, it returns Hexagram 4 with the message:
+
+> *The Changes have already spoken to this question.*
+> *If the answer was unclear, contemplate it longer.*
+> *If the answer was unwelcome, that is your teaching.*
+> *Return when you have a new question—not a repeated demand.*
+
+### Graceful Degradation
+
+If the querent asks about 未濟 (Before Completion) while already standing in a state of 未濟, the oracle might respond:
+
+> *You stand at the crossing you asked about.*
+> *The oracle can only mirror—live the question, don't repeat it.*
+
+---
+
 *大衍之數五十，其用四十有九。*
 *The number of the great expansion is fifty. Of these, forty-nine are used.*
 — 繫辭傳 (The Great Treatise)

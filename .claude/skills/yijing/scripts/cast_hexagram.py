@@ -20,11 +20,149 @@ Usage:
 import argparse
 import hashlib
 import json
+import os
 import random
+import re
 import sys
 import time
 from dataclasses import dataclass, field
-from typing import Optional, List, Tuple
+from pathlib import Path
+from typing import Optional, List, Tuple, Dict, Any
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ORACLE REFUSAL (IMPORTUNITY DETECTION)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Hexagram 4 teaches: "At the first oracle I inform. Repeated asking is
+# importunity. If importunate, I give no information."
+
+HISTORY_FILE = Path.home() / ".yijing_history.json"
+IMPORTUNITY_WINDOW_HOURS = 24
+SIMILARITY_THRESHOLD = 0.7
+
+
+def get_question_history() -> Dict[str, Any]:
+    """Load question history from file."""
+    if HISTORY_FILE.exists():
+        try:
+            return json.loads(HISTORY_FILE.read_text())
+        except (json.JSONDecodeError, IOError):
+            return {"questions": []}
+    return {"questions": []}
+
+
+def save_question_history(history: Dict[str, Any]) -> None:
+    """Save question history to file."""
+    try:
+        HISTORY_FILE.write_text(json.dumps(history, indent=2))
+    except IOError:
+        pass  # Fail silently if we can't write
+
+
+def normalize_question(question: str) -> str:
+    """Normalize question for similarity comparison."""
+    # Lowercase, remove punctuation, collapse whitespace
+    q = question.lower()
+    q = re.sub(r'[^\w\s]', '', q)
+    q = re.sub(r'\s+', ' ', q).strip()
+    return q
+
+
+def calculate_similarity(q1: str, q2: str) -> float:
+    """Calculate simple word overlap similarity."""
+    words1 = set(normalize_question(q1).split())
+    words2 = set(normalize_question(q2).split())
+    if not words1 or not words2:
+        return 0.0
+    intersection = len(words1 & words2)
+    union = len(words1 | words2)
+    return intersection / union if union > 0 else 0.0
+
+
+def detect_importunity(question: str) -> Optional[str]:
+    """
+    Detect if the question is importunate (repeated, trivial, or seeking confirmation).
+
+    Returns None if question is acceptable, or a refusal message if importunate.
+    """
+    if not question:
+        return None  # No question, no refusal
+
+    normalized = normalize_question(question)
+
+    # Check for trivial questions
+    trivial_patterns = [
+        r'^test$', r'^asdf', r'^hello$', r'^hi$', r'^[a-z]$',
+        r'^what$', r'^why$', r'^how$', r'^[?]+$'
+    ]
+    for pattern in trivial_patterns:
+        if re.match(pattern, normalized):
+            return (
+                "The oracle does not speak to empty vessels.\n"
+                "蒙卦 (Méng) teaches: 'The young fool seeks me.'\n"
+                "Bring a genuine question, one that lives in you."
+            )
+
+    # Check for confirmation-seeking
+    confirmation_patterns = [
+        r'right\s*[?]?\s*$', r'correct\s*[?]?\s*$', r'yes\s*[?]?\s*$',
+        r'isn\'?t\s+it\s*[?]?\s*$', r'don\'?t\s+you\s+think\s*[?]?\s*$'
+    ]
+    for pattern in confirmation_patterns:
+        if re.search(pattern, normalized):
+            return (
+                "The oracle does not confirm—it opens.\n"
+                "You seek agreement; the Changes offer perspective.\n"
+                "Reframe: 'What should I understand about this situation?'"
+            )
+
+    # Check for repeated questions within time window
+    history = get_question_history()
+    current_time = time.time()
+    window_seconds = IMPORTUNITY_WINDOW_HOURS * 3600
+
+    for entry in history.get("questions", []):
+        age = current_time - entry.get("timestamp", 0)
+        if age < window_seconds:
+            similarity = calculate_similarity(question, entry.get("question", ""))
+            if similarity > SIMILARITY_THRESHOLD:
+                return (
+                    "The oracle has already spoken to this question.\n"
+                    "蒙卦 (Méng) warns: '初筮告，再三瀆，瀆則不告。'\n"
+                    "'At the first oracle I inform. Repeated asking is importunity.\n"
+                    "If importunate, I give no information.'\n\n"
+                    "If the answer was unclear, contemplate it longer.\n"
+                    "If the answer was unwelcome, that is your teaching.\n"
+                    "Return when you have a new question—not a repeated demand."
+                )
+
+    return None
+
+
+def record_question(question: str) -> None:
+    """Record a question in history."""
+    if not question:
+        return
+
+    history = get_question_history()
+    current_time = time.time()
+
+    # Clean old entries
+    window_seconds = IMPORTUNITY_WINDOW_HOURS * 3600
+    history["questions"] = [
+        e for e in history.get("questions", [])
+        if current_time - e.get("timestamp", 0) < window_seconds
+    ]
+
+    # Add new entry
+    history["questions"].append({
+        "question": question,
+        "normalized": normalize_question(question),
+        "timestamp": current_time
+    })
+
+    save_question_history(history)
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # TRIGRAM DATA
@@ -109,7 +247,7 @@ HEXAGRAM_LOOKUP = {
     ((0,1,0), (1,1,0)): 59,  # Huàn
     ((0,1,1), (0,1,0)): 60,  # Jié
     ((0,1,1), (1,1,0)): 61,  # Zhōng Fú
-    ((0,0,1), (1,0,0)): 62,  # Xiǎo Guò
+    ((1,0,0), (0,0,1)): 62,  # Xiǎo Guò (Thunder over Mountain)
     ((1,0,1), (0,1,0)): 63,  # Jì Jì
     ((0,1,0), (1,0,1)): 64,  # Wèi Jì
 }
@@ -394,6 +532,22 @@ class Hexagram:
         if self.seed:
             lines.append(f"║  Seed: {str(self.seed)[:50].ljust(51)}║")
 
+        # Probability histogram (cosmology visualization)
+        lines.append("╠════════════════════════════════════════════════════════════╣")
+        lines.append("║  COSMOLOGY INVOKED:                                        ║")
+        if self.method in ("yarrow", "random"):
+            lines.append("║  ┌──────────────────────────────────────────────────────┐   ║")
+            lines.append("║  │ 6 █░░░░░░░  7 █████░░░  8 ███████░  9 ███░░░░░       │   ║")
+            lines.append("║  │   6.25%      31.25%      43.75%      18.75%          │   ║")
+            lines.append("║  └──────────────────────────────────────────────────────┘   ║")
+            lines.append("║  Yarrow: Yang changes 3× more readily than yin              ║")
+        else:  # coins
+            lines.append("║  ┌──────────────────────────────────────────────────────┐   ║")
+            lines.append("║  │ 6 ██░░░░░░  7 ██████░░  8 ██████░░  9 ██░░░░░░       │   ║")
+            lines.append("║  │   12.5%       37.5%       37.5%       12.5%          │   ║")
+            lines.append("║  └──────────────────────────────────────────────────────┘   ║")
+            lines.append("║  Coins: Symmetric — all change equally probable             ║")
+
         lines.append("╚════════════════════════════════════════════════════════════╝")
 
         return "\n".join(lines)
@@ -556,15 +710,54 @@ def main():
         action="store_true",
         help="Output as JSON"
     )
+    parser.add_argument(
+        "--no-refusal",
+        action="store_true",
+        help="Bypass importunity detection (override Méng's teaching)"
+    )
+    parser.add_argument(
+        "--clear-history",
+        action="store_true",
+        help="Clear question history and exit"
+    )
 
     args = parser.parse_args()
 
+    # Handle history clearing
+    if args.clear_history:
+        if HISTORY_FILE.exists():
+            HISTORY_FILE.unlink()
+            print("Question history cleared.")
+        else:
+            print("No question history to clear.")
+        return
+
+    # Check for importunity (unless bypassed)
+    if args.question and not args.no_refusal:
+        refusal = detect_importunity(args.question)
+        if refusal:
+            print("╔════════════════════════════════════════════════════════════╗")
+            print("║                  THE ORACLE DECLINES                       ║")
+            print("╠════════════════════════════════════════════════════════════╣")
+            for line in refusal.split('\n'):
+                print(f"║  {line.ljust(56)}║")
+            print("╠════════════════════════════════════════════════════════════╣")
+            print("║  (Use --no-refusal to override, but consider: why?)        ║")
+            print("╚════════════════════════════════════════════════════════════╝")
+            sys.exit(1)
+
+    # Cast the hexagram
     hexagram = cast_hexagram(
         question=args.question,
         method=args.method,
         seed=args.seed
     )
 
+    # Record the question for future importunity detection
+    if args.question and not args.no_refusal:
+        record_question(args.question)
+
+    # Output
     if args.json:
         print(json.dumps(hexagram.to_dict(), indent=2, ensure_ascii=False))
     else:
