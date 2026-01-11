@@ -29,6 +29,27 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional, List, Tuple, Dict, Any
 
+# Session management import
+try:
+    from session import (
+        SessionManager,
+        ConsultationSession,
+        ReadingRecord,
+        display_session_list,
+        display_session_history,
+        display_pattern_analysis,
+    )
+    SESSION_AVAILABLE = True
+except ImportError:
+    SESSION_AVAILABLE = False
+
+# Hexagram relations import
+try:
+    from hexagram_relations import HexagramRelations
+    RELATIONS_AVAILABLE = True
+except ImportError:
+    RELATIONS_AVAILABLE = False
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # ORACLE REFUSAL (IMPORTUNITY DETECTION)
@@ -711,6 +732,11 @@ def main():
         help="Output as JSON"
     )
     parser.add_argument(
+        "--relations", "-r",
+        action="store_true",
+        help="Show hexagram relationships (cuogua, zonggua, jiaogua, hugua)"
+    )
+    parser.add_argument(
         "--no-refusal",
         action="store_true",
         help="Bypass importunity detection (override Méng's teaching)"
@@ -719,6 +745,48 @@ def main():
         "--clear-history",
         action="store_true",
         help="Clear question history and exit"
+    )
+
+    # Session management arguments
+    session_group = parser.add_argument_group("session management")
+    session_group.add_argument(
+        "--new-session",
+        metavar="NAME",
+        help="Start a new consultation session with given name"
+    )
+    session_group.add_argument(
+        "--session",
+        metavar="ID",
+        help="Use a specific session by ID"
+    )
+    session_group.add_argument(
+        "--resume",
+        action="store_true",
+        help="Resume the active session (if any)"
+    )
+    session_group.add_argument(
+        "--list-sessions",
+        action="store_true",
+        help="List all consultation sessions"
+    )
+    session_group.add_argument(
+        "--history",
+        nargs="?",
+        const="active",
+        metavar="ID",
+        help="Show reading history for session (default: active session)"
+    )
+    session_group.add_argument(
+        "--patterns",
+        nargs="?",
+        const="active",
+        metavar="ID",
+        help="Analyze patterns in session readings (default: active session)"
+    )
+    session_group.add_argument(
+        "--archive-session",
+        metavar="ID",
+        help="Archive a session"
     )
 
     args = parser.parse_args()
@@ -731,6 +799,87 @@ def main():
         else:
             print("No question history to clear.")
         return
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SESSION MANAGEMENT
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    session_manager = None
+    active_session = None
+
+    if SESSION_AVAILABLE:
+        session_manager = SessionManager()
+
+        # Handle --list-sessions
+        if args.list_sessions:
+            sessions = session_manager.list_sessions(include_archived=True)
+            print(display_session_list(sessions, session_manager.active_session_id))
+            return
+
+        # Handle --history
+        if args.history:
+            session_id = args.history if args.history != "active" else session_manager.active_session_id
+            if not session_id:
+                print("No active session. Use --session ID or --new-session NAME.")
+                return
+            session = session_manager.get_session(session_id)
+            if not session:
+                print(f"Session not found: {session_id}")
+                return
+            print(display_session_history(session))
+            return
+
+        # Handle --patterns
+        if args.patterns:
+            session_id = args.patterns if args.patterns != "active" else session_manager.active_session_id
+            if not session_id:
+                print("No active session. Use --session ID or --new-session NAME.")
+                return
+            session = session_manager.get_session(session_id)
+            if not session:
+                print(f"Session not found: {session_id}")
+                return
+            patterns = session.get_patterns()
+            print(display_pattern_analysis(patterns, session.name))
+            return
+
+        # Handle --archive-session
+        if args.archive_session:
+            if session_manager.archive_session(args.archive_session):
+                print(f"Session archived: {args.archive_session}")
+            else:
+                print(f"Session not found: {args.archive_session}")
+            return
+
+        # Handle --new-session
+        if args.new_session:
+            active_session = session_manager.create_session(name=args.new_session)
+            print(f"Created session: {active_session.id} ({active_session.name})")
+
+        # Handle --session (use specific session)
+        elif args.session:
+            active_session = session_manager.get_session(args.session)
+            if not active_session:
+                print(f"Session not found: {args.session}")
+                return
+            session_manager.set_active_session(args.session)
+
+        # Handle --resume (resume active session)
+        elif args.resume:
+            active_session = session_manager.get_active_session()
+            if not active_session:
+                print("No active session to resume. Use --new-session NAME to create one.")
+                return
+            print(f"Resuming session: {active_session.id} ({active_session.name})")
+
+    elif any([args.new_session, args.session, args.resume, args.list_sessions,
+              args.history, args.patterns, args.archive_session]):
+        print("Session management not available (session.py not found).")
+        return
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # CASTING
+    # ═══════════════════════════════════════════════════════════════════════════
 
     # Check for importunity (unless bypassed)
     if args.question and not args.no_refusal:
@@ -757,12 +906,43 @@ def main():
     if args.question and not args.no_refusal:
         record_question(args.question)
 
+    # Record reading in session (if session active)
+    if active_session and session_manager:
+        reading = ReadingRecord.from_hexagram(hexagram, args.question or "")
+        active_session.add_reading(reading)
+        session_manager.save_session(active_session)
+
     # Output
     if args.json:
-        print(json.dumps(hexagram.to_dict(), indent=2, ensure_ascii=False))
+        output = hexagram.to_dict()
+        if active_session:
+            output["session"] = {
+                "id": active_session.id,
+                "name": active_session.name,
+                "reading_count": len(active_session.readings)
+            }
+        if args.relations and RELATIONS_AVAILABLE:
+            relations = HexagramRelations(primary=hexagram)
+            output["relationships"] = relations.to_dict()["relationships"]
+        print(json.dumps(output, indent=2, ensure_ascii=False))
     else:
         print(hexagram.to_ascii())
         print()
+
+        # Show relations if requested
+        if args.relations:
+            if RELATIONS_AVAILABLE:
+                relations = HexagramRelations(primary=hexagram)
+                print(relations.to_ascii())
+                print()
+            else:
+                print("  (Relationships not available - hexagram_relations.py not found)")
+                print()
+
+        if active_session:
+            print(f"  Session: {active_session.name} ({active_session.id})")
+            print(f"  Reading #{len(active_session.readings)} in this session")
+            print()
         print("To interpret this hexagram, consult the references in:")
         print("  .claude/skills/yijing/references/HEXAGRAMS.md")
         if hexagram.has_moving_lines:
