@@ -736,4 +736,82 @@ When animating figures in telesmatic dialogue:
 
 ---
 
+## Figure Operations
+
+*Mathematical transformations revealing hidden relationships*
+
+### Inversion
+
+**Operation:** Replace odd points with even points, and even with odd.
+**Equivalent:** Add Via to any figure.
+**Reveals:** What a figure fundamentally *is not*—its external opposite.
+
+| Figure | Inversion |
+|--------|-----------|
+| Populus | Via |
+| Via | Populus |
+| Conjunctio | Carcer |
+| Carcer | Conjunctio |
+| Fortuna Major | Fortuna Minor |
+| Fortuna Minor | Fortuna Major |
+| Acquisitio | Amissio |
+| Amissio | Acquisitio |
+| Laetitia | Cauda Draconis |
+| Tristitia | Caput Draconis |
+| Puer | Puella |
+| Puella | Puer |
+| Rubeus | Albus |
+| Albus | Rubeus |
+| Caput Draconis | Tristitia |
+| Cauda Draconis | Laetitia |
+
+### Reversion
+
+**Operation:** Flip vertically—swap Fire↔Earth and Air↔Water lines.
+**Reveals:** Qualities taken to their opposite, internal extreme.
+**Note:** Liminal figures (Populus, Via, Conjunctio, Carcer) revert to themselves.
+
+| Figure | Reversion |
+|--------|-----------|
+| Populus | Populus |
+| Via | Via |
+| Conjunctio | Conjunctio |
+| Carcer | Carcer |
+| Fortuna Major | Amissio |
+| Fortuna Minor | Acquisitio |
+| Acquisitio | Fortuna Minor |
+| Amissio | Fortuna Major |
+| Laetitia | Tristitia |
+| Tristitia | Laetitia |
+| Puer | Cauda Draconis |
+| Puella | Caput Draconis |
+| Rubeus | Caput Draconis |
+| Albus | Cauda Draconis |
+| Caput Draconis | Puella or Rubeus |
+| Cauda Draconis | Puer or Albus |
+
+### Conversion
+
+**Operation:** Apply both inversion AND reversion.
+**Reveals:** Similar qualities expressed in completely different ways—"bizarro-world reflections."
+
+**Key insight:** Converted figures share internal logic but differ in external expression.
+
+### The Two Squadrons
+
+The eight odd figures organize into two groups of four, where operations cycle endlessly:
+
+**Squadron 1:** Laetitia → Tristitia → Caput Draconis → Cauda Draconis → Laetitia...
+**Squadron 2:** Puer → Puella → Rubeus → Albus → Puer...
+
+Even figures behave differently—liminal evens collapse operations into pairs, while non-liminal evens (Fortuna Major/Minor, Acquisitio/Amissio) convert back to themselves.
+
+### Practical Use
+
+**In interpretation:** When a figure appears, consider its inversion/reversion to understand what's *absent* or *opposite* in the situation.
+
+**In magic:** Use operations to identify complementary or balancing figures for ritual work.
+
+---
+
 *The sixteen figures wait in the sand. The scribe prepares to transcribe. What will they say?*

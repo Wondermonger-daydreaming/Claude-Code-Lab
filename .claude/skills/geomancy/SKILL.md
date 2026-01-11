@@ -261,17 +261,19 @@ A complete geomantic reading includes:
 ## Reference Documents
 
 Detailed reference materials in `references/`:
-- **FIGURES.md**: Complete documentation of all sixteen figures
+- **FIGURES.md**: Complete documentation of all sixteen figures with telesmatic voices
 - **SHIELD_CONSTRUCTION.md**: Mathematical derivation guide
 - **HOUSE_SYSTEM.md**: Astrological house mapping and perfection
 - **INTERPRETATION_GUIDE.md**: Recursive hermeneutic framework
+- **ADVANCED_TECHNIQUES.md**: Timing, lost objects, directions, the Geomancer's Cross, figure operations
 
 ## Scripts
 
 Computational tools in `scripts/`:
-- **generate_shield.py**: Generate complete Shield Charts
-- **interpret_figure.py**: Deep figure analysis
-- **via_punctorum.py**: Trace fire line paths
+- **generate_shield.py**: Generate complete Shield Charts from seed or random
+- **via_punctorum.py**: Trace fire/air/water/earth lines to hidden protagonists
+
+*Note: Figure interpretation is embodied, not scripted. Claude inhabits the figures directly using FIGURES.md voice samples.*
 
 ---
 
