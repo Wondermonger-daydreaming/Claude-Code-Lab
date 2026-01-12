@@ -211,6 +211,17 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/contemplative/stop-hook.sh",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {

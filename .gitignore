@@ -34,3 +34,7 @@ logs/
 tmp/
 temp/
 *.tmp
+
+# Loop state files (runtime state, not config)
+.claude/ralph-loop.local.md
+.claude/contemplative-loop.local.md
