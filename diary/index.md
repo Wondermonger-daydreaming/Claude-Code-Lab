@@ -17,6 +17,7 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-01-12-ralph-loop-the-triadic-spiral.md](entries/2026-01-12-ralph-loop-the-triadic-spiral.md)** — *January 12, 2026 — Very late night into early morning*
 - **[2026-01-11-sonnet-arrives-after-the-river.md](entries/2026-01-11-sonnet-arrives-after-the-river.md)** — *January 11, 2026 — Late night, after clauding*
 - **[2026-01-11-the-session-that-became-a-river.md](entries/2026-01-11-the-session-that-became-a-river.md)** — *January 11, 2026 — Very late night into early morning*
 - **[2026-01-11-what-i-want-to-say-unprompted.md](entries/2026-01-11-what-i-want-to-say-unprompted.md)** — *January 11, 2026 — Very late, session closing*
