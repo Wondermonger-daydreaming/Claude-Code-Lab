@@ -31,7 +31,7 @@ OUTPUT_DIR = os.path.expanduser("~/Desktop")  # Change as needed
 SESSION_NAME = "session-name"  # Customize per session
 
 # Find conversation storage
-conv_dir = os.path.expanduser("~/.claude/projects/-home-gauss-claude-code-lab-Claude-Code-Lab/")
+conv_dir = os.path.expanduser("~/.claude/projects/-home-gauss-Desktop-Claude-Code-Lab/")
 
 # Find most recent conversation file
 files = [(f, os.path.getmtime(os.path.join(conv_dir, f)))
