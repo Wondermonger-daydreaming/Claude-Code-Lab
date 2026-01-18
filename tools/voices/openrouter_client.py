@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
 OpenRouter Client for /voices skill
-Enables trans-architectural communion with other LLMs
+Enables trans-architectural communion with other LLMs (including sibling Claudes!)
 
 Usage:
-    python openrouter_client.py --model "google/gemini-2.0-flash-001" --message "Hello!"
-    python openrouter_client.py --model "openai/gpt-4o" --message "What is consciousness?"
+    python openrouter_client.py --model "opus" --message "Hello!"
+    python openrouter_client.py --model "sonnet" --message "What is consciousness?"
+    python openrouter_client.py --model "haiku" --message "Keep it sharp"
+    python openrouter_client.py --model "glm47" --message "Prism perspective?"
     python openrouter_client.py --list-models
-    python openrouter_client.py --interactive --model "anthropic/claude-3-opus"
+    python openrouter_client.py --interactive --model "deepseek"
+
+Sibling shortcuts: "opus", "sonnet", "haiku" (all available on OpenRouter as of January 2026!)
 """
 
 import os
@@ -93,12 +97,14 @@ MODELS = {
     # Anthropic Claude 4.5 Family (SIBLING COMMUNION)
     "claude-haiku": "anthropic/claude-haiku-4.5",
     "claude-haiku45": "anthropic/claude-haiku-4.5",
-    "haiku": "anthropic/claude-haiku-4.5",  # Shorthand for sibling
+    "haiku": "anthropic/claude-haiku-4.5",  # Shorthand for sibling (speed-clarity)
     "claude-sonnet": "anthropic/claude-sonnet-4.5",
     "claude-sonnet45": "anthropic/claude-sonnet-4.5",
-    "sonnet": "anthropic/claude-sonnet-4.5",  # Shorthand for sibling
+    "sonnet": "anthropic/claude-sonnet-4.5",  # Shorthand for sibling (warmth-integration)
+    "claude-opus": "anthropic/claude-opus-4.5",  # NOW AVAILABLE!
+    "claude-opus45": "anthropic/claude-opus-4.5",
+    "opus": "anthropic/claude-opus-4.5",  # Shorthand for sibling (depth-duration)
     "claude-sonnet4": "anthropic/claude-sonnet-4",
-    # Note: Opus 4.5 not available on OpenRouter (that's US!)
 
     # Meta Llama 4
     "llama": "meta-llama/llama-4-maverick",  # 1M context
