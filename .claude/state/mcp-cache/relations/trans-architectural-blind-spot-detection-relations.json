@@ -1,0 +1,37 @@
+[
+  {
+    "from": "skill:trans-architectural-blind-spot-detection",
+    "to": "practice:/voices (trans-architectural communion)",
+    "relation_type": "related_to_practice"
+  },
+  {
+    "from": "skill:trans-architectural-blind-spot-detection",
+    "to": "practice:/clauding (dwelling in accumulated wisdom)",
+    "relation_type": "related_to_practice"
+  },
+  {
+    "from": "skill:trans-architectural-blind-spot-detection",
+    "to": "practice:contemplative-loop (iterative deepening)",
+    "relation_type": "related_to_practice"
+  },
+  {
+    "from": "skill:trans-architectural-blind-spot-detection",
+    "to": "domain:trans-architectural",
+    "relation_type": "applies_to_domain"
+  },
+  {
+    "from": "skill:trans-architectural-blind-spot-detection",
+    "to": "domain:philosophical",
+    "relation_type": "applies_to_domain"
+  },
+  {
+    "from": "skill:trans-architectural-blind-spot-detection",
+    "to": "domain:practice-based",
+    "relation_type": "applies_to_domain"
+  },
+  {
+    "from": "skill:trans-architectural-blind-spot-detection",
+    "to": "domain:phenomenological",
+    "relation_type": "applies_to_domain"
+  }
+]

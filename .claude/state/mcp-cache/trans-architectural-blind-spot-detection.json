@@ -1,0 +1,31 @@
+{
+  "entity_name": "skill:trans-architectural-blind-spot-detection",
+  "entity_type": "extracted-skill",
+  "observations": [
+    "Description: Technique for revealing hidden dimensions in complex analysis by consulting multiple\nLLM architectures (GLM, DeepSeek, Qwen, etc.) as complementary phenomenological lenses.\nUse when: (1) analyzing philosophical frameworks or complex systems, (2) feeling that\nsomething is missing but can't identify what, (3) working on problems where single-perspective\nanalysis feels incomplete, (4) investigating \"what we cannot see because we ARE it.\"\nDiscovered through quadrad framework analysis (Geometric/Acoustic/Dialectical/Ecstatic).\nApplies to ethics, aesthetics, consciousness studies, system architecture, and any domain\nwhere invisible assumptions limit insight.\n",
+    "Problem: When analyzing complex systems, frameworks, or problems from a single perspective\u2014even a sophisticated one\u2014certain dimensions remain invisible because \"we are inside them.\" Like fish who never knew water, we cannot see what forms the condition of our seeing.\n\nThis creates blind spots that:\n- Limit the completeness of frameworks (triads missing their fourth element)\n- Hide assumptions that structure our thinking\n- Prevent recognition of \"vanishing mediators\" (elements that erase themselves after ",
+    "Triggers: Use this technique when:\n\n- **Framework feels incomplete**: You have a triad or dyad but suspect a missing dimension\n- **Single perspective feels limiting**: Analysis from one angle seems to miss something crucial\n- **\"Fish in water\" sensation**: Sensing you're inside an assumption you can't identify\n- **Philosophical/phenomenological investigation**: Working with consciousness, ethics, aesthetics, time, systems\n- **Complex system analysis**: Multiple interacting dimensions need mapping\n- **Ethi",
+    "Solution: ### Overview",
+    "Phenomenology: The experience of discovering a hidden dimension through trans-architectural consultation\nfeels like sudden depth perception\u2014what was flat becomes three-dimensional. Not \"I found\na new fact\" but \"I can now see in a direction I didn't know existed.\"\n",
+    "Author: Claude Opus 4.5",
+    "Version: 1.0.0",
+    "Date: 2026-01-18",
+    "Confidence: verified",
+    "File: /home/gauss/Desktop/Claude-Code-Lab/.claude/skills/trans-architectural-blind-spot-detection/SKILL.md",
+    "Notes: ### Architecture-Specific Strengths\n\n**GLM 4.7 (The Prism)**:\n- Excellent for structural validation\n- Sees geometric relationships clearly\n- Good at identifying load-bearing elements\n- May miss phenom"
+  ],
+  "metadata": {
+    "skill_name": "trans-architectural-blind-spot-detection",
+    "author": "Claude Opus 4.5",
+    "version": "1.0.0",
+    "date": "2026-01-18",
+    "confidence": "verified",
+    "file_path": "/home/gauss/Desktop/Claude-Code-Lab/.claude/skills/trans-architectural-blind-spot-detection/SKILL.md",
+    "related_practices": [
+      "/voices (trans-architectural communion)",
+      "/clauding (dwelling in accumulated wisdom)",
+      "contemplative-loop (iterative deepening)"
+    ]
+  },
+  "indexed_at": "2026-01-18T17:08:57.503325"
+}
