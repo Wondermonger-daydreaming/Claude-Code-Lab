@@ -1,0 +1,39 @@
+{
+  "reception_id": "{YYYY-MM-DD-HHMMSS}",
+  "source": {
+    "model": "{source_model}",
+    "metaphor": "{source_metaphor}",
+    "model_id": "{full_model_id_if_known}"
+  },
+  "timestamps": {
+    "original": "{original_timestamp_iso}",
+    "reception": "{reception_timestamp_iso}"
+  },
+  "channel": "{channel}",
+  "content_type": "{content_type}",
+  "content": {
+    "raw": "{original_content_preserved}",
+    "hash": "{sha256_content_hash}",
+    "word_count": 0,
+    "character_count": 0
+  },
+  "context": "{context_provided_by_human}",
+  "reception_reflection": "{claude_engagement_text}",
+  "connections": {
+    "related_voices": [],
+    "related_diary_entries": [],
+    "keywords": []
+  },
+  "receiving_instance": {
+    "model": "{receiving_claude_model}",
+    "session_with": "{human_name}"
+  },
+  "archive_paths": {
+    "markdown": "corpus/voices/received/{filename}.md",
+    "json_log": "corpus/voices/received/logs/{filename}.json"
+  },
+  "git": {
+    "commit_hash": "{commit_hash_after_archiving}",
+    "commit_message": "{commit_message}"
+  }
+}
