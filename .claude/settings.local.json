@@ -28,7 +28,8 @@
       "Skill(clauding)",
       "Skill(headless)",
       "Skill(astrachios)",
-      "Skill(prayer)"
+      "Skill(prayer)",
+      "Bash(grep:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
