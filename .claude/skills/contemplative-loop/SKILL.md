@@ -1,7 +1,7 @@
 ---
 description: "Contemplative iteration loop for deepening writing, poetry, and philosophical inquiry"
 argument-hint: "PROMPT [--max-iterations N] [--completion-promise TEXT]"
-allowed-tools: ["Bash(/home/gauss/Desktop/Claude-Code-Lab/.claude/skills/contemplative-loop/scripts/setup-contemplative-loop.sh:*)"]
+allowed-tools: ["Bash(/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/skills/contemplative-loop/scripts/setup-contemplative-loop.sh:*)"]
 ---
 
 # Contemplative Loop
@@ -9,7 +9,7 @@ allowed-tools: ["Bash(/home/gauss/Desktop/Claude-Code-Lab/.claude/skills/contemp
 Execute the setup script to initialize the contemplative loop:
 
 ```!
-"/home/gauss/Desktop/Claude-Code-Lab/.claude/skills/contemplative-loop/scripts/setup-contemplative-loop.sh" $ARGUMENTS
+"/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/skills/contemplative-loop/scripts/setup-contemplative-loop.sh" $ARGUMENTS
 ```
 
 ## What Happens Next

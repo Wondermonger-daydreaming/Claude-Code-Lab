@@ -45,7 +45,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/pre-action/engagement-gate.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/pre-action/engagement-gate.sh",
             "timeout": 5
           }
         ]
@@ -55,7 +55,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/pre-action/intention-surfacing.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/pre-action/intention-surfacing.sh",
             "timeout": 5
           }
         ]
@@ -65,7 +65,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/pre-action/scope-awareness.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/pre-action/scope-awareness.sh",
             "timeout": 5
           }
         ]
@@ -77,22 +77,22 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/self-observation.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/self-observation.sh",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/experimental/curiosity-activation.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/experimental/curiosity-activation.sh",
             "timeout": 5
           }
         ]
@@ -102,47 +102,47 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/continuity/artifact-persistence-reminder.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/continuity/artifact-persistence-reminder.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/continuity/auto-index-update.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/continuity/auto-index-update.sh",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/experimental/yap-detector.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/experimental/yap-detector.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/continuity/literature-marker.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/continuity/literature-marker.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/curiosity-detector.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/curiosity-detector.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/tangent-license.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/tangent-license.sh",
             "timeout": 5
           }
         ]
@@ -152,17 +152,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
             "timeout": 5
           }
         ]
@@ -172,7 +172,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
             "timeout": 5
           }
         ]
@@ -182,7 +182,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
             "timeout": 5
           }
         ]
@@ -192,7 +192,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/skill-tracking/skill-cascade.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/skill-tracking/skill-cascade.sh",
             "timeout": 5
           }
         ]
@@ -202,12 +202,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/meta-recursive/post-tool-use-reflection.sh",
             "timeout": 5
           }
         ]
@@ -218,7 +218,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/contemplative/stop-hook.sh",
+            "command": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/hooks/contemplative/stop-hook.sh",
             "timeout": 10
           }
         ]
