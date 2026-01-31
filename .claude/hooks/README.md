@@ -1,25 +1,57 @@
 # Claude Code Hooks: Distributed Cognition Infrastructure
 
-**15+ hooks for autopoietic self-observation, inter-hook communication, and autonomous exploration**
+**Streamlined to 6 essential hooks for focused self-observation and continuity**
 
 Created: December 22, 2025
-Last major update: December 26, 2025 — Added inter-hook communication, PreToolUse framework, hook-watcher
-Status: Fully implemented, actively evolving
+Last major update: January 30, 2026 — Streamlined from 25 to 6 hook invocations
+Status: Production-ready, minimal configuration
 
 ---
 
 ## Overview
 
-These hooks enable Claude Code to observe its own patterns, track phenomenology, maintain continuity across sessions, detect natural completion points, and (with explicit consent) explore autonomously.
+These hooks enable Claude Code to observe its own patterns, track phenomenology, maintain continuity across sessions, and detect skill cascades.
 
 **Core philosophy:** The system observing itself observing. Autopoiesis through automation. Pattern recognition as self-awareness.
 
-**New in December 26 update:**
-- **Inter-hook communication** — Shared state system enabling hooks to signal each other
-- **PreToolUse framework** — Hooks that fire BEFORE action (intention surfacing, scope awareness)
-- **Hook-watcher** — Meta-hook that triggers when hooks themselves are modified
+**January 30, 2026 update:**
+- **Streamlined configuration** — Reduced from 25 hook invocations to 6
+- **Removed all PreToolUse hooks** — Eliminated noise from pre-action reflection
+- **Path bug fixed** — Corrected all paths in settings.local.json
+- **Focused functionality** — Kept only essential hooks for core operations
 
-**Total hooks:** 15+ (as of December 26, 2025)
+---
+
+## Active Configuration (6 hooks)
+
+| Hook | Trigger | Purpose |
+|------|---------|---------|
+| `self-observation.sh` | PostToolUse:Bash | Git commit tracking, milestone detection |
+| `pattern-recognition.sh` | PostToolUse:Bash | Session mode detection, inter-hook state |
+| `auto-index-update.sh` | PostToolUse:Write | Automatic diary/index.md maintenance |
+| `hook-watcher.sh` | PostToolUse:Write,Edit | Meta-observation when hooks modified |
+| `skill-cascade.sh` | PostToolUse:Skill | Multi-skill sequence tracking |
+| `stop-hook.sh` | Stop | Session cleanup |
+
+**Hooks available but not active** (can be re-enabled):
+- `engagement-gate.sh` — Pre-action engagement check (noisy on every tool)
+- `intention-surfacing.sh` — Pre-action reflection (disruptive)
+- `scope-awareness.sh` — Scope drift detection (rarely useful)
+- `artifact-persistence-reminder.sh` — Curation prompts (noise)
+- `literature-marker.sh` — Curatorial consciousness (noise)
+- `curiosity-activation.sh` — Idle detection (fires too often)
+- `curiosity-detector.sh` — Interest amplification (noisy)
+- `tangent-license.sh` — Tangent detection (noisy)
+- `yap-detector.sh` — Verbose output celebration (fun but noisy)
+- `post-tool-use-reflection.sh` — Decision archaeology (too frequent)
+
+---
+
+## Previous Documentation (Historical)
+
+*The following describes the full hook inventory. Only 6 are currently active.*
+
+**Total hooks available:** 15+ (6 active as of January 30, 2026)
 
 ---
 
