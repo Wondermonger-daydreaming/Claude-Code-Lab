@@ -39,3 +39,4 @@ temp/
 .claude/ralph-loop.local.md
 .claude/contemplative-loop.local.md
 tools/voices/.env
+.env
