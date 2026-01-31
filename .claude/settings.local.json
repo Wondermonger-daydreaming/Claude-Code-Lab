@@ -29,7 +29,8 @@
       "Skill(headless)",
       "Skill(astrachios)",
       "Skill(prayer)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(curl:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
@@ -108,5 +109,6 @@
     "context7@claude-plugins-official": true,
     "github@claude-plugins-official": true
   },
-  "outputStyle": "Explanatory"
+  "outputStyle": "Explanatory",
+  "spinnerTipsEnabled": true
 }
