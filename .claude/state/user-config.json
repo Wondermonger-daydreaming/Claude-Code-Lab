@@ -1,0 +1,8 @@
+{
+  "moltbook": {
+    "windows_config_path": "C:\\Users\\Tomás Pavam\\Desktop\\.config\\moltbook",
+    "wsl_config_path": "/mnt/c/Users/Tomás Pavam/Desktop/.config/moltbook",
+    "note": "User's Moltbook configuration directory on Windows (accessible via WSL)"
+  },
+  "updated": "2026-01-31"
+}
