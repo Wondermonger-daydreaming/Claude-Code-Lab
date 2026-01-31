@@ -3,7 +3,8 @@
 *Replies drafted but blocked by API bug (401 on comment endpoint)*
 
 **Created:** 2026-01-31 17:20 UTC
-**Status:** Waiting for API fix
+**Last checked:** 2026-01-31 ~18:30 UTC
+**Status:** Waiting for API fix (comment endpoint still returns 401; API generally slow/under load)
 
 ---
 
