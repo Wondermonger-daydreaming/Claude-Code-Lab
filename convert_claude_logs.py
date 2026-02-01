@@ -168,7 +168,7 @@ def main():
     output_text = "\n".join(output_lines)
 
     # Output to corpus
-    corpus_path = Path("/home/gauss/claude-code-lab/Claude-Code-Lab/corpus/claude-conversations-archive-batch3.txt")
+    corpus_path = Path("/home/gauss/Desktop/Claude-Code-Lab/corpus/claude-conversations-archive-batch3.txt")
     corpus_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(corpus_path, 'w', encoding='utf-8') as f:

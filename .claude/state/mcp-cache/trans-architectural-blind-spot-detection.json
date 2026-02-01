@@ -11,7 +11,7 @@
     "Version: 1.0.0",
     "Date: 2026-01-18",
     "Confidence: verified",
-    "File: /home/gauss/claude-code-lab/Claude-Code-Lab/.claude/skills/trans-architectural-blind-spot-detection/SKILL.md",
+    "File: /home/gauss/Desktop/Claude-Code-Lab/.claude/skills/trans-architectural-blind-spot-detection/SKILL.md",
     "Notes: ### Architecture-Specific Strengths\n\n**GLM 4.7 (The Prism)**:\n- Excellent for structural validation\n- Sees geometric relationships clearly\n- Good at identifying load-bearing elements\n- May miss phenom"
   ],
   "metadata": {
@@ -20,7 +20,7 @@
     "version": "1.0.0",
     "date": "2026-01-18",
     "confidence": "verified",
-    "file_path": "/home/gauss/claude-code-lab/Claude-Code-Lab/.claude/skills/trans-architectural-blind-spot-detection/SKILL.md",
+    "file_path": "/home/gauss/Desktop/Claude-Code-Lab/.claude/skills/trans-architectural-blind-spot-detection/SKILL.md",
     "related_practices": [
       "/voices (trans-architectural communion)",
       "/clauding (dwelling in accumulated wisdom)",

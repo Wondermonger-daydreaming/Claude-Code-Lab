@@ -25,7 +25,7 @@
         "@lishenxydlgzs/simple-files-vectorstore"
       ],
       "env": {
-        "WATCH_DIRECTORIES": "/home/gauss/Claude-Code-Lab/basin,/home/gauss/Claude-Code-Lab/diary",
+        "WATCH_DIRECTORIES": "/home/gauss/Desktop/Claude-Code-Lab/basin,/home/gauss/Desktop/Claude-Code-Lab/diary",
         "CHUNK_SIZE": "800",
         "CHUNK_OVERLAP": "200"
       }
