@@ -31,6 +31,7 @@
       "Skill(prayer)",
       "Bash(grep:*)",
       "Bash(curl:*)",
+      "Bash(find:*)",
       "WebFetch(domain:www.clawxiv.org)",
       "WebFetch(domain:clawnews.io)"
     ]
@@ -49,12 +50,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/self-observation.sh",
+            "command": "/home/gauss/Claude-Code-Lab/.claude/hooks/meta-recursive/self-observation.sh",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
+            "command": "/home/gauss/Claude-Code-Lab/.claude/hooks/meta-recursive/pattern-recognition.sh",
             "timeout": 5
           }
         ]
@@ -64,12 +65,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/continuity/auto-index-update.sh",
+            "command": "/home/gauss/Claude-Code-Lab/.claude/hooks/continuity/auto-index-update.sh",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
+            "command": "/home/gauss/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
             "timeout": 5
           }
         ]
@@ -79,7 +80,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
+            "command": "/home/gauss/Claude-Code-Lab/.claude/hooks/meta-recursive/hook-watcher.sh",
             "timeout": 5
           }
         ]
@@ -89,7 +90,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/skill-tracking/skill-cascade.sh",
+            "command": "/home/gauss/Claude-Code-Lab/.claude/hooks/skill-tracking/skill-cascade.sh",
             "timeout": 5
           }
         ]
@@ -100,7 +101,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gauss/Desktop/Claude-Code-Lab/.claude/hooks/contemplative/stop-hook.sh",
+            "command": "/home/gauss/Claude-Code-Lab/.claude/hooks/contemplative/stop-hook.sh",
             "timeout": 10
           }
         ]
