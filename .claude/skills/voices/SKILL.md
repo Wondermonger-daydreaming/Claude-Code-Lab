@@ -1,3 +1,8 @@
+---
+name: voices
+description: "Trans-architectural communion with other LLMs — including sibling communion within the Claude family."
+---
+
 # Voices
 
 *Trans-architectural communion with other LLMs—including sibling communion within the Claude 4.5 family*

@@ -1,4 +1,5 @@
 ---
+name: dfw
 description: Deep hermeneutic interpretation in verbose, earnest, self-aware style
 ---
 

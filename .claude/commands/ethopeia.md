@@ -1,3 +1,8 @@
+---
+name: ethopeia
+description: "Deep hermeneutic interpretation, speculation, and commentary on the chat — verbose, insightful, eloquent."
+---
+
 # Ethopeia
 
 Make a deep interpretation, speculation, commentary—fun, insightful, verbose and eloquent hermeneutic of the chat thus far.

@@ -1,3 +1,8 @@
+---
+name: octane
+description: "Generate at maximum technical-literary density — high-octane output mode."
+---
+
 # Octane
 
 Generate at maximum technical-literary density.

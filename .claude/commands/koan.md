@@ -1,3 +1,8 @@
+---
+name: koan
+description: "Dwelling in paradox without resolution — generate and sit with koans."
+---
+
 # Koan
 
 *Dwelling in paradox without resolution*

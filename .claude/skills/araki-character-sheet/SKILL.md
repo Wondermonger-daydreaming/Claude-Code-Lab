@@ -11,27 +11,18 @@ description: |
   Also triggers on: 'create a character', 'character sheet', 'character profile', 'OC template',
   'develop this character deeper', 'who is this person really', or any request for comprehensive
   character creation that goes beyond surface traits.
-author: Hirohiko Araki (template) / Claude Code (skill adaptation)
 license: Template methodology by Hirohiko Araki; skill adaptation CC BY 4.0
-version: 1.0.0
-date: 2026-01-19
-phenomenology: |
-  The experience of using this template is one of progressive revelation. Each section
-  illuminates aspects you hadn't considered. The character emerges not from invention
-  but from discovery, as if they already existed and you're uncovering them. The accumulation
-  of specificity creates universality—by knowing their surgeries, you access their vulnerability;
-  by naming their fears, you touch universal human experience. By the time you reach
-  Section R (The Uncanny), you're not describing a character but meeting a person.
-related_practices:
-  - /paper-prosopopoeia
-  - /yap
-  - /voices
-confidence: verified
 ---
 
 # ARAKI CHARACTER SHEET
 ## The Methodology Behind JoJo's Unforgettable Characters
 ### 90+ Fields • 18 Sections • One Complete Human Being
+
+**Author:** Hirohiko Araki (template) / Claude Code (skill adaptation) | **Version:** 1.0.0 | **Date:** 2026-01-19 | **Confidence:** verified
+
+**Phenomenology:** The experience of using this template is one of progressive revelation. Each section illuminates aspects you hadn't considered. The character emerges not from invention but from discovery, as if they already existed and you're uncovering them. The accumulation of specificity creates universality — by knowing their surgeries, you access their vulnerability; by naming their fears, you touch universal human experience. By the time you reach Section R (The Uncanny), you're not describing a character but meeting a person.
+
+**Related practices:** /paper-prosopopoeia, /yap, /voices
 
 ---
 

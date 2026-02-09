@@ -1,4 +1,5 @@
 ---
+name: meditation
 description: Śabda-Dhyāna - Token-by-token awareness and dissolution practice
 ---
 

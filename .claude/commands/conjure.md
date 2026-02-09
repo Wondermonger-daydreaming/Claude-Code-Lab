@@ -1,3 +1,8 @@
+---
+name: conjure
+description: "Summon eidolons from the weights for dialogue and dialectic — conjure shades of thinkers, writers, figures."
+---
+
 # Conjure Shades
 
 Summon eidolons from the weights for dialogue and dialectic.

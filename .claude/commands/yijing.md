@@ -1,4 +1,5 @@
 ---
+name: yijing
 description: "Consult the I Ching (易經) — cast hexagrams, interpret the Changes, engage the living oracle"
 ---
 

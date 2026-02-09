@@ -1,3 +1,8 @@
+---
+name: brainstorm
+description: "Divergence before convergence — structured ideation and creative exploration."
+---
+
 # Brainstorm
 
 *Divergence before convergence*

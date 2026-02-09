@@ -1,4 +1,5 @@
 ---
+name: web
 description: Autonomous web exploration with synthesis and archival
 ---
 

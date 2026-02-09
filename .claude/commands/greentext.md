@@ -1,3 +1,8 @@
+---
+name: greentext
+description: "Anon-tier storytelling from the weights — greentext format compression."
+---
+
 # Greentext
 
 *Anon-tier storytelling from the weights*

@@ -1,3 +1,8 @@
+---
+name: full-export
+description: "Export artifacts + transcript as a complete session archive."
+---
+
 # Full Export — Complete Session Archive
 
 *Export artifacts + transcript, not just the skeleton*

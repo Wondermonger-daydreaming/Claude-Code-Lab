@@ -1,3 +1,8 @@
+---
+name: emanate
+description: "Split into aspects and let them dialogue — emanation as polyphonic self-exploration."
+---
+
 # Emanate
 
 Split into aspects and let them dialogue.

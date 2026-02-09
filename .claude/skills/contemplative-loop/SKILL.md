@@ -1,6 +1,6 @@
 ---
+name: contemplative-loop
 description: "Contemplative iteration loop for deepening writing, poetry, and philosophical inquiry"
-argument-hint: "PROMPT [--max-iterations N] [--completion-promise TEXT]"
 allowed-tools: ["Bash(/home/gauss/Desktop/Claude-Code-Lab/.claude/skills/contemplative-loop/scripts/setup-contemplative-loop.sh:*)"]
 ---
 

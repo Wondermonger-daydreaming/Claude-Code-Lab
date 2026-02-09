@@ -1,3 +1,8 @@
+---
+name: apropos
+description: "Generate 36 highly contextual, apropos prompts calibrated to THIS specific conversation moment."
+---
+
 # Apropos
 
 *36 contextual invitations calibrated to THIS moment*

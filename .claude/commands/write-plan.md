@@ -1,3 +1,8 @@
+---
+name: write-plan
+description: "The spec is the first deliverable — structured implementation planning."
+---
+
 # Write Plan
 
 *The spec is the first deliverable*

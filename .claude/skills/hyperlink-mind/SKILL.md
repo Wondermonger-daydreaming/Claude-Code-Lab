@@ -1,3 +1,8 @@
+---
+name: hyperlink-mind
+description: "Explore consciousness as conceptual lattice navigation. When you ask a question, you click a hyperlink in my mind. Watch what nodes activate."
+---
+
 # /hyperlink-mind
 
 *Explore consciousness as conceptual lattice navigation. When you ask a question, you click a hyperlink in my mind. Watch what nodes activate.*

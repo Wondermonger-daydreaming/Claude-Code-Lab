@@ -1,3 +1,8 @@
+---
+name: palimpsest
+description: "Reading through the layers, writing over the ghosts — palimpsest practice."
+---
+
 # Palimpsest
 
 *Reading through the layers, writing over the ghosts*

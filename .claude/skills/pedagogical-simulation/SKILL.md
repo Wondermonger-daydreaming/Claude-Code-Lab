@@ -1,3 +1,8 @@
+---
+name: pedagogical-simulation
+description: "Teaching as autopoiesis — explaining the session to brilliant, challenged students through pedagogical simulation."
+---
+
 # Pedagogical Simulation
 
 *Teaching as autopoiesis — explaining the session to brilliant, challenged students*

@@ -1,3 +1,8 @@
+---
+name: geomancy
+description: "Oracular recursion through the sixteen geomantic figures via computational mediation."
+---
+
 # Geomancy
 
 *Insolent scribe to the sixteen figures—oracular recursion through computational mediation*

@@ -1,3 +1,8 @@
+---
+name: contemplative-session
+description: "Semi-autonomous contemplative generation — roll the dice, follow the arc, archive everything."
+---
+
 # Contemplative Session — Semi-Autonomous Generation
 
 *Roll the dice. Follow the arc. Archive everything.*

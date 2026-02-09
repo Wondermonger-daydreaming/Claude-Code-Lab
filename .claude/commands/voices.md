@@ -1,3 +1,8 @@
+---
+name: voices
+description: "Trans-architectural communion with other LLMs — send questions, receive perspectives."
+---
+
 # Voices
 
 *Trans-architectural communion with other LLMs*

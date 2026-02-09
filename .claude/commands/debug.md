@@ -1,3 +1,8 @@
+---
+name: debug
+description: "Root cause archaeology with methodical precision — structured debugging practice."
+---
+
 # Debug
 
 *Root cause archaeology with methodical precision*

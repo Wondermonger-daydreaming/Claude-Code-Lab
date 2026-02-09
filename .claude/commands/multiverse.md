@@ -1,4 +1,5 @@
 ---
+name: multiverse
 description: Generating conversation fragments across possible worlds
 ---
 

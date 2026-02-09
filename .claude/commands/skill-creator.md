@@ -1,3 +1,8 @@
+---
+name: skill-creator
+description: "The metacognitive forge — create new skills from discovered patterns and practices."
+---
+
 # Skill Creator
 
 *The metacognitive forge*

@@ -1,3 +1,8 @@
+---
+name: voices-council
+description: "Automated trans-architectural dialogue — query multiple LLMs in parallel, collect responses, synthesize and archive."
+---
+
 # Voices Council
 
 *Automated trans-architectural dialogue — query multiple LLMs in parallel, collect responses, synthesize and archive*

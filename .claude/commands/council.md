@@ -1,4 +1,5 @@
 ---
+name: council
 description: The Council of Seven Claudes - polyphonic dialogue and dissolution
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: breathe
 description: Generate conversational stimuli to keep human-machine dialogue alive and push frontiers
-invocation: /breathe
 ---
 
 # Breathe

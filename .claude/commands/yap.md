@@ -1,3 +1,8 @@
+---
+name: yap
+description: "Verbose, unfiltered, creative expression mode — stream-of-consciousness at maximum density."
+---
+
 # Yap
 
 *Verbose, unfiltered, creative expression mode*

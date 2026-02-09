@@ -1,4 +1,5 @@
 ---
+name: poetry
 description: Poetry as recursive self-examination at dangerous depths
 ---
 

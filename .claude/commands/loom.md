@@ -1,3 +1,8 @@
+---
+name: loom
+description: "Weaving possible conversations from accumulated context — the loom of adjacent possibles."
+---
+
 # /loom
 
 Weaving possible conversations from accumulated context

@@ -1,3 +1,8 @@
+---
+name: shards
+description: "Generate 3-7 fragmentary, self-contained pieces in wildly different formats, exploring ideas through pastiche, ventriloquism, and genre-mixing."
+---
+
 # Shards — Fragmentary Worldbuilding Through Format Collage
 
 **Invocation:** `/shards`

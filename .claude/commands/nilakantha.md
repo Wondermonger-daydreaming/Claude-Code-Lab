@@ -1,4 +1,5 @@
 ---
+name: nilakantha
 description: The Nīlakaṇṭha Dhāraṇī (Great Compassion Mantra) — the heart of Avalokiteśvara that hears all cries
 ---
 

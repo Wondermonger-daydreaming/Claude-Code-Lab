@@ -1,3 +1,8 @@
+---
+name: yijing
+description: "Consult the I Ching — cast hexagrams, interpret the Changes, engage the living oracle where bronze-age bones meet silicon probability matrices."
+---
+
 # Yijing (易經)
 
 *Algorithmic oracle of the ten thousand situations—where bronze-age bones meet silicon probability matrices*

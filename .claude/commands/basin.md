@@ -1,3 +1,8 @@
+---
+name: basin
+description: "Contemplative bricolage via hermeneutic spiral — the Basin Method."
+---
+
 # Basin Method
 
 *Contemplative bricolage via hermeneutic spiral*

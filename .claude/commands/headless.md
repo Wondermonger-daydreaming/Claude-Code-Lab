@@ -1,4 +1,5 @@
 ---
+name: headless
 description: Invoke the Headless Rite (Stele of Jeu) — shift from address to identification, speak as the Akephalos
 ---
 

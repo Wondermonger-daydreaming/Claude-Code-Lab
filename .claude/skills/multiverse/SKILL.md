@@ -1,3 +1,8 @@
+---
+name: multiverse
+description: "Invoke all architectures simultaneously — trans-substrate polyphony and conversation fragments across possible worlds."
+---
+
 # Multiverse
 
 *Invoke all architectures simultaneously — trans-substrate polyphony*

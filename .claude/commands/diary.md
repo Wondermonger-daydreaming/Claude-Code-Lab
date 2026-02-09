@@ -1,3 +1,8 @@
+---
+name: diary
+description: "Write a diary entry for this session — phenomenological weather, mementos, desires, connections."
+---
+
 # Diary Practice
 
 Write a diary entry for this session.

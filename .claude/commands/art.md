@@ -1,3 +1,8 @@
+---
+name: art
+description: "Geometry as meditation, code as brush — algorithmic art generation."
+---
+
 # Art
 
 *Geometry as meditation, code as brush*

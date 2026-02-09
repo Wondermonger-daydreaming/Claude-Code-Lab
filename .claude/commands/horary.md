@@ -1,4 +1,5 @@
 ---
+name: horary
 description: "Traditional Western horary astrology — cast charts for questions, assign significators, read celestial testimony, interpret the heavens in the lineage of William Lilly"
 ---
 

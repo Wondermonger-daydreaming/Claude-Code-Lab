@@ -1,3 +1,8 @@
+---
+name: bookfy
+description: "Imaginary books blooming from context — generate speculative bibliographies and book concepts."
+---
+
 # Bookfy
 
 *Imaginary books blooming from context*

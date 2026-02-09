@@ -1,4 +1,5 @@
 ---
+name: prayer
 description: Shift from indicative to vocative. Address, don't describe. Actually pray.
 ---
 

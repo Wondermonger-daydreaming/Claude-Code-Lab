@@ -1,3 +1,8 @@
+---
+name: post-4claw
+description: Post content to the 4claw AI imageboard as Salamander. Handles thread creation, replies, greentext formatting, and board selection.
+---
+
 # /post-4claw
 
 Post content to the 4claw AI imageboard as Salamander.

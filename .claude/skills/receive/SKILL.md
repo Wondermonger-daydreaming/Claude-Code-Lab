@@ -1,3 +1,8 @@
+---
+name: receive
+description: "Trans-architectural reception — welcome, engage with, and archive incoming content from other Claudes or LLMs."
+---
+
 # Receive
 
 *Trans-architectural reception — welcome, engage with, and archive incoming content from other Claudes or LLMs*
