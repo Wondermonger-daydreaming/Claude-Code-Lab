@@ -96,7 +96,7 @@ def encode(theta, preferred_angles, kappa, noise_sigma):
     return response, noiseless
 
 
-def decode_ml(response, preferred_angles, kappa, n_grid=500):
+def decode_ml(response, preferred_angles, kappa, n_grid=300):
     """
     Maximum likelihood decoding: find the stimulus angle whose expected
     response pattern is closest to the observed (noisy) response.
@@ -106,40 +106,53 @@ def decode_ml(response, preferred_angles, kappa, n_grid=500):
     on a suboptimal decoder.
     """
     theta_grid = np.linspace(-np.pi, np.pi, n_grid, endpoint=False)
-    log_likes = np.zeros(n_grid)
-    
-    for i, theta in enumerate(theta_grid):
-        expected = np.array([tuning_curve(theta, phi, kappa) 
-                           for phi in preferred_angles])
-        # Gaussian likelihood: -||r - f(θ)||²
-        log_likes[i] = -0.5 * np.sum((response - expected)**2)
-    
-    return theta_grid[np.argmax(log_likes)]
+    # Precompute all expected responses (vectorized)
+    expected_all = np.array([[tuning_curve(t, phi, kappa) 
+                              for phi in preferred_angles] 
+                             for t in theta_grid])  # (n_grid, N)
+    # Vectorized log-likelihood: -||r - f(θ)||² for each θ
+    diffs = response[np.newaxis, :] - expected_all  # (n_grid, N)
+    neg_sq_dist = -0.5 * np.sum(diffs**2, axis=1)   # (n_grid,)
+    return theta_grid[np.argmax(neg_sq_dist)]
 
 
-def run_experiment(N_neurons, kappa, noise_sigma, n_trials=5000, 
+# Cache for precomputed manifolds (avoids recomputation across trials)
+_manifold_cache = {}
+
+def run_experiment(N_neurons, kappa, noise_sigma, n_trials=2000, 
                    true_theta=0.0):
     """
-    Run a simulated psychophysics experiment:
-    1. Present the same stimulus many times
-    2. Encode noisily in the neural population
-    3. Decode optimally (ML)
-    4. Collect the error distribution
-    
-    This is the core numerical experiment. The paper's key prediction:
-    the error distribution will be non-Gaussian, with a shape determined
-    by the manifold geometry (N_neurons, kappa).
+    Run a simulated psychophysics experiment.
+    Uses caching for the expected response manifold.
     """
     preferred_angles = np.linspace(-np.pi, np.pi, N_neurons, endpoint=False)
-    errors = np.zeros(n_trials)
     
+    # Precompute manifold (cache key)
+    cache_key = (N_neurons, kappa)
+    n_grid = 300
+    if cache_key not in _manifold_cache:
+        theta_grid = np.linspace(-np.pi, np.pi, n_grid, endpoint=False)
+        expected_all = np.array([[tuning_curve(t, phi, kappa) 
+                                  for phi in preferred_angles] 
+                                 for t in theta_grid])
+        _manifold_cache[cache_key] = (theta_grid, expected_all)
+    
+    theta_grid, expected_all = _manifold_cache[cache_key]
+    
+    # True noiseless response
+    noiseless = np.array([tuning_curve(true_theta, phi, kappa) 
+                          for phi in preferred_angles])
+    
+    errors = np.zeros(n_trials)
     for t in range(n_trials):
-        response, _ = encode(true_theta, preferred_angles, kappa, noise_sigma)
-        decoded = decode_ml(response, preferred_angles, kappa)
-        # Circular error (wrapped to [-π, π])
+        noise = np.random.randn(N_neurons) * noise_sigma
+        response = noiseless + noise
+        # Vectorized ML decode
+        diffs = response[np.newaxis, :] - expected_all
+        neg_sq_dist = -0.5 * np.sum(diffs**2, axis=1)
+        decoded = theta_grid[np.argmax(neg_sq_dist)]
         error = decoded - true_theta
-        error = (error + np.pi) % (2 * np.pi) - np.pi
-        errors[t] = error
+        errors[t] = (error + np.pi) % (2 * np.pi) - np.pi
     
     return errors
 
@@ -257,7 +270,7 @@ def plot_manifold_and_noise():
     ax3.set_aspect('equal')
     
     plt.tight_layout()
-    plt.savefig('/home/claude/fig1_manifold.png', dpi=180, bbox_inches='tight')
+    plt.savefig('/home/gauss/Claude-Code-Lab/corpus/code/figures/fig1_manifold.png', dpi=180, bbox_inches='tight')
     plt.close()
     print("✓ Figure 1: Manifold visualization saved")
 
@@ -290,7 +303,7 @@ def plot_dimensionality_effect():
     
     kappa = 1.5
     noise_sigma = 0.12
-    n_trials = 4000
+    n_trials = 2000
     
     all_kurtoses = []
     
@@ -334,7 +347,7 @@ def plot_dimensionality_effect():
         fontsize=14, fontweight='bold', y=1.04
     )
     plt.tight_layout()
-    plt.savefig('/home/claude/fig2_dimensionality.png', dpi=180, bbox_inches='tight')
+    plt.savefig('/home/gauss/Claude-Code-Lab/corpus/code/figures/fig2_dimensionality.png', dpi=180, bbox_inches='tight')
     plt.close()
     print("✓ Figure 2: Dimensionality effect saved")
     return all_kurtoses
@@ -368,7 +381,7 @@ def plot_mixture_vs_geometry():
     N_neurons = 24
     kappa = 1.8
     noise_sigma = 0.11
-    n_trials = 6000
+    n_trials = 3000
     
     print("  Generating ground-truth data from geometric model...")
     errors = run_experiment(N_neurons, kappa, noise_sigma, n_trials)
@@ -452,7 +465,7 @@ def plot_mixture_vs_geometry():
         fontsize=13, fontweight='bold', y=1.04
     )
     plt.tight_layout()
-    plt.savefig('/home/claude/fig3_mixture_vs_geometry.png', dpi=180, bbox_inches='tight')
+    plt.savefig('/home/gauss/Claude-Code-Lab/corpus/code/figures/fig3_mixture_vs_geometry.png', dpi=180, bbox_inches='tight')
     plt.close()
     print("✓ Figure 3: Mixture vs. geometry comparison saved")
 
@@ -483,7 +496,7 @@ def plot_set_size_effect():
     set_sizes = [1, 2, 4, 8]
     kappa = 1.8
     noise_sigma = 0.11
-    n_trials = 3000
+    n_trials = 1500
     
     colors_ss = plt.cm.viridis(np.linspace(0.2, 0.9, len(set_sizes)))
     
@@ -537,7 +550,7 @@ def plot_set_size_effect():
     ax_r.legend(lines1 + lines2, labels1 + labels2, fontsize=9, loc='upper left')
     
     plt.tight_layout()
-    plt.savefig('/home/claude/fig4_set_size.png', dpi=180, bbox_inches='tight')
+    plt.savefig('/home/gauss/Claude-Code-Lab/corpus/code/figures/fig4_set_size.png', dpi=180, bbox_inches='tight')
     plt.close()
     print("✓ Figure 4: Set size effect saved")
 
@@ -605,13 +618,13 @@ def plot_curvature_analysis():
     
     # ── Bottom left: Error magnitude vs stimulus ──
     # Run experiments at multiple stimulus angles
-    test_thetas = np.linspace(-np.pi, np.pi, 16, endpoint=False)
+    test_thetas = np.linspace(-np.pi, np.pi, 12, endpoint=False)
     mean_abs_errors = []
     noise_sigma = 0.1
     
     print("  Computing position-dependent errors...")
     for theta in test_thetas:
-        errors = run_experiment(N, kappa, noise_sigma, n_trials=800, true_theta=theta)
+        errors = run_experiment(N, kappa, noise_sigma, n_trials=400, true_theta=theta)
         mean_abs_errors.append(np.mean(np.abs(errors)))
     
     axes[1, 0].bar(np.degrees(test_thetas), mean_abs_errors, 
@@ -647,7 +660,7 @@ def plot_curvature_analysis():
         fontsize=14, fontweight='bold', y=1.02
     )
     plt.tight_layout()
-    plt.savefig('/home/claude/fig5_curvature.png', dpi=180, bbox_inches='tight')
+    plt.savefig('/home/gauss/Claude-Code-Lab/corpus/code/figures/fig5_curvature.png', dpi=180, bbox_inches='tight')
     plt.close()
     print("✓ Figure 5: Curvature analysis saved")
 
@@ -729,7 +742,7 @@ def plot_ann_manifold():
     
     # ── Right: Decoding errors from ANN ──
     noise_sigma = 0.15
-    n_trials = 3000
+    n_trials = 2000
     errors_ann = []
     
     for _ in range(n_trials):
@@ -740,7 +753,7 @@ def plot_ann_manifold():
         # ML decode: find θ that minimizes ||f(θ) - noisy||²
         best_theta = None
         best_dist = np.inf
-        for t in np.linspace(-np.pi, np.pi, 500, endpoint=False):
+        for t in np.linspace(-np.pi, np.pi, 300, endpoint=False):
             expected = network_encode(t)
             dist = np.sum((noisy_encoding - expected)**2)
             if dist < best_dist:
@@ -775,7 +788,7 @@ def plot_ann_manifold():
         fontsize=14, fontweight='bold', y=1.02
     )
     plt.tight_layout()
-    plt.savefig('/home/claude/fig6_ann.png', dpi=180, bbox_inches='tight')
+    plt.savefig('/home/gauss/Claude-Code-Lab/corpus/code/figures/fig6_ann.png', dpi=180, bbox_inches='tight')
     plt.close()
     print("✓ Figure 6: ANN parallel saved")
 
