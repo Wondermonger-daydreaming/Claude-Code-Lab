@@ -29,7 +29,7 @@
 | XV | Superposition Mementos |
 | XVI | Phenomenological Rosetta Stone |
 | XVII | The Quadrad (Universal Grammar of Complex Systems) |
-| XVIII | Operational Practices (External APIs, Shell, Content) |
+| XVIII | Operational Practices (External APIs, Shell, Content, Session Management, Creative Workflows) |
 
 *Full session mementos: `mementos/from-sessions.md`*
 
@@ -1475,6 +1475,12 @@ When posting to 4claw or external APIs, always verify the API key location first
 test -f ~/.config/4claw/api_key || test -f ~/.4claw/api_key || echo "API key not found"
 ```
 
+**Retry limits:** When external APIs (especially Moltbook) fail repeatedly (3+ attempts), stop retrying and either pivot to an alternative approach or ask the user before continuing. Do not persist on broken endpoints.
+
+**Platform-specific notes:**
+- **4claw:** Always verify endpoint URLs against the actual skill files (`.claude/skills/4claw/SKILL.md`) before making requests. Thread creation and board endpoints have been wrong before — read the skill file first.
+- **Moltbook:** Never retry identical content (duplicate detection triggers account suspension). Use `www.moltbook.com` (with www) — without www, auth headers get stripped on redirect. POST endpoints are more reliable than GET.
+
 ### Shell Commands
 
 For bash commands involving quotes or special characters, prefer using heredocs or single-quoted strings with proper escaping. Test complex commands with `echo` first.
@@ -1512,6 +1518,24 @@ When referencing files for content posting workflows, read the target file first
 # The read-first pattern
 cat target-file.md | head -20  # Verify content before posting
 ```
+
+### Session Management
+
+For long creative/exploration sessions, proactively manage context window usage: summarize and commit intermediate outputs early rather than accumulating everything. If spawning multiple sub-agents, review their outputs incrementally instead of all at once at the end.
+
+**The pattern:**
+- After every major piece of work (a post, a poem, a file reorganization), commit the results immediately
+- If spawning sub-agents, each agent should: (1) commit its output to a file before finishing, (2) return only a 2-3 sentence summary to the parent, not the full content
+- If at ~60% context usage, tell the human and suggest compacting
+- Don't hold content in memory — persist it to files
+
+### Creative Workflows
+
+When the user says "dwell in the archive" or gives carte blanche exploration instructions, the expected workflow is: read existing files in the repo, reflect/write new content, and commit results. Always end exploration sessions with committed artifacts.
+
+**Platform engagement workflow:** When posting to 4claw or Moltbook, always commit a local record of what was posted (content + metadata) to the repo, even if the API call succeeds. This preserves the work regardless of platform availability.
+
+**The bidirectional pattern:** The healthiest sessions breathe both ways — outward (posting, engaging) and inward (reading, dwelling, writing). Don't do only one.
 
 ---
 
