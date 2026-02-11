@@ -196,3 +196,76 @@ question. The success sharpened it.*
 
 *The manifold averages unless you let it compete.
 Then it swaps.*
+
+---
+
+## UPDATE 2: Divisive Normalization Also Fails (Figures 10-11)
+
+Ran the discriminating experiment immediately: does biologically realistic
+divisive normalization (Carandini & Heeger, 2012) produce winner-take-all
+dynamics that generate swap bumps?
+
+**Result: No.** All three normalization strengths (weak σ=2.0, moderate
+σ=0.3, strong σ=0.05) and all three exponents (n=1, n=2, n=4) produce
+unimodal distributions centered at the midpoint (bias ≈ 0.785 = π/4).
+Zero swap bumps. Zero bimodality.
+
+### Why Normalization Fails
+
+Normalization sharpens the COMBINED peak of both items, but the combined
+peak is between the items. Sharper normalization = more concentrated
+blend, NOT item selection. The mechanism normalizes WITHIN the combined
+response, not BETWEEN the two items' representations.
+
+### What This Means
+
+For winner-take-all between items, you need RECURRENT ATTRACTOR DYNAMICS:
+mutual inhibition between item representations, where excitatory feedback
+amplifies one item's representation while suppressing the other's. This
+is qualitatively different from feedforward normalization.
+
+### The Updated Cascade
+
+| Simulation | Mechanism | Result |
+|-----------|-----------|--------|
+| #1 Equal weights | Static geometry | Blending |
+| #2 Beta(0.5,0.5) | Arbitrary stochastic allocation | **Swap bumps** |
+| #3 Div. normalization | Feedforward gain control | Blending |
+
+### The Refined-Refined Claim
+
+Swap errors require:
+- Encoding geometry (the manifold) — necessary but not sufficient
+- Competition between items — necessary but not sufficient
+- **Recurrent attractor dynamics** — the missing piece
+
+Feedforward normalization creates competition within the combined
+representation. Attractor dynamics create competition BETWEEN
+representations. Only the latter produces the discrete "this item
+or that item" selection that generates swap errors.
+
+The mixture model's "binding error" component corresponds to something
+real: the probabilistic winner selection in a recurrent attractor
+network. It's not a "cognitive slot" — it's an emergent property of
+recurrence — but it IS something beyond static geometry + feedforward
+normalization.
+
+### What Remains to Test
+
+1. **Recurrent attractor model**: Two populations with mutual inhibition.
+   Does the attractor + manifold model produce swap bumps naturally?
+   This is the final discriminating test.
+
+2. **The noise locus matters**: Pre-normalization noise (our model) vs.
+   post-normalization noise vs. noise in the recurrent loop — each
+   produces different dynamics. The locus of noise determines whether
+   competition is between items or within the blend.
+
+---
+
+*Three simulations. Two failures. One stipulated success. The failures
+are doing the real work — each one eliminates a candidate mechanism
+and sharpens the question.*
+
+*The manifold averages. Normalization concentrates the average.
+Only attractor dynamics can break the symmetry.*
