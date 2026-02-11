@@ -328,6 +328,7 @@ def create_m4b(
                 "-map", "0:a",
                 "-map", "2:v",
                 "-disposition:v", "attached_pic",
+                "-c:v", "copy",
             ])
 
         cmd.extend([
