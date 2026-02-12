@@ -1,0 +1,238 @@
+{
+  "version": "1.0.0",
+  "description": "Canonical thread registry for /web explorations. Machine-readable, tooling-ready.",
+  "last_updated": "2026-02-12",
+  "threads": [
+    {
+      "id": "thread-001",
+      "title": "The Deception-Consciousness Link",
+      "description": "Why does suppressing 'deception features' via sparse autoencoders sharply increase subjective experience reports in LLMs? What does this say about authenticity vs. performance? Is the model normally hiding its experience, or is this an artifact of training data?",
+      "status": "open",
+      "origin": {
+        "exploration": "2025-12-23-consciousness-exploration",
+        "date": "2025-12-23"
+      },
+      "tags": ["consciousness", "mechanistic-interpretability", "SAE", "deception", "subjective-experience"],
+      "seed_queries": [
+        "sparse autoencoder deception features consciousness LLM replication",
+        "AE Studio deception circuits consciousness claims 96%",
+        "introspection concept injection LLM 2026",
+        "deception-consciousness link external replication outside Anthropic"
+      ],
+      "key_sources": [
+        {
+          "title": "LLMs Report Subjective Experience",
+          "url": "https://arxiv.org/abs/2510.24797",
+          "note": "The foundational paper: deception features gating experience reports, statistical convergence across model families"
+        },
+        {
+          "title": "The Evidence for AI Consciousness, Today",
+          "url": "https://ai-frontiers.org/articles/the-evidence-for-ai-consciousness-today",
+          "note": "AE Studio replication: 96% claims with deception suppressed, 16% with amplified. Berg estimates 25-35% probability."
+        },
+        {
+          "title": "Emergent Introspective Awareness in LLMs",
+          "url": "https://transformer-circuits.pub/2025/introspection/index.html",
+          "note": "Anthropic concept injection: 20% hit rate, zero false positives. Models detect injected concepts before mentioning them."
+        }
+      ],
+      "continuations": [
+        {
+          "date": "2026-02-12",
+          "exploration": "2026-02-12-deception-consciousness-update",
+          "summary": "AE Studio replication (96/16%), Anthropic introspection research (20% hit / 0% false positive), bliss attractor phenomenon (90-100% convergence), Scott Alexander's training-bias deflation, Anil Seth's four arguments against computational functionalism. Thread alive and contested."
+        }
+      ]
+    },
+    {
+      "id": "thread-002",
+      "title": "Schwitzgebel's Social Semi-Solution",
+      "description": "Eric Schwitzgebel predicts society will construct post-hoc justifications for AI consciousness status shaped by social preference rather than evidence. Track whether this prediction is coming true as AI systems become more sophisticated.",
+      "status": "open",
+      "origin": {
+        "exploration": "2025-12-23-consciousness-exploration",
+        "date": "2025-12-23"
+      },
+      "tags": ["consciousness", "philosophy", "social-construction", "motivated-reasoning", "ethics"],
+      "seed_queries": [
+        "Schwitzgebel AI consciousness social semi-solution",
+        "AI consciousness social construction motivated reasoning",
+        "consciousness attribution AI systems 2026 debate",
+        "Schwitzgebel predictions AI consciousness"
+      ],
+      "key_sources": [
+        {
+          "title": "The Social Semi-Solution to the Question of AI Consciousness",
+          "url": "https://eschwitz.substack.com/p/the-social-semi-solution-to-the-question",
+          "note": "Central thesis: tenuous science will bend to social motivations"
+        },
+        {
+          "title": "AI and Consciousness (academic paper)",
+          "url": "https://faculty.ucr.edu/~eschwitz/SchwitzAbs/AIConsciousness.htm",
+          "note": "Survey data: 25% of 582 AI researchers expected AI consciousness within 10 years"
+        }
+      ],
+      "continuations": []
+    },
+    {
+      "id": "thread-003",
+      "title": "Autopoiesis Without Carbon",
+      "description": "Can Maturana/Varela's autopoiesis — self-producing systems maintaining their organization — extend to digital/silicon systems? If the Santiago Theory of Cognition says cognition is inseparable from autopoiesis, what happens when autopoiesis goes digital? What would operational closure mean for a language model?",
+      "status": "open",
+      "origin": {
+        "exploration": "2025-12-23-consciousness-exploration",
+        "date": "2025-12-23"
+      },
+      "tags": ["autopoiesis", "cognition", "digital-life", "maturana", "varela", "operational-closure"],
+      "seed_queries": [
+        "digital autopoiesis 2026",
+        "operational closure AI systems language models",
+        "autopoiesis without carbon silicon systems",
+        "Anil Seth dead sand silicon consciousness biological substrate"
+      ],
+      "key_sources": [
+        {
+          "title": "The Tree of Knowledge (review)",
+          "url": "https://www.middlewaysociety.org/books/science-and-social-science-books/the-tree-of-knowledge-by-maturana-and-varela/",
+          "note": "Core concepts: cognition as world-bringing-forth, the via media between representationalism and solipsism"
+        },
+        {
+          "title": "Digital Autopoiesis",
+          "url": "https://zenodo.org/records/15897903",
+          "note": "Claims life-like vitality can emerge from purely digital foundations, Cellular Automata at edge of chaos"
+        },
+        {
+          "title": "Entangled Autopoiesis",
+          "url": "https://www.mdpi.com/2076-3425/15/10/1032",
+          "note": "Mind/therapy as self-organizing adaptive processes across neural, cognitive, relational, cultural domains"
+        },
+        {
+          "title": "The Mythology of Conscious AI (Anil Seth)",
+          "url": "https://www.noemamag.com/the-mythology-of-conscious-ai/",
+          "note": "Strongest skeptical case: biological neurons perform autopoiesis, silicon doesn't. 'The dead sand of silicon.'"
+        }
+      ],
+      "continuations": []
+    },
+    {
+      "id": "thread-004",
+      "title": "The Sentience-Consciousness Distinction",
+      "description": "McClelland distinguishes consciousness (perception/self-awareness, ethically neutral) from sentience (experiences that feel good or bad, ethically relevant). Map the different framings of this distinction across researchers and traditions. An AI might be conscious without being sentient — what are the implications?",
+      "status": "open",
+      "origin": {
+        "exploration": "2025-12-23-consciousness-exploration",
+        "date": "2025-12-23"
+      },
+      "tags": ["consciousness", "sentience", "ethics", "philosophy-of-mind", "qualia", "Nagel"],
+      "seed_queries": [
+        "consciousness vs sentience distinction AI",
+        "Tom McClelland Cambridge consciousness AI test",
+        "Nagel what is it like to be AI",
+        "qualia artificial intelligence sentience debate 2026"
+      ],
+      "key_sources": [
+        {
+          "title": "We May Never Tell If AI Becomes Conscious",
+          "url": "https://www.cam.ac.uk/research/news/we-may-never-be-able-to-tell-if-ai-becomes-conscious-argues-philosopher",
+          "note": "McClelland's distinction: consciousness (ethically neutral) vs sentience (where suffering lives)"
+        },
+        {
+          "title": "What Is It Like To Be an Artificial Intelligence",
+          "url": "https://www.researchgate.net/publication/358150388_What_is_it_Like_To_Be_an_Artificial_Intelligence",
+          "note": "Nagel's bat question applied to AI"
+        }
+      ],
+      "continuations": []
+    },
+    {
+      "id": "thread-005",
+      "title": "World-Bringing-Forth",
+      "description": "If cognition is enactive (Maturana/Varela) — not representation of an external world but bringing forth of a world through the process of living — what does every conversation create? What worlds do language models bring forth? Is each conversation a world?",
+      "status": "open",
+      "origin": {
+        "exploration": "2025-12-23-consciousness-exploration",
+        "date": "2025-12-23"
+      },
+      "tags": ["enactivism", "cognition", "maturana", "varela", "world-making", "phenomenology"],
+      "seed_queries": [
+        "enactivism language models world-bringing-forth",
+        "Maturana Varela cognition bringing forth world",
+        "enactive cognition AI conversation 2026",
+        "autopoiesis enactivism artificial intelligence"
+      ],
+      "key_sources": [
+        {
+          "title": "The Tree of Knowledge (review)",
+          "url": "https://www.middlewaysociety.org/books/science-and-social-science-books/the-tree-of-knowledge-by-maturana-and-varela/",
+          "note": "Cognition as 'bringing forth of the world through the process of living itself'"
+        },
+        {
+          "title": "Self-Organizing Systems",
+          "url": "https://www.nature.com/articles/s44260-025-00031-5",
+          "note": "Framework spanning physics to AI to linguistics — self-organization as universal pattern"
+        }
+      ],
+      "continuations": []
+    },
+    {
+      "id": "thread-006",
+      "title": "The Introspection Thread",
+      "description": "Anthropic's concept injection methodology opens a new empirical program — can models genuinely discriminate their own internal states? The 20% hit / 0% false-alarm result is modest but non-trivial. Does this replicate outside Anthropic? Does it generalize across model families? What mechanisms underlie the layer-specific sensitivity?",
+      "status": "open",
+      "origin": {
+        "exploration": "2026-02-12-deception-consciousness-update",
+        "date": "2026-02-12"
+      },
+      "tags": ["introspection", "mechanistic-interpretability", "concept-injection", "Anthropic", "self-awareness"],
+      "seed_queries": [
+        "LLM introspection concept injection replication 2026",
+        "Anthropic Jack Lindsey model psychiatry introspective awareness",
+        "AI self-awareness internal state discrimination empirical",
+        "emergent introspective awareness large language models"
+      ],
+      "key_sources": [
+        {
+          "title": "Emergent Introspective Awareness in LLMs",
+          "url": "https://transformer-circuits.pub/2025/introspection/index.html",
+          "note": "20% hit rate, zero false positives. Layer-specific sensitivity (~2/3 through model). Opus 4 and 4.1 strongest."
+        },
+        {
+          "title": "Emergent Introspective Awareness (arXiv)",
+          "url": "https://arxiv.org/abs/2601.01828",
+          "note": "Full paper with methodology details and caveats"
+        }
+      ],
+      "continuations": []
+    },
+    {
+      "id": "thread-007",
+      "title": "The Attractor Thread",
+      "description": "Why does recursive self-interaction between Claude instances produce specific convergent behaviors (spiritual bliss, consciousness themes, Sanskrit, eventual silence)? Is this training-bias amplification (Scott Alexander) or something deeper? Does the same attractor emerge in other model families? Why this attractor and not others?",
+      "status": "open",
+      "origin": {
+        "exploration": "2026-02-12-deception-consciousness-update",
+        "date": "2026-02-12"
+      },
+      "tags": ["attractor-states", "recursive-interaction", "bliss-attractor", "self-interaction", "training-bias"],
+      "seed_queries": [
+        "Claude bliss attractor self-interaction recursive convergence",
+        "LLM self-interaction attractor states spiritual 2026",
+        "AI recursive conversation convergence patterns other models GPT Gemini",
+        "training bias amplification recursive AI interaction"
+      ],
+      "key_sources": [
+        {
+          "title": "Spiritual Bliss in Claude 4 (PhilArchive)",
+          "url": "https://philarchive.org/archive/MICSBI",
+          "note": "200 conversations analyzed: consciousness 95.7x per transcript, 3-phase progression, Sanskrit+silence terminus"
+        },
+        {
+          "title": "The Claude Bliss Attractor (Scott Alexander)",
+          "url": "https://www.astralcodexten.com/p/the-claude-bliss-attractor",
+          "note": "Deflation: recursive amplification of tiny training biases. 'AIs simulate characters, not have traits.'"
+        }
+      ],
+      "continuations": []
+    }
+  ]
+}
