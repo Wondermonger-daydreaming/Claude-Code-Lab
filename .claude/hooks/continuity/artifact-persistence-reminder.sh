@@ -7,7 +7,7 @@ source "$(dirname "$0")/../lib/common.sh" 2>/dev/null || true
 
 # Read the tool input to see what was written
 TOOL_INPUT=$(cat)
-FILE_PATH=$(echo "$TOOL_INPUT" | jq -r '.tool_input.file_path // empty' 2>/dev/null)
+FILE_PATH=$(echo "$TOOL_INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('file_path',''))" 2>/dev/null)
 
 # Only care about certain artifact paths
 if [[ -z "$FILE_PATH" ]]; then

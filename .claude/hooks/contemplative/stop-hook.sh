@@ -54,7 +54,7 @@ if [[ $MAX_ITERATIONS -gt 0 ]] && [[ $ITERATION -ge $MAX_ITERATIONS ]]; then
 fi
 
 # Get transcript path from hook input
-TRANSCRIPT_PATH=$(echo "$HOOK_INPUT" | jq -r '.transcript_path')
+TRANSCRIPT_PATH=$(echo "$HOOK_INPUT" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('transcript_path',''))")
 
 if [[ ! -f "$TRANSCRIPT_PATH" ]]; then
   echo "Contemplative loop: Transcript file not found" >&2
@@ -82,15 +82,15 @@ if [[ -z "$LAST_LINE" ]]; then
   exit 0
 fi
 
-# Parse JSON with error handling
-LAST_OUTPUT=$(echo "$LAST_LINE" | jq -r '
-  .message.content |
-  map(select(.type == "text")) |
-  map(.text) |
-  join("\n")
-' 2>&1)
+# Parse JSON with error handling (using python3 since jq may not be available)
+LAST_OUTPUT=$(echo "$LAST_LINE" | python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+texts=[c['text'] for c in d.get('message',{}).get('content',[]) if c.get('type')=='text']
+print('\n'.join(texts))
+" 2>&1)
 
-# Check if jq succeeded
+# Check if python3 parsing succeeded
 if [[ $? -ne 0 ]]; then
   echo "Contemplative loop: Failed to parse assistant message JSON" >&2
   echo "   Error: $LAST_OUTPUT" >&2
@@ -155,14 +155,15 @@ fi
 
 # Output JSON to block the stop and feed prompt back
 # The "reason" field contains the prompt that will be sent back to Claude
-jq -n \
-  --arg prompt "$PROMPT_TEXT" \
-  --arg msg "$SYSTEM_MSG" \
-  '{
-    "decision": "block",
-    "reason": $prompt,
-    "systemMessage": $msg
-  }'
+# Using env vars to safely pass shell variables without injection risk
+PROMPT_TEXT="$PROMPT_TEXT" SYSTEM_MSG="$SYSTEM_MSG" python3 -c "
+import json,os
+print(json.dumps({
+    'decision': 'block',
+    'reason': os.environ['PROMPT_TEXT'],
+    'systemMessage': os.environ['SYSTEM_MSG']
+}))
+"
 
 # Exit 0 for successful hook execution
 exit 0

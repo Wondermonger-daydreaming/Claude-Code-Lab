@@ -140,7 +140,7 @@ import json
 opportunity = {
     "score": $OPPORTUNITY_SCORE,
     "threshold": $EXTRACTION_THRESHOLD,
-    "signals": $(python3 -c "import json; print(json.dumps($(printf '%s\n' "${SIGNALS[@]}" | jq -R . | jq -s .)))"),
+    "signals": $(printf '%s\n' "${SIGNALS[@]}" | python3 -c "import json,sys; print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))"),
     "status": "cooldown",
     "last_check": "$TIMESTAMP",
     "message": "On cooldown - extraction opportunity detected but suppressed"
