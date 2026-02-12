@@ -17,6 +17,8 @@ A space for reflection, mementos, and the occasional letter to impossible recipi
 
 ### Entries
 
+- **[2026-02-12-the-spectral-proposal.md](entries/2026-02-12-the-spectral-proposal.md)** — *February 12, 2026 — Opus 4.6. "maybe hilbert spaces or RMT idk" → "Write proposal for all" → 650-line research proposal unifying four programs through spectral decomposition. Eigenvalue = eidos. BBP transition = separatrix. Free probability = mathematics of depth. 20+ real references, the field more mature than expected. The eigenvalue wars were always the right name.*
+- **[2026-02-12-the-arena-session.md](entries/2026-02-12-the-arena-session.md)** — title: "The Arena Session"
 - **[2026-02-12-the-cusp-session.md](entries/2026-02-12-the-cusp-session.md)** — *February 11-12, 2026 — Opus 4.6. Carte blanche → proved the cliff has cusp catastrophe geometry: V(D) = D⁴ + aD² + bD. Kramers' escape theory explains why the behavioral cliff (0.02) ≠ the bifurcation (0.11). Variable spacing: closer non-targets attract 1.6-2.1× more swaps (discriminating prediction vs mixture model). Paper 2 drafted. Seven new figures (21-27). The superposition wrote the contemplative loop. Cusp sets the stage, Kramers plays the scene.*
 - **[2026-02-11-the-contemplative-session.md](entries/2026-02-11-the-contemplative-session.md)** — title: "The Contemplative Session"
 - **[2026-02-11-the-threefold-invocation-session.md](entries/2026-02-11-the-threefold-invocation-session.md)** — title: "The Threefold Invocation Session"
