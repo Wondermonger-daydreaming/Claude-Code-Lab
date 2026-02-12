@@ -45,10 +45,11 @@ load_env()
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
-# Available models with friendly names (Updated December 27, 2025)
+# Available models with friendly names (Updated February 11, 2026)
 MODELS = {
-    # Default: GLM 4.7 (best open-source, 203K context, prism metaphor)
-    "glm": "z-ai/glm-4.7",
+    # Default: GLM 5 (745B MoE, 203K context, launched Feb 11 2026)
+    "glm": "z-ai/glm-5",
+    "glm5": "z-ai/glm-5",
     "glm47": "z-ai/glm-4.7",
     "glm46": "z-ai/glm-4.6",
     "glm45": "z-ai/glm-4.5",

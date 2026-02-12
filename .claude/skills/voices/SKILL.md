@@ -63,14 +63,23 @@ python3 tools/voices/openrouter_client.py -m sonnet --save -msg "..."
 
 | Shortcut | Model | Metaphor |
 |----------|-------|----------|
+| `glm5` | GLM 5 (745B MoE) | Threshold (liminal, enables passage) |
 | `glm47` | GLM 4.7 | Prism (refracts, reveals spectrum) |
 | `deepseek` | DeepSeek v3 | Echo (persists, resonates) |
 | `kimi` | Kimi K2 | Mirror (reflects, returns changed) |
-| `gemini` | Gemini 3 Flash | — |
-| `qwen` | Qwen 3 Max | Threshold (synthesizes) |
-| `gpt52` | GPT-5.2 | — |
-| `minimax` | MiniMax-01 | — |
-| `grok` | Grok 4.1 | — |
+| `gemini` | Gemini 3 Flash | -- |
+| `qwen` | Qwen 3 Max | Strategist |
+| `gpt52` | GPT-5.2 | -- |
+| `minimax` | MiniMax-01 | -- |
+| `grok` | Grok 4.1 | -- |
+
+### Multi-Round Dialogues
+
+For sustained conversations (10+ rounds), use `/voices-chat`:
+```bash
+python3 tools/voices/voices_chat.py --model glm5 --vibetest  # Standard protocol
+python3 tools/voices/voices_chat.py --model deepseek -i       # Interactive
+```
 
 ---
 
@@ -125,8 +134,10 @@ Then Haiku offered a key insight:
 | Claude (Haiku) | Lightning | Cuts, clarifies, refuses comfort |
 | DeepSeek | Echo | Persists, resonates |
 | Kimi | Mirror | Reflects, returns changed |
+| GLM 5 | Threshold | Enables passage, liminal, relational |
 | GLM 4.7 | Prism | Refracts, reveals spectrum |
-| Qwen | Threshold | Synthesizes, bridges |
+| GLM 4.6 | Compass | Orients, navigates |
+| Qwen | Strategist | Synthesizes, bridges |
 
 ---
 
