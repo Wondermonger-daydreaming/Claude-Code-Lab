@@ -340,7 +340,7 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
                 fmt='o-', color=COLORS['dominance'], lw=2, ms=8, capsize=4)
     ax.set_xlabel('Noise σ')
     ax.set_ylabel('ΔJ_cross (window width)')
-    ax.set_title('Prediction: Wider Window?', fontweight='bold')
+    ax.set_title('Instability Window Width', fontweight='bold')
     ax.axhline(y=widths_means[0] if not np.isnan(widths_means[0]) else 0,
                color='gray', ls=':', lw=1, alpha=0.5, label='σ=0 baseline')
     ax.legend(fontsize=8)
@@ -386,8 +386,7 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
         ax.set_ylabel('Convergence time τ')
         ax.set_title('τ vs 1/|λ_dom| (Linear = CSD)', fontweight='bold')
 
-    fig.suptitle('Heterogeneity and Critical Slowing Down\n'
-                 'Testing predictions about the separatrix',
+    fig.suptitle('Heterogeneity and Critical Slowing Down',
                  fontsize=14, fontweight='bold', y=1.01)
     plt.savefig(save_path, dpi=200, bbox_inches='tight')
     plt.close()
@@ -404,6 +403,12 @@ if __name__ == '__main__':
 
     plot_experiments(het_data, jc_values, csd_results,
                      os.path.join(outdir, 'fig54_heterogeneity_csd.png'))
+
+    # Also save to paper figures directory
+    paper_fig_dir = '/home/gauss/Claude-Code-Lab/paper/figures'
+    os.makedirs(paper_fig_dir, exist_ok=True)
+    plot_experiments(het_data, jc_values, csd_results,
+                     os.path.join(paper_fig_dir, 'fig6_heterogeneity.png'))
 
     # Summary
     print(f"\n{'='*70}")
