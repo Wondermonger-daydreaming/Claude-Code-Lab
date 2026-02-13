@@ -179,8 +179,8 @@ def heterogeneity_experiment():
     print("=" * 70)
 
     noise_levels = [0.0, 0.05, 0.1, 0.2, 0.3, 0.5]
-    jc_values = np.linspace(0.25, 0.38, 30)
-    n_trials = 5  # Average over random seeds
+    jc_values = np.linspace(0.25, 0.38, 20)
+    n_trials = 3  # Average over random seeds
 
     all_data = {}
 
