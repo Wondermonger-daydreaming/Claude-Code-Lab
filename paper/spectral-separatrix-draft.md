@@ -222,7 +222,7 @@ Across the entire range $J_\times \in [0, 0.36)$ where coexistence exists, we fi
 
 #### 3.3.1 The First Non-Goldstone Eigenvalue
 
-After removing the two Goldstone modes, we track the dominant genuine eigenvalue $\lambda_{dom}$ as a function of $J_\times$ (Fig. 3). Key findings:
+After removing the two Goldstone modes, we track the dominant genuine eigenvalue $\lambda_{dom}$ as a function of $J_\times$ (Figs. 3, 9). Key findings:
 
 - At $J_\times = 0$: $\lambda_{dom} = -0.572$ (strongly stable). Without cross-inhibition, the coexistence state is deeply attractive.
 - $\lambda_{dom}$ increases monotonically with $J_\times$, crossing zero at $J_\times^* \approx 0.3485$.
@@ -367,6 +367,12 @@ This provides a quantitative explanation for why the behavioral "cliff" occurs s
 ![](figures/fig8_cusp_validation.png)
 
 **Figure 8.** Validation of the cusp normal-form approximation. Analytic cusp potential (red dashed) versus numerically computed one-dimensional potential (blue solid) at six values of $J_\times$ spanning the subcritical regime ($J_\times \in \{0.15, 0.20, 0.25, 0.30, 0.32, 0.34\}$). The cusp approximation is quantitatively accurate in the onset region ($J_\times \approx 0.25$--$0.30$) and provides conservative (over-)estimates at low $J_\times$. Near the bifurcation ($J_\times \geq 0.32$), higher-order terms provide additional stabilization beyond the quartic truncation. Orange dashed line: noise scale $\sigma^2 = 0.01$.
+
+### 3.6 Eigenvalue Spectrum Summary
+
+![](figures/fig9_spectrum_strip.png)
+
+**Figure 9.** Eigenvalue spectrum strip. Real parts of the top eigenvalues of the coupled-system Jacobian as a function of cross-inhibition strength $J_\times$, across the full coexistence range $J_\times \in [0, 0.36)$. Two Goldstone modes (gold, $\times 2$) are pinned at $\lambda = 0$ by rotational symmetry at all $J_\times$. The dominant non-Goldstone eigenvalue $\lambda_{\mathrm{dom}}$ (thick curve, blue when negative/stable, red when positive/unstable) rises monotonically, crossing zero at $J_\times^* \approx 0.349$ (dashed vertical line) -- the pitchfork bifurcation. The second genuine eigenvalue $\lambda_2$ (gray) also rises with $J_\times$ but remains well below zero throughout the coexistence range. Remaining eigenvalues ($\lambda_3, \ldots, \lambda_{10}$) lie deeper in the stable half-plane. Dotted vertical line marks the coexistence existence boundary $J_\times^{\mathrm{exist}} \approx 0.358$, beyond which the fixed-point solver fails. The clear spectral gap between $\lambda_{\mathrm{dom}}$ and $\lambda_2$ confirms that the pitchfork instability is a one-dimensional phenomenon governed by a single critical mode.
 
 ---
 
