@@ -137,13 +137,16 @@ def plot_spectrum_strip(results, save_path):
         ax.plot(jc_vals, vals_clipped, '-', color='#b0b0b0', lw=lw,
                 alpha=alpha, zorder=1)
 
-    # Label the background band -- place near the visible portion
+    # Label the background band
+    # Most background eigenvalues are below YMIN, so label near the
+    # bottom of the visible area with a downward indicator
     vals_r3 = np.array([r['top_genuine'][2] for r in results])
-    # Find an index where lambda_3 is visible (not clipped at YMIN)
-    lab3_idx = -4  # near the right end where they rise toward visibility
-    ax.text(jc_vals[lab3_idx] + 0.005, vals_r3[lab3_idx] - 0.015,
-            r'$\lambda_3, \ldots, \lambda_{10}$',
-            fontsize=8, color='#888888', fontstyle='italic', va='top')
+    # Place near right side where lambda_2 diverges from lambda_dom
+    ax.annotate(r'$\lambda_3, \ldots, \lambda_{10}$',
+                xy=(0.32, YMIN + 0.01),
+                xytext=(0.22, YMIN + 0.06),
+                fontsize=8, color='#888888', fontstyle='italic',
+                arrowprops=dict(arrowstyle='->', color='#aaaaaa', lw=0.7))
 
     # ── Second genuine eigenvalue (rank 2): medium weight ────────
     vals_2 = np.array([r['top_genuine'][1] for r in results])
