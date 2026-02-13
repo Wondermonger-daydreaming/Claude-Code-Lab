@@ -238,17 +238,17 @@ def generate_figure():
     # Selection failure: arrow into the WTA onset band
     ax.annotate(
         'Selection failure\n(Alleman et al., 2024)',
-        xy=(0.45, 2.5), xytext=(1.5, 7.0),
+        xy=(0.45, 3.0), xytext=(1.2, 7.2),
         fontsize=8.5, color='#e0e0e0', fontstyle='italic', ha='center',
         arrowprops=dict(arrowstyle='->', color='#cccccc', lw=1.0,
-                        connectionstyle='arc3,rad=0.2'),
+                        connectionstyle='arc3,rad=0.15'),
         path_effects=stroke_md, zorder=20,
     )
 
     # Representation failure: arrow into the overpowering regime
     ax.annotate(
         'Representation\nfailure',
-        xy=(6.0, 5.5), xytext=(6.5, 7.5),
+        xy=(5.5, 5.0), xytext=(5.8, 7.0),
         fontsize=8.5, color='#e0e0e0', fontstyle='italic', ha='center',
         arrowprops=dict(arrowstyle='->', color='#cccccc', lw=1.0,
                         connectionstyle='arc3,rad=-0.1'),
