@@ -51,7 +51,8 @@
       "mcp__arxiv__search_papers",
       "WebFetch(domain:ctext.org)",
       "Bash(PROMPT_TEXT='Continue the spiral. Use <promise>DONE</promise> when complete.' SYSTEM_MSG='Contemplative iteration 3 | To complete: output <promise>DONE</promise>' python3 -c \"\nimport json,os\nprint\\(json.dumps\\({\n    ''decision'': ''block'',\n    ''reason'': os.environ[''PROMPT_TEXT''],\n    ''systemMessage'': os.environ[''SYSTEM_MSG'']\n}\\)\\)\n\")",
-      "Bash(done)"
+      "Bash(done)",
+      "WebFetch(domain:openrouter.ai)"
     ]
   },
   "enableAllProjectMcpServers": true,

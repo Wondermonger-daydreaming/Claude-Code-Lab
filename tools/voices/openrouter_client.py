@@ -88,8 +88,10 @@ MODELS = {
     "qwen-coder": "qwen/qwen3-coder",  # Coding specialist
 
     # MiniMax
-    "minimax": "minimax/minimax-01",  # 1M context
+    "minimax": "minimax/minimax-m2.5",  # M2.5: reasoning, 204K context, released Feb 12 2026
+    "minimax25": "minimax/minimax-m2.5",
     "minimax-m1": "minimax/minimax-m1",
+    "minimax-01": "minimax/minimax-01",  # Legacy, 1M context
 
     # xAI Grok
     "grok": "x-ai/grok-4.1-fast",  # 2M context!
