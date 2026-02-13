@@ -109,6 +109,8 @@ with concentration parameter $\kappa = 2.0$ and cue gain $c \geq 0$.
 
 The critical feature of mean-field cross-inhibition is that it depends only on the total activity $\bar{r}^X$ of the opposing network, not on the spatial pattern of its bump. This has profound consequences for the symmetry structure of the system (Fig. 1).
 
+![](figures/fig1_schematic.png)
+
 **Figure 1.** Model schematic. Two ring networks (A, B) of $N = 48$ neurons each, with cosine within-network connectivity ($J_0 + J_1 \cos \Delta\theta$) and mean-field cross-inhibition ($J_\times \bar{r}^X$). External cue input drives network A only. The cross-inhibition depends on mean activity, not bump position, preserving rotational symmetry.
 
 ### 2.3 Jacobian of the Coupled System
@@ -144,6 +146,8 @@ We locate fixed points using a two-phase approach. In Phase 1 (simulation), we e
 We verify convergence by checking: (i) the residual $\max_i |F_i(\mathbf{r}^*)| < 10^{-6}$; (ii) both bumps are active ($\max_i r_i^A > 0.3$ and $\max_i r_i^B > 0.3$); and (iii) the solution is not a WTA state ($|D| = |\bar{r}^A - \bar{r}^B| < 0.1$).
 
 #### 3.1.2 Critical Existence Threshold
+
+![](figures/fig2_existence.png)
 
 **Figure 2.** Coexistence existence boundary. Peak firing rate of each network as a function of cross-inhibition strength $J_\times$. Below $J_\times^{exist} \approx 0.358$, both networks sustain bumps at matched amplitudes (coexistence). Above this threshold, one network collapses to baseline (WTA). The pitchfork bifurcation at $J_\times^* \approx 0.349$ (orange dashed) and existence boundary at $J_\times^{exist} \approx 0.358$ (purple dashed) delimit the narrow instability window $\Delta J_\times \approx 0.01$.
 
@@ -202,6 +206,8 @@ The Goldstone eigenvectors project strongly onto $\mathbf{d}_{gold,A}$ and $\mat
 
 Across the entire range $J_\times \in [0, 0.36)$ where coexistence exists, we find exactly two Goldstone modes. Their eigenvalues remain at $|\lambda| \sim 10^{-8}$ to $10^{-11}$ (machine precision for our iterative solver), and they are never lifted by increasing cross-inhibition. This confirms the symmetry protection: mean-field coupling cannot break rotational invariance.
 
+![](figures/fig4_eigenvectors.png)
+
 **Figure 4.** Eigenvector comparison at $J_\times = 0.34$ (near the pitchfork). Left: Goldstone mode ($\lambda \approx -5.8 \times 10^{-11}$, effectively zero), showing sinusoidal spatial structure in Network A -- this is the rotational mode that slides the bump around the ring. Right: Critical dominance mode ($\lambda_{dom} = -0.026$, DC/uniform), showing anti-phase amplitude modulation localized to the active bump neurons. Because baseline neurons are strongly inhibited ($\sigma'(h_i) \approx 0$), they cannot participate in the linear instability; the mode is expressed only where the gain is nonzero. Despite this spatial localization, the mode projects maximally onto the uniform mean-field direction because the net effect is a difference in total activity between networks. The two modes are qualitatively distinct: the Goldstone mode encodes *where* the bump sits; the critical mode encodes *which network wins*.
 
 ### 3.3 The Pitchfork Bifurcation
@@ -242,6 +248,8 @@ This razor-thin window has two implications:
 
 2. **Heterogeneity prediction.** In biological circuits with heterogeneous connectivity, the sharp boundary should be smeared into a broader regime where saddle-like dynamics persist (see Discussion).
 
+![](figures/fig3_pitchfork.png)
+
 **Figure 3.** Pitchfork bifurcation diagram. Dominance $D = \bar{r}^A - \bar{r}^B$ vs. cross-inhibition strength $J_\times$. The coexistence branch ($D = 0$) is stable (solid) for $J_\times < J_\times^*$ and becomes a saddle (dashed red) above the pitchfork at $J_\times^* \approx 0.349$. Two WTA branches ($D > 0$ and $D < 0$, blue) emerge at $J_\times^{exist} \approx 0.358$ as stable attractors. The subcritical structure creates the narrow existence window $\Delta J_\times \approx 0.01$. Note: the unstable branches connecting the pitchfork to the saddle-node fold at $J_\times^{exist}$ are not shown; our continuation solver tracked stable and saddle fixed points only. The expected topology is a pair of unstable branches emerging from $J_\times^*$ at $D = 0$ and folding onto the stable WTA branches at $J_\times^{exist}$.
 
 ### 3.4 The Coexistence Saddle Under Cue
@@ -261,6 +269,8 @@ The WTA branch (tracked simultaneously) is stable across all cue values, confirm
 To bridge the deterministic bifurcation analysis with behavioral predictions, we performed a large-scale stochastic simulation across the $(J_\times, c)$ parameter space. At each of 256 grid points (16 values of $J_\times$ from 0.05 to 8.0, 16 values of drive strength from 1.0 to 8.0), we ran 500 stochastic trials ($N_{total} = 128{,}000$). Two ring networks encoded items separated by $\pi/2$ radians, with independent Gaussian noise ($\sigma = 0.1$) added to each neuron during a 500-step maintenance period. Swap errors were classified as decoded responses within 0.3 rad of the non-target item's location. To assess sensitivity to this classification threshold, we repeated a focused sweep (16 values of $J_\times$ from 0.1 to 3.0, two drive levels, 200 trials each) with thresholds of 0.2, 0.3, 0.4, and 0.5 rad. The qualitative features of the phase diagram -- the onset location ($J_\times \approx 0.20$--$0.23$ across thresholds), the peak near $J_\times \approx 0.3$--$0.5$, and the non-monotonic valley at $J_\times \approx 1.2$--$1.5$ -- are robust to threshold choice. Wider classification windows increase absolute swap rates (e.g., 10% vs. 26% at $J_\times = 0.25$ for 0.2 vs. 0.5 rad) but preserve the ordering across $J_\times$ values and the location of qualitative transitions.
 
 #### 3.5.2 Onset of Swap Errors
+
+![](figures/fig5_phase_diagram.png)
 
 **Figure 5.** Stochastic phase diagram in $(J_\times, c)$ space (128,000 trials across 256 parameter combinations). Color indicates swap error rate. Near-vertical isocontours show that swap probability depends primarily on $J_\times$, not drive strength. A non-monotonic valley at $J_\times \approx 1.2$--$1.6$ with strong drive identifies the functional operating regime where WTA dynamics and encoding strength are balanced.
 
@@ -324,9 +334,13 @@ a plausible normal-form coefficient for Taylor-expanded sigmoidal population dyn
 
 This provides a quantitative explanation for why the behavioral "cliff" occurs substantially below the deterministic pitchfork. Because $\Delta V \propto |\lambda_{\mathrm{dom}}|^2$, the barrier collapses quadratically and drops to the logarithmically-scaled noise floor near $J_\times \approx 0.25$ -- roughly 29% below $J_\times^*$ -- rendering the network noise-limited before the coexistence fixed point formally loses its deterministic stability (Fig. 7D).
 
+![](figures/fig7_kramers.png)
+
 **Figure 7.** Kramers escape analysis bridging spectral theory and stochastic swap errors. (A) Dominant non-Goldstone eigenvalue $\lambda_{\mathrm{dom}}$ at the coexistence fixed point as a function of $J_\times$. (B) Cusp curvature parameter tracking the normal-form geometry. (C) Barrier height $\Delta V = |\lambda_{\mathrm{dom}}|^2 / (4\gamma)$ with $\gamma = 0.30$; the horizontal band marks the finite-horizon Kramers threshold $\Delta V / \sigma^2 \in [3.9, 6.2]$. (D) Kramers escape rate $k = k_0 \exp(-\Delta V / \sigma^2)$, showing exponential amplification as $J_\times \to J_\times^*$. (E) Analytic cusp potential $V(D)$ at selected $J_\times$ values. (F) Numerically computed one-dimensional potential, verifying the analytic approximation.
 
 **Validation of the cusp approximation.** To assess the fidelity of the quartic normal form, we compare the analytic cusp potential with a numerically computed one-dimensional potential obtained by integrating the projected dominance dynamics at six values of $J_\times$ spanning the subcritical regime (Fig. 8). The cusp approximation is quantitatively accurate in the onset region ($J_\times \approx 0.25$--$0.30$) where the Kramers calculation is applied. At low $J_\times$ ($\leq 0.20$), the analytic cusp overestimates the barrier -- a conservative error that does not affect the escape-onset prediction. Near the bifurcation ($J_\times \geq 0.32$), the cusp underestimates the barrier, as higher-order terms in the effective potential provide additional stabilization that the quartic truncation misses. This pattern of errors -- overestimation far from criticality, underestimation near it -- means the cusp approximation is most reliable precisely where the Kramers bridge is most needed.
+
+![](figures/fig8_cusp_validation.png)
 
 **Figure 8.** Validation of the cusp normal-form approximation. Analytic cusp potential (red dashed) versus numerically computed one-dimensional potential (blue solid) at six values of $J_\times$ spanning the subcritical regime ($J_\times \in \{0.15, 0.20, 0.25, 0.30, 0.32, 0.34\}$). The cusp approximation is quantitatively accurate in the onset region ($J_\times \approx 0.25$--$0.30$) and provides conservative (over-)estimates at low $J_\times$. Near the bifurcation ($J_\times \geq 0.32$), higher-order terms provide additional stabilization beyond the quartic truncation. Orange dashed line: noise scale $\sigma^2 = 0.01$.
 
@@ -355,6 +369,8 @@ Two consequences follow. First, the Goldstone modes, which are exactly zero in t
 This result strengthens the valley interpretation (Section 3.5.4). The non-monotonic valley at $J_\times \approx 1.2$--$1.6$ exists in the stochastic simulations regardless of whether the underlying deterministic bifurcation is a sharp pitchfork or a smooth crossover. What matters for behavior is the *landscape* -- the barrier heights and basin depths -- not the exact location of a mathematical bifurcation point. Heterogeneity smears the transition without eliminating the functional operating regime.
 
 Critical slowing down provides partial confirmation: convergence time after small perturbations increases as $J_\times$ approaches $J_\times^*$ in the clean model ($\sigma = 0$), consistent with the expected $\tau \sim 1/|\lambda_{dom}|$ scaling near the bifurcation. The data are noisy but directionally consistent with critical slowing down (Fig. 6).
+
+![](figures/fig6_heterogeneity.png)
 
 **Figure 6.** Heterogeneity destroys the instability window. Dominance eigenvalue $\lambda_{dom}$ as a function of $J_\times$ at six levels of connectivity heterogeneity ($\sigma \in \{0, 0.05, 0.1, 0.2, 0.3, 0.5\}$, five random seeds each). At $\sigma = 0$ (clean model), the pitchfork zero-crossing is sharp. At $\sigma = 0.05$, two of three trials lose the instability entirely. At $\sigma \geq 0.10$, no trial exhibits a positive $\lambda_{dom}$ at any $J_\times$ -- the imperfect bifurcation has no zero-crossing. Right panel: convergence time data, consistent with critical slowing down near $J_\times^*$ in the clean model.
 
