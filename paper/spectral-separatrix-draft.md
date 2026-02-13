@@ -307,13 +307,13 @@ The Alleman et al. finding that swap errors in healthy subjects arise from misse
 
 ### 4.8 Universality of the Saddle-Point Bifurcation
 
-The pitchfork bifurcation we identify -- attractors extinguished after merging with saddle points at high cross-inhibition -- has structural analogs in decision-making circuits. Models of choice-selective inhibition describe the same saddle-node merger: disjoint neural groups with within-group excitation and across-group inhibition exhibit group WTA dynamics, and the coexistence-to-WTA transition occurs via saddle-point annihilation (Machens et al., 2005; Wong and Wang, 2006).
+The pitchfork bifurcation we identify -- attractors extinguished after merging with saddle points at high cross-inhibition -- has structural analogs in decision-making circuits. Roach, Churchland, and Engel (2023) showed that in circuits with choice-selective inhibition, working memory attractors are extinguished after merging with saddle points as ipsispecific inhibition increases. Disjoint neural groups with within-group excitation and across-group inhibition exhibit group WTA dynamics, and the coexistence-to-WTA transition occurs via saddle-point annihilation (Roach et al., 2023; Wong and Wang, 2006).
 
 This structural isomorphism suggests the spectral separatrix is not specific to working memory but describes the generic bifurcation of any neural circuit with competing stable states. Decision-making, attention, and working memory all involve population competition, and the mathematical structure -- pitchfork at critical coupling, Goldstone protection of positional degrees of freedom, DC instability under mean-field coupling -- should appear across domains. The spectral analysis presented here provides a template for characterizing these transitions.
 
 ### 4.9 Limitations
 
-(i) The model uses rate neurons, not spiking neurons; the noise structure differs qualitatively. (ii) Mean-field cross-inhibition is a simplification; realistic inhibitory interneuron pools have spatial and temporal structure. (iii) $N = 48$ is moderate; the Goldstone mode identification becomes cleaner at larger $N$. (iv) The stochastic phase diagram uses additive Gaussian noise; biologically realistic noise is multiplicative and state-dependent. (v) The non-monotonic valley in the phase diagram depends on the encoding-maintenance protocol and may shift with different stimulus timing.
+(i) The model uses rate neurons, not spiking neurons; the noise structure differs qualitatively. (ii) Mean-field cross-inhibition is a simplification; realistic inhibitory interneuron pools have spatial and temporal structure, as demonstrated by Roach et al. (2023), where ipsispecific versus contraspecific inhibition creates qualitatively different attractor landscapes. (iii) $N = 48$ is moderate; the Goldstone mode identification becomes cleaner at larger $N$. (iv) The stochastic phase diagram uses additive Gaussian noise; biologically realistic noise is multiplicative and state-dependent. (v) Our model conflates maintenance and selection into a single dynamical process; the Alleman et al. (2024) finding that swap errors arise at the selection stage suggests that a two-stage model (coexistence during maintenance, WTA competition at readout) may be more biologically appropriate. (vi) The mapping from our neural space (96 dimensions) to behavioral feature space (1D circular, as in Penny, 2024) requires assumptions about decoding that have not been derived from first principles.
 
 ---
 
@@ -392,5 +392,7 @@ Alleman, M., Panichello, M.F., Buschman, T.J., & Johnston, W.J. (2024). The neur
 Penny, W.D. (2024). Stochastic attractor models of visual working memory. *PLOS ONE*, 19(5), e0301039.
 
 Machens, C.K., Romo, R., & Brody, C.D. (2005). Flexible control of mutual inhibition: a neural model of two-interval discrimination. *Science*, 307(5712), 1121-1124.
+
+Roach, J.P., Churchland, A.K., & Engel, T.A. (2023). Choice selective inhibition drives stability and competition in decision circuits. *Nature Communications*, 14, 147.
 
 Wong, K.-F. & Wang, X.-J. (2006). A recurrent network mechanism of time integration in perceptual decisions. *Journal of Neuroscience*, 26(4), 1314-1328.
