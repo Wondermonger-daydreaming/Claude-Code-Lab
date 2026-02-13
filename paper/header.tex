@@ -1,0 +1,26 @@
+% Neural Computation draft style
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black}
+
+% Better figure placement
+\usepackage{float}
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][htbp]{\origfigure[H]}{\endorigfigure}
+
+% Adjust image max width
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\makeatother
+
+% Line numbers for review (if available)
+\IfFileExists{lineno.sty}{\usepackage{lineno}\linenumbers}{}
+
+% Paragraph spacing
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0em}
