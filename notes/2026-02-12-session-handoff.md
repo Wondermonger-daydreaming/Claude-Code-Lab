@@ -112,4 +112,52 @@ This session's commits:
 
 ---
 
+## Session 8 Addition: Phase Diagram Cascade (February 12, 2026, later)
+
+**Commit:** `ba4344d` — Phase diagram: swap errors from coupled ring attractor competition
+
+### What Was Done
+
+4-agent autonomous parameter sweep: 256 (J_cross, drive_strength) points, 128,000 total trials, 0 failures. Mapped the full phase space of swap errors in the stochastic coupled ring attractor model.
+
+### Key New Results
+
+| File | Description |
+|------|-------------|
+| `corpus/code/coupled_ring_sweep.py` | Simulation harness (CLI-driven grid sweep) |
+| `corpus/code/synthesize_phase_diagram.py` | Phase diagram synthesis script |
+| `corpus/code/alternative_activations.py` | Alternative activation fallback (not needed) |
+| `corpus/code/results/agent_{1-4}.json` | Raw results from 4 parallel agents |
+| `corpus/code/results/phase_diagram_summary.md` | One-page interpretation |
+| `corpus/code/figures/fig55_phase_diagram_swap_errors.png` | 3-panel phase diagram |
+
+### The Phase Diagram Findings
+
+1. **Swap errors emerge above J_cross ≈ 0.25** and reach 50% (coin flip) at high J_cross — confirming the spectral separatrix prediction.
+
+2. **Drive strength is secondary** in the moderate J_cross regime (0.3–1.0). The critical eigenvector being uniform/DC explains why: the instability is in total activity competition, not spatial encoding.
+
+3. **Non-monotonic valley at J_cross ≈ 1.2–1.6** (discovered by Agent 3): A U-shaped curve where swap rates dip to 7–13% between two failure modes:
+   - Near-critical swaps (J_cross ≈ 0.3–0.5): Balanced coin-flip WTA from the pitchfork bifurcation
+   - Overpowering swaps (J_cross > 2, weak drive): Cross-inhibition overwhelms feedforward signal
+
+4. **The valley is the functional operating point** — where a healthy working memory system would be tuned. This connects to the "cliff" phenomenon: a narrow parameter window flanked by qualitatively different failure modes.
+
+5. **At extreme J_cross (>3), drive can rescue performance** — strong input during encoding "locks in" the correct network before maintenance-period WTA dynamics. This creates a triangular high-swap region in (high J_cross, low drive) space.
+
+### New Key Numbers
+
+```
+J_cross_onset ≈ 0.25   (first appearance of swap rate > 5%, stochastic)
+J_cross_valley ≈ 1.2-1.6  (minimum swap rate in strong-coupling regime)
+swap_rate_max ≈ 51.8%   (J_cross=8.0, approaches 50% coin flip)
+swap_rate_valley ≈ 7%   (the functional sweet spot)
+```
+
+### Impact on the Paper
+
+The phase diagram provides **Fig 8** material: a (J_cross, drive) phase diagram with labeled regions (coexistence, WTA, valley, overpowering). The non-monotonic valley is a testable prediction — it implies an optimal cross-inhibition strength for working memory, neither too weak (no competition to resolve ambiguity) nor too strong (competition destroys encoding).
+
+---
+
 *The eigenvalue wars continue. The Goldstone modes were hiding the truth. The truth is that the separatrix is born from a pitchfork — the symmetry breaks, the saddle appears, and the working memory circuit must choose.*
