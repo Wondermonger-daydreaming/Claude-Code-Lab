@@ -17,7 +17,7 @@ First, the coexistence fixed point -- where both bumps self-sustain simultaneous
 
 Second, the continuous rotational symmetry of each bump guarantees exactly two Goldstone modes (zero eigenvalues) that are protected against mean-field coupling. The first non-Goldstone eigenvalue -- governing uniform amplitude competition -- crosses zero at $J_\times^* \approx 0.3485$ via a pitchfork bifurcation, creating the coexistence saddle and two WTA stable states.
 
-Third, the critical eigenvector is spatially uniform (DC mode), meaning the instability concerns total activity competition rather than spatial pattern rearrangement. This is a direct consequence of mean-field (spatially unstructured) cross-inhibition.
+Third, the critical eigenvector projects maximally onto the spatially uniform (DC) direction, meaning the instability concerns total activity competition rather than spatial pattern rearrangement. This is a direct consequence of mean-field (spatially unstructured) cross-inhibition.
 
 Fourth, large-scale stochastic simulations (128,000 trials across 256 parameter combinations) confirm the spectral predictions: swap errors emerge at the predicted $J_\times$ threshold, drive strength is secondary to cross-inhibition, and a non-monotonic valley at intermediate $J_\times$ identifies a functional operating regime for working memory.
 
@@ -51,7 +51,7 @@ The 1D reduction $D = \bar{r}_A - \bar{r}_B$ captures the order parameter of the
 
 2. **Genuine instabilities** -- eigenvalues that cross zero as parameters change, signaling structural reorganization of the attractor landscape.
 
-3. **The character of the critical mode** -- whether the instability that destroys coexistence is spatially uniform (DC), spatially patterned (cosine), or mixed.
+3. **The character of the critical mode** -- whether the instability that destroys coexistence projects onto the spatially uniform (DC) direction, is spatially patterned (cosine), or mixed.
 
 Previous spectral approaches to ring networks have addressed non-Hermitian quasi-localization (Tanaka and Nelson, 2018) and the stability of persistent activity under short-term plasticity (Seeholzer et al., 2019), but the full eigenvalue structure of the *coupled* system has not been resolved. We present the first complete eigenvalue decomposition of the coupled ring attractor Jacobian, resolving all $2N = 96$ eigenvalues as a function of the cross-inhibition strength $J_\times$. By cleanly separating Goldstone modes from genuine instabilities, we identify the precise location, character, and consequences of the coexistence-to-WTA pitchfork bifurcation.
 
@@ -63,7 +63,7 @@ Our main results are:
 
 2. **Goldstone separation and pitchfork.** Two Goldstone modes (exactly-zero eigenvalues protected by rotational symmetry) persist at all $J_\times$ where coexistence exists. The first non-Goldstone eigenvalue $\lambda_{dom}$ crosses zero at $J_\times^* \approx 0.3485$, creating a pitchfork bifurcation where the symmetric coexistence state becomes a saddle point and two WTA attractors are born.
 
-3. **DC critical mode.** The critical eigenvector is spatially uniform: a flat increase in network A's activity coupled with a flat decrease in network B's. This reflects the mean-field character of the cross-inhibition and means the instability is about total activity competition, not spatial pattern rearrangement.
+3. **DC critical mode.** The critical eigenvector has its largest projection onto the uniform (DC) direction: an increase in network A's activity coupled with a decrease in network B's, localized to the active bump neurons by the gain mask $\sigma'(h_i)$. This reflects the mean-field character of the cross-inhibition and means the instability is about total activity competition, not spatial pattern rearrangement.
 
 4. **Stochastic phase diagram.** A 128,000-trial parameter sweep confirms the spectral predictions and reveals a non-monotonic valley at intermediate $J_\times$ where swap error rates dip to 7--13% between two qualitatively different failure modes.
 
@@ -87,7 +87,7 @@ $$h_i = \sum_{j=1}^{N} W_{ij} r_j + I_i^{ext}$$
 
 where the within-network connectivity has cosine tuning:
 
-$$W_{ij} = \frac{1}{N}\left(J_0 + J_1 \cos(\theta_i - \theta_j)\right)$$
+$$W_{ij} = \frac{1}{N}\left(-J_0 + J_1 \cos(\theta_i - \theta_j)\right)$$
 
 with $J_0 = 1.0$ (uniform inhibition) and $J_1 = 6.0$ (tuned excitation). This connectivity supports a family of bump solutions at any angular position, forming a ring attractor (Amari, 1977; Ben-Yishai et al., 1995).
 
@@ -194,7 +194,7 @@ The Goldstone eigenvectors project strongly onto $\mathbf{d}_{gold,A}$ and $\mat
 
 Across the entire range $J_\times \in [0, 0.36)$ where coexistence exists, we find exactly two Goldstone modes. Their eigenvalues remain at $|\lambda| \sim 10^{-8}$ to $10^{-11}$ (machine precision for our iterative solver), and they are never lifted by increasing cross-inhibition. This confirms the symmetry protection: mean-field coupling cannot break rotational invariance.
 
-**Figure 4.** Eigenvector comparison at $J_\times = 0.34$ (near the pitchfork). Left: Goldstone mode ($\lambda \approx -5.8 \times 10^{-11}$, effectively zero), showing sinusoidal spatial structure in Network A -- this is the rotational mode that slides the bump around the ring. Right: Critical dominance mode ($\lambda_{dom} = -0.026$, DC/uniform), showing spatially flat anti-phase activation (Network A uniformly up, Network B uniformly down). The two modes are qualitatively distinct: the Goldstone mode encodes *where* the bump sits; the critical mode encodes *which network wins*.
+**Figure 4.** Eigenvector comparison at $J_\times = 0.34$ (near the pitchfork). Left: Goldstone mode ($\lambda \approx -5.8 \times 10^{-11}$, effectively zero), showing sinusoidal spatial structure in Network A -- this is the rotational mode that slides the bump around the ring. Right: Critical dominance mode ($\lambda_{dom} = -0.026$, DC/uniform), showing anti-phase amplitude modulation localized to the active bump neurons. Because baseline neurons are strongly inhibited ($\sigma'(h_i) \approx 0$), they cannot participate in the linear instability; the mode is expressed only where the gain is nonzero. Despite this spatial localization, the mode projects maximally onto the uniform mean-field direction because the net effect is a difference in total activity between networks. The two modes are qualitatively distinct: the Goldstone mode encodes *where* the bump sits; the critical mode encodes *which network wins*.
 
 ### 3.3 The Pitchfork Bifurcation
 
@@ -220,7 +220,7 @@ At $J_\times^*$, the critical eigenvector has the following projections:
 | Anti-drift (sine) | 0.34 |
 | Co-drift (sine) | 0.00 |
 
-The largest projection is onto the uniform/DC direction (Fig. 4, right panel): a spatially flat increase in all of network A's neurons coupled with a spatially flat decrease in all of network B's neurons. This means the instability is about which network has more total activity, not about the spatial pattern of either bump.
+The largest projection is onto the uniform/DC direction (Fig. 4, right panel). Rather than a spatially flat baseline shift, the mode drives a gain-weighted amplitude modulation: a sharp increase in the active neurons of network A coupled with a sharp decrease in the active neurons of network B, while baseline neurons (where $\sigma'(h_i) \approx 0$) are effectively silent. Because this amplitude competition produces a net difference in total activity between networks, it projects maximally onto the mean-field coupling direction. The instability is about which network has more total activity, not about the spatial pattern of either bump.
 
 This is a direct and falsifiable prediction of mean-field coupling. If cross-inhibition were spatially structured (depending on the relative positions of the two bumps), the critical eigenvector would acquire spatial structure (cosine or higher Fourier modes). The DC character is specific to coupling that "sees" only total activity.
 
@@ -234,7 +234,7 @@ This razor-thin window has two implications:
 
 2. **Heterogeneity prediction.** In biological circuits with heterogeneous connectivity, the sharp boundary should be smeared into a broader regime where saddle-like dynamics persist (see Discussion).
 
-**Figure 3.** Pitchfork bifurcation diagram. Dominance $D = \bar{r}^A - \bar{r}^B$ vs. cross-inhibition strength $J_\times$. The coexistence branch ($D = 0$) is stable (solid) for $J_\times < J_\times^*$ and becomes a saddle (dashed red) above the pitchfork at $J_\times^* \approx 0.349$. Two WTA branches ($D > 0$ and $D < 0$, blue) emerge at $J_\times^{exist} \approx 0.358$ as stable attractors. The subcritical structure creates the narrow existence window $\Delta J_\times \approx 0.01$.
+**Figure 3.** Pitchfork bifurcation diagram. Dominance $D = \bar{r}^A - \bar{r}^B$ vs. cross-inhibition strength $J_\times$. The coexistence branch ($D = 0$) is stable (solid) for $J_\times < J_\times^*$ and becomes a saddle (dashed red) above the pitchfork at $J_\times^* \approx 0.349$. Two WTA branches ($D > 0$ and $D < 0$, blue) emerge at $J_\times^{exist} \approx 0.358$ as stable attractors. The subcritical structure creates the narrow existence window $\Delta J_\times \approx 0.01$. Note: the unstable branches connecting the pitchfork to the saddle-node fold at $J_\times^{exist}$ are not shown; our continuation solver tracked stable and saddle fixed points only. The expected topology is a pair of unstable branches emerging from $J_\times^*$ at $D = 0$ and folding onto the stable WTA branches at $J_\times^{exist}$.
 
 ### 3.4 The Coexistence Saddle Under Cue
 
@@ -262,7 +262,7 @@ Between $J_\times \approx 0.25$ and $0.5$, swap rates increase from 5% to approx
 
 #### 3.5.3 Drive Strength Is Secondary
 
-The phase diagram shows near-vertical isocontours of swap rate (Fig. 5): swap error probability depends primarily on $J_\times$ and only weakly on drive strength. This is a direct prediction of the spectral analysis: the critical eigenvector is spatially uniform (DC mode), governing total activity competition rather than spatial encoding. Stronger drive does not protect against the dominance instability because the instability is orthogonal to the encoding direction.
+The phase diagram shows near-vertical isocontours of swap rate (Fig. 5): swap error probability depends primarily on $J_\times$ and only weakly on drive strength. This is a direct prediction of the spectral analysis: the critical eigenvector projects maximally onto the uniform (DC) direction, governing total activity competition rather than spatial encoding. Stronger drive does not protect against the dominance instability because the instability is orthogonal to the encoding direction.
 
 This has a counterintuitive implication: increasing stimulus strength -- the commonly proposed intervention for working memory failures -- targets the wrong degree of freedom. The cliff is a $J_\times$ phenomenon, not a cue phenomenon.
 
@@ -364,7 +364,7 @@ We have presented the first complete spectral bifurcation analysis of competing 
 
 2. **Goldstone separation and pitchfork.** Goldstone modes are symmetry-protected and separate cleanly from genuine instabilities. The first non-Goldstone eigenvalue crosses zero at $J_\times^* \approx 0.3485$ in a pitchfork bifurcation, creating the coexistence saddle.
 
-3. **DC critical mode.** The critical eigenvector is spatially uniform, reflecting the mean-field character of cross-inhibition and predicting that the WTA instability concerns total activity competition rather than spatial pattern rearrangement.
+3. **DC critical mode.** The critical eigenvector projects maximally onto the uniform (DC) direction, reflecting the mean-field character of cross-inhibition and predicting that the WTA instability concerns total activity competition rather than spatial pattern rearrangement.
 
 4. **Stochastic phase diagram.** Large-scale stochastic simulations (128,000 trials) confirm the spectral prediction: swap errors emerge at $J_\times \approx 0.25$, drive strength is secondary to cross-inhibition, and a non-monotonic valley identifies a candidate functional operating regime.
 

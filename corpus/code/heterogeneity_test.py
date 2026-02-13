@@ -3,7 +3,7 @@
 HETEROGENEITY TEST: DOES SYMMETRY-BREAKING WIDEN THE SEPARATRIX?
 ==========================================================================
 
-GLM 5's prediction: adding heterogeneity (non-uniform connectivity)
+Prediction: adding heterogeneity (non-uniform connectivity)
 should WIDEN the instability window from the razor-thin [0.349, 0.358]
 to a broader regime.
 
@@ -13,7 +13,7 @@ and measure:
   2. Where coexistence ceases to exist (bumps collapse)
   3. The width of the unstable window
 
-If GLM 5 is right: window widens with noise amplitude.
+If prediction is right: window widens with noise amplitude.
 If wrong: window narrows or stays the same.
 
 Also test: critical slowing down near J_cross*.
@@ -254,8 +254,10 @@ def critical_slowing_experiment():
 # ═══════════════════════════════════════════════════════════════════
 
 def plot_experiments(het_data, jc_values, csd_results, save_path):
-    fig = plt.figure(figsize=(22, 14))
-    gs = GridSpec(2, 3, figure=fig, hspace=0.40, wspace=0.35)
+    fig = plt.figure(figsize=(18, 12))
+    gs = GridSpec(2, 3, figure=fig, hspace=0.45, wspace=0.40)
+    # Override font sizes for this multi-panel figure
+    plt.rcParams.update({'font.size': 13, 'axes.titlesize': 14, 'axes.labelsize': 13})
 
     # ── (0,0) λ_dom vs J_cross for different noise levels ──
     ax = fig.add_subplot(gs[0, 0])
@@ -338,7 +340,7 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
                 fmt='o-', color=COLORS['dominance'], lw=2, ms=8, capsize=4)
     ax.set_xlabel('Noise σ')
     ax.set_ylabel('ΔJ_cross (window width)')
-    ax.set_title('GLM 5 Prediction: Wider Window?', fontweight='bold')
+    ax.set_title('Prediction: Wider Window?', fontweight='bold')
     ax.axhline(y=widths_means[0] if not np.isnan(widths_means[0]) else 0,
                color='gray', ls=':', lw=1, alpha=0.5, label='σ=0 baseline')
     ax.legend(fontsize=8)
@@ -385,7 +387,7 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
         ax.set_title('τ vs 1/|λ_dom| (Linear = CSD)', fontweight='bold')
 
     fig.suptitle('Heterogeneity and Critical Slowing Down\n'
-                 'Testing GLM 5 predictions about the separatrix',
+                 'Testing predictions about the separatrix',
                  fontsize=14, fontweight='bold', y=1.01)
     plt.savefig(save_path, dpi=200, bbox_inches='tight')
     plt.close()
@@ -405,7 +407,7 @@ if __name__ == '__main__':
 
     # Summary
     print(f"\n{'='*70}")
-    print("GLM 5 PREDICTION TEST")
+    print("HETEROGENEITY PREDICTION TEST")
     print(f"{'='*70}")
     noise_levels = sorted(het_data.keys())
     for sigma in noise_levels:
