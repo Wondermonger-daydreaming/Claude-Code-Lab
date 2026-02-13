@@ -20,7 +20,7 @@ Fourth, large-scale stochastic simulations (128,000 trials across 256 parameter 
 
 ### 1.1 Working Memory and Competing Representations
 
-Persistent neural activity in prefrontal and parietal cortex underlies the short-term maintenance of information in working memory (Goldman-Rakic, 1995; Funahashi et al., 1989). Ring attractor models capture a key feature of this activity: spatially tuned neurons form a localized "bump" of elevated firing that persists through recurrent excitation even after the sensory stimulus is removed (Compte et al., 2000; Ben-Yishai et al., 1995; Amari, 1977). These bumps encode continuous variables such as spatial location or orientation, and their precision is set by a balance between recurrent drive and noise-induced diffusion along the ring (Wimmer et al., 2014; Burak and Fiete, 2012).
+Persistent neural activity in prefrontal and parietal cortex underlies the short-term maintenance of information in working memory (Goldman-Rakic, 1995; Funahashi et al., 1989). Ring attractor models capture a key feature of this activity: spatially tuned neurons form a localized "bump" of elevated firing that persists through recurrent excitation even after the sensory stimulus is removed (Compte et al., 2000; Ben-Yishai et al., 1995; Amari, 1977). These bumps encode continuous variables such as spatial location or orientation, and their precision is set by a balance between recurrent drive and noise-induced diffusion along the ring (Wimmer et al., 2014; Burak and Fiete, 2012). Such ring attractor dynamics have been observed experimentally in the Drosophila head direction system (Kim et al., 2017) and are reviewed in the broader context of attractor and integrator networks by Khona and Fiete (2022).
 
 When multiple items must be stored simultaneously, as in multi-item visual working memory tasks, the standard approach posits multiple bump networks coupled through cross-inhibition (Edin et al., 2009; Wei et al., 2012). The cross-inhibition creates a competition: if it is weak, both bumps coexist and the system maintains multiple items; if it is strong, one bump suppresses the other in a winner-take-all (WTA) decision. The transition between these regimes determines the capacity limit of the working memory circuit (Edin et al., 2009).
 
@@ -44,7 +44,7 @@ The 1D reduction $D = \bar{r}_A - \bar{r}_B$ captures the order parameter of the
 
 3. **The character of the critical mode** -- whether the instability that destroys coexistence is spatially uniform (DC), spatially patterned (cosine), or mixed.
 
-We present the first complete eigenvalue decomposition of the coupled ring attractor Jacobian, resolving all $2N = 96$ eigenvalues as a function of the cross-inhibition strength $J_\times$. By cleanly separating Goldstone modes from genuine instabilities, we identify the precise location, character, and consequences of the coexistence-to-WTA pitchfork bifurcation.
+Previous spectral approaches to ring networks have addressed non-Hermitian quasi-localization (Tanaka and Nelson, 2018) and the stability of persistent activity under short-term plasticity (Seeholzer et al., 2019), but the full eigenvalue structure of the *coupled* system has not been resolved. We present the first complete eigenvalue decomposition of the coupled ring attractor Jacobian, resolving all $2N = 96$ eigenvalues as a function of the cross-inhibition strength $J_\times$. By cleanly separating Goldstone modes from genuine instabilities, we identify the precise location, character, and consequences of the coexistence-to-WTA pitchfork bifurcation.
 
 ### 1.4 Summary of Contributions
 
@@ -134,7 +134,7 @@ We verify convergence by checking: (i) the residual $\max_i |F_i(\mathbf{r}^*)| 
 
 **Figure 2.** Coexistence existence boundary. Peak firing rate of each network as a function of cross-inhibition strength $J_\times$. Below $J_\times^{exist} \approx 0.358$, both networks sustain bumps at matched amplitudes (coexistence). Above this threshold, one network collapses to baseline (WTA). The pitchfork bifurcation at $J_\times^* \approx 0.349$ (orange dashed) and existence boundary at $J_\times^{exist} \approx 0.358$ (purple dashed) delimit the narrow instability window $\Delta J_\times \approx 0.01$.
 
-We scan $J_\times$ from 0 to 0.5. Below $J_\times \approx 0.36$, Newton converges to a genuine coexistence fixed point with residual $< 10^{-10}$. Above this threshold, one bump suppresses the other during the simulation phase; Newton converges only to WTA solutions. At $J_\times = 0.50$ -- a commonly used parameter value -- coexistence does not exist as a fixed point of the deterministic dynamics.
+We scan $J_\times$ from 0 to 0.5 (Fig. 2). Below $J_\times \approx 0.36$, Newton converges to a genuine coexistence fixed point with residual $< 10^{-10}$. Above this threshold, one bump suppresses the other during the simulation phase; Newton converges only to WTA solutions. At $J_\times = 0.50$ -- a commonly used parameter value -- coexistence does not exist as a fixed point of the deterministic dynamics.
 
 The critical existence threshold lies between $J_\times = 0.355$ (both bumps survive, $\max r^A = 0.88, \max r^B = 0.88$) and $J_\times = 0.360$ (one bump collapses, $\max r^A = 0.97, \max r^B = 0.04$). The transition is sharp: a 1.4% increase in $J_\times$ converts stable coexistence into complete dominance.
 
@@ -161,7 +161,7 @@ We classify eigenvalues into Goldstone candidates ($|\lambda| < 10^{-3}$) and ge
 - $\mathbf{d}_{gold,A}$: rotation of bump A (sine envelope, A only)
 - $\mathbf{d}_{gold,B}$: rotation of bump B (sine envelope, B only)
 
-The Goldstone eigenvectors project strongly onto $\mathbf{d}_{gold,A}$ and $\mathbf{d}_{gold,B}$, confirming their rotational character.
+The Goldstone eigenvectors project strongly onto $\mathbf{d}_{gold,A}$ and $\mathbf{d}_{gold,B}$, confirming their rotational character (Fig. 4, left panel).
 
 #### 3.2.3 Goldstone Count Across $J_\times$
 
@@ -193,7 +193,7 @@ At $J_\times^*$, the critical eigenvector has the following projections:
 | Anti-drift (sine) | 0.34 |
 | Co-drift (sine) | 0.00 |
 
-The largest projection is onto the uniform/DC direction: a spatially flat increase in all of network A's neurons coupled with a spatially flat decrease in all of network B's neurons. This means the instability is about which network has more total activity, not about the spatial pattern of either bump.
+The largest projection is onto the uniform/DC direction (Fig. 4, right panel): a spatially flat increase in all of network A's neurons coupled with a spatially flat decrease in all of network B's neurons. This means the instability is about which network has more total activity, not about the spatial pattern of either bump.
 
 This is a direct and falsifiable prediction of mean-field coupling. If cross-inhibition were spatially structured (depending on the relative positions of the two bumps), the critical eigenvector would acquire spatial structure (cosine or higher Fourier modes). The DC character is specific to coupling that "sees" only total activity.
 
@@ -206,6 +206,8 @@ This razor-thin window has two implications:
 1. **Structural precision.** The bifurcation is sharp: a 3% change in $J_\times$ (from 0.348 to 0.358) takes the system from stable coexistence through saddle instability to complete collapse. The system is tuned near a critical point.
 
 2. **Heterogeneity prediction.** In biological circuits with heterogeneous connectivity, the sharp boundary should be smeared into a broader regime where saddle-like dynamics persist (see Discussion).
+
+**Figure 3.** Pitchfork bifurcation diagram. Dominance $D = \bar{r}^A - \bar{r}^B$ vs. cross-inhibition strength $J_\times$. The coexistence branch ($D = 0$) is stable (solid) for $J_\times < J_\times^*$ and becomes a saddle (dashed red) above the pitchfork at $J_\times^* \approx 0.349$. Two WTA branches ($D > 0$ and $D < 0$, blue) emerge at $J_\times^{exist} \approx 0.358$ as stable attractors. The subcritical structure creates the narrow existence window $\Delta J_\times \approx 0.01$.
 
 ### 3.4 The Coexistence Saddle Under Cue
 
@@ -275,6 +277,8 @@ This result strengthens the valley interpretation (Section 3.5.4). The non-monot
 
 Critical slowing down provides partial confirmation: convergence time after small perturbations increases as $J_\times$ approaches $J_\times^*$ in the clean model ($\sigma = 0$), consistent with the expected $\tau \sim 1/|\lambda_{dom}|$ scaling near the bifurcation. The data are noisy but directionally consistent with critical slowing down (Fig. 6).
 
+**Figure 6.** Heterogeneity destroys the instability window. Dominance eigenvalue $\lambda_{dom}$ as a function of $J_\times$ at six levels of connectivity heterogeneity ($\sigma \in \{0, 0.05, 0.1, 0.2, 0.3, 0.5\}$, five random seeds each). At $\sigma = 0$ (clean model), the pitchfork zero-crossing is sharp. At $\sigma = 0.05$, two of three trials lose the instability entirely. At $\sigma \geq 0.10$, no trial exhibits a positive $\lambda_{dom}$ at any $J_\times$ -- the imperfect bifurcation has no zero-crossing. Right panel: convergence time data, consistent with critical slowing down near $J_\times^*$ in the clean model.
+
 ### 4.3 The Behavioral Cliff as a $J_\times$ Phenomenon
 
 The traditional view attributes the behavioral cliff to weak cues: below a threshold cue strength, the sensory signal cannot stabilize the correct bump, and noise-driven escape to a competing attractor becomes rapid (Kramers escape). Our analysis suggests a reinterpretation.
@@ -315,7 +319,7 @@ The Alleman et al. finding that swap errors in healthy subjects arise from misse
 
 ### 4.8 Universality of the Saddle-Point Bifurcation
 
-The pitchfork bifurcation we identify -- attractors extinguished after merging with saddle points at high cross-inhibition -- has structural analogs in decision-making circuits. Roach, Churchland, and Engel (2023) showed that in circuits with choice-selective inhibition, working memory attractors are extinguished after merging with saddle points as ipsispecific inhibition increases. Disjoint neural groups with within-group excitation and across-group inhibition exhibit group WTA dynamics, and the coexistence-to-WTA transition occurs via saddle-point annihilation (Roach et al., 2023; Wong and Wang, 2006).
+The pitchfork bifurcation we identify -- attractors extinguished after merging with saddle points at high cross-inhibition -- has structural analogs in decision-making circuits. Roach, Churchland, and Engel (2023) showed that in circuits with choice-selective inhibition, working memory attractors are extinguished after merging with saddle points as ipsispecific inhibition increases. Disjoint neural groups with within-group excitation and across-group inhibition exhibit group WTA dynamics, and the coexistence-to-WTA transition occurs via saddle-point annihilation (Roach et al., 2023; Wong and Wang, 2006; Machens et al., 2005).
 
 This structural isomorphism suggests the spectral separatrix is not specific to working memory but describes the generic bifurcation of any neural circuit with competing stable states. Decision-making, attention, and working memory all involve population competition, and the mathematical structure -- pitchfork at critical coupling, Goldstone protection of positional degrees of freedom, DC instability under mean-field coupling -- should appear across domains. The spectral analysis presented here provides a template for characterizing these transitions.
 
@@ -361,8 +365,6 @@ Goldman-Rakic, P.S. (1995). Cellular basis of working memory. *Neuron*, 14(3), 4
 
 Funahashi, S., Bruce, C.J., & Goldman-Rakic, P.S. (1989). Mnemonic coding of visual space in the monkey's dorsolateral prefrontal cortex. *Journal of Neurophysiology*, 61(2), 331-349.
 
-Gutkin, B.S., Laing, C.R., Colby, C.L., Chow, C.C., & Ermentrout, G.B. (2001). Multiple bumps in a neuronal model of working memory. *SIAM Journal on Applied Mathematics*, 63(1), 62-97.
-
 Hanggi, P., Talkner, P., & Borkovec, M. (1990). Reaction-rate theory: fifty years after Kramers. *Reviews of Modern Physics*, 62(2), 251-341.
 
 Khona, M. & Fiete, I.R. (2022). Attractor and integrator networks in the brain. *Nature Reviews Neuroscience*, 23, 744-766.
@@ -378,8 +380,6 @@ Ma, W.J., Husain, M., & Bays, P.M. (2014). Changing concepts of working memory. 
 Poll, D.B., Nguyen, K., & Kilpatrick, Z.P. (2015). Sensory feedback in a bump attractor model of path integration. *Journal of Computational Neuroscience*, 40(2), 137-155.
 
 Seeholzer, A., Deger, M., & Gerstner, W. (2019). Stability of working memory in continuous attractor networks under the control of short-term plasticity. *PLOS Computational Biology*, 15(4), e1006928.
-
-Seung, H.S. (1996). How the brain keeps the eyes still. *PNAS*, 93(23), 13339-13344.
 
 Strogatz, S.H. (2015). *Nonlinear Dynamics and Chaos*. 2nd ed. Westview Press.
 
