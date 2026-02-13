@@ -111,132 +111,123 @@ def compute_spectrum_strip():
 def plot_spectrum_strip(results, save_path):
     """
     Publication figure: top eigenvalues vs J_cross.
+
+    Design: clean, minimal, Neural Computation style.
+    Y-axis zoomed to show the interesting range (-0.65 to +0.08).
+    Goldstone line is a thin but distinct gold band.
+    lambda_dom transitions from dark blue (stable) to red (unstable).
+    Background eigenvalues fade progressively.
     """
     fig, ax = plt.subplots(figsize=(8, 5))
 
     jc_vals = np.array([r['J_cross'] for r in results])
-
-    # ── Background eigenvalues (ranks 3-10): thin gray lines ─────
-    # Determine the max number of top genuine eigenvalues available
     max_top = min(10, min(len(r['top_genuine']) for r in results))
 
-    # Plot ranks 3..10 first (back to front, dimmer for higher ranks)
+    # ── Y-axis limits (set early so annotations can use them) ────
+    YMIN, YMAX = -0.62, 0.06
+
+    # ── Background eigenvalues (ranks 3-10): thin gray lines ─────
     for k in range(max_top - 1, 1, -1):
         vals = np.array([r['top_genuine'][k] for r in results])
-        alpha = 0.15 + 0.05 * (max_top - k)  # dimmer for deeper eigenvalues
-        alpha = min(alpha, 0.5)
-        ax.plot(jc_vals, vals, '-', color='#999999', lw=0.6,
+        # Clip to visible range for cleanliness
+        vals_clipped = np.clip(vals, YMIN, YMAX)
+        alpha = 0.50 - 0.04 * k  # dimmer for deeper eigenvalues
+        alpha = max(alpha, 0.12)
+        lw = 0.9 if k <= 4 else 0.5
+        ax.plot(jc_vals, vals_clipped, '-', color='#b0b0b0', lw=lw,
                 alpha=alpha, zorder=1)
 
-    # Label the background band
-    # Use rank 2 (the first "other" eigenvalue) for positioning
-    vals_r2 = np.array([r['top_genuine'][2] for r in results])
-    vals_r9 = np.array([r['top_genuine'][min(9, max_top - 1)] for r in results])
-    mid_idx = len(jc_vals) // 4
-    ax.annotate(r'$\lambda_3 \ldots \lambda_{10}$',
-                xy=(jc_vals[mid_idx], vals_r2[mid_idx]),
-                xytext=(jc_vals[mid_idx] - 0.04, vals_r2[mid_idx] + 0.04),
-                fontsize=8.5, color='#777777', fontstyle='italic',
-                arrowprops=dict(arrowstyle='->', color='#999999',
-                                lw=0.7, connectionstyle='arc3,rad=0.2'))
+    # Label the background band -- place near the visible portion
+    vals_r3 = np.array([r['top_genuine'][2] for r in results])
+    # Find an index where lambda_3 is visible (not clipped at YMIN)
+    lab3_idx = -4  # near the right end where they rise toward visibility
+    ax.text(jc_vals[lab3_idx] + 0.005, vals_r3[lab3_idx] - 0.015,
+            r'$\lambda_3, \ldots, \lambda_{10}$',
+            fontsize=8, color='#888888', fontstyle='italic', va='top')
 
-    # ── Second genuine eigenvalue (rank 2): medium gray ──────────
+    # ── Second genuine eigenvalue (rank 2): medium weight ────────
     vals_2 = np.array([r['top_genuine'][1] for r in results])
-    ax.plot(jc_vals, vals_2, '-', color='#777777', lw=1.2,
-            alpha=0.6, zorder=2, label=r'$\lambda_2$')
+    ax.plot(jc_vals, vals_2, '-', color='#888888', lw=1.3,
+            alpha=0.55, zorder=2)
+    # Label lambda_2
+    lab2_idx = len(jc_vals) // 2
+    ax.text(jc_vals[lab2_idx] + 0.005, vals_2[lab2_idx] + 0.012,
+            r'$\lambda_2$', fontsize=8.5, color='#777777')
 
-    # ── Dominant genuine eigenvalue: thick, colored by sign ───────
+    # ── Dominant genuine eigenvalue: thick, blue→red at crossing ──
     lam_dom = np.array([r['lambda_dom'] for r in results])
 
-    # Split into stable (blue) and unstable (red) segments
-    # Find the crossing index
     crossing_idx = None
     for i in range(len(lam_dom) - 1):
         if lam_dom[i] < 0 and lam_dom[i + 1] > 0:
             crossing_idx = i
             break
 
+    COL_STABLE = '#2d5a7b'
+    COL_UNSTABLE = '#c0392b'
+
     if crossing_idx is not None:
-        # Interpolate the exact crossing point
         jc1, jc2 = jc_vals[crossing_idx], jc_vals[crossing_idx + 1]
         l1, l2 = lam_dom[crossing_idx], lam_dom[crossing_idx + 1]
         jc_cross = jc1 + (0 - l1) * (jc2 - jc1) / (l2 - l1)
 
-        # Stable segment (blue)
-        stable_mask = np.arange(len(jc_vals)) <= crossing_idx
-        ax.plot(jc_vals[stable_mask], lam_dom[stable_mask], '-',
-                color='#2d5a7b', lw=2.5, zorder=5)
+        # Stable segment (blue), include the crossing point
+        seg_stable_j = np.append(jc_vals[:crossing_idx + 1], jc_cross)
+        seg_stable_l = np.append(lam_dom[:crossing_idx + 1], 0.0)
+        ax.plot(seg_stable_j, seg_stable_l, '-',
+                color=COL_STABLE, lw=2.5, zorder=5, solid_capstyle='round')
 
-        # Unstable segment (red)
-        unstable_mask = np.arange(len(jc_vals)) >= crossing_idx
-        ax.plot(jc_vals[unstable_mask], lam_dom[unstable_mask], '-',
-                color='#c0392b', lw=2.5, zorder=5)
+        # Unstable segment (red), from crossing point onward
+        seg_unstable_j = np.insert(jc_vals[crossing_idx + 1:], 0, jc_cross)
+        seg_unstable_l = np.insert(lam_dom[crossing_idx + 1:], 0, 0.0)
+        ax.plot(seg_unstable_j, seg_unstable_l, '-',
+                color=COL_UNSTABLE, lw=2.5, zorder=5, solid_capstyle='round')
 
-        # Connect through the crossing with both colors meeting
-        ax.plot([jc_vals[crossing_idx], jc_cross],
-                [lam_dom[crossing_idx], 0], '-', color='#2d5a7b', lw=2.5,
-                zorder=5)
-        ax.plot([jc_cross, jc_vals[crossing_idx + 1]],
-                [0, lam_dom[crossing_idx + 1]], '-', color='#c0392b', lw=2.5,
-                zorder=5)
+        # Small filled circle at the crossing
+        ax.plot(jc_cross, 0, 'o', color=COL_UNSTABLE, ms=4, zorder=6)
     else:
-        # All stable or all unstable
-        color = '#c0392b' if lam_dom[-1] > 0 else '#2d5a7b'
+        color = COL_UNSTABLE if lam_dom[-1] > 0 else COL_STABLE
         ax.plot(jc_vals, lam_dom, '-', color=color, lw=2.5, zorder=5)
 
-    # Label lambda_dom
-    label_idx = len(jc_vals) * 2 // 3
+    # Label lambda_dom: place it in the stable region, left of center
+    label_idx = len(jc_vals) // 3
     ax.annotate(r'$\lambda_{\mathrm{dom}}$',
                 xy=(jc_vals[label_idx], lam_dom[label_idx]),
-                xytext=(jc_vals[label_idx] + 0.012, lam_dom[label_idx] + 0.05),
-                fontsize=11, fontweight='bold', color='#c0392b',
-                arrowprops=dict(arrowstyle='->', color='#c0392b', lw=1.2))
+                xytext=(jc_vals[label_idx] - 0.035, lam_dom[label_idx] + 0.06),
+                fontsize=11, fontweight='bold', color=COL_STABLE,
+                arrowprops=dict(arrowstyle='->', color=COL_STABLE, lw=1.0,
+                                connectionstyle='arc3,rad=-0.15'))
 
-    # ── Goldstone modes: bold gold line at ~0 ────────────────────
-    # They are at ~1e-10, effectively zero. Draw as a bold line at 0.
+    # ── Goldstone modes: gold line at 0, distinct but not dominating ──
     ax.plot(jc_vals, np.zeros_like(jc_vals), '-', color='#d4a017',
-            lw=3.0, zorder=4, solid_capstyle='round')
-    ax.annotate('Goldstone ($\\times 2$)',
-                xy=(jc_vals[3], 0),
-                xytext=(jc_vals[3] - 0.01, 0.06),
-                fontsize=9, color='#b8860b', fontweight='bold',
-                arrowprops=dict(arrowstyle='->', color='#b8860b', lw=0.9))
+            lw=1.8, zorder=4, solid_capstyle='round')
+    # Label at the left end, slightly above
+    ax.text(0.005, 0.012, r'Goldstone ($\times 2$)',
+            fontsize=8, color='#b8860b', fontweight='bold', va='bottom')
 
     # ── Reference lines ──────────────────────────────────────────
-    # Horizontal: lambda = 0
-    ax.axhline(y=0, color='#aaaaaa', ls='--', lw=0.7, zorder=0)
+    ax.axhline(y=0, color='#cccccc', ls='-', lw=0.5, zorder=0)
 
     # Vertical: J_cross* (pitchfork)
     J_CROSS_STAR = 0.349
-    ax.axvline(x=J_CROSS_STAR, color='#555555', ls='--', lw=0.9,
-               zorder=0, alpha=0.7)
-    ax.text(J_CROSS_STAR + 0.002, ax.get_ylim()[0] if ax.get_ylim()[0] != 0 else -0.55,
-            r'$J_\times^*$', fontsize=10, color='#555555', va='bottom',
+    ax.axvline(x=J_CROSS_STAR, color='#666666', ls='--', lw=0.8,
+               zorder=0, alpha=0.6)
+    ax.text(J_CROSS_STAR - 0.003, YMIN + 0.02, r'$J_\times^*$',
+            fontsize=9.5, color='#555555', ha='right', va='bottom',
             fontweight='bold')
 
     # Vertical: J_cross^exist
     J_CROSS_EXIST = 0.358
-    ax.axvline(x=J_CROSS_EXIST, color='#555555', ls=':', lw=0.9,
-               zorder=0, alpha=0.7)
-    ax.text(J_CROSS_EXIST + 0.002, ax.get_ylim()[0] if ax.get_ylim()[0] != 0 else -0.55,
-            r'$J_\times^{\mathrm{exist}}$', fontsize=10, color='#555555',
-            va='bottom')
+    ax.axvline(x=J_CROSS_EXIST, color='#666666', ls=':', lw=0.8,
+               zorder=0, alpha=0.6)
+    ax.text(J_CROSS_EXIST + 0.003, YMIN + 0.02, r'$J_\times^{\mathrm{exist}}$',
+            fontsize=9, color='#555555', ha='left', va='bottom')
 
     # ── Axes ─────────────────────────────────────────────────────
     ax.set_xlabel(r'Cross-inhibition strength $J_\times$', fontsize=11)
     ax.set_ylabel(r'$\mathrm{Re}(\lambda)$', fontsize=11)
     ax.set_xlim(-0.01, 0.37)
-
-    # Let the y-axis be set by data, then adjust the vertical reference labels
-    ax.figure.canvas.draw()
-
-    # Update the J_cross* and J_cross^exist label positions after axis limits are set
-    ymin, ymax = ax.get_ylim()
-    # Remove old text and re-place
-    for txt in ax.texts:
-        if txt.get_text() in [r'$J_\times^*$', r'$J_\times^{\mathrm{exist}}$']:
-            txt.set_position((txt.get_position()[0], ymin + 0.02 * (ymax - ymin)))
-
+    ax.set_ylim(YMIN, YMAX)
     ax.tick_params(axis='both', which='major', labelsize=9)
 
     plt.tight_layout()

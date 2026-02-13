@@ -346,6 +346,16 @@ $$\gamma \approx 0.22 \text{ to } 0.36,$$
 
 a plausible normal-form coefficient for Taylor-expanded sigmoidal population dynamics. As a self-consistency check: taking $\gamma = 0.3$ gives $\Delta V(0.25) \approx 0.046$ and $\Delta V / \sigma^2 \approx 4.6$, squarely in the $\ln(k_0 T)$ band (Fig. 7C).
 
+The onset prediction shifts smoothly with noise amplitude. Because $\Delta V \propto |\lambda_{\mathrm{dom}}|^2$ while the threshold scales as $\sigma^2 \ln(k_0 T)$, the predicted $J_\times^{\mathrm{onset}}$ depends on $\sigma$ only through the threshold level, not through the barrier shape:
+
+| $\sigma$ | $\Delta V$ threshold | $J_\times^{\mathrm{onset}}$ range |
+|:--------:|:-------------------:|:---------------------------------:|
+| 0.05 | [0.010, 0.016] | [0.30, 0.31] |
+| 0.10 | [0.039, 0.062] | [0.23, 0.26] |
+| 0.15 | [0.088, 0.140] | [0.14, 0.20] |
+
+Halving the noise from $\sigma = 0.10$ to $0.05$ shifts the onset upward by only $\Delta J_\times \approx 0.05$; increasing it to $0.15$ shifts it downward by $\sim$0.06. The quadratic barrier collapse is structural — set by the spectral approach to the pitchfork — so the sensitivity enters only through the logarithmic noise floor $\sigma^2 \ln(k_0 T)$.
+
 This provides a quantitative explanation for why the behavioral "cliff" occurs substantially below the deterministic pitchfork. Because $\Delta V \propto |\lambda_{\mathrm{dom}}|^2$, the barrier collapses quadratically and drops to the logarithmically-scaled noise floor near $J_\times^{\mathrm{onset}} \approx 0.25$ -- roughly 29% below $J_\times^*$ -- rendering the network noise-limited before the coexistence fixed point formally loses its deterministic stability (Fig. 7D).
 
 ![](figures/fig7_kramers.png)
