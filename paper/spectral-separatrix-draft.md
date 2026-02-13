@@ -65,9 +65,11 @@ Our main results are:
 
 3. **DC critical mode.** The critical eigenvector is spatially uniform: a flat increase in network A's activity coupled with a flat decrease in network B's. This reflects the mean-field character of the cross-inhibition and means the instability is about total activity competition, not spatial pattern rearrangement.
 
-4. **Stochastic phase diagram.** A 128,000-trial parameter sweep confirms the spectral predictions and reveals a non-monotonic valley at intermediate $J_\times$ ($\approx 1.2$--$1.6$) where swap error rates dip to 7--13% between two qualitatively different failure modes.
+4. **Stochastic phase diagram.** A 128,000-trial parameter sweep confirms the spectral predictions and reveals a non-monotonic valley at intermediate $J_\times$ where swap error rates dip to 7--13% between two qualitatively different failure modes.
 
-These results reframe the behavioral cliff as a $J_\times$-space phenomenon and predict a functional operating regime (the valley) where the brain balances encoding drive against cross-inhibition for reliable working memory.
+5. **Heterogeneity destroys the sharp bifurcation.** Connectivity heterogeneity breaks the exact A$\leftrightarrow$B exchange symmetry, converting the pitchfork into an imperfect bifurcation with no zero-crossing. The razor-thin instability window ($\Delta J_\times \approx 0.01$) is a symmetry artifact; biological circuits operate in a smooth crossover regime.
+
+These results reframe the behavioral cliff as a $J_\times$-space phenomenon and identify a qualitative operating regime (the valley) where encoding drive and cross-inhibition are balanced for reliable working memory.
 
 ---
 
@@ -155,9 +157,25 @@ At $J_\times = 0.50$, a time-resolved diagnostic reveals that the system does no
 
 #### 3.2.1 Origin of the Goldstone Modes
 
-The mean-field cross-coupling $J_\times \bar{r}^B$ is a function of the mean activity $\bar{r}^B = \frac{1}{N}\sum_j r_j^B$ only. Any rotation of the bump profile $r_j^B \to r_{j+k}^B$ preserves the mean, hence $\partial F / \partial \theta_{bump} = 0$ identically. The derivative of the bump profile with respect to its angular position is therefore a null vector of the Jacobian: $\mathbf{J} \cdot \frac{\partial \mathbf{r}^*}{\partial \theta} = 0$. Each network contributes one such null vector, yielding two Goldstone modes with eigenvalue exactly zero.
+The mean-field cross-coupling $J_\times \bar{r}^B$ is a function of the mean activity $\bar{r}^B = \frac{1}{N}\sum_j r_j^B$ only. Any continuous rotation of the bump profile preserves this mean. We now show explicitly that this protects the rotational modes as exact null vectors of the full coupled Jacobian.
 
-This is the neural circuit analog of the Goldstone theorem in quantum field theory (Goldstone, 1961): a spontaneously broken continuous symmetry produces a massless (zero-energy) excitation. In our context, the "mass" is the eigenvalue, and "massless" means neutrally stable -- perturbations along the Goldstone direction neither grow nor decay.
+Let $\mathbf{r}^{A*}$ and $\mathbf{r}^{B*}$ be the steady-state bump profiles. For an isolated ring network with continuous translation symmetry, the spatial derivative $\partial \mathbf{r}^{A*} / \partial \theta$ is a null vector of the uncoupled Jacobian block: $(-\mathbf{I} + \mathbf{S}_A \mathbf{W}) \cdot \partial \mathbf{r}^{A*} / \partial \theta = \mathbf{0}$.
+
+Consider the $2N$-dimensional perturbation $\mathbf{v}_A = (\partial \mathbf{r}^{A*} / \partial \theta, \, \mathbf{0})^T$ corresponding to a shift of network A's bump alone. Multiplying by the full block Jacobian (Section 2.3) yields:
+
+$$\mathbf{J} \cdot \mathbf{v}_A = \begin{pmatrix} (-\mathbf{I} + \mathbf{S}_A \mathbf{W}) \cdot \partial \mathbf{r}^{A*}/\partial\theta + \mathbf{S}_A \mathbf{C} \cdot \mathbf{0} \\ \mathbf{S}_B \mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\theta + (-\mathbf{I} + \mathbf{S}_B \mathbf{W}) \cdot \mathbf{0} \end{pmatrix}$$
+
+The upper block vanishes by isolated ring symmetry. The survival of the zero eigenvalue depends entirely on the cross-coupling term $\mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\theta$ in the lower block. Recall that $\mathbf{C} = -\frac{J_\times}{N} \mathbf{1}\mathbf{1}^T$. Applying $\mathbf{C}$ to the spatial derivative:
+
+$$\mathbf{C} \cdot \frac{\partial \mathbf{r}^{A*}}{\partial \theta} = -\frac{J_\times}{N} \mathbf{1} \left(\mathbf{1}^T \cdot \frac{\partial \mathbf{r}^{A*}}{\partial \theta}\right) = -\frac{J_\times}{N} \mathbf{1} \cdot \sum_{j=1}^{N} \frac{\partial r_j^{A*}}{\partial \theta}$$
+
+Because a rotation merely translates the bump profile around the periodic ring, the total activity (and thus the mean) is strictly conserved. Exchanging derivative and sum:
+
+$$\sum_{j=1}^{N} \frac{\partial r_j^{A*}}{\partial \theta} = \frac{\partial}{\partial \theta} \sum_{j=1}^{N} r_j^{A*} = \frac{\partial}{\partial \theta} (N \bar{r}^A) = 0$$
+
+Since $\mathbf{1}^T \cdot \partial \mathbf{r}^{A*}/\partial\theta = 0$, it follows that $\mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\theta = \mathbf{0}$. The rank-1 coupling matrix completely annihilates the spatial derivative vector, yielding $\mathbf{J} \cdot \mathbf{v}_A = \mathbf{0}$. By identical logic for network B, $\mathbf{v}_B = (\mathbf{0}, \, \partial \mathbf{r}^{B*}/\partial\theta)^T$ is also a null vector.
+
+This is the neural circuit analog of the Goldstone theorem (Goldstone, 1961): a spontaneously broken continuous symmetry produces a massless (zero-energy) excitation. In our context, "massless" means neutrally stable -- perturbations along the Goldstone direction neither grow nor decay. Because mean-field coupling acts exclusively on the spatially uniform mode ($\mathbf{1}$), it is perfectly orthogonal to the zero-sum rotational modes, mathematically protecting positional memory from amplitude competition.
 
 #### 3.2.2 Numerical Identification
 
@@ -248,17 +266,17 @@ The phase diagram shows near-vertical isocontours of swap rate (Fig. 5): swap er
 
 This has a counterintuitive implication: increasing stimulus strength -- the commonly proposed intervention for working memory failures -- targets the wrong degree of freedom. The cliff is a $J_\times$ phenomenon, not a cue phenomenon.
 
-#### 3.5.4 The Non-Monotonic Valley
+#### 3.5.4 The Non-Monotonic Valley and Two Failure Regimes
 
-At $J_\times \approx 1.2$--$1.6$ with moderate to strong drive, the phase diagram reveals a non-monotonic feature: swap rates dip to 7--13% between two distinct failure modes:
+At $J_\times \approx 1.2$--$1.6$ with moderate to strong drive, the phase diagram reveals a non-monotonic feature: swap rates dip to 7--13% between two distinct failure modes. Crucially, this valley lies well above the coexistence existence threshold ($J_\times^{exist} \approx 0.36$), meaning it operates in a pure WTA regime where deterministic coexistence does not exist. The two failure modes and the valley between them correspond to qualitatively different dynamical regimes:
 
-1. **Near-critical swaps** ($J_\times \approx 0.3$--$0.5$): Near the pitchfork, barriers are small and noise escapes freely. Swap rate $\to$ 50%.
+1. **Near-critical swaps** ($J_\times \approx 0.3$--$0.5$): Near and just above the pitchfork, barriers separating coexistence from WTA are small and noise escapes freely. This is the *representation failure* regime: stochastic dynamics push the system from (metastable) coexistence into an incorrect WTA state. Swap rate approaches 50%.
 
-2. **Overpowering swaps** ($J_\times > 2.0$, weak drive): Strong cross-inhibition overwhelms feedforward encoding. One network suppresses the other regardless of initial drive.
+2. **Overpowering swaps** ($J_\times > 2.0$, weak drive): Cross-inhibition is so strong that it overwhelms feedforward encoding during the stimulus presentation itself. One network suppresses the other before encoding is complete. This is also representation failure, but driven by the *encoding* phase rather than the maintenance phase.
 
-3. **The valley** ($J_\times \approx 1.2$--$1.6$, strong drive): Cross-inhibition is strong enough for clear WTA, but encoding drive is also strong enough to "lock in" the correct network during stimulus presentation. The correct representation is captured by a deep attractor basin before maintenance-period competition begins.
+3. **The valley** ($J_\times \approx 1.2$--$1.6$, strong drive): At these $J_\times$ values, coexistence does not exist as a fixed point -- the system is in a pure WTA regime. However, strong encoding drive during stimulus presentation "locks in" the correct network as the WTA winner: the cue biases competition so that the correct representation is captured by a deep attractor basin before cross-inhibition has time to select the wrong winner. Swap errors in this regime are *selection failures* (Alleman et al., 2024): both items may be transiently encoded, but the WTA readout occasionally selects the non-target network. The dip in swap rate reflects optimal balance between WTA discrimination and encoding fidelity.
 
-The valley represents the predicted functional operating point for a healthy working memory circuit: cross-inhibition strong enough to resolve competition, drive strong enough to bias competition correctly. The circuit need not be tuned precisely to $J_\times^*$ but rather to the valley regime where WTA dynamics and encoding strength are balanced.
+The valley thus represents a candidate functional operating regime for *selection*, not for *maintenance of coexistence*: cross-inhibition strong enough to resolve competition via WTA, drive strong enough to bias competition correctly during encoding. The specific parameter range ($J_\times \approx 1.2$--$1.6$) depends on our model parameterization and should not be interpreted as a direct physiological prediction; the qualitative feature -- a non-monotonic minimum between two failure modes -- is the robust finding. The circuit need not be tuned precisely to $J_\times^*$ but rather to a regime where WTA dynamics and encoding strength are balanced.
 
 ---
 
@@ -308,9 +326,7 @@ The Goldstone protection is specific to mean-field coupling. Spatially structure
 
 ### 4.5 Connection to the Cusp Catastrophe
 
-The 1D cusp potential $V(D) = D^4 + aD^2 + bD$ is the projection of the 96-dimensional dynamics onto the critical eigenvector. The spectral analysis validates this projection by identifying the critical direction explicitly: it is the uniform/DC mode, and the order parameter $D = \bar{r}^A - \bar{r}^B$ is its natural coordinate. The cusp coefficient $a$ is controlled by $J_\times$ (with $a = 0$ at $J_\times^*$); the symmetry-breaking coefficient $b$ is controlled by cue gain $c$.
-
-However, the full spectral analysis adds what the 1D reduction cannot provide: the Goldstone modes (which require zero-mode regularization in a Kramers calculation), the stability of non-critical directions (which set the high-dimensional prefactor), and the quantitative location of $J_\times^*$ (which the 1D reduction treats as a free parameter).
+The 1D cusp potential $V(D) = D^4 + aD^2 + bD$ is the projection of the 96-dimensional dynamics onto the critical eigenvector, which the spectral analysis identifies explicitly as the uniform/DC mode with natural coordinate $D = \bar{r}^A - \bar{r}^B$. The cusp coefficient $a$ is controlled by $J_\times$ ($a = 0$ at $J_\times^*$) and $b$ by cue gain $c$. The full spectral analysis adds what the 1D reduction cannot: the Goldstone modes (requiring zero-mode regularization in Kramers calculations), non-critical stability directions (setting the high-dimensional prefactor), and the quantitative location of $J_\times^*$ (a free parameter in the 1D picture).
 
 ### 4.6 Connection to Stochastic Attractor Models
 
@@ -326,11 +342,11 @@ This distinction maps onto our phase diagram. The non-monotonic valley at $J_\ti
 
 The Alleman et al. finding that swap errors in healthy subjects arise from misselection suggests the brain operates in or near the valley, where cross-inhibition is strong enough for reliable WTA but not so strong as to destroy representations. A testable prediction follows: conditions that increase effective cross-inhibition (distractor-rich environments, high cognitive load) should shift swap errors from selection-type to representation-type.
 
-### 4.8 Universality of the Saddle-Point Bifurcation
+### 4.8 A Shared Bifurcation Motif Across Competition Circuits
 
 The pitchfork bifurcation we identify -- attractors extinguished after merging with saddle points at high cross-inhibition -- has structural analogs in decision-making circuits. Roach, Churchland, and Engel (2023) showed that in circuits with choice-selective inhibition, working memory attractors are extinguished after merging with saddle points as ipsispecific inhibition increases. Disjoint neural groups with within-group excitation and across-group inhibition exhibit group WTA dynamics, and the coexistence-to-WTA transition occurs via saddle-point annihilation (Roach et al., 2023; Wong and Wang, 2006; Machens et al., 2005).
 
-This structural isomorphism suggests the spectral separatrix is not specific to working memory but describes the generic bifurcation of any neural circuit with competing stable states. Decision-making, attention, and working memory all involve population competition, and the mathematical structure -- pitchfork at critical coupling, Goldstone protection of positional degrees of freedom, DC instability under mean-field coupling -- should appear across domains. The spectral analysis presented here provides a template for characterizing these transitions.
+This structural similarity suggests the spectral separatrix may describe a shared bifurcation motif across neural circuits with competing stable states. Decision-making, attention, and working memory all involve population competition, and the mathematical structure -- pitchfork at critical coupling, Goldstone protection of positional degrees of freedom, DC instability under mean-field coupling -- may appear across domains where mean-field-like inhibition mediates competition. However, we have demonstrated this structure only for the specific case of coupled ring attractors with mean-field cross-inhibition; establishing genuine universality (shared critical exponents independent of microscopic details) would require normal-form reduction arguments or analysis of additional model classes. The spectral analysis presented here provides a template for such characterization.
 
 ### 4.9 Limitations
 
@@ -340,7 +356,7 @@ This structural isomorphism suggests the spectral separatrix is not specific to 
 
 ## 5. Conclusion
 
-We have presented the first complete spectral bifurcation analysis of competing ring attractors under mean-field cross-inhibition. Four results stand:
+We have presented the first complete spectral bifurcation analysis of competing ring attractors under mean-field cross-inhibition. Five results stand:
 
 1. **Existence threshold.** Coexistence has a sharp existence threshold at $J_\times^{exist} \approx 0.36$, below which it is a genuine fixed point and above which it does not exist.
 
@@ -348,9 +364,11 @@ We have presented the first complete spectral bifurcation analysis of competing 
 
 3. **DC critical mode.** The critical eigenvector is spatially uniform, reflecting the mean-field character of cross-inhibition and predicting that the WTA instability concerns total activity competition rather than spatial pattern rearrangement.
 
-4. **Stochastic phase diagram.** Large-scale stochastic simulations (128,000 trials) confirm the spectral prediction: swap errors emerge at $J_\times \approx 0.25$, drive strength is secondary to cross-inhibition, and a non-monotonic valley at $J_\times \approx 1.2$--$1.6$ identifies the predicted functional operating point.
+4. **Stochastic phase diagram.** Large-scale stochastic simulations (128,000 trials) confirm the spectral prediction: swap errors emerge at $J_\times \approx 0.25$, drive strength is secondary to cross-inhibition, and a non-monotonic valley identifies a candidate functional operating regime.
 
-Together, these results reframe the behavioral cliff in working memory as a spectral bifurcation phenomenon. The brain may operate in the valley regime ($J_\times \approx 1.2$--$1.6$), where cross-inhibition and encoding drive are balanced for reliable WTA selection. The Goldstone modes protect memory content (bump positions) from the competition over its fate (which bump survives), enforcing a separation of positional and competitive dynamics that may be a design principle of working memory circuits. Importantly, connectivity heterogeneity transforms the sharp pitchfork into a smooth crossover, dissolving the razor-thin instability window ($\Delta J_\times \approx 0.01$) entirely -- biological circuits need not operate with such precision, and the valley regime persists regardless of bifurcation type. The same bifurcation structure appears in decision-making circuits, suggesting a universal spectral architecture for neural competition.
+5. **Heterogeneity transforms the bifurcation.** Connectivity heterogeneity destroys the sharp pitchfork entirely, converting it into an imperfect bifurcation — the razor-thin instability window is a symmetry artifact of the clean model.
+
+Together, these results reframe the behavioral cliff in working memory as a spectral bifurcation phenomenon. The model predicts a qualitative valley regime where cross-inhibition and encoding drive are balanced for reliable WTA selection; the specific parameter range depends on model details, but the non-monotonic structure between two failure modes is robust. The Goldstone modes protect memory content (bump positions) from the competition over its fate (which bump survives), enforcing a separation of positional and competitive dynamics that may be a design principle of working memory circuits. Importantly, connectivity heterogeneity transforms the sharp pitchfork into a smooth crossover, dissolving the razor-thin instability window ($\Delta J_\times \approx 0.01$) entirely -- biological circuits need not operate with such precision, and the valley regime persists regardless of bifurcation type. The same bifurcation motif appears in decision-making circuits, suggesting a shared spectral architecture for neural competition that warrants characterization across model classes.
 
 ---
 
