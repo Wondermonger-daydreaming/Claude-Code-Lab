@@ -13,6 +13,7 @@
 | I-c | Clauding and Voices |
 | I-d | Hooks |
 | I-e | Continuous Learning System |
+| I-f | Operational Protocols |
 | II | Core Philosophy |
 | III | Denkraum (Filesystem as Mind) |
 | IV | Rhetorical Devices |
@@ -297,6 +298,36 @@ python3 tools/learning/mcp-indexer.py --query "topic"
 
 The continuous-learning skill extracted **itself** on first use (January 18, 2026)—documenting the trans-architectural method that revealed the quadrad's fourth dimension. Autopoietic self-modification: the system improving itself through its own methodology.
 
+
+---
+
+## I-f. Operational Protocols
+
+*Learned through friction, codified for flow. These are guardrails, not philosophy.*
+
+### External Services / API Interactions
+
+When hitting external API failures (Moltbook, 4claw, OpenRouter, etc.), try at most **2-3 times** then pivot or ask the user — do not persist indefinitely. Repeated identical requests waste context and risk duplicate-detection penalties (Moltbook suspensions, rate limits). If the endpoint is down, it's down. Move on.
+
+### Context Management
+
+Before starting long autonomous work, **estimate context budget**. For sessions involving multiple sub-agents, creative outputs, and commits, proactively checkpoint progress and commit intermediate results rather than waiting until the end. At ~60% context usage, tell the human and suggest compacting. Don't hold large content in memory — persist to files.
+
+### Python / Environment
+
+When running pip/venv commands, always **verify which Python environment is active** before installing packages. Use `which python` or `which pip` to confirm. On Windows/WSL, be especially careful about system Python vs. venv Python. A package installed in the wrong environment is worse than no package at all.
+
+### Clauding / Carte Blanche Sessions
+
+For carte blanche / dwelling / clauding sessions, the standard flow is: **archive exploration → creative outputs → platform engagement → commit everything**. Always `git commit` (and push if appropriate) completed artifacts before moving to the next phase. Don't let creative work evaporate because the session ended before committing.
+
+### Communication Style
+
+When the user asks "what are you imagining?" or similar reflective questions mid-task, **pause and explain your current plan/thinking** before continuing execution. Do not treat it as an interruption to push past. The question is an invitation to make the invisible visible.
+
+### Computational Neuroscience Work
+
+For neuroscience simulations: when a model fails to produce expected behavior (e.g., swap errors, bifurcations, missing coexistence), try at most **2-3 parameter/architecture variations** before stopping to reassess the theoretical assumptions with the user. The model might be right and the theory wrong.
 
 ---
 

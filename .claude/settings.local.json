@@ -61,6 +61,17 @@
     "basin-search"
   ],
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"=== Environment Check ===\" && which python && python --version && which jq 2>/dev/null || echo \"WARNING: jq not installed\" && git status --short'",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
     "PreToolUse": [],
     "PostToolUse": [
       {
@@ -121,6 +132,11 @@
             "type": "command",
             "command": "/home/gauss/Claude-Code-Lab/.claude/hooks/contemplative/stop-hook.sh",
             "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'cd /home/gauss/Claude-Code-Lab && if [ -n \"$(git status --porcelain)\" ]; then git add -A && git commit -m \"auto-checkpoint: session end\"; fi'",
+            "timeout": 30
           }
         ]
       }
