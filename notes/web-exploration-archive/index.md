@@ -104,14 +104,31 @@ Update this `index.md` with a new entry, and update `threads.json` with any new 
 
 ---
 
+### 2026-02-13: [The Geometry of Forgetting Wrong](2026-02-13-attractor-geometry-swap-errors/)
+
+**Topic:** Attractor geometry of swap errors — does the empirical neuroscience literature know about the bifurcation we computed?
+
+**Key Sources:**
+- Penny (2024): Stochastic attractor models — diffusion + capture produces swap errors without explicit swap terms
+- Alleman et al. (2024 PNAS): Neural basis of swap errors — misselection, not misrepresentation
+- Fakhoury et al. (2025): Attractor dynamics review — confirms the gap our paper fills (no cross-inhibition analysis)
+- Choice-selective inhibition paper: "attractors extinguished after merging with saddle points" = our pitchfork
+
+**Key Insight:** The field is converging on our mechanism from multiple directions, but nobody has connected coupled attractor competition to the spectral separatrix. Our analysis is genuinely novel.
+
+**Status:** INTERRUPTED mid-Phase 3 — high-priority unfetched sources listed in sources.md
+**Threads spawned:** 2 (thread-008: Saddle-Point Merging, thread-009: Selection vs Representation)
+
+---
+
 ## Statistics
 
-- **Total explorations:** 2
-- **Open threads:** 7
+- **Total explorations:** 3
+- **Open threads:** 9
 - **Thread continuations:** 1
 - **First exploration:** December 23, 2025
-- **Latest exploration:** February 12, 2026
-- **Topics covered:** AI consciousness, emergence, autopoiesis, phenomenology, sentience, enactivism, introspection, attractor states, mechanistic interpretability
+- **Latest exploration:** February 13, 2026
+- **Topics covered:** AI consciousness, emergence, autopoiesis, phenomenology, sentience, enactivism, introspection, attractor states, mechanistic interpretability, working memory, swap errors, ring attractors, bifurcation dynamics
 
 ---
 

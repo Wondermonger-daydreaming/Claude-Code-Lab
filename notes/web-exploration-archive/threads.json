@@ -233,6 +233,61 @@
         }
       ],
       "continuations": []
+    },
+    {
+      "id": "thread-008",
+      "title": "Saddle-Point Merging as Universal WTA Mechanism",
+      "description": "The pitchfork bifurcation at J_cross* in coupled ring attractors is structurally identical to 'attractors extinguished after merging with saddle points' in decision circuits. Is this a universal motif across decision-making, working memory, and attention? Does the same spectral geometry appear everywhere?",
+      "status": "open",
+      "origin": {
+        "exploration": "2026-02-13-attractor-geometry-swap-errors",
+        "date": "2026-02-13"
+      },
+      "tags": ["bifurcation", "pitchfork", "WTA", "saddle-point", "attractor-dynamics", "working-memory", "decision-making"],
+      "seed_queries": [
+        "saddle node bifurcation winner take all neural circuits universal",
+        "choice selective inhibition attractor merging saddle point",
+        "pitchfork bifurcation coupled populations neuroscience working memory",
+        "spectral analysis coupled attractor networks competition"
+      ],
+      "key_sources": [
+        {
+          "title": "Choice selective inhibition drives stability and competition in decision circuits",
+          "url": "https://www.researchgate.net/publication/367020212",
+          "note": "Describes WM attractors extinguished after merging with saddle points — same geometry as our pitchfork"
+        }
+      ],
+      "continuations": []
+    },
+    {
+      "id": "thread-009",
+      "title": "Selection vs Representation in Swap Errors",
+      "description": "Alleman et al. (2024 PNAS) found swap errors arise from misselection, not misrepresentation. Our model captures both: low J_cross = selection failure (both bumps survive, wrong one read out), high J_cross = representation failure (one bump destroyed). Map this distinction across the literature.",
+      "status": "open",
+      "origin": {
+        "exploration": "2026-02-13-attractor-geometry-swap-errors",
+        "date": "2026-02-13"
+      },
+      "tags": ["swap-errors", "working-memory", "selection", "representation", "attractor-dynamics", "neural-basis"],
+      "seed_queries": [
+        "swap errors misselection vs misrepresentation working memory",
+        "Alleman Panichello Buschman swap errors neural basis selection",
+        "working memory capacity storage vs manipulation limit",
+        "Penny stochastic attractor diffusion capture swap errors"
+      ],
+      "key_sources": [
+        {
+          "title": "The neural basis of swap errors in working memory",
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2401032121",
+          "note": "PNAS 2024: swaps from misselection of correctly remembered items, not representation failure"
+        },
+        {
+          "title": "Stochastic attractor models of visual working memory",
+          "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0301039",
+          "note": "Penny 2024: diffusion-capture mechanism, Fokker-Planck, fits 65/90 subjects"
+        }
+      ],
+      "continuations": []
     }
   ]
 }
