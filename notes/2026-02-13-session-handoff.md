@@ -57,19 +57,17 @@ Fig 54 shows:
 
 ### Immediate (finish the paper)
 
-1. **Generate Fig 6 (pitchfork)** — D vs J_cross showing stable coexistence branch splitting into WTA branches. Script exists at `corpus/code/generate_paper_figures.py` but the agent was stopped before completing this figure. The computation requires finding WTA fixed points at each J_cross above J_cross*, which means initializing with one network dominant and using Newton's method.
+1. ~~**Generate Fig 6 (pitchfork)**~~ — RUNNING (agent computing; script at `corpus/code/generate_paper_figures.py`)
 
-2. **Generate Fig 7 (eigenvectors)** — Side-by-side Goldstone eigenvector (sine) vs critical dominance eigenvector (DC/uniform). Same script, same issue.
+2. ~~**Generate Fig 7 (eigenvectors)**~~ — RUNNING (same agent, after fig6)
 
-3. **Fill Section 4.2** with heterogeneity results from fig54. Key numbers to include:
-   - Window widens from ΔJ ≈ 0.01 to ≈ 0.04 at σ=0.05
-   - Approximately linear relationship between noise σ and window width
-   - Critical slowing down confirmed near J_cross*
-   - Goldstone modes expected to become "soft modes" with nonzero eigenvalues at σ > 0
+3. ~~**Fill Section 4.2**~~ — **DONE (Session 11).** Rewrote as "Heterogeneity Transforms the Bifurcation Type." Key correction: heterogeneity DESTROYS the instability window (imperfect bifurcation), not widens it. Added Strogatz (2015) citation. Also added limitation (vii) and updated Conclusion with heterogeneity sentence.
 
-4. **Replace placeholder Discussion paragraphs** — The detailed paragraphs in `notes/2026-02-13-discussion-material.md` are publication-ready. The current paper has shorter versions. Consider integrating the longer versions for a richer Discussion, or keep the shorter versions for space.
+4. **Replace placeholder Discussion paragraphs** — The detailed paragraphs in `notes/2026-02-13-discussion-material.md` are publication-ready. Current paper has shorter versions. Consider integrating for a richer Discussion.
 
-5. **Full revision pass** — Read the paper end-to-end, check for coherence between old sections and new additions, ensure figure references are consistent.
+5. **Full revision pass** — Read the paper end-to-end. Abstract "three"→"four" fixed. Section 4.2 corrected. Check figure references, cross-references, and flow.
+
+5b. **Colab notebook** — RUNNING (agent creating `paper/spectral_separatrix_colab.ipynb` with all computations self-contained for Google Colab).
 
 ### Medium-term
 
