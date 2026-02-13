@@ -1,0 +1,1317 @@
+{
+  "agent_id": 2,
+  "region": {
+    "jcross_min": 0.2,
+    "jcross_max": 0.5,
+    "drive_min": 3.5,
+    "drive_max": 8.0
+  },
+  "grid": {
+    "n_j": 8,
+    "n_d": 8
+  },
+  "n_trials": 500,
+  "elapsed_seconds": 1994.3,
+  "best_swap_rate": 43.2,
+  "has_swaps_above_5pct": true,
+  "n_points_total": 64,
+  "n_points_ok": 64,
+  "results": [
+    {
+      "J_cross": 0.2,
+      "input_gain": 3.5,
+      "n_valid": 500,
+      "swap_rate": 1.6,
+      "correct_rate": 1.6,
+      "mean_error": 0.7888,
+      "std_error": 0.2169,
+      "winners": {
+        "A": 4,
+        "B": 2,
+        "tie": 494
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2,
+      "input_gain": 4.142857142857143,
+      "n_valid": 500,
+      "swap_rate": 2.6,
+      "correct_rate": 1.2,
+      "mean_error": 0.8045,
+      "std_error": 0.2222,
+      "winners": {
+        "A": 4,
+        "B": 13,
+        "tie": 483
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2,
+      "input_gain": 4.785714285714286,
+      "n_valid": 500,
+      "swap_rate": 2.8,
+      "correct_rate": 2.2,
+      "mean_error": 0.7877,
+      "std_error": 0.2216,
+      "winners": {
+        "A": 11,
+        "B": 6,
+        "tie": 483
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2,
+      "input_gain": 5.428571428571429,
+      "n_valid": 500,
+      "swap_rate": 2.8,
+      "correct_rate": 3.0,
+      "mean_error": 0.7996,
+      "std_error": 0.2345,
+      "winners": {
+        "A": 8,
+        "B": 10,
+        "tie": 482
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2,
+      "input_gain": 6.071428571428571,
+      "n_valid": 500,
+      "swap_rate": 1.2,
+      "correct_rate": 2.6,
+      "mean_error": 0.7798,
+      "std_error": 0.2126,
+      "winners": {
+        "A": 12,
+        "B": 7,
+        "tie": 481
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2,
+      "input_gain": 6.714285714285714,
+      "n_valid": 500,
+      "swap_rate": 4.0,
+      "correct_rate": 2.8,
+      "mean_error": 0.8004,
+      "std_error": 0.2418,
+      "winners": {
+        "A": 9,
+        "B": 7,
+        "tie": 484
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2,
+      "input_gain": 7.357142857142858,
+      "n_valid": 500,
+      "swap_rate": 1.6,
+      "correct_rate": 1.6,
+      "mean_error": 0.799,
+      "std_error": 0.2098,
+      "winners": {
+        "A": 3,
+        "B": 6,
+        "tie": 491
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2,
+      "input_gain": 8.0,
+      "n_valid": 500,
+      "swap_rate": 3.2,
+      "correct_rate": 2.6,
+      "mean_error": 0.7957,
+      "std_error": 0.2476,
+      "winners": {
+        "A": 7,
+        "B": 8,
+        "tie": 485
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.24285714285714288,
+      "input_gain": 3.5,
+      "n_valid": 500,
+      "swap_rate": 15.4,
+      "correct_rate": 11.2,
+      "mean_error": 0.8215,
+      "std_error": 0.4075,
+      "winners": {
+        "A": 75,
+        "B": 93,
+        "tie": 332
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.24285714285714288,
+      "input_gain": 4.142857142857143,
+      "n_valid": 500,
+      "swap_rate": 11.4,
+      "correct_rate": 15.0,
+      "mean_error": 0.7625,
+      "std_error": 0.3989,
+      "winners": {
+        "A": 93,
+        "B": 83,
+        "tie": 324
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.24285714285714288,
+      "input_gain": 4.785714285714286,
+      "n_valid": 500,
+      "swap_rate": 13.6,
+      "correct_rate": 12.6,
+      "mean_error": 0.7961,
+      "std_error": 0.4067,
+      "winners": {
+        "A": 85,
+        "B": 87,
+        "tie": 328
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.24285714285714288,
+      "input_gain": 5.428571428571429,
+      "n_valid": 500,
+      "swap_rate": 12.6,
+      "correct_rate": 14.8,
+      "mean_error": 0.7754,
+      "std_error": 0.4135,
+      "winners": {
+        "A": 92,
+        "B": 88,
+        "tie": 320
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.24285714285714288,
+      "input_gain": 6.071428571428571,
+      "n_valid": 500,
+      "swap_rate": 16.2,
+      "correct_rate": 16.0,
+      "mean_error": 0.7895,
+      "std_error": 0.4318,
+      "winners": {
+        "A": 87,
+        "B": 92,
+        "tie": 321
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.24285714285714288,
+      "input_gain": 6.714285714285714,
+      "n_valid": 500,
+      "swap_rate": 13.2,
+      "correct_rate": 13.6,
+      "mean_error": 0.7801,
+      "std_error": 0.4065,
+      "winners": {
+        "A": 102,
+        "B": 101,
+        "tie": 297
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.24285714285714288,
+      "input_gain": 7.357142857142858,
+      "n_valid": 500,
+      "swap_rate": 15.0,
+      "correct_rate": 12.8,
+      "mean_error": 0.7745,
+      "std_error": 0.4184,
+      "winners": {
+        "A": 98,
+        "B": 101,
+        "tie": 301
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.24285714285714288,
+      "input_gain": 8.0,
+      "n_valid": 500,
+      "swap_rate": 12.2,
+      "correct_rate": 10.4,
+      "mean_error": 0.8041,
+      "std_error": 0.3905,
+      "winners": {
+        "A": 85,
+        "B": 81,
+        "tie": 334
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2857142857142857,
+      "input_gain": 3.5,
+      "n_valid": 500,
+      "swap_rate": 27.2,
+      "correct_rate": 33.2,
+      "mean_error": 0.7466,
+      "std_error": 0.6009,
+      "winners": {
+        "A": 208,
+        "B": 182,
+        "tie": 110
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2857142857142857,
+      "input_gain": 4.142857142857143,
+      "n_valid": 500,
+      "swap_rate": 30.2,
+      "correct_rate": 27.2,
+      "mean_error": 0.7907,
+      "std_error": 0.5994,
+      "winners": {
+        "A": 190,
+        "B": 187,
+        "tie": 123
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2857142857142857,
+      "input_gain": 4.785714285714286,
+      "n_valid": 500,
+      "swap_rate": 27.0,
+      "correct_rate": 30.0,
+      "mean_error": 0.7624,
+      "std_error": 0.6058,
+      "winners": {
+        "A": 206,
+        "B": 177,
+        "tie": 117
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2857142857142857,
+      "input_gain": 5.428571428571429,
+      "n_valid": 500,
+      "swap_rate": 29.8,
+      "correct_rate": 29.0,
+      "mean_error": 0.7941,
+      "std_error": 0.5912,
+      "winners": {
+        "A": 184,
+        "B": 197,
+        "tie": 119
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2857142857142857,
+      "input_gain": 6.071428571428571,
+      "n_valid": 500,
+      "swap_rate": 33.4,
+      "correct_rate": 28.8,
+      "mean_error": 0.8221,
+      "std_error": 0.5964,
+      "winners": {
+        "A": 183,
+        "B": 202,
+        "tie": 115
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2857142857142857,
+      "input_gain": 6.714285714285714,
+      "n_valid": 500,
+      "swap_rate": 30.6,
+      "correct_rate": 31.8,
+      "mean_error": 0.7911,
+      "std_error": 0.6003,
+      "winners": {
+        "A": 193,
+        "B": 197,
+        "tie": 110
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2857142857142857,
+      "input_gain": 7.357142857142858,
+      "n_valid": 500,
+      "swap_rate": 31.8,
+      "correct_rate": 28.2,
+      "mean_error": 0.8061,
+      "std_error": 0.5938,
+      "winners": {
+        "A": 182,
+        "B": 205,
+        "tie": 113
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.2857142857142857,
+      "input_gain": 8.0,
+      "n_valid": 500,
+      "swap_rate": 33.0,
+      "correct_rate": 28.4,
+      "mean_error": 0.82,
+      "std_error": 0.6011,
+      "winners": {
+        "A": 183,
+        "B": 204,
+        "tie": 113
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.32857142857142857,
+      "input_gain": 3.5,
+      "n_valid": 500,
+      "swap_rate": 39.2,
+      "correct_rate": 38.6,
+      "mean_error": 0.778,
+      "std_error": 0.7027,
+      "winners": {
+        "A": 235,
+        "B": 226,
+        "tie": 39
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.32857142857142857,
+      "input_gain": 4.142857142857143,
+      "n_valid": 500,
+      "swap_rate": 36.4,
+      "correct_rate": 41.6,
+      "mean_error": 0.7322,
+      "std_error": 0.6997,
+      "winners": {
+        "A": 244,
+        "B": 212,
+        "tie": 44
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.32857142857142857,
+      "input_gain": 4.785714285714286,
+      "n_valid": 500,
+      "swap_rate": 38.8,
+      "correct_rate": 40.2,
+      "mean_error": 0.7649,
+      "std_error": 0.7121,
+      "winners": {
+        "A": 234,
+        "B": 223,
+        "tie": 43
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.32857142857142857,
+      "input_gain": 5.428571428571429,
+      "n_valid": 500,
+      "swap_rate": 40.6,
+      "correct_rate": 38.6,
+      "mean_error": 0.7797,
+      "std_error": 0.6989,
+      "winners": {
+        "A": 231,
+        "B": 228,
+        "tie": 41
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.32857142857142857,
+      "input_gain": 6.071428571428571,
+      "n_valid": 500,
+      "swap_rate": 39.8,
+      "correct_rate": 35.6,
+      "mean_error": 0.814,
+      "std_error": 0.6989,
+      "winners": {
+        "A": 220,
+        "B": 237,
+        "tie": 43
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.32857142857142857,
+      "input_gain": 6.714285714285714,
+      "n_valid": 500,
+      "swap_rate": 36.0,
+      "correct_rate": 41.4,
+      "mean_error": 0.7439,
+      "std_error": 0.7044,
+      "winners": {
+        "A": 237,
+        "B": 213,
+        "tie": 50
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.32857142857142857,
+      "input_gain": 7.357142857142858,
+      "n_valid": 500,
+      "swap_rate": 42.0,
+      "correct_rate": 35.6,
+      "mean_error": 0.822,
+      "std_error": 0.6832,
+      "winners": {
+        "A": 211,
+        "B": 239,
+        "tie": 50
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.32857142857142857,
+      "input_gain": 8.0,
+      "n_valid": 500,
+      "swap_rate": 36.6,
+      "correct_rate": 40.2,
+      "mean_error": 0.7633,
+      "std_error": 0.7015,
+      "winners": {
+        "A": 234,
+        "B": 214,
+        "tie": 52
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.37142857142857144,
+      "input_gain": 3.5,
+      "n_valid": 500,
+      "swap_rate": 40.2,
+      "correct_rate": 42.4,
+      "mean_error": 0.7834,
+      "std_error": 0.7388,
+      "winners": {
+        "A": 234,
+        "B": 236,
+        "tie": 30
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.37142857142857144,
+      "input_gain": 4.142857142857143,
+      "n_valid": 500,
+      "swap_rate": 43.2,
+      "correct_rate": 40.6,
+      "mean_error": 0.7933,
+      "std_error": 0.7348,
+      "winners": {
+        "A": 238,
+        "B": 234,
+        "tie": 28
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.37142857142857144,
+      "input_gain": 4.785714285714286,
+      "n_valid": 500,
+      "swap_rate": 39.6,
+      "correct_rate": 42.0,
+      "mean_error": 0.7718,
+      "std_error": 0.7445,
+      "winners": {
+        "A": 234,
+        "B": 226,
+        "tie": 40
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.37142857142857144,
+      "input_gain": 5.428571428571429,
+      "n_valid": 500,
+      "swap_rate": 42.4,
+      "correct_rate": 40.8,
+      "mean_error": 0.7945,
+      "std_error": 0.7409,
+      "winners": {
+        "A": 231,
+        "B": 231,
+        "tie": 38
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.37142857142857144,
+      "input_gain": 6.071428571428571,
+      "n_valid": 500,
+      "swap_rate": 36.4,
+      "correct_rate": 42.4,
+      "mean_error": 0.7364,
+      "std_error": 0.7503,
+      "winners": {
+        "A": 245,
+        "B": 221,
+        "tie": 34
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.37142857142857144,
+      "input_gain": 6.714285714285714,
+      "n_valid": 500,
+      "swap_rate": 41.2,
+      "correct_rate": 43.2,
+      "mean_error": 0.7591,
+      "std_error": 0.7638,
+      "winners": {
+        "A": 244,
+        "B": 221,
+        "tie": 35
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.37142857142857144,
+      "input_gain": 7.357142857142858,
+      "n_valid": 500,
+      "swap_rate": 39.0,
+      "correct_rate": 43.2,
+      "mean_error": 0.7424,
+      "std_error": 0.7442,
+      "winners": {
+        "A": 246,
+        "B": 221,
+        "tie": 33
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.37142857142857144,
+      "input_gain": 8.0,
+      "n_valid": 500,
+      "swap_rate": 39.0,
+      "correct_rate": 42.0,
+      "mean_error": 0.7651,
+      "std_error": 0.7484,
+      "winners": {
+        "A": 233,
+        "B": 225,
+        "tie": 42
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.4142857142857143,
+      "input_gain": 3.5,
+      "n_valid": 500,
+      "swap_rate": 37.4,
+      "correct_rate": 44.8,
+      "mean_error": 0.7095,
+      "std_error": 0.7511,
+      "winners": {
+        "A": 248,
+        "B": 207,
+        "tie": 45
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.4142857142857143,
+      "input_gain": 4.142857142857143,
+      "n_valid": 500,
+      "swap_rate": 43.2,
+      "correct_rate": 36.2,
+      "mean_error": 0.8386,
+      "std_error": 0.7628,
+      "winners": {
+        "A": 205,
+        "B": 238,
+        "tie": 57
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.4142857142857143,
+      "input_gain": 4.785714285714286,
+      "n_valid": 500,
+      "swap_rate": 42.0,
+      "correct_rate": 36.6,
+      "mean_error": 0.8406,
+      "std_error": 0.7417,
+      "winners": {
+        "A": 207,
+        "B": 238,
+        "tie": 55
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.4142857142857143,
+      "input_gain": 5.428571428571429,
+      "n_valid": 500,
+      "swap_rate": 39.4,
+      "correct_rate": 42.4,
+      "mean_error": 0.7491,
+      "std_error": 0.7651,
+      "winners": {
+        "A": 229,
+        "B": 214,
+        "tie": 57
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.4142857142857143,
+      "input_gain": 6.071428571428571,
+      "n_valid": 500,
+      "swap_rate": 40.8,
+      "correct_rate": 40.0,
+      "mean_error": 0.7874,
+      "std_error": 0.7453,
+      "winners": {
+        "A": 230,
+        "B": 228,
+        "tie": 42
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.4142857142857143,
+      "input_gain": 6.714285714285714,
+      "n_valid": 500,
+      "swap_rate": 43.0,
+      "correct_rate": 37.2,
+      "mean_error": 0.8351,
+      "std_error": 0.7529,
+      "winners": {
+        "A": 215,
+        "B": 236,
+        "tie": 49
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.4142857142857143,
+      "input_gain": 7.357142857142858,
+      "n_valid": 500,
+      "swap_rate": 37.4,
+      "correct_rate": 40.6,
+      "mean_error": 0.7539,
+      "std_error": 0.7385,
+      "winners": {
+        "A": 230,
+        "B": 208,
+        "tie": 62
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.4142857142857143,
+      "input_gain": 8.0,
+      "n_valid": 500,
+      "swap_rate": 40.2,
+      "correct_rate": 42.6,
+      "mean_error": 0.7693,
+      "std_error": 0.7471,
+      "winners": {
+        "A": 237,
+        "B": 220,
+        "tie": 43
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.45714285714285713,
+      "input_gain": 3.5,
+      "n_valid": 500,
+      "swap_rate": 38.8,
+      "correct_rate": 39.0,
+      "mean_error": 0.8043,
+      "std_error": 0.7634,
+      "winners": {
+        "A": 209,
+        "B": 198,
+        "tie": 93
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.45714285714285713,
+      "input_gain": 4.142857142857143,
+      "n_valid": 500,
+      "swap_rate": 38.8,
+      "correct_rate": 34.4,
+      "mean_error": 0.8161,
+      "std_error": 0.7575,
+      "winners": {
+        "A": 198,
+        "B": 213,
+        "tie": 89
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.45714285714285713,
+      "input_gain": 4.785714285714286,
+      "n_valid": 500,
+      "swap_rate": 35.4,
+      "correct_rate": 41.4,
+      "mean_error": 0.7449,
+      "std_error": 0.7656,
+      "winners": {
+        "A": 223,
+        "B": 199,
+        "tie": 78
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.45714285714285713,
+      "input_gain": 5.428571428571429,
+      "n_valid": 500,
+      "swap_rate": 39.6,
+      "correct_rate": 41.0,
+      "mean_error": 0.788,
+      "std_error": 0.7502,
+      "winners": {
+        "A": 217,
+        "B": 210,
+        "tie": 73
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.45714285714285713,
+      "input_gain": 6.071428571428571,
+      "n_valid": 500,
+      "swap_rate": 39.2,
+      "correct_rate": 37.2,
+      "mean_error": 0.826,
+      "std_error": 0.7458,
+      "winners": {
+        "A": 196,
+        "B": 215,
+        "tie": 89
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.45714285714285713,
+      "input_gain": 6.714285714285714,
+      "n_valid": 500,
+      "swap_rate": 38.0,
+      "correct_rate": 40.2,
+      "mean_error": 0.7581,
+      "std_error": 0.7579,
+      "winners": {
+        "A": 216,
+        "B": 206,
+        "tie": 78
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.45714285714285713,
+      "input_gain": 7.357142857142858,
+      "n_valid": 500,
+      "swap_rate": 37.0,
+      "correct_rate": 37.2,
+      "mean_error": 0.7846,
+      "std_error": 0.7701,
+      "winners": {
+        "A": 205,
+        "B": 213,
+        "tie": 82
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.45714285714285713,
+      "input_gain": 8.0,
+      "n_valid": 500,
+      "swap_rate": 40.2,
+      "correct_rate": 37.0,
+      "mean_error": 0.8002,
+      "std_error": 0.7668,
+      "winners": {
+        "A": 207,
+        "B": 215,
+        "tie": 78
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.5,
+      "input_gain": 3.5,
+      "n_valid": 500,
+      "swap_rate": 35.4,
+      "correct_rate": 35.4,
+      "mean_error": 0.7694,
+      "std_error": 0.7562,
+      "winners": {
+        "A": 185,
+        "B": 172,
+        "tie": 143
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.5,
+      "input_gain": 4.142857142857143,
+      "n_valid": 500,
+      "swap_rate": 40.0,
+      "correct_rate": 35.6,
+      "mean_error": 0.7896,
+      "std_error": 0.7522,
+      "winners": {
+        "A": 180,
+        "B": 193,
+        "tie": 127
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.5,
+      "input_gain": 4.785714285714286,
+      "n_valid": 500,
+      "swap_rate": 34.8,
+      "correct_rate": 36.2,
+      "mean_error": 0.7845,
+      "std_error": 0.7748,
+      "winners": {
+        "A": 173,
+        "B": 180,
+        "tie": 147
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.5,
+      "input_gain": 5.428571428571429,
+      "n_valid": 500,
+      "swap_rate": 36.0,
+      "correct_rate": 34.6,
+      "mean_error": 0.7852,
+      "std_error": 0.7714,
+      "winners": {
+        "A": 198,
+        "B": 189,
+        "tie": 113
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.5,
+      "input_gain": 6.071428571428571,
+      "n_valid": 500,
+      "swap_rate": 34.8,
+      "correct_rate": 41.6,
+      "mean_error": 0.7494,
+      "std_error": 0.7511,
+      "winners": {
+        "A": 203,
+        "B": 178,
+        "tie": 119
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.5,
+      "input_gain": 6.714285714285714,
+      "n_valid": 500,
+      "swap_rate": 35.8,
+      "correct_rate": 36.4,
+      "mean_error": 0.7969,
+      "std_error": 0.7729,
+      "winners": {
+        "A": 189,
+        "B": 184,
+        "tie": 127
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.5,
+      "input_gain": 7.357142857142858,
+      "n_valid": 500,
+      "swap_rate": 34.2,
+      "correct_rate": 38.8,
+      "mean_error": 0.7285,
+      "std_error": 0.7583,
+      "winners": {
+        "A": 194,
+        "B": 168,
+        "tie": 138
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    },
+    {
+      "J_cross": 0.5,
+      "input_gain": 8.0,
+      "n_valid": 500,
+      "swap_rate": 38.8,
+      "correct_rate": 38.6,
+      "mean_error": 0.8231,
+      "std_error": 0.7854,
+      "winners": {
+        "A": 193,
+        "B": 203,
+        "tie": 104
+      },
+      "failures": {
+        "nan": 0,
+        "explosion": 0,
+        "collapse": 0
+      },
+      "status": "ok"
+    }
+  ],
+  "model_params": {
+    "N": 48,
+    "kappa": 2.0,
+    "separation": 1.5707963267948966,
+    "dt": 1.0,
+    "tau": 10.0,
+    "n_steps": 500,
+    "stim_steps": 100,
+    "r_max": 1.0,
+    "beta": 5.0,
+    "h0": 0.5,
+    "noise_sigma": 0.3,
+    "J_0": 1.0,
+    "J_1": 6.0,
+    "activation": "sigmoid"
+  }
+}
