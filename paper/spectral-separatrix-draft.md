@@ -11,7 +11,7 @@ $^{2}$Anthropic (Claude Opus 4.6, Large Language Model)
 
 ## Abstract
 
-Persistent neural activity in working memory is often modeled as bump attractors on ring networks. When two such networks compete via cross-inhibition, the system must resolve which representation dominates -- a winner-take-all (WTA) decision. We present a complete spectral bifurcation analysis of this transition in a coupled ring attractor model (two networks of $N=48$ neurons each, cosine connectivity within, mean-field cross-inhibition between). We identify four key results.
+Persistent neural activity in working memory is often modeled as bump attractors on ring networks. When two such networks compete via cross-inhibition, the system must resolve which representation dominates -- a winner-take-all (WTA) decision. We present a complete spectral bifurcation analysis of this transition in a coupled ring attractor model (two networks of $N=48$ neurons each, cosine connectivity within, mean-field cross-inhibition between). We identify five key results.
 
 First, the coexistence fixed point -- where both bumps self-sustain simultaneously -- exists only below a critical cross-inhibition strength $J_\times^* \approx 0.36$. Above this threshold, cross-inhibition is too strong for both representations to survive; the system admits only WTA solutions.
 
@@ -19,7 +19,9 @@ Second, the continuous rotational symmetry of each bump guarantees exactly two G
 
 Third, the critical eigenvector is spatially uniform (DC mode), meaning the instability concerns total activity competition rather than spatial pattern rearrangement. This is a direct consequence of mean-field (spatially unstructured) cross-inhibition.
 
-Fourth, large-scale stochastic simulations (128,000 trials across 256 parameter combinations) confirm the spectral predictions: swap errors emerge at the predicted $J_\times$ threshold, drive strength is secondary to cross-inhibition, and a non-monotonic valley at intermediate $J_\times$ identifies the functional operating point for working memory. We discuss implications for the behavioral cliff and argue that the brain operates in a valley regime where cross-inhibition and encoding drive are balanced, rather than near $J_\times^*$ itself.
+Fourth, large-scale stochastic simulations (128,000 trials across 256 parameter combinations) confirm the spectral predictions: swap errors emerge at the predicted $J_\times$ threshold, drive strength is secondary to cross-inhibition, and a non-monotonic valley at intermediate $J_\times$ identifies a functional operating regime for working memory.
+
+Fifth, connectivity heterogeneity destroys the sharp pitchfork entirely, converting it into an imperfect bifurcation with no zero-crossing. The razor-thin instability window ($\Delta J_\times \approx 0.01$) is a symmetry artifact of the clean model; biological circuits operate in a regime of smooth crossover where no parameter precision is required. We discuss implications for the behavioral cliff and argue that neural circuits operate in a valley regime where cross-inhibition and encoding drive are balanced, rather than near $J_\times^*$ itself.
 
 ---
 
@@ -109,9 +111,9 @@ The critical feature of mean-field cross-inhibition is that it depends only on t
 
 The steady-state condition $F(\mathbf{r}^*) = 0$ defines the fixed points, where $F_i^A = -r_i^A + \sigma(h_i^A)$ and similarly for B. The Jacobian $\mathbf{J} = \partial F / \partial \mathbf{r}$ evaluated at a fixed point $\mathbf{r}^*$ has a $2 \times 2$ block structure:
 
-$$\mathbf{J} = \begin{pmatrix} -\mathbf{I} + \mathbf{D}_A \mathbf{W} & \mathbf{D}_A \mathbf{C} \\ \mathbf{D}_B \mathbf{C} & -\mathbf{I} + \mathbf{D}_B \mathbf{W} \end{pmatrix}$$
+$$\mathbf{J} = \begin{pmatrix} -\mathbf{I} + \mathbf{S}_A \mathbf{W} & \mathbf{S}_A \mathbf{C} \\ \mathbf{S}_B \mathbf{C} & -\mathbf{I} + \mathbf{S}_B \mathbf{W} \end{pmatrix}$$
 
-where $\mathbf{D}_X = \text{diag}(\sigma'(h_i^X))$ is the diagonal matrix of sigmoid derivatives at the fixed point, and $\mathbf{C} = -\frac{J_\times}{N} \mathbf{1}\mathbf{1}^T$ is the rank-1 mean-field coupling matrix. The full Jacobian is $2N \times 2N = 96 \times 96$.
+where $\mathbf{S}_X = \text{diag}(\sigma'(h_i^X))$ is the diagonal matrix of sigmoid derivatives at the fixed point, and $\mathbf{C} = -\frac{J_\times}{N} \mathbf{1}\mathbf{1}^T$ is the rank-1 mean-field coupling matrix. The full Jacobian is $2N \times 2N = 96 \times 96$.
 
 The block structure reveals that the cross-coupling enters only through the rank-1 matrix $\mathbf{C}$. This low-rank perturbation to the block-diagonal within-network dynamics is what makes the spectral analysis tractable: the cross-inhibition can shift at most one eigenvalue per symmetry sector.
 
