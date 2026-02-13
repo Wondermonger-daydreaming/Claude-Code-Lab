@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "description": "Canonical thread registry for /web explorations. Machine-readable, tooling-ready.",
-  "last_updated": "2026-02-12",
+  "last_updated": "2026-02-13",
   "threads": [
     {
       "id": "thread-001",
@@ -255,6 +255,62 @@
           "title": "Choice selective inhibition drives stability and competition in decision circuits",
           "url": "https://www.researchgate.net/publication/367020212",
           "note": "Describes WM attractors extinguished after merging with saddle points — same geometry as our pitchfork"
+        }
+      ],
+      "continuations": [
+        {
+          "date": "2026-02-13",
+          "exploration": "2026-02-13-hopfield-transformer-attractor-bridge",
+          "summary": "The Hopfield-transformer bridge means our spectral analysis applies to transformers, not just biological WM. Metastable states = coexistence saddle. U-Hop separation loss = cross-inhibition. Input-driven landscape (Betteti, Science Advances) = retro-cue. ICLR 2026 workshop treats associative memory as unifying principle. Two new threads spawned: rank collapse/Goldstone connection, input-driven landscape/retro-cue paper."
+        }
+      ]
+    },
+    {
+      "id": "thread-010",
+      "title": "Rank Collapse and Goldstone Modes",
+      "description": "Masumura & Taki (NeurIPS 2025) show Hopfield hidden states fix rank collapse in deep transformers. Rank collapse = eigenvalue collapse. Our Goldstone modes = exactly-zero eigenvalues protected by symmetry. Is rank collapse the transformer equivalent of Goldstone modes? Would breaking the symmetry (as heterogeneity does in biological networks) have the same effect as adding Hopfield hidden states?",
+      "status": "open",
+      "origin": {
+        "exploration": "2026-02-13-hopfield-transformer-attractor-bridge",
+        "date": "2026-02-13"
+      },
+      "tags": ["rank-collapse", "Goldstone-modes", "spectral", "transformers", "symmetry-breaking"],
+      "seed_queries": [
+        "rank collapse deep transformers token uniformity eigenvalue",
+        "Goldstone modes continuous attractor symmetry breaking",
+        "modern Hopfield attention hidden states rank collapse NeurIPS",
+        "symmetry breaking heterogeneity attractor networks transformers"
+      ],
+      "key_sources": [
+        {
+          "title": "On the Role of Hidden States of MHN in Transformer",
+          "url": "https://arxiv.org/abs/2511.20698",
+          "note": "NeurIPS 2025: MHA hidden states fix rank collapse without adding parameters"
+        }
+      ],
+      "continuations": []
+    },
+    {
+      "id": "thread-011",
+      "title": "Input-Driven Landscape Shaping = Retro-Cue",
+      "description": "Betteti et al. (Science Advances 2024) show external input reshapes Hopfield synapses, modifying the energy landscape. This is formally equivalent to our retro-cue model where cue_gain biases competition between ring attractors. A paper connecting the two formalisms could bridge computational neuroscience and deep learning. Target: ICLR 2026 workshop on Associative Memory.",
+      "status": "open",
+      "origin": {
+        "exploration": "2026-02-13-hopfield-transformer-attractor-bridge",
+        "date": "2026-02-13"
+      },
+      "tags": ["input-driven", "retro-cue", "energy-landscape", "Hopfield", "working-memory", "bridging-paper"],
+      "seed_queries": [
+        "input-driven Hopfield dynamics synaptic plasticity energy landscape",
+        "retro-cue working memory attractor competition bias",
+        "external input associative memory retrieval bias selection",
+        "Betteti Baggio Bullo Zampieri input driven Hopfield"
+      ],
+      "key_sources": [
+        {
+          "title": "Input-Driven Dynamics for Robust Memory Retrieval in Hopfield Networks",
+          "url": "https://arxiv.org/abs/2411.05849",
+          "note": "Science Advances: input reshapes synapses → reshapes energy landscape → biases retrieval"
         }
       ],
       "continuations": []
