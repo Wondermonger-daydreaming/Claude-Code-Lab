@@ -40,11 +40,16 @@ Written to `notes/2026-02-13-discussion-material.md`. Contains:
 - Summary mapping table
 - Key qualifications (model conflates maintenance/selection; feature vs neural space)
 
-### Key Result: GLM 5 Prediction Confirmed
+### Key Result: GLM 5 Prediction REFUTED (More Interesting Than Confirmation)
 Fig 54 shows:
-- Heterogeneity WIDENS the instability window (from ΔJ ≈ 0.01 at σ=0 to ≈ 0.04 at σ=0.05)
-- Critical slowing down: convergence time spikes near J_cross*
-- τ vs 1/|λ_dom| shows positive trend (CSD signature present with scatter)
+- Heterogeneity DESTROYS the instability window, not widens it
+- At σ=0.05: 2/3 trials lost the instability entirely; 1 trial showed wider window (0.041)
+- At σ≥0.10: NO instability found — noise stabilizes coexistence
+- **Mechanism**: Heterogeneity breaks the exact A↔B exchange symmetry that the pitchfork requires, converting it into an imperfect bifurcation with no sharp zero-crossing
+- This means the razor-thin window (ΔJ ≈ 0.01) is a symmetry artifact; biological circuits show smooth crossovers
+- Critical slowing down: convergence time data noisy but consistent with CSD near J_cross*
+
+**CRITICAL: Section 4.2 of the paper needs rewriting.** The current text says "heterogeneity widens the instability region." The correct statement: heterogeneity transforms the bifurcation type from a sharp pitchfork to a smooth crossover, eliminating the razor-thin window entirely. This is more biologically realistic — the brain doesn't need ΔJ = 0.01 precision.
 
 ---
 
