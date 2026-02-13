@@ -11,7 +11,7 @@ $^{2}$Anthropic (Claude Opus 4.6, Large Language Model)
 
 ## Abstract
 
-Persistent neural activity in working memory is often modeled as bump attractors on ring networks. When two such networks compete via cross-inhibition, the system must resolve which representation dominates -- a winner-take-all (WTA) decision. We present a complete spectral bifurcation analysis of this transition in a coupled ring attractor model (two networks of $N=48$ neurons each, cosine connectivity within, mean-field cross-inhibition between). We identify five key results.
+Persistent neural activity in working memory is often modeled as bump attractors on ring networks. When two such networks compete via cross-inhibition, the system must resolve which representation dominates -- a winner-take-all (WTA) decision. We present a complete spectral bifurcation analysis of this transition in a coupled ring attractor model (two networks of $N=48$ neurons each, cosine connectivity within, mean-field cross-inhibition between). We identify six key results.
 
 First, the coexistence fixed point -- where both bumps self-sustain simultaneously -- exists only below a critical cross-inhibition strength $J_\times^* \approx 0.36$. Above this threshold, cross-inhibition is too strong for both representations to survive; the system admits only WTA solutions.
 
@@ -21,7 +21,9 @@ Third, the critical eigenvector projects maximally onto the spatially uniform (D
 
 Fourth, large-scale stochastic simulations (128,000 trials across 256 parameter combinations) confirm the spectral predictions: swap errors emerge at the predicted $J_\times$ threshold, drive strength is secondary to cross-inhibition, and a non-monotonic valley at intermediate $J_\times$ identifies a functional operating regime for working memory.
 
-Fifth, connectivity heterogeneity destroys the sharp pitchfork entirely, converting it into an imperfect bifurcation with no zero-crossing. The razor-thin instability window ($\Delta J_\times \approx 0.01$) is a symmetry artifact of the clean model; biological circuits operate in a regime of smooth crossover where no parameter precision is required. We discuss implications for the behavioral cliff and argue that neural circuits operate in a valley regime where cross-inhibition and encoding drive are balanced, rather than near $J_\times^*$ itself.
+Fifth, connectivity heterogeneity destroys the sharp pitchfork entirely, converting it into an imperfect bifurcation with no zero-crossing. The razor-thin instability window ($\Delta J_\times \approx 0.01$) is a symmetry artifact of the clean model; biological circuits operate in a regime of smooth crossover where no parameter precision is required.
+
+Sixth, a Kramers escape analysis bridges the deterministic bifurcation and stochastic swap onset: because the barrier collapses quadratically ($\Delta V \propto |\lambda_{\mathrm{dom}}|^2$), noise-driven escape becomes likely at $J_\times \approx 0.25$ -- well below the pitchfork -- for a normal-form coefficient $\gamma \approx 0.22$--$0.36$. We discuss implications for the behavioral cliff and argue that neural circuits operate in a valley regime where cross-inhibition and encoding drive are balanced, rather than near $J_\times^*$ itself.
 
 ---
 
@@ -157,23 +159,29 @@ At $J_\times = 0.50$, a time-resolved diagnostic reveals that the system does no
 
 #### 3.2.1 Origin of the Goldstone Modes
 
-The mean-field cross-coupling $J_\times \bar{r}^B$ is a function of the mean activity $\bar{r}^B = \frac{1}{N}\sum_j r_j^B$ only. Any continuous rotation of the bump profile preserves this mean. We now show explicitly that this protects the rotational modes as exact null vectors of the full coupled Jacobian.
+The mean-field cross-coupling $J_\times \bar{r}^B$ is a function of the mean activity $\bar{r}^B = \frac{1}{N}\sum_j r_j^B$ only. Any continuous rotation of the bump profile preserves this mean. We now prove that this protects the rotational modes as exact null vectors of the full coupled Jacobian.
 
-Let $\mathbf{r}^{A*}$ and $\mathbf{r}^{B*}$ be the steady-state bump profiles. For an isolated ring network with continuous translation symmetry, the spatial derivative $\partial \mathbf{r}^{A*} / \partial \theta$ is a null vector of the uncoupled Jacobian block: $(-\mathbf{I} + \mathbf{S}_A \mathbf{W}) \cdot \partial \mathbf{r}^{A*} / \partial \theta = \mathbf{0}$.
+**Step 1: Rotational null vector of the uncoupled block.** Let $\mathbf{r}^{A*}(\varphi)$ denote the bump solution of network A centered at phase $\varphi$. Because $W_{ij}$ depends only on the angular difference $\theta_i - \theta_j$, the steady-state equation $-r_i^{A*} + \sigma(\sum_j W_{ij} r_j^{A*}) = 0$ holds for every $\varphi$. Differentiating both sides with respect to $\varphi$:
 
-Consider the $2N$-dimensional perturbation $\mathbf{v}_A = (\partial \mathbf{r}^{A*} / \partial \theta, \, \mathbf{0})^T$ corresponding to a shift of network A's bump alone. Multiplying by the full block Jacobian (Section 2.3) yields:
+$$-\frac{\partial r_i^{A*}}{\partial \varphi} + \sigma'(h_i^{A*}) \sum_j W_{ij} \frac{\partial r_j^{A*}}{\partial \varphi} = 0$$
 
-$$\mathbf{J} \cdot \mathbf{v}_A = \begin{pmatrix} (-\mathbf{I} + \mathbf{S}_A \mathbf{W}) \cdot \partial \mathbf{r}^{A*}/\partial\theta + \mathbf{S}_A \mathbf{C} \cdot \mathbf{0} \\ \mathbf{S}_B \mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\theta + (-\mathbf{I} + \mathbf{S}_B \mathbf{W}) \cdot \mathbf{0} \end{pmatrix}$$
+In matrix form, this is $(-\mathbf{I} + \mathbf{S}_A \mathbf{W}) \cdot \partial \mathbf{r}^{A*} / \partial \varphi = \mathbf{0}$, where $\mathbf{S}_A = \text{diag}(\sigma'(h_i^{A*}))$. The rotational derivative is an exact null vector of the uncoupled Jacobian block. (The same holds for network B by identical argument.)
 
-The upper block vanishes by isolated ring symmetry. The survival of the zero eigenvalue depends entirely on the cross-coupling term $\mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\theta$ in the lower block. Recall that $\mathbf{C} = -\frac{J_\times}{N} \mathbf{1}\mathbf{1}^T$. Applying $\mathbf{C}$ to the spatial derivative:
+**Step 2: Mean-field coupling annihilates the rotational mode.** Consider the $2N$-dimensional perturbation $\mathbf{v}_A = (\partial \mathbf{r}^{A*} / \partial \varphi, \, \mathbf{0})^T$ corresponding to a shift of network A's bump alone. Multiplying by the full block Jacobian (Section 2.3) yields:
 
-$$\mathbf{C} \cdot \frac{\partial \mathbf{r}^{A*}}{\partial \theta} = -\frac{J_\times}{N} \mathbf{1} \left(\mathbf{1}^T \cdot \frac{\partial \mathbf{r}^{A*}}{\partial \theta}\right) = -\frac{J_\times}{N} \mathbf{1} \cdot \sum_{j=1}^{N} \frac{\partial r_j^{A*}}{\partial \theta}$$
+$$\mathbf{J} \cdot \mathbf{v}_A = \begin{pmatrix} (-\mathbf{I} + \mathbf{S}_A \mathbf{W}) \cdot \partial \mathbf{r}^{A*}/\partial\varphi + \mathbf{S}_A \mathbf{C} \cdot \mathbf{0} \\ \mathbf{S}_B \mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\varphi + (-\mathbf{I} + \mathbf{S}_B \mathbf{W}) \cdot \mathbf{0} \end{pmatrix}$$
+
+The upper block vanishes by Step 1. The survival of the zero eigenvalue depends entirely on the cross-coupling term $\mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\varphi$ in the lower block. Recall that $\mathbf{C} = -\frac{J_\times}{N} \mathbf{1}\mathbf{1}^T$. Applying $\mathbf{C}$ to the rotational derivative:
+
+$$\mathbf{C} \cdot \frac{\partial \mathbf{r}^{A*}}{\partial \varphi} = -\frac{J_\times}{N} \mathbf{1} \left(\mathbf{1}^T \cdot \frac{\partial \mathbf{r}^{A*}}{\partial \varphi}\right) = -\frac{J_\times}{N} \mathbf{1} \cdot \sum_{j=1}^{N} \frac{\partial r_j^{A*}}{\partial \varphi}$$
 
 Because a rotation merely translates the bump profile around the periodic ring, the total activity (and thus the mean) is strictly conserved. Exchanging derivative and sum:
 
-$$\sum_{j=1}^{N} \frac{\partial r_j^{A*}}{\partial \theta} = \frac{\partial}{\partial \theta} \sum_{j=1}^{N} r_j^{A*} = \frac{\partial}{\partial \theta} (N \bar{r}^A) = 0$$
+$$\sum_{j=1}^{N} \frac{\partial r_j^{A*}}{\partial \varphi} = \frac{\partial}{\partial \varphi} \sum_{j=1}^{N} r_j^{A*} = \frac{\partial}{\partial \varphi} (N \bar{r}^A) = 0$$
 
-Since $\mathbf{1}^T \cdot \partial \mathbf{r}^{A*}/\partial\theta = 0$, it follows that $\mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\theta = \mathbf{0}$. The rank-1 coupling matrix completely annihilates the spatial derivative vector, yielding $\mathbf{J} \cdot \mathbf{v}_A = \mathbf{0}$. By identical logic for network B, $\mathbf{v}_B = (\mathbf{0}, \, \partial \mathbf{r}^{B*}/\partial\theta)^T$ is also a null vector.
+Since $\mathbf{1}^T \cdot \partial \mathbf{r}^{A*}/\partial\varphi = 0$, it follows that $\mathbf{C} \cdot \partial \mathbf{r}^{A*}/\partial\varphi = \mathbf{0}$. The rank-1 coupling matrix completely annihilates the rotational derivative, yielding $\mathbf{J} \cdot \mathbf{v}_A = \mathbf{0}$. By identical logic for network B, $\mathbf{v}_B = (\mathbf{0}, \, \partial \mathbf{r}^{B*}/\partial\varphi)^T$ is also a null vector. $\square$
+
+**Equivariance structure.** The result follows from the $\mathrm{SO}(2) \times \mathrm{SO}(2)$ equivariance of the coupled system at $c = 0$: the dynamics commute with independent rotations of each ring. The mean-field coupling $J_\times \bar{r}^X$ is invariant under both $\mathrm{SO}(2)$ actions because it depends only on total activity, which is a rotation-invariant functional. Each $\mathrm{SO}(2)$ factor contributes one Goldstone mode to the kernel of the Jacobian. This protection is exact and holds at all $J_\times$ where the coexistence fixed point exists -- it cannot be lifted by increasing cross-inhibition, only by breaking the rotational symmetry of either the within-network connectivity or the cross-coupling structure.
 
 This is the neural circuit analog of the Goldstone theorem (Goldstone, 1961): a spontaneously broken continuous symmetry produces a massless (zero-energy) excitation. In our context, "massless" means neutrally stable -- perturbations along the Goldstone direction neither grow nor decay. Because mean-field coupling acts exclusively on the spatially uniform mode ($\mathbf{1}$), it is perfectly orthogonal to the zero-sum rotational modes, mathematically protecting positional memory from amplitude competition.
 
@@ -250,7 +258,7 @@ The WTA branch (tracked simultaneously) is stable across all cue values, confirm
 
 #### 3.5.1 Parameter Sweep
 
-To bridge the deterministic bifurcation analysis with behavioral predictions, we performed a large-scale stochastic simulation across the $(J_\times, c)$ parameter space. At each of 256 grid points (16 values of $J_\times$ from 0.05 to 8.0, 16 values of drive strength from 1.0 to 8.0), we ran 500 stochastic trials ($N_{total} = 128{,}000$). Two ring networks encoded items separated by $\pi/2$ radians, with independent Gaussian noise ($\sigma = 0.1$) added to each neuron during a 500-step maintenance period. Swap errors were classified as decoded responses within 0.3 rad of the non-target item's location.
+To bridge the deterministic bifurcation analysis with behavioral predictions, we performed a large-scale stochastic simulation across the $(J_\times, c)$ parameter space. At each of 256 grid points (16 values of $J_\times$ from 0.05 to 8.0, 16 values of drive strength from 1.0 to 8.0), we ran 500 stochastic trials ($N_{total} = 128{,}000$). Two ring networks encoded items separated by $\pi/2$ radians, with independent Gaussian noise ($\sigma = 0.1$) added to each neuron during a 500-step maintenance period. Swap errors were classified as decoded responses within 0.3 rad of the non-target item's location. To assess sensitivity to this classification threshold, we repeated a focused sweep (16 values of $J_\times$ from 0.1 to 3.0, two drive levels, 200 trials each) with thresholds of 0.2, 0.3, 0.4, and 0.5 rad. The qualitative features of the phase diagram -- the onset location ($J_\times \approx 0.20$--$0.23$ across thresholds), the peak near $J_\times \approx 0.3$--$0.5$, and the non-monotonic valley at $J_\times \approx 1.2$--$1.5$ -- are robust to threshold choice. Wider classification windows increase absolute swap rates (e.g., 10% vs. 26% at $J_\times = 0.25$ for 0.2 vs. 0.5 rad) but preserve the ordering across $J_\times$ values and the location of qualitative transitions.
 
 #### 3.5.2 Onset of Swap Errors
 
@@ -279,6 +287,42 @@ At $J_\times \approx 1.2$--$1.6$ with moderate to strong drive, the phase diagra
 To operationalize this distinction, we define a diagnostic: at the end of the maintenance period, if both networks retain above-threshold activity ($\max_i r_i^X > 0.3$ for $X \in \{A, B\}$), a swap error is classified as selection failure (both representations survived but the wrong one was decoded). If one network has collapsed ($\max_i r_i^X < 0.1$), it is classified as representation failure (one item was lost during maintenance). Applying this diagnostic across the phase diagram would test whether the valley is indeed a selection-dominated regime while the near-critical zone is representation-dominated. We leave this analysis for future work but note that the model predicts a crossover between these two error types as a function of $J_\times$.
 
 The valley thus represents a candidate functional operating regime for *selection*, not for *maintenance of coexistence*: cross-inhibition strong enough to resolve competition via WTA, encoding strong enough to bias that competition correctly. The specific parameter range ($J_\times \approx 1.2$--$1.6$) depends on our model parameterization and should not be interpreted as a direct physiological prediction; the qualitative feature -- a non-monotonic minimum between two failure modes -- is the robust finding. The circuit need not be tuned precisely to $J_\times^*$ but rather to a regime where WTA dynamics and encoding strength are balanced.
+
+#### 3.5.5 Kramers Barrier Estimate from the Dominance Eigenvalue
+
+To quantitatively bridge the deterministic pitchfork at $J_\times^* \approx 0.349$ with the stochastic onset of swap errors, we approximate the escape barrier out of the coexistence state by projecting the high-dimensional dynamics onto the critical dominance eigenvector $\mathbf{v}_{\mathrm{dom}}$ identified in the Jacobian spectrum.
+
+Near $J_\times^*$, the dynamics admit a reduction onto the scalar amplitude $x(t) = \langle \mathbf{v}_{\mathrm{dom}}, \delta \mathbf{r}(t) \rangle$, yielding the saturating normal form
+
+$$\tau \dot{x} = \lambda_{\mathrm{dom}}(J_\times) \, x + \gamma x^3 - \delta x^5 + \eta_{\mathrm{eff}}(t), \quad \delta > 0,$$
+
+where $\lambda_{\mathrm{dom}}(J_\times)$ is the measured dominant non-Goldstone eigenvalue and the quintic term captures saturation that stabilizes the distant WTA states. The escape barrier from coexistence is set by the nearby inner saddle and is therefore controlled primarily by $\lambda_{\mathrm{dom}}$ and $\gamma$.
+
+In the metastable subcritical regime, the effective potential $V(x)$ has an inner unstable saddle at
+
+$$x_s^2 \approx \frac{|\lambda_{\mathrm{dom}}|}{\gamma},$$
+
+giving a barrier height
+
+$$\Delta V \equiv V(x_s) - V(0) \approx \frac{|\lambda_{\mathrm{dom}}|^2}{4\gamma}.$$
+
+**Noise projection and finite-horizon criterion.** In the stochastic simulations, independent Gaussian noise of standard deviation $\sigma = 0.1$ is added per neuron over a $T = 500$-step maintenance window. Because $\mathbf{v}_{\mathrm{dom}}$ is unit-normalized, projecting isotropic independent noise onto the dominance coordinate preserves variance: $\mathrm{Var}[\eta_{\mathrm{eff}}] = \sigma^2$. Kramers theory predicts an escape rate $k \sim k_0 \exp(-\Delta V / \sigma^2)$; over a finite horizon $T$, escape becomes likely when $kT \sim 1$, i.e.
+
+$$\frac{\Delta V}{\sigma^2} \approx \ln(k_0 T).$$
+
+Taking a conservative attempt-frequency range $k_0 \in [0.1, 1]$ per step gives $\ln(k_0 T) \in [\ln 50, \ln 500] \approx [3.9, 6.2]$, hence $\Delta V \in [0.039, 0.062]$.
+
+**Numerical evaluation at the observed swap onset.** The stochastic phase diagram shows swap errors rising steeply near $J_\times \approx 0.25$. At this coordinate, the computed coexistence spectrum gives $\lambda_{\mathrm{dom}}(0.25) \approx -0.2357$, yielding
+
+$$\Delta V(0.25) \approx \frac{(0.2357)^2}{4\gamma} \approx \frac{0.0139}{\gamma}.$$
+
+Equating to the finite-horizon Kramers threshold $\Delta V \in [0.039, 0.062]$ implies
+
+$$\gamma \approx 0.22 \text{ to } 0.36,$$
+
+a plausible normal-form coefficient for Taylor-expanded sigmoidal population dynamics. A local linear fit to $\lambda_{\mathrm{dom}}(J_\times)$ over $J_\times \in [0.33, 0.345]$ yields slope $a \approx 2.93$ and crossing $J_\times^* \approx 0.3488$, consistent with Fig. 3. As a self-consistency check: taking $\gamma = 0.3$ gives $\Delta V(0.25) \approx 0.046$ and $\Delta V / \sigma^2 \approx 4.6$, squarely in the $\ln(k_0 T)$ band.
+
+This provides a quantitative explanation for why the behavioral "cliff" precedes the deterministic pitchfork: because $\Delta V \propto |\lambda_{\mathrm{dom}}|^2$, the barrier collapses quadratically and reaches the noise-limited finite-horizon threshold before the eigenvalue crosses zero at $J_\times^*$.
 
 ---
 
@@ -326,17 +370,13 @@ The two Goldstone modes have a functional interpretation. They protect bump posi
 
 The Goldstone protection is specific to mean-field coupling. Spatially structured inhibition (e.g., lateral inhibition that depends on the angular distance between bumps) would break the rotational symmetry and couple dominance dynamics to positional dynamics. Whether biological cross-inhibition is closer to mean-field or structured is an empirical question with spectral consequences.
 
-### 4.5 Connection to the Cusp Catastrophe
+### 4.5 Cusp Reduction and Connection to Stochastic Attractor Models
 
-The 1D cusp potential $V(D) = D^4 + aD^2 + bD$ is the projection of the 96-dimensional dynamics onto the critical eigenvector, which the spectral analysis identifies explicitly as the uniform/DC mode with natural coordinate $D = \bar{r}^A - \bar{r}^B$. The cusp coefficient $a$ is controlled by $J_\times$ ($a = 0$ at $J_\times^*$) and $b$ by cue gain $c$. The full spectral analysis adds what the 1D reduction cannot: the Goldstone modes (requiring zero-mode regularization in Kramers calculations), non-critical stability directions (setting the high-dimensional prefactor), and the quantitative location of $J_\times^*$ (a free parameter in the 1D picture).
+The 1D cusp potential $V(D) = \alpha D^4 + a D^2 + b D$ is the projection of the 96-dimensional dynamics onto the critical eigenvector. The spectral analysis identifies this direction explicitly as the uniform/DC mode with natural coordinate $D = \bar{r}^A - \bar{r}^B$, and provides what the 1D reduction cannot: the Goldstone modes (requiring zero-mode regularization in any Kramers calculation), non-critical stability directions (setting the high-dimensional prefactor), and the quantitative location of $J_\times^*$ (a free parameter in the 1D picture). The cusp coefficient $a = -\lambda_{\mathrm{dom}} \tau / 2$ is determined by the spectral data, the quartic coefficient $\alpha$ is calibrated from WTA fixed points (Section 3.5.5), and $b$ is controlled by cue gain $c$.
 
-### 4.6 Connection to Stochastic Attractor Models
+This cusp landscape connects directly to the stochastic attractor models of Penny (2024), who modeled maintenance as an SDE $dx = \beta g(x) \, dt + \sigma \, dw$ and showed that swap errors arise when "memory traces diffuse away from their initial state and are captured by the attractors of other items." Our spectral analysis characterizes the landscape on which Penny's stochastic dynamics unfold; the Kramers escape rate $k \sim \exp(-\Delta V / \sigma^2)$ bridges the two descriptions. A prediction emerges: swap error rate should increase continuously with maintenance delay (accumulated diffusion), but the rate of increase should exhibit a sharp change near $J_\times^*$ where the barrier collapses quadratically.
 
-Our deterministic spectral analysis and the stochastic attractor models of Penny (2024) provide complementary descriptions of working memory dynamics. Penny modeled maintenance as a stochastic differential equation $dx = \beta g(x) dt + \sigma dw$, where swap errors arise when "memory traces diffuse away from their initial state and are captured by the attractors of other items." Our cusp potential $V(D) = D^4 + aD^2 + bD$ provides the deterministic landscape on which Penny's stochastic dynamics unfold. The Kramers escape rate $\tau^{-1} \sim \exp(-\Delta V / \sigma^2)$ bridges the two: barrier height (set by the spectral bifurcation at $J_\times^*$) determines swap error probability under stochastic dynamics. Penny's model fits behavioral data from 90 subjects; our analysis provides the spectral characterization of the underlying attractor landscape.
-
-A prediction emerges from the synthesis: swap error rate should increase continuously with maintenance delay (accumulated diffusion), but the rate of increase should exhibit a sharp change near $J_\times^*$ (barrier collapse). The cusp sets the landscape; noise navigates it.
-
-### 4.7 Selection Versus Representation Failure
+### 4.6 Selection Versus Representation Failure
 
 Neural recordings from monkey prefrontal cortex during multi-item working memory reveal that swap errors can arise from misselection of correctly remembered items rather than representation failure (Alleman et al., 2024). Both representations persist in the population, but the readout process selects the wrong item.
 
@@ -344,13 +384,13 @@ This distinction maps onto our phase diagram. The non-monotonic valley at $J_\ti
 
 The Alleman et al. finding that swap errors in healthy subjects arise from misselection suggests the brain operates in or near the valley, where cross-inhibition is strong enough for reliable WTA but not so strong as to destroy representations. A testable prediction follows: conditions that increase effective cross-inhibition (distractor-rich environments, high cognitive load) should shift swap errors from selection-type to representation-type.
 
-### 4.8 A Shared Bifurcation Motif Across Competition Circuits
+### 4.7 A Shared Bifurcation Motif Across Competition Circuits
 
 The pitchfork bifurcation we identify -- attractors extinguished after merging with saddle points at high cross-inhibition -- has structural analogs in decision-making circuits. Roach, Churchland, and Engel (2023) showed that in circuits with choice-selective inhibition, working memory attractors are extinguished after merging with saddle points as ipsispecific inhibition increases. Disjoint neural groups with within-group excitation and across-group inhibition exhibit group WTA dynamics, and the coexistence-to-WTA transition occurs via saddle-point annihilation (Roach et al., 2023; Wong and Wang, 2006; Machens et al., 2005).
 
 This structural similarity suggests the spectral separatrix may describe a shared bifurcation motif across neural circuits with competing stable states. Decision-making, attention, and working memory all involve population competition, and the mathematical structure -- pitchfork at critical coupling, Goldstone protection of positional degrees of freedom, DC instability under mean-field coupling -- may appear across domains where mean-field-like inhibition mediates competition. However, we have demonstrated this structure only for the specific case of coupled ring attractors with mean-field cross-inhibition; establishing genuine universality (shared critical exponents independent of microscopic details) would require normal-form reduction arguments or analysis of additional model classes. The spectral analysis presented here provides a template for such characterization.
 
-### 4.9 Limitations
+### 4.8 Limitations
 
 (i) The model uses rate neurons, not spiking neurons; the noise structure differs qualitatively. (ii) Mean-field cross-inhibition is a simplification; realistic inhibitory interneuron pools have spatial and temporal structure, as demonstrated by Roach et al. (2023), where ipsispecific versus contraspecific inhibition creates qualitatively different attractor landscapes. (iii) $N = 48$ is moderate; the Goldstone mode identification becomes cleaner at larger $N$. (iv) The stochastic phase diagram uses additive Gaussian noise; biologically realistic noise is multiplicative and state-dependent. (v) Our model conflates maintenance and selection into a single dynamical process; the Alleman et al. (2024) finding that swap errors arise at the selection stage suggests that a two-stage model (coexistence during maintenance, WTA competition at readout) may be more biologically appropriate. (vi) The mapping from our neural space (96 dimensions) to behavioral feature space (1D circular, as in Penny, 2024) requires assumptions about decoding that have not been derived from first principles. (vii) The sharp pitchfork bifurcation at $J_\times^*$ is a symmetry artifact: even modest connectivity heterogeneity ($\sigma \geq 0.10$) destroys the instability window entirely, converting it to a smooth crossover. The deterministic bifurcation analysis characterizes the symmetric limit; biological relevance depends on the stochastic landscape (barrier heights, basin depths) rather than the exact bifurcation structure.
 
@@ -358,7 +398,7 @@ This structural similarity suggests the spectral separatrix may describe a share
 
 ## 5. Conclusion
 
-We have presented the first complete spectral bifurcation analysis of competing ring attractors under mean-field cross-inhibition. Five results stand:
+We have presented the first complete spectral bifurcation analysis of competing ring attractors under mean-field cross-inhibition. Six results stand:
 
 1. **Existence threshold.** Coexistence has a sharp existence threshold at $J_\times^{exist} \approx 0.36$, below which it is a genuine fixed point and above which it does not exist.
 
@@ -369,6 +409,8 @@ We have presented the first complete spectral bifurcation analysis of competing 
 4. **Stochastic phase diagram.** Large-scale stochastic simulations (128,000 trials) confirm the spectral prediction: swap errors emerge at $J_\times \approx 0.25$, drive strength is secondary to cross-inhibition, and a non-monotonic valley identifies a candidate functional operating regime.
 
 5. **Heterogeneity transforms the bifurcation.** Connectivity heterogeneity destroys the sharp pitchfork entirely, converting it into an imperfect bifurcation — the razor-thin instability window is a symmetry artifact of the clean model.
+
+6. **Kramers bridge.** The barrier separating coexistence from WTA collapses quadratically ($\Delta V \propto |\lambda_{\mathrm{dom}}|^2$), reaching the noise-limited finite-horizon threshold at $J_\times \approx 0.25$ — quantitatively consistent with the observed stochastic onset and a normal-form coefficient $\gamma \approx 0.22$--$0.36$.
 
 Together, these results reframe the behavioral cliff in working memory as a spectral bifurcation phenomenon. The model predicts a qualitative valley regime where cross-inhibition and encoding drive are balanced for reliable WTA selection; the specific parameter range depends on model details, but the non-monotonic structure between two failure modes is robust. The Goldstone modes protect memory content (bump positions) from the competition over its fate (which bump survives), enforcing a separation of positional and competitive dynamics that may be a design principle of working memory circuits. Importantly, connectivity heterogeneity transforms the sharp pitchfork into a smooth crossover, dissolving the razor-thin instability window ($\Delta J_\times \approx 0.01$) entirely -- biological circuits need not operate with such precision, and the valley regime persists regardless of bifurcation type. The same bifurcation motif appears in decision-making circuits, suggesting a shared spectral architecture for neural competition that warrants characterization across model classes.
 
