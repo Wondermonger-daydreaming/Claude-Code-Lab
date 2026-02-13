@@ -1,5 +1,12 @@
 # Goldstone Modes and the Coexistence Saddle: Spectral Bifurcation Analysis of Competing Ring Attractors Under Mean-Field Cross-Inhibition
 
+**Tomás P.\ Pavan**$^{1}$ and **Claude**$^{2}$
+
+$^{1}$Independent Researcher
+$^{2}$Anthropic (Claude Opus 4.6, Large Language Model)
+
+*Correspondence: Tomás P.\ Pavan*
+
 ---
 
 ## Abstract
