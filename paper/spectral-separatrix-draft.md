@@ -320,9 +320,9 @@ Equating to the finite-horizon Kramers threshold $\Delta V \in [0.039, 0.062]$ i
 
 $$\gamma \approx 0.22 \text{ to } 0.36,$$
 
-a plausible normal-form coefficient for Taylor-expanded sigmoidal population dynamics. A local linear fit to $\lambda_{\mathrm{dom}}(J_\times)$ over $J_\times \in [0.33, 0.345]$ yields slope $a \approx 2.93$ and crossing $J_\times^* \approx 0.3488$, consistent with Fig. 3. As a self-consistency check: taking $\gamma = 0.3$ gives $\Delta V(0.25) \approx 0.046$ and $\Delta V / \sigma^2 \approx 4.6$, squarely in the $\ln(k_0 T)$ band.
+a plausible normal-form coefficient for Taylor-expanded sigmoidal population dynamics. As a self-consistency check: taking $\gamma = 0.3$ gives $\Delta V(0.25) \approx 0.046$ and $\Delta V / \sigma^2 \approx 4.6$, squarely in the $\ln(k_0 T)$ band.
 
-This provides a quantitative explanation for why the behavioral "cliff" precedes the deterministic pitchfork: because $\Delta V \propto |\lambda_{\mathrm{dom}}|^2$, the barrier collapses quadratically and reaches the noise-limited finite-horizon threshold before the eigenvalue crosses zero at $J_\times^*$.
+This provides a quantitative explanation for why the behavioral "cliff" occurs substantially below the deterministic pitchfork. Because $\Delta V \propto |\lambda_{\mathrm{dom}}|^2$, the barrier collapses quadratically and drops to the logarithmically-scaled noise floor near $J_\times \approx 0.25$ -- roughly 29% below $J_\times^*$ -- rendering the network noise-limited before the coexistence fixed point formally loses its deterministic stability.
 
 ---
 
