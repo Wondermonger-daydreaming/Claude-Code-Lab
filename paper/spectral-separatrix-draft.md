@@ -48,7 +48,7 @@ We present the first complete eigenvalue decomposition of the coupled ring attra
 
 ### 1.4 Summary of Contributions
 
-Our three main results are:
+Our main results are:
 
 1. **Existence threshold.** The coexistence fixed point exists only for $J_\times < J_\times^{exist} \approx 0.36$. At the commonly used value $J_\times = 0.5$, coexistence is not a fixed point of the dynamics -- both bumps cannot self-sustain under such strong cross-inhibition.
 
@@ -94,7 +94,9 @@ $$I_i^{cue} = c \cdot \frac{e^{\kappa \cos(\theta_i - \theta_{stim})}}{I_0(\kapp
 
 with concentration parameter $\kappa = 2.0$ and cue gain $c \geq 0$.
 
-The critical feature of mean-field cross-inhibition is that it depends only on the total activity $\bar{r}^X$ of the opposing network, not on the spatial pattern of its bump. This has profound consequences for the symmetry structure of the system.
+The critical feature of mean-field cross-inhibition is that it depends only on the total activity $\bar{r}^X$ of the opposing network, not on the spatial pattern of its bump. This has profound consequences for the symmetry structure of the system (Fig. 1).
+
+**Figure 1.** Model schematic. Two ring networks (A, B) of $N = 48$ neurons each, with cosine within-network connectivity ($J_0 + J_1 \cos \Delta\theta$) and mean-field cross-inhibition ($J_\times \bar{r}^X$). External cue input drives network A only. The cross-inhibition depends on mean activity, not bump position, preserving rotational symmetry.
 
 ### 2.3 Jacobian of the Coupled System
 
@@ -130,7 +132,7 @@ We verify convergence by checking: (i) the residual $\max_i |F_i(\mathbf{r}^*)| 
 
 #### 3.1.2 Critical Existence Threshold
 
-*[Figure 1: Coexistence diagnostic at J_cross = 0.5 showing failure to converge]*
+**Figure 2.** Coexistence existence boundary. Peak firing rate of each network as a function of cross-inhibition strength $J_\times$. Below $J_\times^{exist} \approx 0.358$, both networks sustain bumps at matched amplitudes (coexistence). Above this threshold, one network collapses to baseline (WTA). The pitchfork bifurcation at $J_\times^* \approx 0.349$ (orange dashed) and existence boundary at $J_\times^{exist} \approx 0.358$ (purple dashed) delimit the narrow instability window $\Delta J_\times \approx 0.01$.
 
 We scan $J_\times$ from 0 to 0.5. Below $J_\times \approx 0.36$, Newton converges to a genuine coexistence fixed point with residual $< 10^{-10}$. Above this threshold, one bump suppresses the other during the simulation phase; Newton converges only to WTA solutions. At $J_\times = 0.50$ -- a commonly used parameter value -- coexistence does not exist as a fixed point of the deterministic dynamics.
 
@@ -165,13 +167,13 @@ The Goldstone eigenvectors project strongly onto $\mathbf{d}_{gold,A}$ and $\mat
 
 Across the entire range $J_\times \in [0, 0.36)$ where coexistence exists, we find exactly two Goldstone modes. Their eigenvalues remain at $|\lambda| \sim 10^{-8}$ to $10^{-11}$ (machine precision for our iterative solver), and they are never lifted by increasing cross-inhibition. This confirms the symmetry protection: mean-field coupling cannot break rotational invariance.
 
-*[Figure 4: Goldstone-separated spectral analysis, 9-panel figure]*
+**Figure 4.** Eigenvector comparison at $J_\times = 0.34$ (near the pitchfork). Left: Goldstone mode ($\lambda \approx -5.8 \times 10^{-11}$, effectively zero), showing sinusoidal spatial structure in Network A -- this is the rotational mode that slides the bump around the ring. Right: Critical dominance mode ($\lambda_{dom} = -0.026$, DC/uniform), showing spatially flat anti-phase activation (Network A uniformly up, Network B uniformly down). The two modes are qualitatively distinct: the Goldstone mode encodes *where* the bump sits; the critical mode encodes *which network wins*.
 
 ### 3.3 The Pitchfork Bifurcation
 
 #### 3.3.1 The First Non-Goldstone Eigenvalue
 
-After removing the two Goldstone modes, we track the dominant genuine eigenvalue $\lambda_{dom}$ as a function of $J_\times$ (Figure 4, top-left panel). Key findings:
+After removing the two Goldstone modes, we track the dominant genuine eigenvalue $\lambda_{dom}$ as a function of $J_\times$ (Fig. 3). Key findings:
 
 - At $J_\times = 0$: $\lambda_{dom} = -0.572$ (strongly stable). Without cross-inhibition, the coexistence state is deeply attractive.
 - $\lambda_{dom}$ increases monotonically with $J_\times$, crossing zero at $J_\times^* \approx 0.3485$.
@@ -207,9 +209,7 @@ This razor-thin window has two implications:
 
 ### 3.4 The Coexistence Saddle Under Cue
 
-*[Figure 3: Spectral separatrix at J_cross = 0.35]*
-
-At $J_\times = 0.35$ (within the saddle window), Newton continuation in cue gain $c$ from 0 to 0.5 reveals:
+Newton continuation in cue gain $c$ from 0 to 0.5 at $J_\times = 0.35$ (within the saddle window; see Fig. 3) reveals:
 
 - The coexistence branch maintains both bumps across the full cue range, with $D$ growing slowly as the cue favors network A.
 - All 51/56 tracked solutions are unstable (saddle points), with $n_{positive} = 1$ for $c < 0.15$ and $n_{positive} = 2$ for $c > 0.15$ (a second eigenvalue crossing).
@@ -225,7 +225,7 @@ To bridge the deterministic bifurcation analysis with behavioral predictions, we
 
 #### 3.5.2 Onset of Swap Errors
 
-*[Figure 8: Phase diagram in $(J_\times, c)$ space]*
+**Figure 5.** Stochastic phase diagram in $(J_\times, c)$ space (128,000 trials across 256 parameter combinations). Color indicates swap error rate. Near-vertical isocontours show that swap probability depends primarily on $J_\times$, not drive strength. A non-monotonic valley at $J_\times \approx 1.2$--$1.6$ with strong drive identifies the functional operating regime where WTA dynamics and encoding strength are balanced.
 
 Swap errors emerge at $J_\times \approx 0.25$, consistent with the spectral prediction of the pitchfork bifurcation at $J_\times^* \approx 0.3485$. The stochastic onset is lower than the deterministic bifurcation because noise-mediated escape from the metastable coexistence well occurs when the barrier height $\Delta V \sim \sigma^2$, which corresponds to a $J_\times$ slightly below the eigenvalue crossing. This is precisely the Kramers mechanism.
 
@@ -233,7 +233,7 @@ Between $J_\times \approx 0.25$ and $0.5$, swap rates increase from 5% to approx
 
 #### 3.5.3 Drive Strength Is Secondary
 
-The phase diagram shows near-vertical isocontours of swap rate (Fig. 8A): swap error probability depends primarily on $J_\times$ and only weakly on drive strength. This is a direct prediction of the spectral analysis: the critical eigenvector is spatially uniform (DC mode), governing total activity competition rather than spatial encoding. Stronger drive does not protect against the dominance instability because the instability is orthogonal to the encoding direction.
+The phase diagram shows near-vertical isocontours of swap rate (Fig. 5): swap error probability depends primarily on $J_\times$ and only weakly on drive strength. This is a direct prediction of the spectral analysis: the critical eigenvector is spatially uniform (DC mode), governing total activity competition rather than spatial encoding. Stronger drive does not protect against the dominance instability because the instability is orthogonal to the encoding direction.
 
 This has a counterintuitive implication: increasing stimulus strength -- the commonly proposed intervention for working memory failures -- targets the wrong degree of freedom. The cliff is a $J_\times$ phenomenon, not a cue phenomenon.
 
@@ -273,7 +273,7 @@ Two consequences follow. First, the Goldstone modes, which are exactly zero in t
 
 This result strengthens the valley interpretation (Section 3.5.4). The non-monotonic valley at $J_\times \approx 1.2$--$1.6$ exists in the stochastic simulations regardless of whether the underlying deterministic bifurcation is a sharp pitchfork or a smooth crossover. What matters for behavior is the *landscape* -- the barrier heights and basin depths -- not the exact location of a mathematical bifurcation point. Heterogeneity smears the transition without eliminating the functional operating regime.
 
-Critical slowing down provides partial confirmation: convergence time after small perturbations increases as $J_\times$ approaches $J_\times^*$ in the clean model ($\sigma = 0$), consistent with the expected $\tau \sim 1/|\lambda_{dom}|$ scaling near the bifurcation. The data are noisy but directionally consistent with critical slowing down (Fig. 54).
+Critical slowing down provides partial confirmation: convergence time after small perturbations increases as $J_\times$ approaches $J_\times^*$ in the clean model ($\sigma = 0$), consistent with the expected $\tau \sim 1/|\lambda_{dom}|$ scaling near the bifurcation. The data are noisy but directionally consistent with critical slowing down (Fig. 6).
 
 ### 4.3 The Behavioral Cliff as a $J_\times$ Phenomenon
 
