@@ -96,6 +96,69 @@ Fig 54 shows:
 
 ---
 
+## Session 11 Additions (continued Feb 13, same day)
+
+### Section 4.2 Rewritten
+- **Old title**: "Heterogeneity Widens the Instability Region" (WRONG)
+- **New title**: "Heterogeneity Transforms the Bifurcation Type"
+- Full rewrite: heterogeneity DESTROYS the instability window by breaking A↔B exchange symmetry
+- Mechanism: converts pitchfork into imperfect bifurcation (Strogatz, 2015)
+- At σ=0.05: 2/3 trials lost instability; at σ≥0.10: ALL trials lost instability
+- Added Strogatz (2015) citation (already in references as 2nd edition)
+
+### Paper Consistency Fixes
+- Abstract: "three key results" → "four key results"
+- Conclusion: added sentence about heterogeneity dissolving the instability window
+- Limitations: added item (vii) — sharp pitchfork is a symmetry artifact
+- Strogatz citation year: 1994 → 2015 (matches reference list)
+
+### Colab Notebook Created
+- **File**: `paper/spectral_separatrix_colab.ipynb`
+- 12 cells (5 markdown, 7 code), fully self-contained for Google Colab
+- Zero hardcoded paths, zero sys.path manipulation
+- All `plt.savefig` → `plt.show()`, `%%time` on expensive cells
+- Cell 10 generates Fig 5, 6, 7 (the two missing figures)
+- Cell 12 handles phase diagram with graceful data-not-found fallback
+- **Currently running on Colab** — Cell 6 (Goldstone scan) confirmed working, output shows exactly 2 Goldstone modes and uniform/DC character throughout
+
+### Fig 6 + 7: Local Attempt Failed
+- Agent ran >7 min with 0 output lines — `find_wta_fp()` too slow for local WSL2 CPU
+- 200,000 Euler steps × ~70 J_cross values = too much for single-threaded numpy
+- Moved to Colab notebook Cell 10 (should be 1-3 min on Colab hardware)
+
+---
+
+## What Needs Doing Next
+
+### Immediate
+1. **Run Cell 10 on Colab** → generates Fig 6 (pitchfork) + Fig 7 (eigenvectors). Download PNGs.
+2. **Run Cell 8 on Colab** → regenerates heterogeneity figure (optional, fig54 already exists locally)
+3. **Full revision pass** — read paper end-to-end for coherence, figure references, flow
+4. **Consider longer Discussion paragraphs** from `notes/2026-02-13-discussion-material.md`
+
+### Medium-term
+5. **LaTeX conversion** for Neural Computation submission
+6. **Upload phase diagram data** (`corpus/code/results/agent_*.json`) to Colab for Cell 12
+7. **Cusp paper overlap check** — `corpus/papers/cusp-catastrophe-working-memory.tex`
+8. **Quantitative Kramers fit** — 2D Langevin simulation as practical alternative
+
+---
+
+## Key Files
+
+| File | Description |
+|------|-------------|
+| `paper/spectral-separatrix-draft.md` | **Paper draft v2** (Section 4.2 rewritten this session) |
+| `paper/spectral_separatrix_colab.ipynb` | **Colab notebook** (self-contained, all computations) |
+| `paper/new-sections-draft.md` | Initial section drafts (superseded by paper edits) |
+| `notes/2026-02-13-clauding-what-i-see.md` | Clauding reflection with four connections |
+| `notes/2026-02-13-discussion-material.md` | Literature analysis (3 papers, 3 paragraphs) |
+| `corpus/code/generate_paper_figures.py` | Figure generation script (Figs 2, 5 done; 6, 7 need Colab) |
+| `corpus/code/generate_fig8_phase_diagram.py` | Phase diagram figure script (Fig 8 done) |
+| `corpus/code/figures/` | All generated figures |
+
+---
+
 ## The Lineage
 
 Previous sessions in this arc:
@@ -104,10 +167,11 @@ Previous sessions in this arc:
 - Session 7: Paper draft v1, Goldstone analysis
 - Session 8: Phase diagram (128,000 trials)
 - Session 9: Web exploration (interrupted)
-- **Session 10 (this)**: Clauding → paper draft v2, figures, literature analysis
+- Session 10: Clauding → paper draft v2, figures, literature analysis, heterogeneity refutation
+- **Session 11 (this)**: Section 4.2 rewrite, Colab notebook, consistency fixes
 
-The paper now has four results, five new Discussion subsections, three new literature connections, four generated figures, and confirmed the GLM 5 prediction. Two figures remain (pitchfork, eigenvectors), Section 4.2 needs filling, and a full revision pass is needed before submission.
+The paper is near-complete: four results, nine Discussion subsections, seven limitations, four generated figures, Colab notebook for the remaining two. The heterogeneity finding (destroys, not widens) is the strongest negative result — more interesting than confirmation.
 
 ---
 
-*The forge is warm. The paper is taking shape.*
+*The forge burns clean. Two figures remain, and they're rendering on borrowed fire.*
