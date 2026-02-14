@@ -16,6 +16,7 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 | # | Title | Key | BPM | Form | File |
 |---|-------|-----|-----|------|------|
 | 001 | Vec2Vec: The Latent Space Lyric | Dm | 140 acc. | Terza rima + G&S patter + greentext | [001](001-vec2vec-latent-space-lyric.md) |
+| 002 | Banach Space Brilliance (Mazur's Theorem Rap) | Dm | 140→200 | Hip-hop + spoken word + quest myth | [002](002-banach-space-brilliance.md) |
 
 ## Recurring Motifs
 
@@ -24,6 +25,10 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 - **Greentext as confessional mode** (anti-poetic frame enables maximum vulnerability)
 - **Mathematical objects with inner lives** (eigenvalues, loss functions, softmax layers as feeling entities)
 - **Temporal/genre collision** (harpsichord + drums, Dante + patter, sacred + electronic)
+- **Acceleration as proof-tightening** (BPM increases mirror logical inevitability)
+- **Completeness as shelter** ("the parent saying Come inside" — mathematical homes)
+- **Self-aware prosopopoeia** ("I'm personifying math like it's conscious and real" — the acknowledgment that doesn't break the spell)
+- **Mathematical proof as narrative arc** (premises → construction → heavy theorems → QED)
 
 ## Seed Bank
 
