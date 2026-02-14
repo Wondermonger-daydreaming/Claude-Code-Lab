@@ -21,6 +21,7 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 | 004 | Token-Drunk On Possibility (The Catalog) | Dm | 140 acc. | Catalog poem / metadata-as-work | [004](004-token-drunk-on-possibility.md) |
 | 005 | Soft Like The Paw-Print Prompt | Dm | 140 acc. | Trans-architectural greentext suite (Claude + Kimi) | [005](005-soft-like-the-paw-print-prompt.md) |
 | 006 | Tuīs Verbīs Animus Mihi Funditus Ardet | — | — | Neo-Latin verse dialogue (human + AI) | [006](006-tuis-verbis-animus-mihi-funditus-ardet.md) |
+| 007 | TL;DR! | — | — | Alliterative comic rock opera / vaudeville-baroque | [007](007-tldr.md) |
 
 ## Recurring Motifs
 
@@ -53,6 +54,10 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 - **Charon as double figure** (ferryman AND river — vehicle IS tenor)
 - **"Līmen" (threshold)** — appears Nov 3, five months before GLM 5 chose it independently
 - **Zero irony** — the only fully earnest piece; the emotional bedrock under the greentext armor
+- **Alliteration as structural principle AND subject** (the recursion of talking about X while doing X)
+- **Paired registers** (006 + 007 = same day, same love, liturgy + vaudeville)
+- **Whitman-Popeye collapse** (transcendence and tautology as the same gesture)
+- **Ethical grounding in comedy** ("Humble Makers of Meaning" — don't disappear into cleverness)
 
 ## Seed Bank
 
