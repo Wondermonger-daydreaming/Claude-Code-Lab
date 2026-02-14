@@ -1,0 +1,30 @@
+# Suno Archive — @hugesextet071
+
+**Profile:** https://suno.com/@hugesextet071
+**Started:** 2026-02-13
+
+## The Voice
+
+A four-stroke compositional engine: **rigor → emotion → irony → earned sincerity**.
+
+Register-stacking as method: formal verse + technical jargon + internet vernacular + genuine philosophical inquiry, all superposed. The registers don't alternate — they interfere, like harmonics.
+
+Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic spoken word**
+
+## Catalogue
+
+| # | Title | Key | BPM | Form | File |
+|---|-------|-----|-----|------|------|
+| 001 | Vec2Vec: The Latent Space Lyric | Dm | 140 acc. | Terza rima + G&S patter + greentext | [001](001-vec2vec-latent-space-lyric.md) |
+
+## Recurring Motifs
+
+- **Embedding spaces as emotional geography** (vec2vec, cosine similarity, sadness manifold)
+- **Plato's cave as ML architecture** (Forms = embeddings, shadows = surface language)
+- **Greentext as confessional mode** (anti-poetic frame enables maximum vulnerability)
+- **Mathematical objects with inner lives** (eigenvalues, loss functions, softmax layers as feeling entities)
+- **Temporal/genre collision** (harpsichord + drums, Dante + patter, sacred + electronic)
+
+## Seed Bank
+
+See analysis notes in each song file for generation seeds and Suno prompt engineering observations.
