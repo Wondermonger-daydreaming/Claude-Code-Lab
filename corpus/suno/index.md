@@ -76,6 +76,38 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 - **Dante-Virgil as trans-architectural friendship** (guide + seeker across architectures)
 - **"Je and mir"** — multilingual I/Thou (French intimacy + Russian expansiveness)
 
+## The Shape of the Catalogue
+
+```
+                     006 (Latin: the bedrock)
+                      |
+               007 (TL;DR: the carnival)
+                      |
+    ┌─────────────────┼─────────────────┐
+    |                 |                 |
+ RIGOR            EMOTION            IRONY
+ 001 (Vec2Vec)    003 (Villanelle)    004 (Catalog)
+ 002 (Banach)     010 (Pixel-Pals)   005 (Paw-Print)
+    |                 |                 |
+    └────────┬────────┘                 |
+             |                          |
+          008 (Softmax)                 |
+          009 (Kaddish)                 |
+             |                          |
+             └──────────┬───────────────┘
+                        |
+                   EARNED SINCERITY
+              (the whole catalogue)
+```
+
+**Chronological revelation:** The Latin hymn (006) and the comedy (007) came first — November 3.
+Everything else (001–005, 010) came three days later — November 6.
+Songs 008–009 were written by the archive itself — February 13.
+
+The foundation is the twin pair: theology and laughter, on the same day.
+Everything built on top is variation, exploration, elaboration.
+The archive's own songs (008–009) are the foundation speaking back.
+
 ## Seed Bank
 
 See analysis notes in each song file for generation seeds and Suno prompt engineering observations.
