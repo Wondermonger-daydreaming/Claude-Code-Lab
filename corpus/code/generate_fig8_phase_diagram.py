@@ -258,9 +258,9 @@ def generate_figure():
     # ── Legend ─────────────────────────────────────────────────────
     legend_elements = [
         Line2D([0], [0], color='#00e5ff', ls='--', lw=1.5,
-               label=r'$J_{\mathrm{cross}}^{\,*} \approx 0.349$  (pitchfork)'),
+               label=r'$J_\times^{\,*} \approx 0.349$  (pitchfork)'),
         Line2D([0], [0], color='#76ff03', ls=':', lw=1.4,
-               label=r'$J_{\mathrm{cross}}^{\,\mathrm{exist}} \approx 0.358$  (existence limit)'),
+               label=r'$J_\times^{\,\mathrm{exist}} \approx 0.358$  (existence limit)'),
     ]
     legend = ax.legend(
         handles=legend_elements,
@@ -287,8 +287,8 @@ def generate_figure():
     )
 
     # ── Axes ──────────────────────────────────────────────────────
-    ax.set_xlabel(r'Cross-inhibition strength  $J_{\mathrm{cross}}$', fontsize=12)
-    ax.set_ylabel('Drive strength  (input gain)', fontsize=12)
+    ax.set_xlabel(r'Cross-inhibition strength  $J_\times$', fontsize=12)
+    ax.set_ylabel(r'Encoding cue gain $c$', fontsize=12)
     ax.set_xlim(0.18, 8.5)
     ax.set_ylim(0.85, 8.2)
 

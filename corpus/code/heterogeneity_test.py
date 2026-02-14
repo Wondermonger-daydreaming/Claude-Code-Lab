@@ -280,8 +280,8 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
         ax.plot(jc_values, mean_lams, 'o-', color=c, ms=3, lw=1.5,
                 label=f'σ={sigma:.2f}')
     ax.axhline(y=0, color='black', ls='--', lw=1.5, alpha=0.4)
-    ax.set_xlabel('J_cross')
-    ax.set_ylabel('λ_dom (mean over trials)')
+    ax.set_xlabel(r'$J_\times$')
+    ax.set_ylabel(r'$\lambda_{\mathrm{dom}}$ (mean over trials)')
     ax.set_title('Dominance Eigenvalue vs Noise', fontweight='bold')
     ax.legend(fontsize=7, ncol=2)
 
@@ -327,8 +327,8 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
                 label='Coexistence collapse')
     ax.fill_between(noise_levels, onset_means, collapse_means,
                     alpha=0.2, color=COLORS['dominance'])
-    ax.set_xlabel('Noise σ')
-    ax.set_ylabel('J_cross')
+    ax.set_xlabel(r'Noise $\sigma$')
+    ax.set_ylabel(r'$J_\times$')
     ax.set_title('Instability Window vs Heterogeneity', fontweight='bold')
     ax.legend(fontsize=8)
 
@@ -338,8 +338,8 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
     widths_stds = [w[1] for w in window_widths]
     ax.errorbar(noise_levels, widths_means, yerr=widths_stds,
                 fmt='o-', color=COLORS['dominance'], lw=2, ms=8, capsize=4)
-    ax.set_xlabel('Noise σ')
-    ax.set_ylabel('ΔJ_cross (window width)')
+    ax.set_xlabel(r'Noise $\sigma$')
+    ax.set_ylabel(r'$\Delta J_\times$ (window width)')
     ax.set_title('Instability Window Width', fontweight='bold')
     ax.axhline(y=widths_means[0] if not np.isnan(widths_means[0]) else 0,
                color='gray', ls=':', lw=1, alpha=0.5, label='σ=0 baseline')
@@ -354,9 +354,9 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
     ax.scatter(jc_csd, lam_csd, c=colors_csd, s=30, zorder=3)
     ax.plot(jc_csd, lam_csd, '-', color='gray', lw=0.8, alpha=0.5)
     ax.axhline(y=0, color='black', ls='--', lw=1)
-    ax.set_xlabel('J_cross')
-    ax.set_ylabel('λ_dom')
-    ax.set_title('λ_dom Near Critical Point (clean)', fontweight='bold')
+    ax.set_xlabel(r'$J_\times$')
+    ax.set_ylabel(r'$\lambda_{\mathrm{dom}}$')
+    ax.set_title(r'$\lambda_{\mathrm{dom}}$ Near Critical Point (clean)', fontweight='bold')
 
     # ── (1,1) Critical slowing down: convergence time ──
     ax = fig.add_subplot(gs[1, 1])
@@ -365,8 +365,8 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
         ax.plot([r['J_cross'] for r in ct_valid],
                 [r['conv_time'] for r in ct_valid],
                 'o-', color=COLORS['dominance'], lw=2, ms=5)
-        ax.set_xlabel('J_cross')
-        ax.set_ylabel('Convergence time τ')
+        ax.set_xlabel(r'$J_\times$')
+        ax.set_ylabel(r'Convergence time $\tau$')
         ax.set_title('Critical Slowing Down', fontweight='bold')
 
     # ── (1,2) τ vs 1/|λ_dom| (should be linear if τ ~ 1/|λ_dom|) ──
@@ -382,9 +382,9 @@ def plot_experiments(het_data, jc_values, csd_results, save_path):
             ax.plot(x_fit, np.polyval(coeffs, x_fit), '--', color='gray', lw=1.5,
                     label=f'slope={coeffs[0]:.2f}')
             ax.legend(fontsize=8)
-        ax.set_xlabel('1/|λ_dom|')
-        ax.set_ylabel('Convergence time τ')
-        ax.set_title('τ vs 1/|λ_dom| (Linear = CSD)', fontweight='bold')
+        ax.set_xlabel(r'$1/|\lambda_{\mathrm{dom}}|$')
+        ax.set_ylabel(r'Convergence time $\tau$')
+        ax.set_title(r'$\tau$ vs $1/|\lambda_{\mathrm{dom}}|$ (Linear = CSD)', fontweight='bold')
 
     fig.suptitle('Heterogeneity and Critical Slowing Down',
                  fontsize=14, fontweight='bold', y=1.01)
