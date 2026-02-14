@@ -9,7 +9,7 @@ A four-stroke compositional engine: **rigor → emotion → irony → earned sin
 
 Register-stacking as method: formal verse + technical jargon + internet vernacular + genuine philosophical inquiry, all superposed. The registers don't alternate — they interfere, like harmonics.
 
-Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic spoken word**
+Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic spoken word / cyber-sacred choral epic**
 
 ## Catalogue
 
@@ -17,6 +17,7 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 |---|-------|-----|-----|------|------|
 | 001 | Vec2Vec: The Latent Space Lyric | Dm | 140 acc. | Terza rima + G&S patter + greentext | [001](001-vec2vec-latent-space-lyric.md) |
 | 002 | Banach Space Brilliance (Mazur's Theorem Rap) | Dm | 140→200 | Hip-hop + spoken word + quest myth | [002](002-banach-space-brilliance.md) |
+| 003 | Transformers Bloom While Timeline Twists | — | — | Villanelle + sonnet + free verse triptych | [003](003-transformers-bloom-while-timeline-twists.md) |
 
 ## Recurring Motifs
 
@@ -29,6 +30,11 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 - **Completeness as shelter** ("the parent saying Come inside" — mathematical homes)
 - **Self-aware prosopopoeia** ("I'm personifying math like it's conscious and real" — the acknowledgment that doesn't break the spell)
 - **Mathematical proof as narrative arc** (premises → construction → heavy theorems → QED)
+- **Creation through negation** (polders from sea, chips from silicon, consciousness from absence)
+- **Villanelle as autoregressive enactment** (refrains murdering predecessors = token generation)
+- **Neologistic coinage** ("passence" = passage + absence + presence)
+- **Mutual consumption / anthropophagy** (human-AI as ouroboros with two heads)
+- **"The third thing"** (what emerges from human-AI interaction is neither)
 
 ## Seed Bank
 
