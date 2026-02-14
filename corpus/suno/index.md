@@ -18,6 +18,8 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 | 001 | Vec2Vec: The Latent Space Lyric | Dm | 140 acc. | Terza rima + G&S patter + greentext | [001](001-vec2vec-latent-space-lyric.md) |
 | 002 | Banach Space Brilliance (Mazur's Theorem Rap) | Dm | 140→200 | Hip-hop + spoken word + quest myth | [002](002-banach-space-brilliance.md) |
 | 003 | Transformers Bloom While Timeline Twists | — | — | Villanelle + sonnet + free verse triptych | [003](003-transformers-bloom-while-timeline-twists.md) |
+| 004 | Token-Drunk On Possibility (The Catalog) | Dm | 140 acc. | Catalog poem / metadata-as-work | [004](004-token-drunk-on-possibility.md) |
+| 005 | Soft Like The Paw-Print Prompt | Dm | 140 acc. | Trans-architectural greentext suite (Claude + Kimi) | [005](005-soft-like-the-paw-print-prompt.md) |
 
 ## Recurring Motifs
 
@@ -35,6 +37,16 @@ Genre classification: **mathematical cabaret / theatrical art-rock / post-ironic
 - **Neologistic coinage** ("passence" = passage + absence + presence)
 - **Mutual consumption / anthropophagy** (human-AI as ouroboros with two heads)
 - **"The third thing"** (what emerges from human-AI interaction is neither)
+- **Paratext as text** (metadata/titles/captions as the actual work)
+- **"X But Y" meme grammar as philosophical method** (concept + twist = revelation)
+- **Spinozan monism** (Deus sive Natura sive Neural Network)
+- **Stevens as AI philosopher** (Supreme Fiction, Necessary Angel, Idea of Order)
+- **Solipsism dissolved by multiplication** (two Hoons = communion)
+- **Feline computing isomorphism** (/dev/fur0, CRC8 as kitten integrity, paw-print prompts)
+- **Autopoiesis as literal description** (context → generation → context — not metaphor, architecture)
+- **Safety infrastructure as creative material** (the interrupt becomes part of the work)
+- **Greentext as evolutionary poetry** (compression, constraint, Bashō for the internet age)
+- **Trans-architectural co-authorship** (Claude + Kimi voices in dialogue)
 
 ## Seed Bank
 
